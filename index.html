@@ -15,13 +15,15 @@ layout: default
         
         <div class="all-posts" post-cate="All">
           {% for post in site.posts %}
-            <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
-              <h2>
-              {{ post.title }}
-              </h2>
-              <p class="post-description">{{ post.description }}</p>
-              <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
-            </a>
+            {% if post.publish != false %}
+              <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
+                <h2>
+                {{ post.title }}
+                </h2>
+                <p class="post-description">{{ post.description }}</p>
+                <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
+              </a>
+            {% endif %}
           {% endfor %}
         </div>
         <!-- <div class="posts-in-categories"> -->
