@@ -13,7 +13,9 @@ icon: glyphicon-heart
 
 ## 저서
 
-[따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍](http://wikibook.co.kr/unity-ngui/) 
+* [따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍](http://wikibook.co.kr/unity-ngui/)
+
+> [심화과정 동영상 강의](http://totuworld.gitbooks.io/unity_ngui/content/)
 
 ---
 
