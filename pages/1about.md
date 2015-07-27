@@ -5,4 +5,19 @@ permalink: /about/
 icon: glyphicon-heart
 ---
 
-under construction page
+## 소개
+
+[아라소 판단](https://www.facebook.com/ArasoPandan)의 게임 개발자
+
+---
+
+## 저서
+
+[따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍](http://wikibook.co.kr/unity-ngui/) 
+
+---
+
+## 연락처
+
+* email : totuworld@gmail.com
+* facebook : https://www.facebook.com/totuworld
