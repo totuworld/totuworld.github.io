@@ -4,9 +4,8 @@ title:  "Node.js + express 프로젝트 구성"
 date:   2015-07-27 18:00:00
 categories: Nodejs서버강좌 Nodejs
 comments: true
-meta : Nodejs서버강좌
+meta : Node.js서버강좌 - 2
 description : Node.js + express를 활용한 프로젝트를 생성합니다.
-publish : false
 ---
 
 * content
