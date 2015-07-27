@@ -88,7 +88,7 @@ windows와 osx에서 커맨드라인(Command Line) 툴을 사용하기 위한 �
 
 이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 `http://localhost:3000`으로 접속한다.
 
-	nodejs bin/www
+	node bin/www
 	
 ![WelcomeToExpress]({{"/images/welcome_express.png"}})
 
