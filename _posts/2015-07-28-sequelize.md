@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sequelize.js 적용"
-date:   2015-07-27 18:00:00
+date:   2015-07-28 22:00:00
 categories: Nodejs서버강좌 Nodejs Sequelize
 comments: true
 meta : Node.js서버강좌 - 3
