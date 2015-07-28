@@ -20,7 +20,7 @@ publish : false
 
 ## ORM을 왜 사용하는가?
 
-관계형 데이터베이스(Relational Database, RDB)[^1]를 사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL[^2]를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
+관계형 데이터베이스(Relational Database, RDB [^1] )를 사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL [^2] 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
 
 그래서 등장한 것이 ORM(Object-relational mapping)이다. ORM은 통역으로 생각하면된다. 프로그래밍 언어로 직접 데이터베이스에 말할 수 없으니 중간에 통역인 ORM이 데이터베이스가 알아들을 수 있는 언어(SQL 등)로 번역하여 전달하는 것이다.
 
@@ -32,10 +32,40 @@ Node.js의 ORM은 [Sequelize.js](http://docs.sequelizejs.com/en/latest/), [Books
 
 커맨드라인 툴로 `myapp` 프로젝트가 위치한 폴더에서 아래와 같이 입력한다.
 
+{:.bash}
 	npm install --save sequelize
 	npm install --save mysql
+	
+{:.json}
+	{
+	  "array": [
+	    1,
+	    2,
+	    3
+	  ],
+	  "boolean": true,
+	  "null": null,
+	  "number": 123,
+	  "object": {
+	    "a": "b",
+	    "c": "d",
+	    "e": "f"
+	  },
+	  "string": "Hello World"
+	}
 
-Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB를 다루기 위해서 필요한 모듈이다.[^3]
+{:.javascript}
+	var Sequelize = require('sequelize');
+	var sequelize = new Sequelize('database', 'username', 'password');
+	
+	var User = sequelize.define('User', {
+	  username: Sequelize.STRING,
+	  birthday: Sequelize.DATE
+	});
+	
+	
+
+Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB를 다루기 위해서 필요한 모듈이다.
 
 ---
 
