@@ -6,7 +6,7 @@ categories: Nodejs서버강좌 Nodejs Sequelize
 comments: true
 meta : Node.js서버강좌 - 3
 description : ORM으로 Sequelize.js를 적용합니다.
-publish:true
+publish: false
 ---
 
 * content
