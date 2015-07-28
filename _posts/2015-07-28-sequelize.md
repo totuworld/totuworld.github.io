@@ -54,15 +54,15 @@ Node.js의 ORM은 [Sequelize.js](http://docs.sequelizejs.com/en/latest/), [Books
 	  "string": "Hello World"
 	}
 
-{:.javascript}
-	var Sequelize = require('sequelize');
-	var sequelize = new Sequelize('database', 'username', 'password');
-	
-	var User = sequelize.define('User', {
-	  username: Sequelize.STRING,
-	  birthday: Sequelize.DATE
-	});
-	
+~~~ javascript
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('database', 'username', 'password');
+
+var User = sequelize.define('User', {
+  username: Sequelize.STRING,
+  birthday: Sequelize.DATE
+});
+~~~
 	
 
 Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB를 다루기 위해서 필요한 모듈이다.
