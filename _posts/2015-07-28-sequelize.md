@@ -32,47 +32,36 @@ Node.js의 ORM은 [Sequelize.js](http://docs.sequelizejs.com/en/latest/), [Books
 
 커맨드라인 툴로 `myapp` 프로젝트가 위치한 폴더에서 아래와 같이 입력한다.
 
-{:.bash}
 	npm install --save sequelize
 	npm install --save mysql
-	
-{:.json}
-	{
-	  "array": [
-	    1,
-	    2,
-	    3
-	  ],
-	  "boolean": true,
-	  "null": null,
-	  "number": 123,
-	  "object": {
-	    "a": "b",
-	    "c": "d",
-	    "e": "f"
-	  },
-	  "string": "Hello World"
-	}
-
-~~~ javascript
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('database', 'username', 'password');
-
-var User = sequelize.define('User', {
-  username: Sequelize.STRING,
-  birthday: Sequelize.DATE
-});
-~~~
-	
 
 Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB를 다루기 위해서 필요한 모듈이다.
 
 ---
 
-## 프로젝트에 ORM 적용하기
+## 준비 작업
 
-1. phpmyadmin으로 myapp 데이터베이스 생성
-2. config 폴더 및 config.json파일 생성
+* MariaDB에 사용할 데이터베이스를 생성한다.
+
+1. 생성해둔 VM을 `vagrant up` 명령으로 실행한다.
+2. `http://localhost:8080/phpmyadmin` 주소로 접속한다. (Username : root, Password : 1234)
+3. phpMyAdmin으로 Databaes 탭을 클릭 한 후 myapp 데이터베이스 생성를 생성한다.
+![MakeDB]({{"/images/make_db.jpg"}})
+
+
+* `myapp` 프로젝트에 `config` 폴더를 생성 한 후 아래와 같이 `config.json`파일을 작성한다.  
+
+	{
+	  "development": {
+	    "username": "root",
+	    "password": "1234",
+	    "database": "myapp",
+	    "host": "localhost",
+	    "port": 6306,
+	    "dialect": "mariadb",
+	    "pool": { "max": 5, "min": 0, "idle": 10000 }
+	  }
+	}
 
 ## 테이블 정의하기
 
