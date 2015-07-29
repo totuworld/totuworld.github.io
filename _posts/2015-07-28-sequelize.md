@@ -68,6 +68,21 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 1. myapp 테이블에 추가할 UserCore 테이블 작성
 2. 실행하여 생성되었는지 확인
 
+
+``` json
+{
+  "development": {
+    "username": "root",
+    "password": "1234",
+    "database": "myapp",
+    "host": "localhost",
+    "port": 6306,
+    "dialect": "mariadb",
+    "pool": { "max": 5, "min": 0, "idle": 10000 }
+  }
+}
+```
+
 ---
 
 [^1] : 관계형 데이터베이스는 [일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체](http://www.terms.co.kr/RDB.htm)로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다.
