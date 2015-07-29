@@ -69,7 +69,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 2. 실행하여 생성되었는지 확인
 
 
-``` json
+~~~ json
 {
   "development": {
     "username": "root",
@@ -81,7 +81,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
     "pool": { "max": 5, "min": 0, "idle": 10000 }
   }
 }
-```
+~~~
 
 ---
 
