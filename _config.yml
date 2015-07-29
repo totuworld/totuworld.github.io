@@ -23,5 +23,5 @@ kramdown:
 # highlight
 # 本地用rouge, github上用pygments
 # highlighter: pygments
-# highlighter: rouge
+highlighter: rouge
 # highlighter: false
