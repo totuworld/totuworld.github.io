@@ -11,7 +11,7 @@ description : Node.js + express를 활용한 프로젝트를 생성합니다.
 * content
 {:toc}
 
-[![video tutorial]({{"/images/nodejs_tuto_title_02.png"}}){:height="640px" width="360px"}](https://www.youtube.com/watch?v=4k34YcTDvns)
+[![video tutorial]({{"/images/nodejs_tuto_title_02.png"}}){:height="360px" width="640px"}](https://www.youtube.com/watch?v=4k34YcTDvns)
 
 ## 들어가는 말
 
