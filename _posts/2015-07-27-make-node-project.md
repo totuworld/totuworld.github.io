@@ -11,6 +11,8 @@ description : Node.js + express를 활용한 프로젝트를 생성합니다.
 * content
 {:toc}
 
+[![video tutorial]({{"/images/nodejs_tuto_title_02.png"}}){:height="640px" width="360px"}](https://www.youtube.com/watch?v=4k34YcTDvns)
+
 ## 들어가는 말
 
 [지난 시간에 VirtualBox와 Vagrant로 컴퓨터에 VM을 생성했다.](http://totuworld.github.io/2015/07/24/lemp/) 이제는 해당 서버에서 작동할 Node.js 프로젝트를 만들 것이다.
