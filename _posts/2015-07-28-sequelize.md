@@ -118,9 +118,45 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 ---
 
-## 테이블 정의하기
+## 테이블 정의
 
 앞에서 데이터베이스를 활용하기 위한 모든 준비가 마쳐졌다. 이제 사용할 테이블을 정의해보도록 하자.
+
+저장하고같은게임에서 사용자 정보를 저장하는 테이블을 만든다고 해보자. 사용할 ID와 보석, 코인, 하트같은 게임 내 정보를 담게 된다. 최상위 점수라던가 로그인 시간도 추가한다.  
+
+Name | Type | Default | Attributes | Index | AutoIncrease
+--- |:--- | --- | --- | --- | ----
+no | INTEGER | - | UNSIGNED | PRIMARY | o
+id | STRING | - | - | - | -
+gems | INTEGER | 0 | UNSIGNED | - | -
+coins | INTEGER | 0 | UNSIGNED | - | -
+hearts | INTEGER | 0 | UNSIGNED | - | -
+highScore | INTEGER | 0 | UNSIGNED | - | -
+loginTime | DATE | 2002.06.05 | - | - | -
+
+테이블을 정의할 때 어떤 [데이터타입(Data types)](http://docs.sequelizejs.com/en/latest/docs/models-definition/#data-types)이 있는지는 링크를 확인하기 바란다.
+
+---
+
+## 모델 정의
+
+위 표와 같이 정의된 테이블을 Sequelize를 사용해서 model과 맵핑해보자. 기본 구조는 간단하다.
+
+	var usercore = sequelize.define('테이블명', { /* 컬럼 */ }, { /* 설정 */ });
+
+테이블명과 컬럼을 추가해보자.
+
+	var usercore = sequelize.define('usercore', {
+			no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
+			, id : { type : Sequelize.STRING(14) }
+			, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
+			, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+			, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
+			, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+			, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
+		}, { /* 설정 */ });
+
+`no` 컬럼을 살펴보자. type은 어떤 데이터타입인지 설정하는 것이고 primaryKey는 테이블의 기본키로 사용할지 설정할 때 사용된다. autoIncrement는 해당 값이 자동으로 증가될지 설정할 때 사용한다. 
 
 * models 폴더에 `usercore.js`파일을 생성하고 아래와 같이 작성한다.
 
