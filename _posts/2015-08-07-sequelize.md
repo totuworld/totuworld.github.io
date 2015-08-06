@@ -19,7 +19,7 @@ description : Sequelize.js를 이용해 DB를 모델과 맵핑합니다.
 
 ## ORM을 왜 사용하는가?
 
-관계형 데이터베이스(Relational Database, RDB [^1] )를 사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL [^2] 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
+관계형 데이터베이스(Relational Database, RDB)를 [^1] 사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL [^2] 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
 
 그래서 등장한 것이 ORM(Object-relational mapping)이다. ORM은 통역으로 생각하면된다. 프로그래밍 언어로 직접 데이터베이스에 말할 수 없으니 중간에 통역인 ORM이 데이터베이스가 알아들을 수 있는 언어(SQL 등)로 번역하여 전달하는 것이다.
 
@@ -52,6 +52,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 * `myapp` 프로젝트에 `config` 폴더를 생성 한 후 `config.json`파일을 작성한다.  
 
+
 	.
 	├── config
 	│   └── config.json
@@ -73,6 +74,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 위 내용은 express 웹 어플리케이션이 MariaDB에 접속할 때 사용할 설정이다.
 
 * 프로젝트에 `models` 폴더를 추가한 후 `index.js` 파일을 생성한다.
+
 
 	.
 	├── models
@@ -255,6 +257,7 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 참고로 이 내용은 Sequelize에서 공식적으로 제공하는 예제에 자세히 설명된 것을 필요한 부분만 발췌하여 적용한 것이다. 더 자세히 알고 싶다면 [express-sample](https://github.com/sequelize/express-example) 레포지토리를 확인하기 바란다.
 
 ---
+
 
 [^1] : 관계형 데이터베이스는 [일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체](http://www.terms.co.kr/RDB.htm)로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다.
 
