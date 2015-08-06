@@ -1,12 +1,11 @@
 ---
 layout: post
 title:  "Sequelize.js 적용"
-date:   2015-07-28 22:00:00
+date:   2015-08-07 07:00:00
 categories: Nodejs서버강좌 Nodejs Sequelize
 comments: true
 meta : Node.js서버강좌 - 3
-description : Sequelize.js를 이용해 Node.js에서 MariaDB를 활용하도록 한다.
-publish : false
+description : Sequelize.js를 이용해 DB를 모델과 맵핑합니다.
 ---
 
 * content
@@ -142,9 +141,9 @@ loginTime | DATE | 2002.06.05 | - | - | -
 
 위 표와 같이 정의된 테이블을 Sequelize를 사용해서 model과 맵핑해보자. 기본 구조는 간단하다.
 
-	var usercore = sequelize.define('테이블명', { /* 컬럼 */ }, { /* 설정 */ });
+	var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ });
 
-테이블명과 컬럼을 추가해보자.
+`usercore` 테이블에 사용될 모델명과 특성을 추가해보자.
 
 	var usercore = sequelize.define('usercore', {
 			no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
@@ -154,13 +153,106 @@ loginTime | DATE | 2002.06.05 | - | - | -
 			, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
 			, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
 			, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
-		}, { /* 설정 */ });
+		}, { /* 옵션 */ });
 
-`no` 컬럼을 살펴보자. type은 어떤 데이터타입인지 설정하는 것이고 primaryKey는 테이블의 기본키로 사용할지 설정할 때 사용된다. autoIncrement는 해당 값이 자동으로 증가될지 설정할 때 사용한다. 
+특성을 정의하면특성서 사용될 수 있는 특징과 설명은 [공식문서](http://docs.sequelizejs.com/en/latest/docs/models-definition/#definition)의 definition부분을 참고하면 된다.
+`usercore`에서 사용된 특징은 아래 표를 참조하자.
 
-* models 폴더에 `usercore.js`파일을 생성하고 아래와 같이 작성한다.
+특징 | 설명
+--- | ---
+type | Datatype을 정의한다. 정수의 경우 0이하의 숫자를 사용하지 못하게하는 UNSIGEND 옵션이나 길이를 조절하면 숫자가 함께 사용된다.
+primaryKey | RDB의 기본키로 지정할 때 사용한다. 저장되는 레코드를 고유하게 식별할 수 있는 값 중에 선택하게 된다.
+autoIncrement | 사용자가 생성 시 자동으로 숫자가 증가하게 된다.
+defaultValue | 기본값을 정의할 때 사용한다.
+get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와 setter가 모두 사용가능하다.
 
+이제 옵션을 추가하고 모델 정의를 마무리하자.
 
+	 var usercore = sequelize.define('usercore', {
+			no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
+			, id : { type : Sequelize.STRING(14) }
+			, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
+			, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+			, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
+			, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+			, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
+		}, {
+			timestamps: false,
+			tableName: 'usercore' 
+		});
+
+`timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
+
+테이블명은 모델명을 기준으로 자동으로 작성되나 `tableName`을 통해서 직접 지정할 수 있다.  
+
+위와 같은 내용을 `models` 폴더의 `usercore.js`을 생성하여 추가한다.
+
+	.
+	├── models
+	│   └── index.js
+	│   └── usercore.js
+
+---
+
+## 웹 어플리케이션 시작 시 자동 실행
+
+마지막 단계로 웹 어플리케이션이 시작할 때 `models`를 작동하도록 해야한다. 처음에 한번 연결해두면 작동하는 동안에는 추가적인 연결이 없기때문에 편리하다.
+
+해당 내용이 추가되어야하는 곳은 `bin/www`파일이다. 해당 내용 중 추가한 부분을 요약하면 아래와 같다.[^4]
+
+	#!/usr/bin/env node
+	
+	/**
+	 * Module dependencies.
+	 */
+	
+	---(중략)---
+	var models = require("../models"); //추가한 부분.
+	
+	---(중략)---
+	/**
+	 * Listen on provided port, on all network interfaces.
+	 */
+	
+	// server.listen(port); //주석처리
+	server.on('error', onError);
+	server.on('listening', onListening);
+	
+	//추가한 부분.
+	//sequelize의 싱크 작업을 시작하고 완료되면 설정된 포트를 통해서 통신 가능하도록 한다.
+	models.sequelize.sync().then(function () {
+	  server.listen(app.get('port'), function() {
+	    debug('Express server listening on port ' + server.address().port);
+	  });
+	});
+	
+먼저 `models`를 읽어드린 후 `sequelize.sync()`메서드를 실행하고 마치면 설정된 포트를 통해서 통신이 가능하도록 설정한 것이다.
+
+---
+
+## 실행 확인
+
+이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 `http://localhost:3000/phpmyadmin`으로 접속한다.
+
+	node bin/www
+
+커맨드라인 툴에는 아래와 같은 내용이 표시될 것이다.
+
+	Executing (default): CREATE TABLE IF NOT EXISTS `usercore` (`no` INTEGER UNSIGNED , `id` VARCHAR(14), `gems` INTEGER(6) UNSIGNED DEFAULT 0, `coins` INTEGER UNSIGNED DEFAULT 0, `hearts` INTEGER(4) UNSIGNED DEFAULT 0, `highScore` INTEGER UNSIGNED DEFAULT 0, `loginTime` INTEGER(10) UNSIGNED DEFAULT 0, PRIMARY KEY (`no`)) ENGINE=InnoDB;
+	Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
+
+해당 내용은 정의한 내용에 따라서 테이블을 생성하는 SQL 쿼리문이다.
+
+브라우저를 통해 phpmyadmin에 접속하면 `myapp` 데이터베이스에 `usercore`테이블이 생성된 것을 확인할 수 있습니다.
+![usercore확인]({{"/images/usercore_table.jpg"}})
+
+---
+
+## 맺음말
+
+긴 설명을 통해 Sequelize.js를 `myapp` 웹 어플리케이션에 적용했다. 다음 시간부터는 기능을 구현하도록 하겠다.
+
+참고로 이 내용은 Sequelize에서 공식적으로 제공하는 예제에 자세히 설명된 것을 필요한 부분만 발췌하여 적용한 것이다. 더 자세히 알고 싶다면 [express-sample](https://github.com/sequelize/express-example) 레포지토리를 확인하기 바란다.
 
 ---
 
@@ -169,3 +261,5 @@ loginTime | DATE | 2002.06.05 | - | - | -
 [^2] : SQL은 [데이터베이스에서 정보를 얻거나 갱신하기 위한 표준화된 언어](http://www.terms.co.kr/SQL.htm)이다. 데이터를 다루는 SQL문장을 DML(Data Manipulation Language)이라고 한다. DML은 SELECT, INSERT, UPDATE, DELETE로 이뤄진다.
 
 [^3] : 다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다. 
+
+[^4] : `bin/www`파일 내용 전체를 보고 싶다면 [github의 usercore.js](https://github.com/totuworld/FarmDefence_NodeServer/blob/master/models/usercore.js)를 참고하기 바란다.
