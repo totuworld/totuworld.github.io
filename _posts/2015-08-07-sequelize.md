@@ -52,10 +52,11 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 * `myapp` 프로젝트에 `config` 폴더를 생성 한 후 `config.json`파일을 작성한다.  
 
-
+~~~
 	.
 	├── config
 	│   └── config.json
+~~~
 
 `config.json`의 내용은 아래와 같다.
 
