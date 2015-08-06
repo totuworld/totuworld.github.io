@@ -76,10 +76,11 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 * 프로젝트에 `models` 폴더를 추가한 후 `index.js` 파일을 생성한다.
 
-
+~~~
 	.
 	├── models
 	│   └── index.js
+~~~
 	
 `index.js`의 내용은 아래와 같다.
 
