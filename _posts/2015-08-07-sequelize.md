@@ -19,8 +19,7 @@ description : Sequelize.js를 이용해 DB를 모델과 맵핑합니다.
 
 ## ORM을 왜 사용하는가?
 
-[^1]
-관계형 데이터베이스(Relational Database, RDB)를  사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL [^2] 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
+관계형 데이터베이스(Relational Database, RDB)[^1]를  사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL [^2] 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.
 
 그래서 등장한 것이 ORM(Object-relational mapping)이다. ORM은 통역으로 생각하면된다. 프로그래밍 언어로 직접 데이터베이스에 말할 수 없으니 중간에 통역인 ORM이 데이터베이스가 알아들을 수 있는 언어(SQL 등)로 번역하여 전달하는 것이다.
 
@@ -262,10 +261,10 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 ---
 
 
-[^1] : 관계형 데이터베이스는 [일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체](http://www.terms.co.kr/RDB.htm)로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다.
+[^1]: 관계형 데이터베이스는 [일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체](http://www.terms.co.kr/RDB.htm)로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다.
 
-[^2] : SQL은 [데이터베이스에서 정보를 얻거나 갱신하기 위한 표준화된 언어](http://www.terms.co.kr/SQL.htm)이다. 데이터를 다루는 SQL문장을 DML(Data Manipulation Language)이라고 한다. DML은 SELECT, INSERT, UPDATE, DELETE로 이뤄진다.
+[^2]: SQL은 [데이터베이스에서 정보를 얻거나 갱신하기 위한 표준화된 언어](http://www.terms.co.kr/SQL.htm)이다. 데이터를 다루는 SQL문장을 DML(Data Manipulation Language)이라고 한다. DML은 SELECT, INSERT, UPDATE, DELETE로 이뤄진다.
 
-[^3] : 다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다. 
+[^3]: 다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다. 
 
-[^4] : `bin/www`파일 내용 전체를 보고 싶다면 [github의 usercore.js](https://github.com/totuworld/FarmDefence_NodeServer/blob/master/models/usercore.js)를 참고하기 바란다.
+[^4]: `bin/www`파일 내용 전체를 보고 싶다면 [github의 usercore.js](https://github.com/totuworld/FarmDefence_NodeServer/blob/master/models/usercore.js)를 참고하기 바란다.
