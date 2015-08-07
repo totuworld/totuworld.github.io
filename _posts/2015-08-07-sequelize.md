@@ -128,16 +128,17 @@ var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ })
 
 11번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.
 
-특성을 정의하면특성서 사용될 수 있는 특징과 설명은 [공식문서](http://docs.sequelizejs.com/en/latest/docs/models-definition/#definition)의 definition부분을 참고하면 된다.
-`usercore`에서 사용된 특징은 아래 표를 참조.
+`usercore`에서 특성을 정의할 때 사용된 값은 아래와 같다.
 
-특징 | 설명
+키이름(Key name) | 설명
 --- | ---
 type | Datatype을 정의한다. 정수의 경우 0이하의 숫자를 사용하지 못하게하는 UNSIGEND 옵션이나 길이를 조절하면 숫자가 함께 사용된다.
 primaryKey | RDB의 기본키로 지정할 때 사용한다. 저장되는 레코드를 고유하게 식별할 수 있는 값 중에 선택하게 된다.
 autoIncrement | 사용자가 생성 시 자동으로 숫자가 증가하게 된다.
 defaultValue | 기본값을 정의할 때 사용한다.
 get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와 setter가 모두 사용가능하다.
+
+더 자세한 사항은 [공식문서](http://docs.sequelizejs.com/en/latest/docs/models-definition/#definition)를 참고하자.
 
 위와 같은 내용을 `models` 폴더의 `usercore.js`을 생성하여 추가한다.
 
