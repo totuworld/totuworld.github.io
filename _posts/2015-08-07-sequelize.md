@@ -117,7 +117,7 @@ db.Sequelize = Sequelize;
 module.exports = db;
 {% endhighlight %}
 
-`index.js`의 내용을 살펴보면 먼저 `sequelize` 변수로 데이터베이스에 접속한다. 그리고 models 폴더의 파일을 모두 읽어서 `db`변수에 연결한다. 마지막으로 `db`를 `module.exports`에 할당하여 모듈로써 models 폴더가 작동할 수 있도록 한 것이다.
+`index.js`의 내용을 살펴보자. 8번째 줄에서 `sequelize` 변수로 데이터베이스에 접속한다. 그리고 11~19번쨰 줄에서 models 폴더의 파일을 모두 읽어서 `db`변수에 연결한다. 마지막으로 30번째 줄에서 `db`를 `module.exports`에 할당하여 모듈로써 models 폴더가 작동할 수 있도록 한 것이다.
 
 말이 길었지만 정리하면 곧 models 폴더가 모듈이 된 것이다. [^3] 
 
@@ -193,9 +193,9 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 	});
 {% endhighlight %}
 
-`timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
+10번째 줄의 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
 
-테이블명은 모델명을 기준으로 자동으로 작성되나 `tableName`을 통해서 직접 지정할 수 있다.  
+11번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.  
 
 위와 같은 내용을 `models` 폴더의 `usercore.js`을 생성하여 추가한다.
 
@@ -240,7 +240,7 @@ models.sequelize.sync().then(function () {
 });
 {% endhighlight %}
 	
-먼저 `models`를 읽어드린 후 `sequelize.sync()`메서드를 실행하고 마치면 설정된 포트를 통해서 통신이 가능하도록 설정한 것이다.
+8번째 줄에서 `models` 폴더를 모듈로써 읽어드린 후 21번째 줄에서 `sequelize.sync()`메서드를 실행힌다. 해당 과정을 끝내면 22번째 줄에서 설정된 포트를 통해서 통신이 가능하도록 설정한 것이다.
 
 ---
 
@@ -261,7 +261,7 @@ models.sequelize.sync().then(function () {
 
 해당 내용은 정의한 내용에 따라서 테이블을 생성하는 SQL 쿼리문이다.
 
-브라우저를 통해 phpmyadmin에 접속하면 `myapp` 데이터베이스에 `usercore`테이블이 생성된 것을 확인할 수 있습니다.
+브라우저를 통해 phpmyadmin에 접속하면 `myapp` 데이터베이스에 `usercore`테이블이 생성된 것을 확인할 수 있다.
 ![usercore확인]({{"/images/usercore_table.jpg"}})
 
 ---
