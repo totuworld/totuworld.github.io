@@ -122,20 +122,14 @@ var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ })
 
 `usercore` 테이블에 사용될 모델명과 특성을 추가해보자.
 
-{% highlight javascript %}
-var usercore = sequelize.define('usercore', {
-		no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-		, id : { type : Sequelize.STRING(14) }
-		, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
-		, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-		, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
-		, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-		, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
-	}, { /* 옵션 */ });
-{% endhighlight %}
+{% gist totuworld/07394fdfef998fb0e36c usercore.js %}
+
+10번째 줄의 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
+
+11번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.
 
 특성을 정의하면특성서 사용될 수 있는 특징과 설명은 [공식문서](http://docs.sequelizejs.com/en/latest/docs/models-definition/#definition)의 definition부분을 참고하면 된다.
-`usercore`에서 사용된 특징은 아래 표를 참조하자.
+`usercore`에서 사용된 특징은 아래 표를 참조.
 
 특징 | 설명
 --- | ---
@@ -144,27 +138,6 @@ primaryKey | RDB의 기본키로 지정할 때 사용한다. 저장되는 레코
 autoIncrement | 사용자가 생성 시 자동으로 숫자가 증가하게 된다.
 defaultValue | 기본값을 정의할 때 사용한다.
 get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와 setter가 모두 사용가능하다.
-
-이제 옵션을 추가하고 모델 정의를 마무리하자.
-
-{% highlight javascript linenos %}
- var usercore = sequelize.define('usercore', {
-		no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-		, id : { type : Sequelize.STRING(14) }
-		, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
-		, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-		, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
-		, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-		, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
-	}, {
-		timestamps: false,
-		tableName: 'usercore' 
-	});
-{% endhighlight %}
-
-10번째 줄의 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
-
-11번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.  
 
 위와 같은 내용을 `models` 폴더의 `usercore.js`을 생성하여 추가한다.
 
