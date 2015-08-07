@@ -84,38 +84,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 	
 `index.js`의 내용은 아래와 같다.
 
-{% highlight javascript linenos %}
-"use strict";
-
-var fs        = require("fs");
-var path      = require("path");
-var Sequelize = require("sequelize");
-var env       = process.env.NODE_ENV || "development";
-var config    = require(__dirname + '/../config/config.json')[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
-var db        = {};
-
-fs
-  .readdirSync(__dirname)
-  .filter(function(file) {
-    return (file.indexOf(".") !== 0) && (file !== "index.js");
-  })
-  .forEach(function(file) {
-    var model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(function(modelName) {
-  if ("associate" in db[modelName]) {
-    db[modelName].associate(db);
-  }
-});
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
-{% endhighlight %}
+{% gist totuworld/07394fdfef998fb0e36c index.js %}
 
 `index.js`의 내용을 살펴보자. 8번째 줄에서 `sequelize` 변수로 데이터베이스에 접속한다. 그리고 11~19번쨰 줄에서 models 폴더의 파일을 모두 읽어서 `db`변수에 연결한다. 마지막으로 30번째 줄에서 `db`를 `module.exports`에 할당하여 모듈로써 models 폴더가 작동할 수 있도록 한 것이다.
 
@@ -212,7 +181,7 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 해당 내용이 추가되어야하는 곳은 `bin/www`파일이다. 해당 내용 중 추가한 부분을 요약하면 아래와 같다. [^4]
 
-{% gist totuworld/07394fdfef998fb0e36c %}
+{% gist totuworld/07394fdfef998fb0e36c www %}
 	
 8번째 줄에서 `models` 폴더를 모듈로써 읽어드린 후 21번째 줄에서 `sequelize.sync()`메서드를 실행힌다. 해당 과정을 끝내면 22번째 줄에서 설정된 포트를 통해서 통신이 가능하도록 설정한 것이다.
 
