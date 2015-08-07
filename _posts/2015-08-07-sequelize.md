@@ -60,17 +60,19 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 `config.json`의 내용은 아래와 같다.
 
-	{
-	  "development": {
-	    "username": "root",
-	    "password": "1234",
-	    "database": "myapp",
-	    "host": "localhost",
-	    "port": 6306,
-	    "dialect": "mariadb",
-	    "pool": { "max": 5, "min": 0, "idle": 10000 }
-	  }
-	}
+{% highlight json %}
+{
+  "development": {
+    "username": "root",
+    "password": "1234",
+    "database": "myapp",
+    "host": "localhost",
+    "port": 6306,
+    "dialect": "mariadb",
+    "pool": { "max": 5, "min": 0, "idle": 10000 }
+  }
+}
+{% endhighlight %}
 
 위 내용은 express 웹 어플리케이션이 MariaDB에 접속할 때 사용할 설정이다.
 
@@ -84,36 +86,38 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 	
 `index.js`의 내용은 아래와 같다.
 
-	"use strict";
-	
-	var fs        = require("fs");
-	var path      = require("path");
-	var Sequelize = require("sequelize");
-	var env       = process.env.NODE_ENV || "development";
-	var config    = require(__dirname + '/../config/config.json')[env];
-	var sequelize = new Sequelize(config.database, config.username, config.password, config);
-	var db        = {};
-	
-	fs
-	  .readdirSync(__dirname)
-	  .filter(function(file) {
-	    return (file.indexOf(".") !== 0) && (file !== "index.js");
-	  })
-	  .forEach(function(file) {
-	    var model = sequelize.import(path.join(__dirname, file));
-	    db[model.name] = model;
-	  });
-	
-	Object.keys(db).forEach(function(modelName) {
-	  if ("associate" in db[modelName]) {
-	    db[modelName].associate(db);
-	  }
-	});
-	
-	db.sequelize = sequelize;
-	db.Sequelize = Sequelize;
-	
-	module.exports = db;
+{% highlight javascript %}
+"use strict";
+
+var fs        = require("fs");
+var path      = require("path");
+var Sequelize = require("sequelize");
+var env       = process.env.NODE_ENV || "development";
+var config    = require(__dirname + '/../config/config.json')[env];
+var sequelize = new Sequelize(config.database, config.username, config.password, config);
+var db        = {};
+
+fs
+  .readdirSync(__dirname)
+  .filter(function(file) {
+    return (file.indexOf(".") !== 0) && (file !== "index.js");
+  })
+  .forEach(function(file) {
+    var model = sequelize.import(path.join(__dirname, file));
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(function(modelName) {
+  if ("associate" in db[modelName]) {
+    db[modelName].associate(db);
+  }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
+{% endhighlight %}
 
 `index.js`의 내용을 살펴보면 먼저 `sequelize` 변수로 데이터베이스에 접속한다. 그리고 models 폴더의 파일을 모두 읽어서 `db`변수에 연결한다. 마지막으로 `db`를 `module.exports`에 할당하여 모듈로써 models 폴더가 작동할 수 있도록 한 것이다.
 
@@ -145,19 +149,23 @@ loginTime | DATE | 2002.06.05 | - | - | -
 
 위 표와 같이 정의된 테이블을 Sequelize를 사용해서 model과 맵핑해보자. 기본 구조는 간단하다.
 
-	var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ });
+{% highlight javascript %}
+var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ });
+{% endhighlight %}
 
 `usercore` 테이블에 사용될 모델명과 특성을 추가해보자.
 
-	var usercore = sequelize.define('usercore', {
-			no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-			, id : { type : Sequelize.STRING(14) }
-			, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
-			, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-			, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
-			, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-			, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
-		}, { /* 옵션 */ });
+{% highlight javascript %}
+var usercore = sequelize.define('usercore', {
+		no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
+		, id : { type : Sequelize.STRING(14) }
+		, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
+		, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+		, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
+		, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+		, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
+	}, { /* 옵션 */ });
+{% endhighlight %}
 
 특성을 정의하면특성서 사용될 수 있는 특징과 설명은 [공식문서](http://docs.sequelizejs.com/en/latest/docs/models-definition/#definition)의 definition부분을 참고하면 된다.
 `usercore`에서 사용된 특징은 아래 표를 참조하자.
@@ -172,18 +180,20 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 이제 옵션을 추가하고 모델 정의를 마무리하자.
 
-	 var usercore = sequelize.define('usercore', {
-			no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-			, id : { type : Sequelize.STRING(14) }
-			, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
-			, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-			, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
-			, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
-			, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
-		}, {
-			timestamps: false,
-			tableName: 'usercore' 
-		});
+{% highlight javascript %}
+ var usercore = sequelize.define('usercore', {
+		no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
+		, id : { type : Sequelize.STRING(14) }
+		, gems : { type : Sequelize.INTEGER(5).UNSIGNED, defaultValue: 0}
+		, coins : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+		, hearts : { type : Sequelize.INTEGER(3).UNSIGNED, defaultValue: 0}
+		, highScore : { type : Sequelize.INTEGER.UNSIGNED, defaultValue: 0}
+		, loginTime : { type : Sequelize.DATE, defaultValue: '2002-06-05 00:00:00', get:function(){var convertTime=new Date(this.getDataValue('loginTime')); return convertTime.getTime();}}
+	}, {
+		timestamps: false,
+		tableName: 'usercore' 
+	});
+{% endhighlight %}
 
 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
 
@@ -240,12 +250,16 @@ models.sequelize.sync().then(function () {
 
 이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 `http://localhost:3000/phpmyadmin`으로 접속한다.
 
-	node bin/www
+{% highlight shell %}
+node bin/www
+{% endhighlight %}
 
 커맨드라인 툴에는 아래와 같은 내용이 표시될 것이다.
 
-	Executing (default): CREATE TABLE IF NOT EXISTS `usercore` (`no` INTEGER UNSIGNED , `id` VARCHAR(14), `gems` INTEGER(6) UNSIGNED DEFAULT 0, `coins` INTEGER UNSIGNED DEFAULT 0, `hearts` INTEGER(4) UNSIGNED DEFAULT 0, `highScore` INTEGER UNSIGNED DEFAULT 0, `loginTime` INTEGER(10) UNSIGNED DEFAULT 0, PRIMARY KEY (`no`)) ENGINE=InnoDB;
-	Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
+{% highlight shell %}
+Executing (default): CREATE TABLE IF NOT EXISTS `usercore` (`no` INTEGER UNSIGNED , `id` VARCHAR(14), `gems` INTEGER(6) UNSIGNED DEFAULT 0, `coins` INTEGER UNSIGNED DEFAULT 0, `hearts` INTEGER(4) UNSIGNED DEFAULT 0, `highScore` INTEGER UNSIGNED DEFAULT 0, `loginTime` INTEGER(10) UNSIGNED DEFAULT 0, PRIMARY KEY (`no`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
+{% endhighlight %}
 
 해당 내용은 정의한 내용에 따라서 테이블을 생성하는 SQL 쿼리문이다.
 
