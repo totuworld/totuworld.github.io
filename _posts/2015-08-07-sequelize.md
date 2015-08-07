@@ -117,16 +117,20 @@ loginTime | DATE | 2002.06.05 | - | - | -
 위 표와 같이 정의된 테이블을 Sequelize를 사용해서 model과 맵핑해보자. 기본 구조는 간단하다.
 
 {% highlight javascript %}
-var usercore = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ });
+module.exports = function(sequelize, DataTypes) {
+  var _yourTableName = sequelize.define('모델명', { /* 특성 */ }, { /* 옵션 */ });
+  return _yourTableName;
+};
+
 {% endhighlight %}
 
 `usercore` 테이블에 사용될 모델명과 특성을 추가해보자.
 
 {% gist totuworld/07394fdfef998fb0e36c usercore.js %}
 
-10번째 줄의 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
+12번째 줄의 `timestamps`는 true가 기본 값이다. 이를 허용하면 `createdAt`과 `updatedAt` 컬럼이 자동으로 추가된다. 
 
-11번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.
+13번째 줄의 `tableName`은 모델명을 기준으로 자동으로 작성되는 이름대신 직접 지정한 테이블명을 사용할 수 있게 해준다.
 
 `usercore`에서 특성을 정의할 때 사용된 값은 아래와 같다.
 
