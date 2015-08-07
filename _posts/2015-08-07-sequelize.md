@@ -60,19 +60,17 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 
 `config.json`의 내용은 아래와 같다.
 
-{% highlight json %}
-{
-  "development": {
-    "username": "root",
-    "password": "1234",
-    "database": "myapp",
-    "host": "localhost",
-    "port": 6306,
-    "dialect": "mariadb",
-    "pool": { "max": 5, "min": 0, "idle": 10000 }
-  }
-}
-{% endhighlight %}
+	{
+	  "development": {
+	    "username": "root",
+	    "password": "1234",
+	    "database": "myapp",
+	    "host": "localhost",
+	    "port": 6306,
+	    "dialect": "mariadb",
+	    "pool": { "max": 5, "min": 0, "idle": 10000 }
+	  }
+	}
 
 위 내용은 express 웹 어플리케이션이 MariaDB에 접속할 때 사용할 설정이다.
 
@@ -86,7 +84,7 @@ Sequelize.js는 ORM으로 필요하고 mysql은 Sequelize.js로 MySQL, MariaDB�
 	
 `index.js`의 내용은 아래와 같다.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 "use strict";
 
 var fs        = require("fs");
@@ -180,7 +178,7 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 이제 옵션을 추가하고 모델 정의를 마무리하자.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
  var usercore = sequelize.define('usercore', {
 		no : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
 		, id : { type : Sequelize.STRING(14) }
@@ -214,7 +212,7 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 해당 내용이 추가되어야하는 곳은 `bin/www`파일이다. 해당 내용 중 추가한 부분을 요약하면 아래와 같다. [^4]
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 #!/usr/bin/env node
 
 /**
@@ -250,16 +248,16 @@ models.sequelize.sync().then(function () {
 
 이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 `http://localhost:3000/phpmyadmin`으로 접속한다.
 
-{% highlight shell %}
-node bin/www
-{% endhighlight %}
+
+	node bin/www
+
 
 커맨드라인 툴에는 아래와 같은 내용이 표시될 것이다.
 
-{% highlight shell %}
-Executing (default): CREATE TABLE IF NOT EXISTS `usercore` (`no` INTEGER UNSIGNED , `id` VARCHAR(14), `gems` INTEGER(6) UNSIGNED DEFAULT 0, `coins` INTEGER UNSIGNED DEFAULT 0, `hearts` INTEGER(4) UNSIGNED DEFAULT 0, `highScore` INTEGER UNSIGNED DEFAULT 0, `loginTime` INTEGER(10) UNSIGNED DEFAULT 0, PRIMARY KEY (`no`)) ENGINE=InnoDB;
-Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
-{% endhighlight %}
+
+	Executing (default): CREATE TABLE IF NOT EXISTS `usercore` (`no` INTEGER UNSIGNED , `id` VARCHAR(14), `gems` INTEGER(6) UNSIGNED DEFAULT 0, `coins` INTEGER UNSIGNED DEFAULT 0, `hearts` INTEGER(4) UNSIGNED DEFAULT 0, `highScore` INTEGER UNSIGNED DEFAULT 0, `loginTime` INTEGER(10) UNSIGNED DEFAULT 0, PRIMARY KEY (`no`)) ENGINE=InnoDB;
+	Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
+
 
 해당 내용은 정의한 내용에 따라서 테이블을 생성하는 SQL 쿼리문이다.
 
