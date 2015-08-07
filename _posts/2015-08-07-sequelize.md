@@ -204,31 +204,33 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 해당 내용이 추가되어야하는 곳은 `bin/www`파일이다. 해당 내용 중 추가한 부분을 요약하면 아래와 같다. [^4]
 
-	#!/usr/bin/env node
-	
-	/**
-	 * Module dependencies.
-	 */
-	
-	---(중략)---
-	var models = require("../models"); //추가한 부분.
-	
-	---(중략)---
-	/**
-	 * Listen on provided port, on all network interfaces.
-	 */
-	
-	// server.listen(port); //주석처리
-	server.on('error', onError);
-	server.on('listening', onListening);
-	
-	//추가한 부분.
-	//sequelize의 싱크 작업을 시작하고 완료되면 설정된 포트를 통해서 통신 가능하도록 한다.
-	models.sequelize.sync().then(function () {
-	  server.listen(app.get('port'), function() {
-	    debug('Express server listening on port ' + server.address().port);
-	  });
-	});
+{% highlight javascript %}
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+---(중략)---
+var models = require("../models"); //추가한 부분.
+
+---(중략)---
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+// server.listen(port); //주석처리
+server.on('error', onError);
+server.on('listening', onListening);
+
+//추가한 부분.
+//sequelize의 싱크 작업을 시작하고 완료되면 설정된 포트를 통해서 통신 가능하도록 한다.
+models.sequelize.sync().then(function () {
+  server.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+  });
+});
+{% endhighlight %}
 	
 먼저 `models`를 읽어드린 후 `sequelize.sync()`메서드를 실행하고 마치면 설정된 포트를 통해서 통신이 가능하도록 설정한 것이다.
 
