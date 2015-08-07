@@ -202,4 +202,4 @@ get | 값을 읽을 때 가공하기 위한 목적으로 사용한다. getter와
 
 [^3]: 다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다. 
 
-[^4]: `bin/www`파일 내용 전체를 보고 싶다면 [github의 usercore.js](https://github.com/totuworld/FarmDefence_NodeServer/blob/master/models/usercore.js)를 참고하기 바란다.
+[^4]: `bin/www`파일 내용 전체를 보고 싶다면 [github의 www](https://github.com/totuworld/FarmDefence_NodeServer/blob/master/bin/www)를 참고하기 바란다.
