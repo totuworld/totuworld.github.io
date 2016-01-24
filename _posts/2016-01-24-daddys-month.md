@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "아빠의 달"
-date:   2016-01-24 22:00:00
+date:   2016-01-24 23:20:00
 categories: etc
 comments: true
 meta : etc
 description : 아빠의 육아휴직 
-publish : false
+publish : true
 ---
 
 * content
