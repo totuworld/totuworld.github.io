@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "구글 인앱 결제 검증 웹 서비스 만들기"
 date:   2016-02-11 10:00:00
 categories: etc validation Billing iab nodejs
 comments: true
