@@ -12,8 +12,7 @@ article p{
 pre{
 	padding: 0;
 	background: none;
-    border: none;
-    color: #f8f8f2;
+    background-color: #F3F3F3;
 }
 
 pre code{
@@ -21,8 +20,8 @@ pre code{
 }
 
 table{
-	/*border-top:2px solid #777;*/
-	/*border-bottom: 2px solid #777;*/
+	border-top:2px solid #777;
+	border-bottom: 2px solid #777;
 	margin: 8px 0;
 }
 table thead{
@@ -39,6 +38,30 @@ table tr:nth-child(2n){
 table td{
 	padding: 2px 10px;
 	vertical-align: top;
+}
+
+.highlight table pre{
+    border:none;
+    /*background-color: #fff;*/
+}
+
+.highlight table{
+    border-top: none;
+	border-bottom: none;
+	margin: 8px 0;
+}
+.highlight table thead{
+	border-bottom: 1px dashed #777;
+	background-color: #aaa;
+	/*color:#fff;*/
+}
+
+.highlight .gutter.gl pre {
+    background-color :#D6DBDF;
+}
+
+.highlight table .gutter.gl{
+    /*background-color :#D6DBDF;*/
 }
 
 
