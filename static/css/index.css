@@ -12,6 +12,8 @@ article p{
 pre{
 	padding: 0;
 	background: none;
+    border: none;
+    color: #f8f8f2;
 }
 
 pre code{
@@ -19,8 +21,8 @@ pre code{
 }
 
 table{
-	border-top:2px solid #777;
-	border-bottom: 2px solid #777;
+	/*border-top:2px solid #777;*/
+	/*border-bottom: 2px solid #777;*/
 	margin: 8px 0;
 }
 table thead{
