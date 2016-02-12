@@ -14,6 +14,9 @@ publish : true
 
 ## 들어가는 말
 
+> [도트레인저스](https://play.google.com/store/apps/details?id=com.lv0.dotrangers&hl=ko) 웹 서버 작업을 할 때 실제로 사용된 내용을 일부 포함하고 있습니다. 인디개발자 여러분, 화이팅 ㅠㅠ
+> [![도트레인저스](https://lh3.googleusercontent.com/x7TKDO8M69kcGtoCEdRovMUR1LFvrfHe7ME7oayGdughFVyI2JK_ty7SzRxpjX980OqO=w300-rw)](https://play.google.com/store/apps/details?id=com.lv0.dotrangers&hl=ko) 
+
 인디게임을 개발하고 런칭한 이후 이슈는 무엇일까?
 
 `홍보`와 `버그`가 주된 이슈겠지만 가장 화가나는 일은 `거짓 결제`다.
@@ -474,3 +477,7 @@ router.post('/googleiab/receipt/validation', function(req, res) {
 ---
 
 [^1]: [Node.js + express 프로젝트 구성]()을 참고.
+
+---
+
+> [![도트레인저스](https://lh3.googleusercontent.com/x7TKDO8M69kcGtoCEdRovMUR1LFvrfHe7ME7oayGdughFVyI2JK_ty7SzRxpjX980OqO=w300-rw)](https://play.google.com/store/apps/details?id=com.lv0.dotrangers&hl=ko)
