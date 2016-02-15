@@ -14,11 +14,17 @@ publish : false
 
 ## 들어가는 말
 
+`usercore`테이블에 userID를 통해 신규 사용자 정보를 추가하는 방법에 대해서 다뤄봤다.
+
+이번에는 사용자 정보를 로딩하는 방법을 알아보자.
+
 ---
 
 ## 사용자의 기본 데이터 로딩
 
-사용자가 게임에 접속하면 기본 데이터를 서버로부터 읽어오게 된다. 여기서는 `usercore`, `userupgrade`테이블의 정보가 필요하다.
+사용자가 게임에 접속하면 가입 시 얻은 `usercore`테이블의 `no`값을 이용해서 기본 데이터를 데이터베이스에서 읽어와야한다.
+
+`usercore`, `userupgrade`테이블에 생성한 정보 로딩하도록 해보자.
 
 {% highlight javascript linenos %}
 
