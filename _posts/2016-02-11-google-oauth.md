@@ -15,7 +15,7 @@ publish : true
 ## 들어가는 말
 
 > [도트레인저스](http://drserverdev.japanwest.cloudapp.azure.com:3001) 웹 서버 작업을 할 때 실제로 사용된 내용을 일부 포함하고 있습니다. 인디개발자 여러분, 화이팅 ㅠㅠ
-> [![도트레인저스](/images/dotrangers.png)](drserverdev.japanwest.cloudapp.azure.com:3001) 
+> [![도트레인저스](/images/dotrangers.png)](http://drserverdev.japanwest.cloudapp.azure.com:3001) 
 
 인디게임을 개발하고 런칭한 이후 이슈는 무엇일까?
 
