@@ -220,6 +220,8 @@ remote: Deployment successful.
 
 (길고 지루하지만 보시바와 같이) 교환이 일어나는 시점에도 응답이 고르다.
 
+![올ㅋ](https://attachment.namuwikiusercontent.com/올ㅋ__hhjallk.jpg)
+
 
 ## 맺음말
 
@@ -227,7 +229,7 @@ remote: Deployment successful.
 
 문서를 바탕으로 작동하는 방법을 익히고 동영상 녹화까지해서 테스트 해보니 문제없이 서비스가 작동할 것이란 믿음이 생겼다.
 
-사용법도 그다지 어렵지 않았다. 배포슬롯 사용해보길 권한다.   
+사용법도 그다지 어렵지 않았다. Azure 웹 앱을 사용하고 있다면 배포슬롯 사용해보길 권한다.
 
 ---
 
