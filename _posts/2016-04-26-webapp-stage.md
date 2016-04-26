@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Azure 웹 앱 staging 환경 설정하기"
-date:   2016-04-26 00:02:00
+date:   2016-04-26 06:40:00
 categories: nodejs azure
 comments: true
 meta : nodejs azure webapps
