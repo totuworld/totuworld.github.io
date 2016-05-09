@@ -5,15 +5,20 @@
 	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 	<meta content="{{ site.title }}" property="og:site_name">
+	<meta content="summary_large_image" property="twitter:card">
+	<meta content="@totuworld"" property="twitter:creator">
 	{% if page.title %}
 	<meta content="{{ page.title }}" property="og:title">
+	<meta content="{{ page.title }}" property="twitter:title">
 	{% else %}
 	<meta content="{{ site.title }}" property="og:title">
 	{% endif %}
 	{% if page.description %}
 	<meta content="{{ page.description }}" property="og:description">
+	<meta content="{{ page.description }}" property="twitter:description">
 	{% else %}
 	<meta content="{{ site.description }}" property="og:description">
+	<meta content="{{ site.description }}" property="twitter:description">
 	{% endif %}
 	{% if page.url %}
 	<meta content="{{ site.url }}{{ page.url }}" property="og:url">
@@ -23,6 +28,7 @@
 	{% endif %}
 	{% if page.image %}
 	<meta content="/images/{{ page.image }}" property="og:image">
+	<meta content="/images/{{ page.image }}" property="twitter:image">
 	{% endif %}
 	
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
