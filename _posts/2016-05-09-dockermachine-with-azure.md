@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Azure에서 Docker Machine 사용하기"
+title:  "Docker Machine으로 Azure 다루기"
 date:   2016-05-09 00:02:00
 categories: nodejs azure
 comments: true
