@@ -6,7 +6,7 @@ categories: nodejs azure
 comments: true
 meta : nodejs azure docker
 description : Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다. 
-image : azure-deployment-slots.png
+image : logo.png
 publish : true
 ---
 
@@ -21,7 +21,7 @@ Docker를 사용해서 웹 어플리케이션 등을 배포하면 환경을 맞�
 
 이런 수고를 덜어주는 것이 [Docker Machine](https://docs.docker.com/machine/overview/)이다.
 
-![DockerMachineLogo](https://github.com/docker/machine/raw/master/docs/img/logo.png)
+![DockerMachineLogo](/images/logo.png)
 
 Docker Machine은 로컬 시스템뿐 아니라 다양한 클라우드 서비스 제공자(AWS, Digital Ocean 등)의 환경도 제어할 수 있게 드라이버를 제공한다.
 
