@@ -12,8 +12,8 @@
 	{% if page.description %}
 	<meta name="twitter:description" content="{{ page.description }}">
 	{% endif %}
-	{% if page.image %}
-	<meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+	{% if page.image.twitter %}
+	<meta name="twitter:image" content="{{ site.url }}{{ page.image.twitter }}">
 	{% endif %}
 	
 	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
