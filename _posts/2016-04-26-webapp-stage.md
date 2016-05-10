@@ -6,7 +6,7 @@ categories: nodejs azure
 comments: true
 meta : nodejs azure webapps
 description : 배포슬롯을 사용해서 staging 환경 설정하여 배포되는 동안 서비스가 중단되지 않도록한다.
-image : azure-deployment-slots.png
+image : /images/azure-deployment-slots.png
 publish : true
 ---
 

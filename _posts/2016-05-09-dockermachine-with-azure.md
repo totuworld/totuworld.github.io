@@ -6,7 +6,7 @@ categories: nodejs azure
 comments: true
 meta : nodejs azure docker
 description : Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다. 
-image : logo.png
+image : /images/logo.png
 publish : true
 ---
 

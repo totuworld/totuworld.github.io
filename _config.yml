@@ -1,5 +1,5 @@
 # Site settings
-title: totuworld
+title: totuworld's tech blog
 email: totuworld@gmail.com
 description: Game Developer
 # > # this means to ignore newlines until "baseurl:"
@@ -13,6 +13,14 @@ description: Game Developer
 github_username:  totuworld
 permalink: /:year/:month/:day/:title/
 
+url: http://totuworld.github.io
+author:
+  twitter: totuworld
+
+twitter:
+  username: totuworld
+
+
 # Build settings
 markdown: kramdown
 
@@ -25,3 +33,4 @@ markdown: kramdown
 gems:
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-seo-tag
