@@ -145,7 +145,7 @@ Azure 웹앱을 생성했고 배포하는 방식도 결정했다. 이제 Git을 
 
 ### 테스트 어플리케이션 배포하기(feat. SourceTree)
 
-CLI가 익숙치않다면 웹 브라우저와 `[SourceTree](https://www.sourcetreeapp.com/)`나 `[Tower](https://www.git-tower.com/)`등의 프로그램을 활용해서 처리하는 방법도 있다.
+CLI가 익숙치않다면 웹 브라우저와 [SourceTree](https://www.sourcetreeapp.com/)나 [Tower](https://www.git-tower.com/)등의 프로그램을 활용해서 처리하는 방법도 있다.
 
 > 여기서는 OSX에서 구동되는 SourceTree로 설명한다(Windows에서는 메뉴 위치등이 다를 수 있다).
 
