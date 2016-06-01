@@ -170,6 +170,9 @@ Azure CLI를 사용하기 앞서 내가 누구인지 증명해야하니 로그�
 
 {% gist /1de28ccc11ecc2017b5912467aacdc8f logindone %}
 
+> 기능 하나를 사용할 때마다 로그인을 해야하는 것은 아니지만 컴퓨터를 재부팅한 후 Azure CLI를 사용할 일이 발생하면 로그인이 필요하다.  
+
+
 ### Azure CLI로 로그 다운받기
 
 로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.
