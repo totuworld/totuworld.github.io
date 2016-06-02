@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Azure 웹앱 살펴보기"
+title:  "Azure 웹앱 로그 살펴보기"
 date:   2016-06-01 00:01:00
 categories: nodejs azure webapps
 comments: true
