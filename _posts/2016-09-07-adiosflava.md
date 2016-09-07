@@ -6,6 +6,9 @@ categories: note
 comments: true
 meta : memory
 description : 기록에 담긴 찌질함, 추억 그리고 삭제가 낳은 아쉬움을 말해본다
+image : 
+  twitter: /images/notebook2x.png
+  facebook: /images/notebook2x.png
 publish : true
 ---
 
@@ -18,7 +21,7 @@ publish : true
 
 연애 시절 내가 쓴 편지였다.
 
-![편지](/images/letter.png)
+![편지](/images/letter.png){:width="300px"}
 
 지금보면 너무 오글거려서 차마 눈뜨고 볼 수 없는 지경이지만 우리 부부는 그 내용을 가지고 깔깔거리고 웃으며 추억을 회상할 수 있었다.
 
