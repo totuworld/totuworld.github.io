@@ -112,7 +112,8 @@ Azure 웹앱은 생성과 함께 ftp로 접근가능하다. 다들 ftp 사용법
     
     한가지 유의해야할 점은 URL에서 뒤쪽의 상세경로는 제거하고 입력하는 것이다. 전체경로를 입력하면 소소크드가 동작중인 폴더로 이동하기 때문이다.
 
-    ![게시 프로필확인](/images/webapp_b05.png){:width="540px"}
+    ![게시 프로필확인](/images/webapp_b05.png)
+{:width="540px"}
 
 5. FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 `Quickconnect`클릭하여 접속한다.
 
@@ -278,3 +279,4 @@ Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우�
 
 * [Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정](https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/)
 * [Azure CLI 설치](https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/)
+
