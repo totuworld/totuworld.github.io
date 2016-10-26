@@ -97,7 +97,7 @@ Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어서 외부
 
 2. 접속한 환경의 IP를 확인한 뒤 IP를 등록한다.
 
-    ![서버방화벽](/images/webapp_c10_1.png)
+    ![IP등록](/images/webapp_c10_1.png)
 
 ## MySQL 생성
 
