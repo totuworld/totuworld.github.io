@@ -7,8 +7,8 @@ comments: true
 meta : nodejs azure webapps webservice
 description : Azure 웹앱 시작하기
 image : 
-  twitter: /images/rvwendy_tutorial_01.jpg
-  facebook: /images/rvwendy_tutorial_01.jpg
+  twitter: /images/rvwendy_tutorial_01.png
+  facebook: /images/rvwendy_tutorial_01.png
 publish : true
 ---
 
