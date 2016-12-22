@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "이세계에 진입한 게임 서버 - 1"
+title:  "이세계에 진입한 서버 개발 - 1"
 date:   2016-12-21 00:01:00
 categories: nodejs azure webapps unity
 comments: true
