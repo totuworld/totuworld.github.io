@@ -15,6 +15,8 @@ publish : true
 * content
 {:toc}
 
+{% include youtubePlayer.html id="w8OZhTZy3d8" %}
+
 ## 들어가는 말
 첫 시간에 맛보기로 Azure 웹앱을 생성하고 배포까지 했다.
 오늘은 소스코드를 작성하기 앞서 필요한 각종 설치, 설정을 한다.
