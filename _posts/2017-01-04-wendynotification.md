@@ -8,7 +8,7 @@ meta : wendy
 description : Wendy 프로젝트 진행사항 공유
 image : 
   twitter: /images/rvwendy_noti_01.png
-  facebook: /images/rvwendy_noti_02.png
+  facebook: /images/rvwendy_noti_01.png
 publish : true
 ---
 
