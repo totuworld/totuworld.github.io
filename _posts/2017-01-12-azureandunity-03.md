@@ -133,15 +133,6 @@ module.exports = function(sequelize, DataTypes) {
 
     외래키 설정이 없어서 더 간단하다.
 
-## 라우터 작성
-express의 라우터는 패스와 콜백 메서드로 이뤄진다.
-
-    router.METHOD( /* 패스(path) */ , /* 콜백 메서드(callback method) */ );  
-
-앞의 METHOD는 HTTP 메서드(get, post, put 등)를 제공한다. 패스는 URL의 패스를 입력하면 된다. 콜백 메서드가 실제로 모든 일을 처리하게 된다.
-
-
-
 ### 라우터 등록
 이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. `app.js` 파일을 수정하여 2가지 라우터를 추가해보자.
 
