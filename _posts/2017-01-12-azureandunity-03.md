@@ -188,8 +188,8 @@ express의 라우터는 패스와 콜백 메서드로 이뤄진다.
    
    module.exports = router;
    ```
-
-    routes/device.js와 다른 것은 reference를 추가한 것 뿐이다.
+   
+   `routes/device.js`와 다른 것은 reference를 추가한 것 뿐이다.
 
 ### 라우터 등록
 이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. `app.js` 파일을 수정하여 2가지 라우터를 추가해보자.
