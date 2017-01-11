@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Azure 웹앱 로그 살펴보기</title>
+	
+	
+	<meta content="2016-06-01T09:01:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>Azure 웹앱 로그 살펴보기 - totuworld’s tech blog</title>
+<meta property="og:title" content="Azure 웹앱 로그 살펴보기" />
+<meta name="description" content="Azure 앱 서비스인 웹앱의 로그를 조회하는 방법을 알아본다." />
+<meta property="og:description" content="Azure 앱 서비스인 웹앱의 로그를 조회하는 방법을 알아본다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/06/01/azurewebapp-log/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/06/01/azurewebapp-log/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/webapp_tutorial_title_02.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/webapp_tutorial_title_02.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-06-01T09:01:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/09/07/adiosflava/" title="디지털 기록의 허망함" />
+<link rel="prev" href="http://totuworld.github.io/2016/05/30/azurewebapp/" title="Azure 웹앱 시작하기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Azure 웹앱 로그 살펴보기",
+    "image": "http://totuworld.github.io/images/webapp_tutorial_title_02.png",
+    "datePublished": "2016-06-01T09:01:00+09:00",
+    "description": "Azure 앱 서비스인 웹앱의 로그를 조회하는 방법을 알아본다.",
+    "url": "http://totuworld.github.io/2016/06/01/azurewebapp-log/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Azure 앱 서비스인 웹앱의 로그를 조회하는 방법을 알아본다.">
+	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/webapp_tutorial_title_02.png">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Azure 웹앱 로그 살펴보기</h1>
+        <p>Jun 1, 2016 • nodejs azure webapps webservice</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">진단 로그 설정</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">로그 다운받기</a>    <ul>
+      <li><a href="#ftp--" id="markdown-toc-ftp--">FTP로 로그 다운받기</a></li>
+      <li><a href="#azure-cli-" id="markdown-toc-azure-cli-">Azure CLI 로그인</a></li>
+      <li><a href="#azure-cli--" id="markdown-toc-azure-cli--">Azure CLI로 로그 다운받기</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3" id="markdown-toc-section-3">실시간 로그 조회하기</a></li>
+  <li><a href="#kudu" id="markdown-toc-kudu">기승전 Kudu</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">맺음말</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">참고자료</a></li>
+</ul>
+
+<h2 id="section">들어가는 말</h2>
+
+<p>테스트코드를 돌리고 나온 모든 버그를 잡았다.</p>
+
+<p>하지만 배포 후 버그가 튀어나온다.</p>
+
+<p>로그가 보고 싶다 :(</p>
+
+<p><img src="/images/bug.png" alt="버그놈" width="300px" /></p>
+
+<p>이때 도움이 되는 기능이 뭐 없을까?</p>
+
+<p>Azure 웹앱은 디버그에 도움되는 기본 기능을 제공한다. 그 중 이번에는 로그를 조회하는 방법을 알아보겠다.</p>
+
+<h2 id="section-1">진단 로그 설정</h2>
+
+<p>웹앱에서 로그를 조회하려면 먼저 로그가 기록되도록 해야한다.</p>
+
+<p>웹앱을 생성하고 소스코드를 배포했다고 로그가 어딘가에 기록되는 것이 아니다.</p>
+
+<p>어떤 방식으로 어느 수준의 로그를 축적할지 설정이 필요하다.</p>
+
+<p>Azure에서 이를 설정하는 메뉴를 <code class="highlighter-rouge">진단 로그</code>(Diagnostics logs)로 부른다.</p>
+
+<blockquote>
+  <p>이름만 들어서는 이게 뭔가 싶을 수 있다.</p>
+</blockquote>
+
+<p>설정법은 간단하다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p>웹앱을 선택하여 <code class="highlighter-rouge">설정</code>을 클릭한다.</p>
+
+    <p><img src="/images/webapp_a06.png" alt="웹앱설정" /></p>
+  </li>
+  <li>
+    <p>기능 아래에 <code class="highlighter-rouge">진단 로그</code>를 클릭한다.</p>
+
+    <p><img src="/images/webapp_b01.png" alt="진단로그" width="300px" /></p>
+  </li>
+</ol>
+
+<p>여기까지 진행하면 아래와 같은 <code class="highlighter-rouge">진단 로그</code> 메뉴가 나타난다.</p>
+
+<p><img src="/images/webapp_b02.png" alt="로그" width="320px" /></p>
+
+<p>크게 2가지 구역으로 나뉘는데 a 구역은 웹 응용 프로그램(즉 자신의 코드)가 만들어낸(혹은 수행중) 정보를 캡처한다. 이를 파일 시스템으로 저장할지 blob으로 저장할지 결정한다.</p>
+
+<p>그 중 응용 프로그램 로깅(파일 시스템)은 설정 후 12시간 뒤에 해제된다. 로그를 오래도록 저장하고자하면 blob을 이용하자.</p>
+
+<p>b 구역은 웹 서버의 로그를 제공하는 옵션이다. 이를테면 <code class="highlighter-rouge">자세한 오류 로깅</code>은 오류 상태를 나타내는 HTTP 상태 코드(400 이상)의 자세한 오류 정보를 기록한다.</p>
+
+<blockquote>
+  <p>각 기능별 세부 사항은 <a href="https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/">Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정</a>의 설명을 참고바란다.</p>
+</blockquote>
+
+<p>여기서는 코드에 대한 로그를 살펴볼 예정이므로 아래와 같이 <code class="highlighter-rouge">응용 프로그램 로깅(파일 시스템)</code>만 설정하고 <code class="highlighter-rouge">수준</code>(Level)을 정보로 선택한 뒤 저장한다.</p>
+
+<p>수준은 총 4가지 분류(오류, 경고, 정보, 세부 정보 표시)로 나뉜다. 수준별로 필터링하여 로그를 저장한다.</p>
+
+<p><img src="/images/webapp_b03.png" alt="로그설정" width="320px" /></p>
+
+<p>이로써 진단 로그 설정이 완료되었다.</p>
+
+<blockquote>
+  <p>아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 <code class="highlighter-rouge">하!고!싶!다!</code>고 생각하시면 <a href="#kudu">기승전 Kudu</a>로 넘어가면 된다.</p>
+</blockquote>
+
+<h2 id="section-2">로그 다운받기</h2>
+
+<p>위 설정을 통해 웹앱이 작동하면서 로그를 쌓고있다. 이를 조회하려면 로그를 다운받거나 실시간으로 스트리밍하면 된다.</p>
+
+<p>2가지 방법 중 먼저 다운로드 받는 방법을 알아보자.</p>
+
+<blockquote>
+  <p>다운로드는 FTP, Azure CLI, PowerShell로 가능하지만 여기서는 FTP, Azure CLI만 커버한다.</p>
+</blockquote>
+
+<h3 id="ftp--">FTP로 로그 다운받기</h3>
+
+<p>Azure 웹앱은 생성과 함께 ftp로 접근가능하다. 다들 ftp 사용법을 알겠지만 혹시나 하는 마음으로 다뤄본다.</p>
+
+<ol width="540px">
+  <li>
+    <p><a href="https://filezilla-project.org/">FileZilla</a>같은 ftp 프로그램을 다운받아 설치한다.</p>
+
+    <blockquote>
+      <p>여기서는 FileZilla로 설명하겠지만 다들 비슷할 것이다.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p>웹앱을 선택하여 <code class="highlighter-rouge">게시 프로필 가져오기</code>를 클릭하여 게시 프로필(파일 확장자가 .PublishSettings 인 파일)을 다운받는다.</p>
+
+    <p><img src="/images/webapp_b04.png" alt="게시 프로필" /></p>
+  </li>
+  <li>
+    <p>다운받은 게시 프로필을 <a href="https://code.visualstudio.com/">Visual Studio Code</a>같은 텍스트 에디터로 확인해보면 XML 형식으로 작성된 파일 내용을 열람할 수 있다.</p>
+
+    <p>그중에서 아래 그림처럼 publishMethod가 ftp인 부분을 살펴보면 ftp 접속 시 사용할 URL, username, password를 확인할 수 있다.</p>
+
+    <p>한가지 유의해야할 점은 URL에서 뒤쪽의 상세경로는 제거하고 입력하는 것이다. 전체경로를 입력하면 소소크드가 동작중인 폴더로 이동하기 때문이다.</p>
+
+    <p><img src="/images/webapp_b05.png" alt="게시 프로필확인" /></p>
+  </li>
+</ol>
+
+<ol>
+  <li>
+    <p>FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 <code class="highlighter-rouge">Quickconnect</code>클릭하여 접속한다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>FileZilla 입력창</th>
+          <th>게시 프로필의 명칭</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Host</td>
+          <td>publishUrl</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td>userName</td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td>userPWD</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/webapp_b06.png" alt="FileZilla 접속" /></p>
+  </li>
+  <li>
+    <p>FileZilla 우측 Remote site에 폴더 목록이 나타난다. 이 중에서 <code class="highlighter-rouge">LogFiles</code>에 들어가본다.</p>
+
+    <p><img src="/images/webapp_b07.png" alt="remotesite" width="300px" /></p>
+  </li>
+  <li>
+    <p>LogFiles 안에는 여러 폴더가 있을 수 잇다. 그중에서 앞서 진단 로그에서 설정한 응용 프로그램 로깅은 <code class="highlighter-rouge">Application</code>폴더에 저장된다. txt 형식의 파일을 다운받는다.</p>
+
+    <blockquote>
+      <p>FileZilla에서 좌측 Local site로 드래그하거나 우클릭하여 Download를 실행하면 파일을 다운받을 수 있다.</p>
+    </blockquote>
+
+    <p><img src="/images/webapp_b08.png" alt="Application폴더" width="300px" /></p>
+  </li>
+</ol>
+
+<p>다운 받은 파일을 확인해보면 아래와 비슷한 형식의 내용을 볼 수 있다.</p>
+
+<script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=filelog"> </script>
+
+<p>Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 로그 파일의 크기가 점점 커지는 것을 확인할 수 있다.</p>
+
+<h3 id="azure-cli-">Azure CLI 로그인</h3>
+
+<p>Azure CLI는 개발, 배포, 관리를 목적으로 제작된 크로스 플랫폼(Windows, Mac, Linux) CLI이다.</p>
+
+<p>커맨드 라인 인터페이스에 익숙하다면 이 내용이 훨씬 간단할 것이다.</p>
+
+<p>Azure CLI를 사용하기 앞서 내가 누구인지 증명해야하니 로그인을 시작해보자.</p>
+
+<ol>
+  <li>
+    <p><a href="https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/">Azure CLI 설치</a> 문서를 참고해서 Azure CLI를 설치한다.</p>
+
+    <p>node.js를 활용하고 있지 않다면 설치 관리자를 사용해서 직접 다운받으면 된다.</p>
+  </li>
+  <li>
+    <p>자신이 익숙한 터미널을 열고 다음 명령을 입력하여 Azure CLI에 권한을 획득하도록 한다.</p>
+
+    <script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=login"> </script>
+  </li>
+  <li>
+    <p>위 내용처럼 나왔다면 브라우저를 열어 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a>에 접속한 뒤 <code class="highlighter-rouge">code</code> 뒤에 9자리 code를 입력하고 <code class="highlighter-rouge">계속</code> 버튼이 나타나면 클릭한다.</p>
+
+    <p><img src="/images/webapp_b09.png" alt="AzureCLI로그인" /></p>
+  </li>
+  <li>
+    <p>로그인 창이 나오면 자신의 아이디로 로그인한다.</p>
+
+    <p><img src="/images/webapp_b10.png" alt="AzureCLI로그인" /></p>
+  </li>
+</ol>
+
+<p>과정이 완료되면 아래와 같은 메시지가 나온다.</p>
+
+<p><img src="/images/webapp_b11.png" alt="AzureCLI로그인완료" /></p>
+
+<p>브라우저 창을 닫으면 터미널에도 완료메시지가 나타난다</p>
+
+<script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logindone"> </script>
+
+<blockquote>
+  <p>기능 하나를 사용할 때마다 로그인을 해야하는 것은 아니지만 컴퓨터를 재부팅한 후 Azure CLI를 사용할 일이 발생하면 로그인이 필요하다.</p>
+</blockquote>
+
+<h3 id="azure-cli--">Azure CLI로 로그 다운받기</h3>
+
+<p>로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.</p>
+
+<blockquote>
+  <p>$ 부분이 명령어 이다. 그리고 <code class="highlighter-rouge">[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야 결과가 나온다.</p>
+</blockquote>
+
+<script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logdownload"> </script>
+
+<p>결과를 보면 알겠지만 바로 diagnostics.zip 파일이 다운로드 된다. 압축을 해제하면 LogFiles란 폴더가 존재한다. 이 폴더의 구조는 FTP에서 살펴본것과 동일하다.</p>
+
+<h2 id="section-3">실시간 로그 조회하기</h2>
+
+<p>앞서 로그를 다운 받는 방법을 알아봤다. 내 경우는 개인 프로젝트라서 그런지 다운받아 로그를 살펴보기보단 어떤 로그가 남는지 실시간으로 출력되는 로그를 살펴보고 문제를 해결하는 경우가 많다.</p>
+
+<p>웹앱도 스트림 로그를 지원하므로 실시간으로 로그를 조회할 수 있다.</p>
+
+<p>Visual Studio Application Insights, PowerShell 등으로 가능하지만 여기서는 Azure CLI 내용만 커버하도록 한다.</p>
+
+<blockquote>
+  <p>어디까지나 내가 OSX 사용자이며 Visual Studio는 Unity용 MonoDevelop이 만족스럽지 않아 Visual Studio를 사용해본게 전부여서 그런것이다(앱등앱등).</p>
+</blockquote>
+
+<p>이미 Azure CLI 로그인이 완료되었다면 아래 명령을 입력해보자.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야한다.</p>
+</blockquote>
+
+<script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=streamlog"> </script>
+
+<p>Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 터미털에 로그가 계속 들어오는 것을 확인할 수 있다.</p>
+
+<h2 id="kudu">기승전 Kudu</h2>
+
+<p>지금까지 FTP나 Azure CLI를 이용해서 로그를 다운받고 실시간으로 조회도 했다.</p>
+
+<p>하지만 이런 모든 과정이 귀찮고 브라우저에서 이런것을 처리해도 하등 문제가 없다고 생각한다면 Azure 포털에서 이 모두를 처리할 수 있다.</p>
+
+<p>그 비밀의 이름은 Kudu이다.</p>
+
+<p><img src="/images/webapp_b13.png" alt="Kudu" /></p>
+
+<blockquote>
+  <p>난~ Azure CLI 성애자니깐~~ ㅋㅋㅋ</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p>웹앱에서 <code class="highlighter-rouge">도구</code>를 클릭한다.</p>
+
+    <p><img src="/images/webapp_b12.png" alt="도구" /></p>
+  </li>
+  <li>
+    <p>도구 메뉴에서 <code class="highlighter-rouge">Kudu</code>를 클릭하고 <code class="highlighter-rouge">이동</code>을 클릭하면 브라우저에 탭이 새로 생성되면서 Kudu를 영접할 수 있다.</p>
+
+    <p><img src="/images/webapp_b14.png" alt="Kudu열기" width="500px" /></p>
+  </li>
+  <li>
+    <p>Kudu 메인 화면에서 <code class="highlighter-rouge">Debug Console</code>을 클릭하여 하위 메뉴에서 <code class="highlighter-rouge">CMD</code>를 선택한다.</p>
+
+    <p><img src="/images/webapp_b15.png" alt="DebugConsole" width="500px" /></p>
+
+    <p><img src="/images/webapp_b16.png" alt="CMD" width="200px" /></p>
+  </li>
+</ol>
+
+<p>자 이제 아래 화면이 나타난다.</p>
+
+<p><img src="/images/webapp_b17.png" alt="LogFiles폴더" width="540px" /></p>
+
+<p>화면만 봐도 느낌이 온다. 그렇다. LogFiles 폴더로 진입하면 FTP에서 봤던 폴더 구조가 펼쳐지고 그 안에 로그 파일을 다운받을 수 있다.</p>
+
+<p>심지어 폴더를 이동하면 하단의 console 창이 알아서 폴더를 이동한다.</p>
+
+<p>실시간 로그를 보고 싶다면 어떻게 해야할까?</p>
+
+<p>아래 처럼 리눅스의 tail 명령을 사용하면 된다(파일명은 반드시 자신의 로그 파일로 수정해야한다).</p>
+
+<blockquote>
+  <p>파일명은 모두 타이핑하지 말고 앞쪽 몇글자를 타이핑하고 tab 버튼을 누르면 자동완성된다.</p>
+</blockquote>
+
+<script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=kudutail"> </script>
+
+<p>뭔가 허무한가? 아니다. Azure CLI를 따라해봤다면 적어도 Azure CLI를 설치하지 않았는가!!</p>
+
+<p>그거면 됐다(왠지 도망가야할 듯한 느낌인데).</p>
+
+<h2 id="section-4">맺음말</h2>
+
+<p>다루면 다룰수록 Azure는 사용자가 뭔소리인지 알지못하게 기능을 잘 감춰두었다. 찾아서 쓰면 편리한 것이 많다.</p>
+
+<p>옛말에 <code class="highlighter-rouge">필요는 발명의 어머니</code>라고 했다. Azure에 적용하면 <code class="highlighter-rouge">필요는 삽질의 어머니</code>쯤 될듯하다.</p>
+
+<blockquote>
+  <p>그래도 너 이 Azure 사..사…좋아한다.</p>
+</blockquote>
+
+<p>다음에는 웹앱 튜토리얼 글감의 어머니(?) chiyodad님이 필요로하는 웹앱에서 SQL 데이터베이스 사용하는 방법을 다루도록 하겠다.</p>
+
+<hr />
+
+<h2 id="section-5">참고자료</h2>
+
+<ul>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/">Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정</a></li>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/">Azure CLI 설치</a></li>
+</ul>
+
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/06/01/azurewebapp-log/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

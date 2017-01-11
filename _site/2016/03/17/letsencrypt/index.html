@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)</title>
+	
+	
+	<meta content="2016-03-17T10:00:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt) - totuworld’s tech blog</title>
+<meta property="og:title" content="Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)" />
+<meta name="description" content="Web Apps에 커스텀도메인과 SSL 인증서를 적용한다." />
+<meta property="og:description" content="Web Apps에 커스텀도메인과 SSL 인증서를 적용한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/03/17/letsencrypt/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/03/17/letsencrypt/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-03-17T10:00:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/03/23/ios-validation/" title="애플 인앱결제 검증 웹 서비스 제작" />
+<link rel="prev" href="http://totuworld.github.io/2016/02/12/jwt/" title="구글 API 허가, JWT로 쉽게 받기" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)",
+    "datePublished": "2016-03-17T10:00:00+09:00",
+    "description": "Web Apps에 커스텀도메인과 SSL 인증서를 적용한다.",
+    "url": "http://totuworld.github.io/2016/03/17/letsencrypt/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Web Apps에 커스텀도메인과 SSL 인증서를 적용한다.">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)</h1>
+        <p>Mar 17, 2016 • Auzre WebApps ssl letsencrypt</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#web-apps" id="markdown-toc-web-apps">Web Apps</a>    <ul>
+      <li><a href="#web-apps-" id="markdown-toc-web-apps-">Web Apps 생성</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">배포 설정</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">커스텀도메인 설정</a></li>
+    </ul>
+  </li>
+  <li><a href="#ssl--" id="markdown-toc-ssl--">SSL 인증서 얻기</a>    <ul>
+      <li><a href="#ssl---1" id="markdown-toc-ssl---1">SSL 인증서 발급</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">인증서 발급 마무리</a></li>
+    </ul>
+  </li>
+  <li><a href="#ssl---2" id="markdown-toc-ssl---2">SSL 인증서 사용</a>    <ul>
+      <li><a href="#pfx---" id="markdown-toc-pfx---">PFX 확장자 인증서 만들기</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">인증서 적용하기</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+</ul>
+
+<p><img src="/images/castles-616573_960_720.jpg" alt="titeimage" width="400px" /></p>
+
+<h2 id="section">들어가는 말</h2>
+
+<p>Azure에서 Web Apps(웹앱)을 사용해서 Node.js로 만든 웹 서비스를 등록했다. 이를 도메인과 연결하고 HTTPS를 사용해보고 싶었다.</p>
+
+<p>아주 간단한 건줄알고 시작했는데 지식이 없어서 꽤나 오래 걸렸다(Azure의 한없이 불친절한 메뉴얼도 한몫했다).</p>
+
+<p>부디 이글을 보고 있다면 손쉽게 이겨내길 바란다.</p>
+
+<h2 id="web-apps">Web Apps</h2>
+
+<h3 id="web-apps-">Web Apps 생성</h3>
+
+<p><a href="https://portal.azure.com">Azure portal로 접속</a>해서 Azure 서비스에서 웹앱을 생성할 때 혹은 생성 후 Custom domains(커스텀도메인)과 SSL을 설정할 수 있는 tier로 설정한다.</p>
+
+<p><img src="/images/webapp_s1.png" alt="S1" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>이하 웹앱은 `yotest`로 명명하겠다.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="section-1">배포 설정</h3>
+
+<p>배포는 여러방법으로 가능하지만 여기서는 Local Git Repository로 설정한다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure portal</a>에서 yotest 웹앱을 선택한 후 설정(Settings)에 들어간다. 아래쪽에 PUBLISHING에 Deployment Source 메뉴를 클릭한다.</p>
+
+    <p><img src="/images/webappdeploy1.png" alt="배포설정1" /></p>
+  </li>
+  <li>
+    <p>필수구성 요소를 클릭하고 Local git Repository를 선택한다.</p>
+
+    <p><img src="/images/webappdeploy2.png" alt="배포설정2" /></p>
+  </li>
+  <li>
+    <p>yotest 웹앱 설정창에서 git repository 주소와 URL를 함께 확인한다.</p>
+
+    <p><img src="/images/webappdeploy3.png" alt="git 주소" /></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> git 주소 https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
+ url yotest.azurewebsites.net
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="section-2">커스텀도메인 설정</h3>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure portal</a>에서 yotest 웹앱을 선택한 후 설정(Settings)에 들어간다. 아래쪽으로 살펴보면 ROUTING에 Custom domains and SSL 메뉴를 클릭한다.</p>
+
+    <p><img src="/images/customdomains1.png" alt="커스텀도메인 메뉴" /></p>
+  </li>
+  <li>
+    <p>커스텀도메인 메뉴에서 Bring External Domains 버튼을 클릭한다.</p>
+
+    <p><img src="/images/customdomains2.png" alt="외부도메인가져오기" /></p>
+  </li>
+  <li>
+    <p>아래 그림 2번 위치에서 yotest 웹앱의 IP 주소를 확인한다(여기서는 40.7.1.1로 예를 든다).</p>
+
+    <p><img src="/images/customdomains3.png" alt="웹앱IP확인" /></p>
+  </li>
+  <li>
+    <p>자신의 도메인에서 A 레코드와 CNAME 레코드를 앞서 확인한 정보(40.7.1.1과 yotest.azurewebsites.net)바탕으로 각각 등록한다(반드시 자신의 설정값과 동일하게 입력하여야한다).</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>@</td>
+          <td>40.7.1.1</td>
+        </tr>
+        <tr>
+          <td>CNAME</td>
+          <td>www</td>
+          <td>yotest.azurewebsites.net</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>변경된 설정이 반영되려면 20분정도 걸렸다. 차를 마시고 오자(적용 여부를 확인하는 것은 <a href="http://www.digwebinterface.com">http://www.digwebinterface.com</a>에서 확인하자).</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> 보통은 위와 같이 연결하나 필자의 경우 www 대신에 yotest란 서브 도메인을 사용했기때문에 CNAME의 Name이 yotest로 하였다. 
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>이제 아래 그림 1번 위치에 구입한 도메인을 입력한다(아래에서는 yotest.magmakick.io라고 예를 든다).</p>
+
+    <p><img src="/images/customdomains3.png" alt="도메인입력" /></p>
+
+    <p>설정이 정상적으로 진행되었으면 상단의 SAVE 버튼을 눌러 반영한다.</p>
+
+    <p>이제 yotest.magmakick.io로 접속하면 Azure의 yotest 웹앱으로 이동한다.</p>
+  </li>
+</ol>
+
+<h2 id="ssl--">SSL 인증서 얻기</h2>
+
+<p>yotest 웹앱의 설정이 모두 마쳐진것은 아니다. 실제로 사용할 인증서가 없기 때문이다.</p>
+
+<p>SSL을 구매해서 사용해도 되지만 여기서는 <a href="https://letsencrypt.org">Let’s Encrypt</a>를 사용해서 무료로 SSL을 얻도록 하겠다.</p>
+
+<h3 id="ssl---1">SSL 인증서 발급</h3>
+
+<p>mac에서 진행행하다가 어려움을 겪어서 vagrant로 ubuntu 14.04 lts하나 띄우고 진행했음을 밝힌다.</p>
+
+<p>참고로 이 과정은 <a href="https://blog.outsider.ne.kr/1178">Lets’ Encrypt로 무료로 HTTPS 지원하기</a>글을 참조했다. 더 자세히 알고 싶다면 해당 블로그를 방문해보길 권한다.</p>
+
+<ol>
+  <li>
+    <p>클라이언트를 클론받는다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> $ git clone https://github.com/letsencrypt/letsencrypt
+ $ cd letsencrypt
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>관련 의존성을 해결하기 위해서 아래 명령을 입력한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ ./letsencrypt-auto --help
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>생각보다 시간이 걸린다.</p>
+  </li>
+  <li>
+    <p>인증서 발급을 위해서 아래 명령을 입력한다. -d 뒤에는 도메인을 –email 뒤에는 자신의 email을 입력한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ ./letsencrypt-auto certonly --manual -d yotest.magmakick.io --email totuworld@gmail.com
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>다수의 도메인을 활용하려면 -d 도메인 -d 도메인 형태로 추가하면 된다.</p>
+
+    <p><img src="/images/encryptip.png" alt="ip로그확인" /></p>
+
+    <p>위와 같은 이미지가 나오면 Yes를 선택한다.</p>
+  </li>
+  <li>
+    <p>3번 과정을 통하면 아래와 같은 결과가 나온다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA before continuing:
+
+ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
+
+ If you don't have HTTP server configured, you can run the following
+ command on the target server (as root):
+
+ mkdir -p /tmp/letsencrypt/public_html/.well-known/acme-challenge
+ cd /tmp/letsencrypt/public_html
+ printf "%s" hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU &gt; .well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA
+ # run only once per server:
+ $(command -v python2 || command -v python2.7 || command -v python2.6) -c \
+ "import BaseHTTPServer, SimpleHTTPServer; \
+ s = BaseHTTPServer.HTTPServer(('', 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
+ s.serve_forever()"
+ Press ENTER to continue
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>엔터를 바로 누르지말고 일단 내용을 해석해보자.</p>
+
+    <p>브라우저로 아래 주소에 접속한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA 
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>다음 값이 반환되어야한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>이를 위해서 아래 과정을 진행한다.</p>
+  </li>
+</ol>
+
+<h3 id="section-3">인증서 발급 마무리</h3>
+
+<p>위에서 살펴본 것처럼 특정 주소지로 접속했을 때 값을 반환하기 위해서 다음 과정을 진행한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>단계가 여러개지만 결론은 아래 값을 반환하는 것이므로 자신이 편한 방법으로 진행해도 무방하다.
+
+hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ol>
+  <li>
+    <p>아래 프로젝트를 클론 받는다(클론은 vagrant 환경에서 받지 않아도 된다).</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> $ git clone https://github.com/totuworld/returnserver.git
+ $ cd returnserver
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">server.js</code> 파일에서 <code class="highlighter-rouge">targetPath</code>와 <code class="highlighter-rouge">returnValue</code>를 변경한다.</p>
+
+    <p>위의 결과대로 받아야하기때문에 여기서는 다음과 같이 수정했다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> let targetPath = '/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA';
+ let returnValue = 'hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU';
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>이제 Azure yotest 웹앱의 git 레포지토리와 연결한다(azure 뒤쪽은 자신의 git 레포지토리를 입력한다).</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ git remote add azure https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>커밋을 하나 만들고 azure 리모트로 push한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> $ git add *
+ $ git commit -m 'update targetpath&amp;returnValue'
+ $ git push azure master
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>ubuntu 환경에서 enter를 입력한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre> IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+ /etc/letsencrypt/live/yotest.magmakick.io/fullchain.pem. Your
+ cert will expire on 2016-06-15. To obtain a new version of the
+ certificate in the future, simply run Let's Encrypt again.
+ - If you like Let's Encrypt, please consider supporting our work by:
+
+ Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ Donating to EFF:                    https://eff.org/donate-le
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>위에 보는 것처럼 SSL 인증서가 생성되었다.</p>
+  </li>
+</ol>
+
+<h2 id="ssl---2">SSL 인증서 사용</h2>
+
+<p>인증서를 바로 사용할 수 있으면 좋으련만 Azure 웹앱은 PFX 파일 형태로 인증서를 업로드할 수 있어서 인증서 변경을 해야한다.</p>
+
+<h3 id="pfx---">PFX 확장자 인증서 만들기</h3>
+
+<ol>
+  <li>
+    <p>ubuntu 환경에서 다음 명령을 입력하여 root 권한을 얻는다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ sudo su
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>해당 폴더로 이동한다(자신의 도메인 명과 뒤쪽 폴더명이 같이 해야한다). 그리고 변경 명령을 입력한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> $ cd /etc/letsencrypt/live/yotest.magmakick.io/
+ $ openssl pkcs12 -export -out cert.pfx -inkey privkey.pem -in cert.pem
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>비밀번호하도록 나오면 암호를 입력하고 기억해둔다.</p>
+  </li>
+  <li>
+    <p>파일을 확인한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> $ ls
+ cert.pem  cert.pfx  chain.pem  fullchain.pem  privkey.pem
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p><code class="highlighter-rouge">cert.pfx</code>가 생성된 것을 확인할 수 있다. vagrant 환경이라면 ftp 등을 이용해서 cert.pfx 파일을 복사한다.</p>
+  </li>
+</ol>
+
+<p>PFX 확장자의 인증서를 얻었으니 이제 Azure 포털에서 등록하면 된다.</p>
+
+<h3 id="section-4">인증서 적용하기</h3>
+
+<p>Azure 포털에서 웹앱에 SSL 인증서를 등록하고 커스텀도메인과 연결하는 방법을 알아보자.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure portal로 접속</a> yotest 웹앱 설정 - Custom domains and SSL 메뉴를 클릭한다.</p>
+
+    <p><img src="/images/customdomains1.png" alt="커스텀도메인 메뉴" /></p>
+  </li>
+  <li>
+    <p>Upload Certificates 메뉴를 클릭한다.</p>
+
+    <p><img src="/images/sslcert1.png" alt="인증서업로드1" /></p>
+  </li>
+  <li>
+    <p>pfx 확장자 인증서를 선택하고 비밀번호를 입력한 뒤 Save버튼을 클릭한다.</p>
+
+    <p><img src="/images/sslcert2.png" alt="인증서업로드2" /></p>
+  </li>
+  <li>
+    <p>업로드가 완료되면 아래 그림의 1처럼 등록된 인증서를 확인할 수 있다.</p>
+
+    <p>2에서 자신이 등록한 도메인을 선택하고 3에서 인증서를 선택하면 4처럼 bind된 것을 확인할 수 있다.</p>
+
+    <p><img src="/images/sslcert3.png" alt="인증서업로드3" width="300px" /></p>
+  </li>
+  <li>
+    <p>Save버튼을 클릭해서 마무리한다.</p>
+
+    <p><img src="/images/sslcert1.png" alt="인증서업로드완료" /></p>
+  </li>
+</ol>
+
+<p>적용되기까지 조금 기다린 후 브라우저로 자신의 URL(여기서는 <a href="https://yotest.magmakick.io">https://yotest.magmakick.io</a>)을 입력하고 접속하면 인증서를 확인할 수 있다.</p>
+
+<p><img src="/images/httpsconfirm.png" alt="인증서확인" width="400px" /></p>
+
+<h2 id="section-5">맺음말</h2>
+
+<p>이 시간에는 Azure 웹앱에 커스텀도메인과 SSL을 적용하는 방법을 알아봤다.</p>
+
+<p>비록 와일드카드를 지원하지 않고 90일마다 갱신해야하는 인증서지만 인증서도 얻었다.</p>
+
+<p>그리고 도메인에 레코드를 등록하는 일도 해봤다.</p>
+
+<p>앞으로 비슷한 일이 발생할 때 어려움없이 진행하길 기대해본다.</p>
+
+<hr />
+
+<p>참고 링크</p>
+
+<ul>
+  <li><a href="https://blog.outsider.ne.kr/1178">https://blog.outsider.ne.kr/1178</a></li>
+  <li><a href="https://royaljay.com/development/free-ssl-cert-for-azure-web-apps/">https://royaljay.com/development/free-ssl-cert-for-azure-web-apps/</a></li>
+</ul>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/03/17/letsencrypt/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

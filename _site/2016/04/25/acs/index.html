@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Azure 컨테이너 서비스로 Node.js 앱 배포하기</title>
+	
+	
+	<meta content="2016-04-25T09:02:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>Azure 컨테이너 서비스로 Node.js 앱 배포하기 - totuworld’s tech blog</title>
+<meta property="og:title" content="Azure 컨테이너 서비스로 Node.js 앱 배포하기" />
+<meta name="description" content="Azure 컨테이너 서비스로 Node.js 앱을 배포한다." />
+<meta property="og:description" content="Azure 컨테이너 서비스로 Node.js 앱을 배포한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/04/25/acs/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/04/25/acs/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/Azure-Container-Service.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-04-25T09:02:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/04/26/webapp-stage/" title="Azure 웹 앱 staging 환경 설정하기" />
+<link rel="prev" href="http://totuworld.github.io/2016/04/14/azure-functionapp/" title="Azure Functions로 Slack Bot 만들기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Azure 컨테이너 서비스로 Node.js 앱 배포하기",
+    "image": "http://totuworld.github.io/images/Azure-Container-Service.png",
+    "datePublished": "2016-04-25T09:02:00+09:00",
+    "description": "Azure 컨테이너 서비스로 Node.js 앱을 배포한다.",
+    "url": "http://totuworld.github.io/2016/04/25/acs/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Azure 컨테이너 서비스로 Node.js 앱을 배포한다.">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Azure 컨테이너 서비스로 Node.js 앱 배포하기</h1>
+        <p>Apr 25, 2016 • nodejs azure acs</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">사건의 발단</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">필수사항</a></li>
+  <li><a href="#acs--" id="markdown-toc-acs--">ACS 클러스터 배포</a></li>
+  <li><a href="#ssh-" id="markdown-toc-ssh-">SSH 터널</a>    <ul>
+      <li><a href="#fqdn-" id="markdown-toc-fqdn-">FQDN 확인</a></li>
+      <li><a href="#ssh--" id="markdown-toc-ssh--">SSH 터널 생성</a></li>
+    </ul>
+  </li>
+  <li><a href="#nodejs---" id="markdown-toc-nodejs---">Node.js 앱 컨테이너 배포</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">컨테이너 빌드</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">컨테이너 배포</a></li>
+    </ul>
+  </li>
+  <li><a href="#orchestration" id="markdown-toc-orchestration">Orchestration</a>    <ul>
+      <li><a href="#orchestration--" id="markdown-toc-orchestration--">Orchestration 환경 조성</a></li>
+      <li><a href="#docker-compose--orchestration" id="markdown-toc-docker-compose--orchestration">Docker Compose로 앱 Orchestration하기</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">맺음말</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">참고자료</a></li>
+</ul>
+
+<h2 id="section">사건의 발단</h2>
+
+<p>지난 2016년 4월 20일, Azure 컨테이너 서비스(ACS:Azure Container Service, 이하 ACS) <a href="https://azure.microsoft.com/en-us/blog/azure-container-service-is-now-generally-available/">Microsoft Azure 블로그</a>에 공개되었다.</p>
+
+<p><img src="/images/Azure-Container-Service.png" alt="ACS" /></p>
+
+<p>이 소식을 Microsoft Azure MVP인 <a href="https://www.facebook.com/rkttu">남정현님</a>의 글을 통해서 접했다.</p>
+
+<p>그리고 패기있게 댓글을 남기게 된다.</p>
+
+<p><img src="/images/comment0420.png" alt="내가왜" /></p>
+
+<blockquote>
+  <p>나도 내가 왜 그랬는지 모르겠다. 바보같은 과거의 나.</p>
+</blockquote>
+
+<p>뱉어놓은 말에 책임을 느끼고 삽을 떠봤다.</p>
+
+<hr />
+
+<h2 id="section-1">필수사항</h2>
+
+<p>글의 내용을 진행하기 위해 Docker Engine과 Docker Compose가 필요하다. Linux 환경에서 진행하기때문에 OS도 Linux나 OSX에서 진행하길 권한다.</p>
+
+<ul>
+  <li><a href="https://docs.docker.com/engine/">Docker Engine</a> &gt;= 1.11.x</li>
+  <li><a href="https://docs.docker.com/compose/">Docker Compose</a> &gt;= 1.7.x</li>
+</ul>
+
+<p>중요한 것은 Docker Compose 버전이다. Docker Swarm으로 ACS를 구성할 예정인데 Docker Compose 1.5 버전만 해도 생성된 컨테이너를 찾지 못해 링크하지 못하는 에러가 발생했다.</p>
+
+<blockquote>
+  <p>Docker Compose 1.5.1을 설치한게 작년 11월인데 글 작성일로부터 9일전에 1.7.0 버전이 나왔다.</p>
+</blockquote>
+
+<h2 id="acs--">ACS 클러스터 배포</h2>
+
+<p>ACS 클러스터를 배포하는 방법은 크게 3가지다. 내가 사랑하는 Azure portal을 이용하거나, Azure CLI 혹은 PowerShell을 이용하는 것이다.</p>
+
+<p>각자 편한 방법으로 진행하면 된다.</p>
+
+<blockquote>
+  <p>글에서는 Azure portal로 진행한다. 다른 방법을 사용하고자한다면 <a href="https://azure.microsoft.com/ko-kr/documentation/articles/container-service-deployment/">Azure 컨네이너 서비스 클러스터 배포</a> 글을 참고하고 <a href="#SSH 터널">SSH 터널</a>넘어가도 좋다.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure portal로 접속</a>해서 ACS를 선택한다.</p>
+
+    <p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal1.png" alt="acs-portal1" /></p>
+  </li>
+  <li>
+    <p>사용자이름(User Name), SSH 공개키(SSH public key), 리소스그룹(Resource Group) 명을 입력하고 위치(Location)을 선택한다.</p>
+
+    <p>SSH 공개키를 생성하는 것은 생활코딩의 <a href="https://opentutorials.org/module/432/3742">SSH Key - 비밀번호 없이 로그인</a> SSH Key 만들기 부분을 참고하면 된다.</p>
+
+    <p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal3.png" alt="acs-portal3" /></p>
+  </li>
+  <li>
+    <p>Orchestrator configuration은 Swarm으로 선택한다.</p>
+
+    <p>Docker Compose를 활용하기 위해서 Swarm으로 선택으나 자신이 Mesos와 Marathon이 익숙하다면 <a href="https://dcos.io/">DC/OS</a>를 선택하기 바란다.</p>
+
+    <blockquote>
+      <p>그러나 Marathon으로 컨테이너를 배포하는 방법은 다루지 않는다.</p>
+    </blockquote>
+
+    <p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal4.png" alt="acs-portal4" /></p>
+  </li>
+  <li>
+    <p>Agent count, Agent virtual machine size, Master count를 필요한만큼 입력한 뒤 DNS prefix를 입력한다.</p>
+
+    <p>단순한 테스트이기 때문에 Agent count는 2로 했고 Master count는 1로 했다. Agent virtual machine size는 저렴한 Standard A1을 선택했다.</p>
+
+    <blockquote>
+      <p>아래 이미지와는 Agent count 숫자와 DNS prefix만 차이가 있다.</p>
+    </blockquote>
+
+    <p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal5.png" alt="acsp-portal5" /></p>
+  </li>
+  <li>
+    <p>나머지 과정을 확인하고 진행하면 15~20분 정도 배포가 진행된다.</p>
+
+    <p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal8.png" alt="acs-portal8" /></p>
+  </li>
+</ol>
+
+<p>배포가 끝나면 리소스그룹이 생성되고 그 안에 로드밸런스, 가상컴퓨터, 가상 컴퓨터 크기 집합 등 Azure의 다양한 서비스가 일괄 생성된 것을 확인할 수 있다.</p>
+
+<p><img src="/images/acsdeploydone.png" alt="acs배포완료" /></p>
+
+<h2 id="ssh-">SSH 터널</h2>
+
+<p>로컬환경에서 배포된 ACS 환경을 사용하기 위해 SSH 터널을 생성하여야한다.</p>
+
+<blockquote>
+  <p>Windows 환경이라면 Azure 컨테이너 서비스 클러스터에 연결의 <a href="https://azure.microsoft.com/ko-kr/documentation/articles/container-service-connect/#windows-ssh">Windows에서 SSH 터널 만들기</a> 부분을 참고하기 바란다.</p>
+</blockquote>
+
+<blockquote>
+  <p>SSH 터널 개념은 <a href="https://milooy.wordpress.com/2016/04/14/ssh-tunneling/">SSH Tunneling</a> 글을 참고하자.</p>
+</blockquote>
+
+<p>먼저 SSH 터널을 생성하려면 <code class="highlighter-rouge">FQDN</code>(Fully Qualified Domain Name)를 알아야한다.</p>
+
+<h3 id="fqdn-">FQDN 확인</h3>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure portal로 접속</a>해서 리소스그룹을 선택한 뒤 ACS로 생성한 리소스그룹을 선택한다.</p>
+
+    <p><img src="/images/AzureFQDN01.png" alt="acsFQDN1" width="500px" /></p>
+  </li>
+  <li>
+    <p>마지막 배포를 선택한다. 그리고 배포기록에서 가장 마지막 배포를 선택한다.</p>
+
+    <p><img src="/images/AzureFQDN02.png" alt="acsFQDN2" width="300px" />
+ <img src="/images/AzureFQDN03.png" alt="acsFQDN3" width="300px" /></p>
+  </li>
+  <li>
+    <p>출력에서 <code class="highlighter-rouge">MASTERFQDN</code>을 확인한다(이미지에는 없지만 아래 쪽에 <code class="highlighter-rouge">AGENTFQDN</code>도 함께 확인해둔다).</p>
+
+    <p><img src="/images/AzureFQDN04.png" alt="acsFQDN4" width="500px" /></p>
+  </li>
+</ol>
+
+<h3 id="ssh--">SSH 터널 생성</h3>
+
+<p>SSH 터널을 생성할 차례다.</p>
+
+<p>아래 명령에에서 <code class="highlighter-rouge">User Name</code>과 <code class="highlighter-rouge">FQDN</code>(Fully Qualified Domain Name)을 자신의 ACS 환경에 맞게 대체하여 터미널에 입력하면 SSH 터널이 생성된다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>ssh -L 2375:localhost:2375 -N <span class="o">[</span>User Name]@[FQDN] -p 2200</code></pre></figure>
+
+<p>연결이 되었으면 터미널 창을 새로 열어서 아래 명령을 입력한다. <code class="highlighter-rouge">DOCKER_HOST</code> 환경 변수에 설정하여 배포된 ACS 환경을 자신의 로컬환경에서 Docker CLI(Command Line Interface)로 사용할 수 있게 된다.</p>
+
+<blockquote>
+  <p>터미널 창을 새로 여는 것은 SSH 터널이 연결된 상태에서는 프롬프트가 돌아오지 않기 때문이다.</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">export </span><span class="nv">DOCKER_HOST</span><span class="o">=</span>:2375</code></pre></figure>
+
+<h2 id="nodejs---">Node.js 앱 컨테이너 배포</h2>
+
+<p>이제 사용할 컨테이너가 필요하다. 여기서는 Node.js와 Express.js로 웹 어플리케이션을 만드는 과정은 생략하고 제작해둔 샘플 앱을 빌드하여 사용하도록 하겠다.</p>
+
+<h3 id="section-2">컨테이너 빌드</h3>
+
+<ul>
+  <li>Github에서 Node.js 앱을 다운받아 압축을 해제한 후 NodejsExampleApp 폴더로 이동한다.</li>
+</ul>
+
+<blockquote>
+  <p>아래 명령을 순서대로 입력하면 된다.</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+<span class="gp">$ </span>unzip 0.0.1.zip
+<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.1</code></pre></figure>
+
+<ul>
+  <li>ACS에 컨테이너를 빌드한다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .</code></pre></figure>
+
+<ul>
+  <li>빌드가 완료되면 아래 명령으로 빌드된 컨테이너를 확인할 수 있다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker images
+
+REPOSITORY      TAG         IMAGE ID        CREATED         VIRTUAL SIZE
+nodeapp         0.0.1       sha256:bab5a    5 minutes ago   221.1 MB
+node            4-slim      sha256:d1e5c    9 days ago      206.7 MB</code></pre></figure>
+
+<h3 id="section-3">컨테이너 배포</h3>
+
+<p>이제 빌드한 컨테이너를 ACS 환경에 배포해보자.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1</code></pre></figure>
+
+<p>위 명령은 <code class="highlighter-rouge">nodeapp</code>이란 이름으로 <code class="highlighter-rouge">nodeapp:0.0.1</code> 컨테이너를 배포한 것이다.</p>
+
+<p><code class="highlighter-rouge">-p</code> 옵션 뒤에 값은 호스트의 80번 포트와 컨테이너 3000번 포트를 연결한 것이다.</p>
+
+<blockquote>
+  <p><a href="http://pyrasis.com/docker.html">가장 빨리 만나는 Docker</a>에서 Docker 명령은 자세히 익힐 수 있다.</p>
+</blockquote>
+
+<p>아래 명령을 입력하면 작동하는 컨테이너를 확인할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker ps</code></pre></figure>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>CONTAINER ID    IMAGE           COMMAND         CREATED         STATUS          PORTS                 NAMES
+0e8c2e2712a5    nodeapp:0.0.1   "npm start"     16 minutes ago  Up 16 minutes   10.0.0.6:80-&gt;3000/tcp swarm-agent-F6767C68000002/nodeapp
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>앞서 확인한 AGENTFQDN 주소를 브라우저에 입력하면 아래와 같은 결과를 확인할 수 있다.</p>
+
+<p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
+
+<p>여기서 잠깐!</p>
+
+<p>갑자기 왜 AGETNFQDN을 입력해서 확인하는지 궁금할 수 있다.</p>
+
+<p><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-intro/20160419045039/acs-swarm2.png" alt="ACSSwarm구조" /></p>
+
+<p>위 그림에서 보는것처럼 좌측은 ACS를 관리하기 위한 클러스터이다. 이 관리용 클러스터에 접속할 때 MASTERFQDN을 사용한다. 실제로 컨테이너가 배포되는 곳은 우측의 agent이 클러스터이므로 agent에 접근할 수 있는 주소인 AGENTFQDN을 입력해야 nodeapp이 보내는 결과값을 받을 수 있는 것이다.</p>
+
+<h2 id="orchestration">Orchestration</h2>
+
+<p>ACS 환경에 컨테이너를 배포해봤다. 그러나 Docker를 로컬 환경에서 활용해 봤다면 <code class="highlighter-rouge">너무 간단한 예제 아닌가</code> 하며 실망할 수 있다.</p>
+
+<p>그래서 준비했다! 바로 <code class="highlighter-rouge">Orchestration</code>!!!</p>
+
+<p>이제 5개 컨테이너가 연결되어 하나의 서비스로 작동하도록 구성해보자.</p>
+
+<blockquote>
+  <p>이부분은 <a href="http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/">A sample Docker workflow with Nginx, Node.js and Redis</a>를 참고했다. 단계별 자세한 설명을 원한다면 원문을 보자.</p>
+</blockquote>
+
+<p>구성할 컨테이너 구조는 아래와 같다.</p>
+
+<ul>
+  <li>1 Redis 컨테이너</li>
+  <li>3 Node.js 앱 컨테이너</li>
+  <li>1 Nginx 컨테이너</li>
+</ul>
+
+<p><img src="http://anandmanisankar.com/assets/images/DockerSample.png" alt="DockerSample" /></p>
+
+<h3 id="orchestration--">Orchestration 환경 조성</h3>
+
+<p>우리는 Docker Compose로 Orchestration할 것이다. 그럼 (Docker Engine이 Dockerfile이 필요하듯) docker-compose.yml 파일이 필요하다.</p>
+
+<p>그래서 하나 만들어 두었다.</p>
+
+<p>이전에 작업하던 폴더(NodejsExampleApp-0.0.1)를 빠져나와서 다음 명령을 순서대로 입력한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.2.zip
+<span class="gp">$ </span>unzip 0.0.2.zip
+<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.2</code></pre></figure>
+
+<h3 id="docker-compose--orchestration">Docker Compose로 앱 Orchestration하기</h3>
+
+<blockquote>
+  <p>앞서 진행한 SSH 터널과 <code class="highlighter-rouge">DOCKER_HOST</code> 환경 변수가 유지된 환경이어야 한다.</p>
+</blockquote>
+
+<p>NodejsExampleApp-0.0.2 폴더에서 다음 명령을 입력한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-compose up -d
+
+Creating nodejsexampleapp_redis_1
+Creating nodejsexampleapp_node3_1
+Creating nodejsexampleapp_node2_1
+Creating nodejsexampleapp_node1_1
+Creating nodejsexampleapp_nginx_1</code></pre></figure>
+
+<blockquote>
+  <p><code class="highlighter-rouge">Creating</code> 메시지가 나온 뒤에 Node.js 앱 컨테이너를 생성하고 nginx 컨테이너를 생성하느라 시간이 좀 걸릴 수 있다.</p>
+</blockquote>
+
+<p>컨테이너 생성이 끝나고 배포되면 AGENTFQDN 주소를 브라우저하자.</p>
+
+<p><img src="/images/ACSAppResult1.png" alt="ACSAppResult" width="300px" /></p>
+
+<p>결과를 보면 알겠지만 업데이트된 Node.js 앱은 접속이 이뤄질 때마다 Redis에 View횟수를 누적하여 보여준다.</p>
+
+<p>만약 각 컨테이너가 어떤 agent 배포되어있는지 확인하고 싶다면 앞서 말한 아래 명령을 입력하면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker ps</code></pre></figure>
+
+<hr />
+
+<h2 id="section-4">맺음말</h2>
+
+<p>Docker를 로컬 환경에서만 사용하다가 클러스터된 환경을 구성하려고 많은 삽을 뜬 기억이 있다.</p>
+
+<blockquote>
+  <p>CoreOS, Mesos, Marathon, Consul, Docker Swarm, Docker Compose 등 Docker도 제대로 못 쓰면서 보느라고 고생 좀 했다.</p>
+</blockquote>
+
+<p>그런데 ACS는 한번에 클러스터링된 환경을 구성해준다.</p>
+
+<p>덕분에 학습 비용이 낮고 서비스에만 집중할 수 있다.</p>
+
+<blockquote>
+  <p>말로만 듣던 CaaS(Container as a Service)가 명령어 몇 개로 다가오다니 Azure 좋구나~</p>
+</blockquote>
+
+<p>하지만 이 좋은 ACS에도 단점을 말하라면 참고할만한 레퍼런스가 적다는 점이다(튜토리얼 포함).</p>
+
+<p>그러나 이제 일반에 공개되었다고 생각해보면 큰 단점도 아니다. 다만 시간이 필요할 뿐이다.</p>
+
+<p>끝으로 이번에 ACS보다 더 배운것은 <code class="highlighter-rouge">말조심</code>이다.</p>
+
+<p>고작 Docker 조금 다뤄봐놓고 ACS 다룰려니 지식이 부족하여 아주 혼났다.</p>
+
+<blockquote>
+  <p>그래도 맺음말인데 자뻑 컷 하나는 있어야지.</p>
+</blockquote>
+
+<p><img src="http://image.chosun.com/sitedata/image/201604/04/2016040400688_0.jpg" alt="그어려운걸제가" /></p>
+
+<hr />
+
+<h2 id="section-5">참고자료</h2>
+
+<ul>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/container-service-deployment/">Azure 컨네이너 서비스 클러스터 배포</a></li>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/container-service-connect/">Azure 컨테이너 서비스 클러스터에 연결</a></li>
+  <li><a href="https://azure.microsoft.com/en-us/documentation/articles/container-service-docker-swarm/">Container management with Docker Swarm</a></li>
+  <li><a href="http://pyrasis.com/docker.html">가장 빨리 만나는 Docker</a></li>
+  <li><a href="http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/">A sample Docker workflow with Nginx, Node.js and Redis</a></li>
+</ul>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/04/25/acs/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

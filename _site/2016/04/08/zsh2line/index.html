@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기</title>
+	
+	
+	<meta content="2016-04-08T09:01:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기 - totuworld’s tech blog</title>
+<meta property="og:title" content="agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기" />
+<meta name="description" content="oh-my-zsh의 agnoster 테마를 멀티라인으로 나오도록 수정한다." />
+<meta property="og:description" content="oh-my-zsh의 agnoster 테마를 멀티라인으로 나오도록 수정한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/04/08/zsh2line/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/04/08/zsh2line/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-04-08T09:01:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/04/14/azure-functionapp/" title="Azure Functions로 Slack Bot 만들기" />
+<link rel="prev" href="http://totuworld.github.io/2016/03/23/ios-validation/" title="애플 인앱결제 검증 웹 서비스 제작" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기",
+    "datePublished": "2016-04-08T09:01:00+09:00",
+    "description": "oh-my-zsh의 agnoster 테마를 멀티라인으로 나오도록 수정한다.",
+    "url": "http://totuworld.github.io/2016/04/08/zsh2line/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="oh-my-zsh의 agnoster 테마를 멀티라인으로 나오도록 수정한다.">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기</h1>
+        <p>Apr 8, 2016 • zsh oh-my-zsh</p>
+      </header>
+      <hr>
+      <article>
+        <h2 id="section">들어가는 말</h2>
+
+<p><a href="http://ohmyz.sh">oh-my-zsh</a>를 알게된 이후 폴더명과 브랜치명이 한 줄로 표현되는 agnoster 테마를 사용하고 있다.</p>
+
+<p>그런데 폴더명과 브랜치 명이 길어지면 커맨드를 입력하는 커서가 터미널창 오른쪽 구석으로 밀려나곤 했다.</p>
+
+<p>이에 답답함을 느껴서 방법을 찾던 중 발견한 <a href="http://thisismecoding.com/multine-agnoster-oh-my-zsh/">Make the oh-my-zsh theme agnoster multiline</a>을 원작자에게 허락을 얻어서 번역한 글이다.</p>
+
+<p>오역이 난무할 수 있으니 양해바라며 도움이 되길 바란다.</p>
+
+<p>오해없이 원작자의 글을 보시려면 다음 링크로 이동하면 된다.</p>
+
+<p><a href="http://thisismecoding.com/multine-agnoster-oh-my-zsh/">Make the oh-my-zsh theme agnoster multiline</a></p>
+
+<h2 id="section-1">번역한 글</h2>
+
+<p>나는 oh-my-zsh의 팬이다. 당신도 <a href="https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme">agnoster 테마</a>를 설치할 수 있다.</p>
+
+<p>agnoster 테마는 기본으로 설치하면 싱글라인(single line)로 표시된다.</p>
+
+<p><img src="http://thisismecoding.com/images/agnoster-regular.png" alt="original agnoster" /></p>
+
+<p>내가 변경한 설정은 아래처럼 표시된다.</p>
+
+<p><img src="http://thisismecoding.com/images/agnoster-sajoku.png" alt="edit multiline agnoster" /></p>
+
+<p>개인적으로 큰 폰트를 사용하고 화면을 나누어 쓰길 좋아한다.</p>
+
+<p>그런데 내 화면 사이즈는 작다(맥북프로 13inch, 2011 사용).</p>
+
+<p>그래서 화면에 딱 맞게 agnoster 테마를 멀티라인(multiline)으로 만들기로 했다.</p>
+
+<p>아래는 내가 작성한 멀티라인 코드이다.</p>
+
+<script src="https://gist.github.com/totuworld/db5d79ed76220f0b3ce37ab8e81bc1e5.js?file=prompt_newline"> </script>
+
+<p>(주의 : 카피하여 사용할 때 백슬래쉬를 제거해야한다. 혹은 내 github 페이지에서 소스코드를 직접 복사해도된다)</p>
+
+<p>(역자주 : 백슬래쉬는 제거한 코드이다.)</p>
+
+<p>(역자주 : 위 내용은 <code class="highlighter-rouge">~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 이 파일에 넣어야한다.)</p>
+
+<p>위 코드는 터미널에서 커맨드를 입력하는 부분 앞쪽에 화살표 모양의 분리기호(seperator)를 추가한다.</p>
+
+<p>이제 작성한 코드가 다른 함수들과 함께 작동하도록 추가한다.</p>
+
+<script src="https://gist.github.com/totuworld/db5d79ed76220f0b3ce37ab8e81bc1e5.js?file=build_prompt"> </script>
+
+<p>(역자주 : 위 내용은 <code class="highlighter-rouge">~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 파일 하단에 위치한 <code class="highlighter-rouge">build_prompt()</code>에 <code class="highlighter-rouge">prompt_newline</code>을 추가하는 내용이다.)</p>
+
+<p>이제 터미널이 아래처럼 보일 것이다.</p>
+
+<p><img src="http://thisismecoding.com/images/agnoster-sajoku.png" alt="edit multiline agnoster" /></p>
+
+<p>당신이 이 포스트를 즐겼으면 좋겠다.</p>
+
+<h2 id="section-2">맺음말</h2>
+
+<p>정말 짧은 글인데도 공부안하는 개발자라서 그런지 되게 오래 걸렸다.</p>
+
+<p>그래도 필요에 의해 뭔가 하게되니(영문 메일도 보내보고, 사전찾아가며 번역도 해보고) 즐거운 기억이었다.</p>
+
+<p>앞으로는 번역된 글에 쌍엄지 날리며 즐겁게 봐야겠다.</p>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/04/08/zsh2line/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
