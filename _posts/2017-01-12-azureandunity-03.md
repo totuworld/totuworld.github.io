@@ -140,52 +140,7 @@ express의 라우터는 패스와 콜백 메서드로 이뤄진다.
 
 앞의 METHOD는 HTTP 메서드(get, post, put 등)를 제공한다. 패스는 URL의 패스를 입력하면 된다. 콜백 메서드가 실제로 모든 일을 처리하게 된다.
 
-### 기기 라우터 추가
-1. `routes` 폴더에 `device.js`파일을 생성한다.
 
-2. 아래 코드를 입력한다.
-
-   ```javascript
-   'use strict'
-
-   const debug = require('debug')('Wendy:router:device');
-   const auth = require('../utils/auth');
-   const commonFunc = require('../utils/commonFunc');
-   const models = require("../models");
-   const wendyError = require('../utils/error');
-
-   const express = require('express');
-   const router = express.Router();
-
-   module.exports = router;
-   ```
-
-    * 3~7 번 줄 : Node.js 에서 require('경로'); 를 활용하면 그 .js 파일 기준으로 상대 경로에 위치한 js 파일을 가져와 쓸 수 있다.
-    * 9~10 번 줄 : express 모듈에서 router를 추가하는 방법이라고 알고 있도록 하자.
-    * 12번 줄 : `module.exports`는 사용자 모듈을 만들 때 사용한다.
-
-    이 코드는 router를 로딩하여 편집하고 다시 모듈로 내보내는 형태이다.
-
-### 사용자 라우터 추가
-
-1. `routes` 폴더에 `user.js`파일을 생성한다.
-
-2. 아래 코드를 입력한다.
-
- ```javascript
-'use strict'
-
-const debug = require('debug')('Wendy:router:user');
-const auth = require('../utils/auth');
-const commonFunc = require('../utils/commonFunc');
-const models = require("../models");
-const wendyError = require('../utils/error');
-
-const express = require('express');
-const router = express.Router();
-
-module.exports = router;
-```
 
 ### 라우터 등록
 이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. `app.js` 파일을 수정하여 2가지 라우터를 추가해보자.
