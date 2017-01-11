@@ -167,9 +167,25 @@ express의 라우터는 패스와 콜백 메서드로 이뤄진다.
     이 코드는 router를 로딩하여 편집하고 다시 모듈로 내보내는 형태이다.
 
 ### 사용자 라우터 추가
+
 1. `routes` 폴더에 `user.js`파일을 생성한다.
 
 2. 아래 코드를 입력한다.
+
+ ```javascript
+'use strict'
+
+const debug = require('debug')('Wendy:router:user');
+const auth = require('../utils/auth');
+const commonFunc = require('../utils/commonFunc');
+const models = require("../models");
+const wendyError = require('../utils/error');
+
+const express = require('express');
+const router = express.Router();
+
+module.exports = router;
+```
 
 ### 라우터 등록
 이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. `app.js` 파일을 수정하여 2가지 라우터를 추가해보자.
