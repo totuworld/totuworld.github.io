@@ -171,23 +171,9 @@ express의 라우터는 패스와 콜백 메서드로 이뤄진다.
 
 2. 아래 코드를 입력한다.
 
-   ```javascript
-   'use strict'
+  
    
-   /// <reference path="../typings/node/node.d.ts" />
-   /// <reference path="../typings/express/express.d.ts" />
-   
-   const debug = require('debug')('Wendy:router:user');
-   const auth = require('../utils/auth');
-   const commonFunc = require('../utils/commonFunc');
-   const models = require("../models");
-   const wendyError = require('../utils/error');
-   
-   const express = require('express');
-   const router = express.Router();
-   
-   module.exports = router;
-   ```
+   `routes/device.js`와 다른 것은 `reference`를 추가한 것 뿐이다.
 
 ### 라우터 등록
 이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. `app.js` 파일을 수정하여 2가지 라우터를 추가해보자.
