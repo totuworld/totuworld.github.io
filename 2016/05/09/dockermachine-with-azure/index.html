@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Docker Machine으로 Azure 다루기</title>
+	
+	
+	<meta content="2016-05-09T09:02:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>Docker Machine으로 Azure 다루기 - totuworld’s tech blog</title>
+<meta property="og:title" content="Docker Machine으로 Azure 다루기" />
+<meta name="description" content="Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다." />
+<meta property="og:description" content="Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/05/09/dockermachine-with-azure/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/05/09/dockermachine-with-azure/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-05-09T09:02:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/05/30/azurewebapp/" title="Azure 웹앱 시작하기" />
+<link rel="prev" href="http://totuworld.github.io/2016/04/26/webapp-stage/" title="Azure 웹 앱 staging 환경 설정하기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Docker Machine으로 Azure 다루기",
+    "image": "http://totuworld.github.io/images/logo.png",
+    "datePublished": "2016-05-09T09:02:00+09:00",
+    "description": "Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다.",
+    "url": "http://totuworld.github.io/2016/05/09/dockermachine-with-azure/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Docker Machine의 Azure driver를 사용하여 Azure에 컨테이너를 배포한다.">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Docker Machine으로 Azure 다루기</h1>
+        <p>May 9, 2016 • nodejs azure docker</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#docker-machine-" id="markdown-toc-docker-machine-">Docker Machine 설치</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">로컬 가상 머신 다루기</a>    <ul>
+      <li><a href="#dev--" id="markdown-toc-dev--">dev 머신 생성</a></li>
+    </ul>
+  </li>
+  <li><a href="#dev--nodejs---" id="markdown-toc-dev--nodejs---">dev 머신에 Node.js 웹 어플리케이션 배포</a>    <ul>
+      <li><a href="#dev----" id="markdown-toc-dev----">dev 머신 환경 변수 설정</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">이미지 생성</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">컨네이너 생성</a></li>
+      <li><a href="#dev---1" id="markdown-toc-dev---1">dev 머신 정리</a></li>
+    </ul>
+  </li>
+  <li><a href="#azure--" id="markdown-toc-azure--">Azure 드라이버 활용하기</a>    <ul>
+      <li><a href="#totuworld--" id="markdown-toc-totuworld--">totuworld 머신 생성</a></li>
+      <li><a href="#totuworld----" id="markdown-toc-totuworld----">totuworld 머신 환경 변수 설정</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">이미지 생성</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">컨네이너 생성</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">맺음말</a></li>
+  <li><a href="#section-7" id="markdown-toc-section-7">참고자료</a></li>
+</ul>
+
+<h2 id="section">들어가는 말</h2>
+
+<p>Docker를 사용해서 웹 어플리케이션 등을 배포하면 환경을 맞추는 수고를 대폭 줄일 수 있고 확장할 때도 편리하다.</p>
+
+<p>그런데 이를 다수의 리모트 호스트에 설치하고 각각을 관리하는건 귀찮은 일이다.</p>
+
+<p>이런 수고를 덜어주는 것이 <a href="https://docs.docker.com/machine/overview/">Docker Machine</a>이다.</p>
+
+<p><img src="/images/logo.png" alt="DockerMachineLogo" /></p>
+
+<p>Docker Machine은 로컬 시스템뿐 아니라 다양한 클라우드 서비스 제공자(AWS, Digital Ocean 등)의 환경도 제어할 수 있게 드라이버를 제공한다.</p>
+
+<p><img src="https://docs.docker.com/machine/img/machine.png" alt="DockerMachine" /></p>
+
+<p>그럼 Docker Machine의 Azure 드라이버를 이용해서 환경 설정과 컨테이너 배포를 살펴보도록 하자.</p>
+
+<blockquote>
+  <p>모든 과정은 OSX에서 진행된다. Windows 10의 bash를 사용해도 가능하지만 이 글에서 해당 과정을 모두 커버하지 않는다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="docker-machine-">Docker Machine 설치</h2>
+
+<p>Docker Engine은 이미 설치되어있다고 치고 Docker Machine을 설치해보도록 하자. 터미널에 아래 명령을 입력한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-<span class="sb">`</span>uname -s<span class="sb">`</span>-<span class="sb">`</span>uname -m<span class="sb">`</span> &gt;/usr/local/bin/docker-machine <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  chmod +x /usr/local/bin/docker-machine</code></pre></figure>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>주의 : v0.7.0이상으로 설치.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>설치가 완료되었다면 아래 명령으로 버전을 확인할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine -v
+docker-machine version 0.7.0, build a650a40</code></pre></figure>
+
+<p>Docker Machine이 설치 되었다.</p>
+
+<h2 id="section-1">로컬 가상 머신 다루기</h2>
+
+<p>이제 로컬 환경에 가상 머신을 생성하고 컨테이너를 배포해보자.</p>
+
+<blockquote>
+  <p>여기서는 dev라는 이름을 사용한다.</p>
+</blockquote>
+
+<h3 id="dev--">dev 머신 생성</h3>
+
+<p>생성은 간단하다. virtualbox 드라이버를 이용해서 명령만 입력하면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine create --driver virtualbox dev
+<span class="o">(</span>dev<span class="o">)</span> Creating VirtualBox VM...
+<span class="o">(</span>dev<span class="o">)</span> Creating SSH key...
+<span class="o">(</span>dev<span class="o">)</span> Starting the VM...
+<span class="o">(</span>dev<span class="o">)</span> Check network to re-create <span class="k">if </span>needed...
+<span class="o">(</span>dev<span class="o">)</span> Waiting <span class="k">for </span>an IP...
+...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+
+<p>위 명령이 실행되면 dev라는 가상머신이 생성된다.</p>
+
+<h2 id="dev--nodejs---">dev 머신에 Node.js 웹 어플리케이션 배포</h2>
+
+<p>docker명령으로 dev 머신을 제어할 수 있도록 환경을 먼저 구성한 후 이미지를 생성하여 배포해보자.</p>
+
+<h3 id="dev----">dev 머신 환경 변수 설정</h3>
+
+<p>우선 아래 명령으로 dev 머신의 환경 변수를 확인한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine env dev
+<span class="nb">export </span><span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="s2">"1"</span>
+<span class="nb">export </span><span class="nv">DOCKER_HOST</span><span class="o">=</span><span class="s2">"tcp://192.168.99.100:2376"</span>
+<span class="nb">export </span><span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s2">"/Users/yo/.docker/machine/machines/dev"</span>
+<span class="nb">export </span><span class="nv">DOCKER_MACHINE_NAME</span><span class="o">=</span><span class="s2">"dev"</span>
+<span class="c"># Run this command to configure your shell:</span>
+<span class="c"># eval $(docker-machine env dev)</span></code></pre></figure>
+
+<p>docker 명령으로 dev 머신을 제어할 것이므로 위 커맨드에 마지막에 안내한 명령을 입력한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">eval</span> <span class="k">$(</span>docker-machine env dev<span class="k">)</span></code></pre></figure>
+
+<h3 id="section-2">이미지 생성</h3>
+
+<p>아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+<span class="gp">$ </span>unzip 0.0.1.zip
+<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.1</code></pre></figure>
+
+<p>아래 명령으로 이미지를 생성한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .
+Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM node:4-slim
+...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+
+<h3 id="section-3">컨네이너 생성</h3>
+
+<p>이미지를 생성했으니 배포해보자.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1
+78ea5a20bb83121157235dc7104aae639054c3cd37d6ff6650d27875e188863e</code></pre></figure>
+
+<p>위 명령은 nodeapp이란 이름으로 nodeapp:0.0.1 이미지를 배포한 것이다. 그리고 컨테이너의 3000번 포트를 외부 포트 80번에 연결했다.</p>
+
+<p>결과를 확인하려면 환경 변수의 <code class="highlighter-rouge">DOCKER_HOST</code>부분에 있던 주소를 브라우저에 입력해보자.</p>
+
+<p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
+
+<h3 id="dev---1">dev 머신 정리</h3>
+
+<p>일단 아래 그림을 보자. Docker가 컨테이너를 실행하는 것은 다음과 같은 구조를 가진다.</p>
+
+<p><img src="https://www.docker.com/sites/default/files/what-is-vm-diagram.png" alt="Docker" /></p>
+
+<p>여기서 진행한 것은 Docker Engine 위에 올라갈 이미지를 생성한 후 이미지를 컨테이너로 생성한 것이다.</p>
+
+<h2 id="azure--">Azure 드라이버 활용하기</h2>
+
+<p>위와 동일한 행동을 Azure 환경에서 진행하려면 어떻게 해야할지 알아보자.</p>
+
+<blockquote>
+  <p>여기서는 totuworld란 이름을 사용한다.</p>
+</blockquote>
+
+<h3 id="totuworld--">totuworld 머신 생성</h3>
+
+<p>Docker Machine을 활용해서 <code class="highlighter-rouge">totuworld</code>란 머신을 생성해보자. dev 머신을 생성하는 것과 크게 다르지는 않다.</p>
+
+<blockquote>
+  <p>자신의 Azure 계정에서 구독 ID(Subscription ID)를 확인해두어야한다. Azure 포털에서 구독 부분을 클릭하여 확인할 수 있다.</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">export </span><span class="nv">AZURE_SUBSCRIPTION_ID</span><span class="o">=[</span>구독 ID]
+<span class="gp">$ </span>docker-machine create --driver azure --azure-open-port 80 totuworld
+Running pre-create checks...
+<span class="o">(</span>totuworld<span class="o">)</span> Stored Azure credentials expired. Please reauthenticate.
+<span class="o">(</span>totuworld<span class="o">)</span> Microsoft Azure: To sign <span class="k">in</span>, use a web browser to open the page https://aka.ms/devicelogin. Enter the code GQKWVKL58 to authenticate.</code></pre></figure>
+
+<p>자 위와 같이 나오면 반드시 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a> 다음 주소로 접속하여 <code class="highlighter-rouge">code</code>를 입력하여 권한을 준다.</p>
+
+<p><img src="/images/dockermachine.png" alt="dockermachineazure" /></p>
+
+<p>권한이 확인되면 아래와 같은 내용이 터미널에 출력되면서 머신이 생성될 것이다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="o">(</span>totuworld<span class="o">)</span> Completed machine pre-create checks.
+Creating machine...
+<span class="o">(</span>totuworld<span class="o">)</span> Querying existing resource group.  <span class="nv">name</span><span class="o">=</span><span class="s2">"docker-machine"</span>
+<span class="o">(</span>totuworld<span class="o">)</span> Creating resource group.  <span class="nv">name</span><span class="o">=</span><span class="s2">"docker-machine"</span> <span class="nv">location</span><span class="o">=</span><span class="s2">"westus"</span>
+...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+
+<p>모든 과정이 마쳐지면 Azure 포털에서 리소스 그룹 중에 docker-machine이란 그룹이 생성된 것을 확인할 수 있다. 그 안에는 다양한 리소스가 있다.</p>
+
+<p><img src="/images/dockermachine_resource.png" alt="dockermachine리소스" /></p>
+
+<h3 id="totuworld----">totuworld 머신 환경 변수 설정</h3>
+
+<p>환경 변수를 설정하는 것은 앞서 본것처럼 간단하다. env 뒤에 자신의 머신 이름을 입력하면 끝이다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">eval</span> <span class="k">$(</span>docker-machine env totuworld<span class="k">)</span></code></pre></figure>
+
+<h3 id="section-4">이미지 생성</h3>
+
+<p>앞서 생성한 이미지는 dev 머신에 있다. Docker Hub로 이미지를 공유하거나 개인 레지스터를 사용하지 않는한 totuworld 머신에도 이미지를 생성해야한다.</p>
+
+<p>NodejsExampleApp-0.0.1 폴더에서 이미지를 생성하는 명령을 입력한다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .
+Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM node:4-slim
+...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+
+<h3 id="section-5">컨네이너 생성</h3>
+
+<p>배포도 같은 방법으로 가능하다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1
+0fbfa68f9f97b742759317a5846a084d7efaa370535cf9342150402374cf3067</code></pre></figure>
+
+<p>아래 명령을 입력해서 확인한 ip 주소를 브라우저에 입력하면 같은 결과를 확인할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine ip totuworld
+13.91.254.246</code></pre></figure>
+
+<p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
+
+<h2 id="section-6">맺음말</h2>
+
+<p>Docker Machine 사용은 이번이 처음이다(전에는 다수의 머신을 다룰 일이 없었다).</p>
+
+<p>사용해보니 머신마다 터미널로 접속하는 일이 없어서 좋았다.</p>
+
+<p>무엇보다 Azure 드라이버를 사용하니 환경을 셋업하는 것이 편리했다.</p>
+
+<p>요즘 MS의 행보가 눈에 자주 들어온다. 또 어떤 것으로 놀래켜줄지 지켜보는 재미가 있다.</p>
+
+<blockquote>
+  <p>이상의 내용은 참고 자료에 링크한 <a href="https://channel9.msdn.com/Shows/Cloud+Cover/Episode-204-Using-Docker-Machine-with-Azure-with-Ahmet-Balkan">Episode 204: Using Docker Machine with Azure with Ahmet Balkan</a>을 바탕으로 했다. 자세한 진행이 궁금하다면 영상을 한번 살펴보길 바란다. 영상에서 내용을 진행하는  Ahmet Alp Balkans는 Azure 리눅스팀에서 오픈소스 엔지니어로 활동한다. 실제 Docker Machine의 Azure 드라이버 관련 커밋에서 그의 이름을 발견할 수 있다(MS직원인데 Google이 만든 Go 언어로 Docker Machine의 Azure 드라이버를 만들고 있다).</p>
+</blockquote>
+
+<hr />
+
+<h2 id="section-7">참고자료</h2>
+
+<ul>
+  <li><a href="https://channel9.msdn.com/Shows/Cloud+Cover/Episode-204-Using-Docker-Machine-with-Azure-with-Ahmet-Balkan">Episode 204: Using Docker Machine with Azure with Ahmet Balkan</a></li>
+</ul>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/05/09/dockermachine-with-azure/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

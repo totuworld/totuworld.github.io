@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>구글 API 허가, JWT로 쉽게 받기</title>
+	
+	
+	<meta content="2016-02-12T10:00:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>구글 API 허가, JWT로 쉽게 받기 - totuworld’s tech blog</title>
+<meta property="og:title" content="구글 API 허가, JWT로 쉽게 받기" />
+<meta name="description" content="구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다." />
+<meta property="og:description" content="구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/02/12/jwt/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/02/12/jwt/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-02-12T10:00:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/03/17/letsencrypt/" title="Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)" />
+<link rel="prev" href="http://totuworld.github.io/2016/02/10/google-oauth/" title="구글 인앱 결제 검증 웹 서비스 만들기" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "구글 API 허가, JWT로 쉽게 받기",
+    "datePublished": "2016-02-12T10:00:00+09:00",
+    "description": "구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다.",
+    "url": "http://totuworld.github.io/2016/02/12/jwt/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다.">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>구글 API 허가, JWT로 쉽게 받기</h1>
+        <p>Feb 12, 2016 • google oath with jwt</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a>    <ul>
+      <li><a href="#jwt" id="markdown-toc-jwt">JWT란?</a></li>
+    </ul>
+  </li>
+  <li><a href="#jwt-" id="markdown-toc-jwt-">JWT 활용하기</a>    <ul>
+      <li><a href="#jwt--" id="markdown-toc-jwt--">JWT를 위한 준비사항</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">기능 제작</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-2" id="markdown-toc-section-2">영수증 검증</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">맺음말</a></li>
+</ul>
+
+<h2 id="section">들어가는 말</h2>
+
+<p>아래 글에서 더럽게 어렵게 설명한 구글의 허가(Authorization) 획득.</p>
+
+<blockquote>
+  <p><a href="http://totuworld.github.io/2016/02/10/google-oauth/">구글 인앱 결제 검증 웹 서비스 만들기</a></p>
+</blockquote>
+
+<p>글을 다 적을 때쯤 공식 API를 보다가 우연히 <code class="highlighter-rouge">서비스 어카운트(service account)</code>를 활용해서 <code class="highlighter-rouge">JSON Web Token(이하 JWT)</code>를 생성한 후 로그인 절차없이 <code class="highlighter-rouge">access_token</code>을 얻는 방법을 알게되었다.</p>
+
+<blockquote>
+  <p>내 눈이 그렇지 뭐…</p>
+</blockquote>
+
+<p>겁나 허탈했는데 정신을 추스리고 보니 편하긴 하지만 그만한 단점도 있긴 했다(다..다행이야).</p>
+
+<p>그래도 알게되었으니 소개해보겠다.</p>
+
+<h3 id="jwt">JWT란?</h3>
+
+<p>공식 사이트에 아래와 같이 설명되어있다.</p>
+
+<blockquote>
+  <p><a href="https://jwt.io/introduction/">JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.</a></p>
+</blockquote>
+
+<p>JSON 형태의 토큰이라고 생각하면 되겠다. 장점이라면 토큰 자체에 정보를 보유하고 있어서 다른거 안보고 알 수 있어서 좋더라.</p>
+
+<p>하지만 여기서의 최대 장점이라면 <code class="highlighter-rouge">로그인 화면없이</code> 허가 코드를 얻을 수 있다는 점이다.</p>
+
+<hr />
+
+<h2 id="jwt-">JWT 활용하기</h2>
+
+<p>바로 <code class="highlighter-rouge">JWT</code>를 생성해서 사용하면 좋겠지만 이를 사용하기 위해서도 준비 사항이 필요하다. 이를 거치고 진행하도록 하겠다.</p>
+
+<h3 id="jwt--">JWT를 위한 준비사항</h3>
+
+<p>구글 개발자 콘솔에서 <code class="highlighter-rouge">JWT</code>에 사용될 <code class="highlighter-rouge">서비스 어카운트</code>를 생성하도록하자.</p>
+
+<ol>
+  <li>
+    <p><a href="https://console.developers.google.com/apis">구글 개발자 콘솔 API 관리자</a>에 접속한 후 <code class="highlighter-rouge">사용자 인증 정보</code> 탭으로 이동한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">사용자 인증 정보 - 새 사용자 인증 정보</code> 버튼을 클릭하고 <code class="highlighter-rouge">서비스 계정 키</code>를 선택한다.<br />
+ <img src="/images/serviceaccount1.png" alt="서비스 계정 키 생성" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">새 서비스 계정</code>을 선택하고 <code class="highlighter-rouge">이름</code>을 입력한 후 <code class="highlighter-rouge">생성</code>버튼을 클릭한다.
+ <img src="/images/serviceaccount2.png" alt="서비스 계정 키 생성 완료" /></p>
+  </li>
+</ol>
+
+<p>그럼 자연히 파일을 하나 다운받게 될 것이다. 아래에서는 이를 <code class="highlighter-rouge">key.json</code>이라고 칭하겠다.</p>
+
+<blockquote>
+  <p>주의 사항 : <code class="highlighter-rouge">p12</code>가 아니라 <code class="highlighter-rouge">json</code>으로 선택해야 정신건강에 이로우며 완료 후 다운받은 json 파일은 하나뿐이라서 잃어버리면 안된다!!!!</p>
+</blockquote>
+
+<p><a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>과는 별도의 웹 서비스로 제작하기위해 <a href="http://totuworld.github.io/2016/02/10/google-oauth/#express---">Express 프로젝트 기초 작업</a>을 진행한다.</p>
+
+<h3 id="section-1">기능 제작</h3>
+
+<p><code class="highlighter-rouge">key.json</code> 파일을 사용하기 위해 프로젝트 root 폴더에 위치시킨다. 그리고 <code class="highlighter-rouge">routes/index.js</code>파일에 다음 내용을 추가한다.</p>
+
+<script src="https://gist.github.com/totuworld/3cff7e34ed3750571650.js?file=function.js"> </script>
+
+<p>1~2 번째 줄 : key파일의 위치를 저장하는 변수와 access_token을 저장할 변수를 추가했다.</p>
+
+<p>9 번째 줄 : <code class="highlighter-rouge">access_token</code>이 유효한지 체크하는 메서드이다.</p>
+
+<p>27 번째 줄 : 가장 핵심 부분이다. Node.js에서 사용가능한 google api 클라이언트를 활용하여 JWT를 생성한 후 허가를 획득한다.</p>
+
+<p>51 번째 줄 : 영수증을 검증하는 메서드이다. <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 만든 메서드에 파라미터를 추가한것이 전부이다.</p>
+
+<p>JWT를 활용하여 <code class="highlighter-rouge">access_token</code>을 얻는것은 이처럼 단순하다. 다만 <code class="highlighter-rouge">refresh_token</code>이 지급되지 않으므로 유효시간(1시간)이 지나면 갱신을 하도록만 하면 된다.</p>
+
+<hr />
+
+<h2 id="section-2">영수증 검증</h2>
+
+<p>이제 위에 추가한 메서드를 활용해서 영수증 검증을 하도록 해보자.</p>
+
+<script src="https://gist.github.com/totuworld/3cff7e34ed3750571650.js?file=index.js"> </script>
+
+<p>13 번째 줄 : <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 설명했던 코드이다. 변경된 것은 <code class="highlighter-rouge">ValidationIAB</code> 메서드를 활용하기전에 <code class="highlighter-rouge">access_token</code>이 유효하지 않으면 획득하게 하는 로직을 추가한 것 뿐이다.</p>
+
+<hr />
+
+<h2 id="section-3">맺음말</h2>
+
+<p><code class="highlighter-rouge">JWT</code>를 활용하면 이처럼 간단하게 영수증 검증이 가능하다. 하지만 반드시 유의해야하는 것이 있다. 서비스 계정으로 획득한 <code class="highlighter-rouge">key.json</code>파일을 잘 관리해야한다. 공개된 git 레포지토리에 함께 올려버리면 보안에 큰 위험이 된다. 이를 숙지하자.</p>
+
+<hr />
+
+<p><a href="https://gist.github.com/totuworld/3cff7e34ed3750571650">작성된 전체 코드</a></p>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/02/12/jwt/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

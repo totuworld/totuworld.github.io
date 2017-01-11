@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Azure 웹앱 시작하기</title>
+	
+	
+	<meta content="2016-05-30T09:01:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>Azure 웹앱 시작하기 - totuworld’s tech blog</title>
+<meta property="og:title" content="Azure 웹앱 시작하기" />
+<meta name="description" content="Azure 앱 서비스인 웹앱을 사용하는 기본 사용방법을 익힌다." />
+<meta property="og:description" content="Azure 앱 서비스인 웹앱을 사용하는 기본 사용방법을 익힌다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/05/30/azurewebapp/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/05/30/azurewebapp/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/webapp_tutorial_title_01.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/webapp_tutorial_title_01.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-05-30T09:01:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/06/01/azurewebapp-log/" title="Azure 웹앱 로그 살펴보기" />
+<link rel="prev" href="http://totuworld.github.io/2016/05/09/dockermachine-with-azure/" title="Docker Machine으로 Azure 다루기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Azure 웹앱 시작하기",
+    "image": "http://totuworld.github.io/images/webapp_tutorial_title_01.png",
+    "datePublished": "2016-05-30T09:01:00+09:00",
+    "description": "Azure 앱 서비스인 웹앱을 사용하는 기본 사용방법을 익힌다.",
+    "url": "http://totuworld.github.io/2016/05/30/azurewebapp/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Azure 앱 서비스인 웹앱을 사용하는 기본 사용방법을 익힌다.">
+	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/webapp_tutorial_title_01.png">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Azure 웹앱 시작하기</h1>
+        <p>May 30, 2016 • nodejs azure webapps webservice</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">웹앱 만들기</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">어플리케이션 배포하기</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">배포 원본 설정</a></li>
+      <li><a href="#feat-cli" id="markdown-toc-feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</a></li>
+      <li><a href="#feat-sourcetree" id="markdown-toc-feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">배포 결과 확인</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">참고자료</a></li>
+</ul>
+
+<h2 id="section">들어가는 말</h2>
+
+<p><a href="http://blog.weirdx.io">이상한모임</a>에서 얘기를 하던 중 Azure 앱 서비스 중 하나인 웹앱이 사용하기 편한데 기본 내용이 부족하단 말을 들었다.</p>
+
+<p><img src="/images/devcloud_chiyodad.png" alt="치요아버님say" width="300px" /></p>
+
+<p>동감한다. 웹앱을 사용하기까지 기본 튜토리얼을 얼마나 많이 봤는지 모르겠다.</p>
+
+<p>어색한 단어 선정으로 이해를 어려운데 개선할 수 도 없다.</p>
+
+<blockquote>
+  <p>영문 튜토리얼처럼 github로 고칠 수 있게 해달라!!</p>
+</blockquote>
+
+<p>이런 상황에 누군가 웹앱의 문턱에서 엄한 삽질을 피하길 기대하며 시작해보겠다!</p>
+
+<hr />
+
+<p>웹앱을 시작할 때 크게 2가지만 알면 된다. 첫째는 웹앱을 생성하는 것이고 둘째는 자신의 코드를 배포하는 하는 것이다.</p>
+
+<p>이번에는 이 두가지를 집중하여 익혀보자.</p>
+
+<h2 id="section-1">웹앱 만들기</h2>
+
+<p>웹앱을 생성하는 것은 Azure 포털을 통한 방법과 Azure CLI를 통한 방법이 있으나 여기서는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.</p>
+
+<blockquote>
+  <p>이미지를 보고 따라하기 힘들다면 아래 비디오를 참고하면 된다.</p>
+</blockquote>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2NANGcI_8iY" frameborder="0" allowfullscreen=""></iframe>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+
+    <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">웹 + 모바일</code>을 선택한다.</p>
+
+    <p><img src="/images/webapp_a02.png" alt="웹+모바일" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">웹앱</code>을 선택한다.</p>
+
+    <p><img src="/images/webapp_a03.png" alt="웹앱" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">앱이름</code>을 입력하고 <code class="highlighter-rouge">리소스 그룹</code>을 선택한다. <code class="highlighter-rouge">만들기</code>를 클릭하면 생성이 시작된다.</p>
+
+    <blockquote>
+      <p>리소스 그룹은 새로 만들어도 된다.</p>
+    </blockquote>
+
+    <p><img src="/images/webapp_a04.png" alt="웹앱입력" /></p>
+  </li>
+</ol>
+
+<p>위 과정이 끝나면 웹앱을 확인할 수 있다.</p>
+
+<p><img src="/images/webapp_a05.png" alt="웹앱확인" /></p>
+
+<p><code class="highlighter-rouge">웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.</p>
+
+<h2 id="section-2">어플리케이션 배포하기</h2>
+
+<p>웹앱이 생성되었으면 이제 소스코드를 배포하여 자신이 원하는 형태로 가공해야한다.</p>
+
+<p>웹앱에 소스코드를 배포하는 것은 ftp를 이용하거나 github의 특정 브랜치와 연결하여 연속 배포가 가능하게도 할 수 있다.</p>
+
+<p>또한 각 웹앱마다 로컬 Git 레포지토리를 생성하고 git을 통해 commit하고 push하여 배포할 수 있다.</p>
+
+<p>이번에는 git을 활용할 수 있는 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
+
+<h3 id="section-3">배포 원본 설정</h3>
+
+<p>말이 조금 이상하게 들리지만 배포 원본은 영문 사이트에서 Deploment Source라는 메뉴이다.</p>
+
+<p>배포 시 소스를 어떤 방식으로 관리할지 결정한다고 보면 된다.</p>
+
+<ol>
+  <li>
+    <p>생성한 웹앱에서 <code class="highlighter-rouge">설정</code>을 클릭한다.</p>
+
+    <p><img src="/images/webapp_a06.png" alt="웹앱설정" /></p>
+  </li>
+  <li>
+    <p>설정 메뉴 중에서 <code class="highlighter-rouge">배포 원본</code>을 클릭한다.</p>
+
+    <p><img src="/images/webapp_a07.png" alt="배포원본" /></p>
+  </li>
+  <li>
+    <p>배포 원본 메뉴에서 <code class="highlighter-rouge">소스 선택</code>클릭한다.</p>
+
+    <p><img src="/images/webapp_a08.png" alt="소스선택" /></p>
+  </li>
+  <li>
+    <p>원본 선택 메뉴에서 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 선택한다.</p>
+
+    <p><img src="/images/webapp_a09.png" alt="로컬Git레포지토리" /></p>
+  </li>
+  <li>
+    <p>선택이 완료되었으니 <code class="highlighter-rouge">확인</code>을 클릭하여 완료한다.</p>
+
+    <p><img src="/images/webapp_a10.png" alt="확인" /></p>
+  </li>
+</ol>
+
+<p>설정이 끝나면 아래처럼 웹앱 메인 화면에서 <code class="highlighter-rouge">Git 복제 URL</code>을 확인할 수 있다.</p>
+
+<p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
+
+<h3 id="feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</h3>
+
+<p>Azure 웹앱을 생성했고 배포하는 방식도 결정했다. 이제 Git을 통한 배포를 확인해보자.</p>
+
+<p>먼저 커맨드 라인 인터페이스(Command Line Interface)로 하는 방법이다.</p>
+
+<blockquote>
+  <p>CLI가 익숙치않다면 다음 단계로 건너뛴다. <a href="#feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a>)</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>CLI 창(OSX의 터미널이나 Windows 10의 bash)을 켜고 아래 명령을 순서대로 입력한다.</p>
+
+    <script src="https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=downloadapp"> </script>
+  </li>
+  <li>
+    <p>Azure 포털에서 웹앱을 선택하고 <code class="highlighter-rouge">Git 복제 URL</code>를 클릭하여 복사한다.</p>
+
+    <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
+  </li>
+  <li>
+    <p>아래 명령을 CLI에 입력한다. 단, <code class="highlighter-rouge">[웹앱 git 주소]</code>라고 써진 부분은 반드시 자신의 주소로 치환해야한다.</p>
+
+    <blockquote>
+      <p>AzureWebAppsTutorial-0.0.1 폴더 안에서 입력해야한다.</p>
+    </blockquote>
+
+    <script src="https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=addgitremote"> </script>
+  </li>
+</ol>
+
+<p>위 코드는 git 으로 <code class="highlighter-rouge">AzureWebAppsTutorial-0.0.1</code>폴더를 관리할 수 있도록 한 뒤 <code class="highlighter-rouge">azure</code>란 이름으로 remote를 등록한 것이다.</p>
+
+<p>그리고 commit을 한 뒤 <code class="highlighter-rouge">azure</code> 리모트로 push하여 코드를 반영 시킨 것이다.</p>
+
+<p>실제로 push하면 아래와 같은 로그가 출력된다.</p>
+
+<script src="https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=deploylog"> </script>
+
+<blockquote>
+  <p>CLI로 위 과정을 마쳤다면 다음 단계는 건너뛴다.</p>
+</blockquote>
+
+<h3 id="feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
+
+<p>CLI가 익숙치않다면 웹 브라우저와 <a href="https://www.sourcetreeapp.com/">SourceTree</a>나 <a href="https://www.git-tower.com/">Tower</a>등의 프로그램을 활용해서 처리하는 방법도 있다.</p>
+
+<blockquote>
+  <p>여기서는 OSX에서 구동되는 SourceTree로 설명한다(Windows에서는 메뉴 위치등이 다를 수 있다).</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p><a href="https://www.sourcetreeapp.com/">SourceTree</a>를 설치한다.</p>
+  </li>
+  <li>
+    <p>아래 링크를 클릭하여 소스코드를 다운받는다.</p>
+
+    <p><a href="https://github.com/totuworld/AzureWebAppsTutorial/archive/v0.0.1.zip">AzureWebAppsTutorial-0.0.1 링크</a></p>
+  </li>
+  <li>
+    <p>압축을 해제한다.</p>
+  </li>
+  <li>
+    <p>SourceTree를 실행하여 <code class="highlighter-rouge">New Repository</code>클릭한 뒤 <code class="highlighter-rouge">Add exist local repository</code> 메뉴를 선택하낟.</p>
+
+    <blockquote>
+      <p>Windows에서는 File - Clone / New 선택 후 나오는 창에서 <code class="highlighter-rouge">Add Working Copy</code>탭으로 이동한다.</p>
+    </blockquote>
+
+    <p><img src="/images/webapp_a12.png" alt="NewRepository" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Destination Path</code>에 압축해제한 어플리케이션 폴더를 선택한 후 <code class="highlighter-rouge">Create</code>를 클릭한다.</p>
+
+    <blockquote>
+      <p>Windows에서는 Working Copy Path가 같은 역할을 한다.</p>
+    </blockquote>
+
+    <p><img src="/images/webapp_a13.png" alt="로컬레포지토리추가" /></p>
+  </li>
+  <li>
+    <p>추가된 레포지토리를 선택한다.</p>
+
+    <p><img src="/images/webapp_a14.png" alt="레포지토리열기" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Settings</code>를 클릭한다.</p>
+
+    <p><img src="/images/webapp_a15.png" alt="설정" /></p>
+  </li>
+  <li>
+    <p>Azure 포털에서 웹앱을 선택하고 <code class="highlighter-rouge">Git 복제 URL</code>를 클릭하여 복사한다.</p>
+
+    <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
+  </li>
+  <li>
+    <p>SourceTree로 돌아와 <code class="highlighter-rouge">Remote Name</code>을 azure로 입력하고 <code class="highlighter-rouge">URL</code>에 복사한 주소를 붙여넣고 <code class="highlighter-rouge">OK</code>를 클릭한다.</p>
+
+    <p><img src="/images/webapp_a16.png" alt="AddAzureRemote" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">File Status</code>탭에서 <code class="highlighter-rouge">Staged files</code>를 클릭한 뒤 commit 메시지를 <code class="highlighter-rouge">init</code>으로 입력하고 <code class="highlighter-rouge">Push changes immdiatly to azure/master</code>옵션을 켜고 <code class="highlighter-rouge">Commit</code>한다.</p>
+
+    <p><img src="/images/webapp_a17.png" alt="Commit" /></p>
+  </li>
+  <li>
+    <p>Push 메시지에 아래와 같은 로그가 출력되는 것을 확인할 수 있다.</p>
+
+    <p><img src="/images/webapp_a18.png" alt="CommitLog" /></p>
+  </li>
+</ol>
+
+<h3 id="section-4">배포 결과 확인</h3>
+
+<p>배포가 완료되었으니 정상 동작하는지 결과를 확인해보자.</p>
+
+<p>아래 그림처럼 Azure 포털에서 웹앱의 URL을 클릭한다.</p>
+
+<p><img src="/images/webapp_a19.png" alt="ClickURL" /></p>
+
+<p>웹 브라우저에 아래와 같은 결과가 표시된다.</p>
+
+<p><img src="/images/webapp_a20.png" alt="WebApp결과" /></p>
+
+<h2 id="section-5">맺음말</h2>
+
+<p>보는 바와 같이 Azure 웹앱을 사용하는데는 배포 설정이 주요하다.</p>
+
+<p>배포 설정까지 마무리되면 commit하고 push만해도 계속 웹앱이 업데이되기 되니 편리하다.</p>
+
+<p>다음에는 배포한 웹앱의 로그를 확인하는 방법을 다루도록 하겠다.</p>
+
+<hr />
+
+<h2 id="section-6">참고자료</h2>
+
+<ul>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/app-service-web-nodejs-get-started/">Azure 앱 서비스에서 Node.js 웹앱 시작</a></li>
+</ul>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/05/30/azurewebapp/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

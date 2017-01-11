@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>이세계에 진입한 서버 개발 - 2</title>
+	
+	
+	<meta content="2016-12-29T09:00:01+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>이세계에 진입한 서버 개발 - 2 - totuworld’s tech blog</title>
+<meta property="og:title" content="이세계에 진입한 서버 개발 - 2" />
+<meta name="description" content="SQL 데이터베이스와 환경설정" />
+<meta property="og:description" content="SQL 데이터베이스와 환경설정" />
+<link rel="canonical" href="http://totuworld.github.io/2016/12/29/azureandunity-02/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/12/29/azureandunity-02/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/rvwendy_tutorial_02.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_tutorial_02.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-29T09:00:01+09:00" />
+<link rel="next" href="http://totuworld.github.io/2017/01/04/wendynotification/" title="Wendy 프로젝트 진행사항 1" />
+<link rel="prev" href="http://totuworld.github.io/2016/12/21/azureandunity-01/" title="이세계에 진입한 서버 개발 - 1" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "이세계에 진입한 서버 개발 - 2",
+    "image": "http://totuworld.github.io/images/rvwendy_tutorial_02.png",
+    "datePublished": "2016-12-29T09:00:01+09:00",
+    "description": "SQL 데이터베이스와 환경설정",
+    "url": "http://totuworld.github.io/2016/12/29/azureandunity-02/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="SQL 데이터베이스와 환경설정">
+	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_tutorial_02.png">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>이세계에 진입한 서버 개발 - 2</h1>
+        <p>Dec 29, 2016 • nodejs azure webapps webservice</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">프로그램 설치</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">모듈 설치</a>        <ul>
+          <li><a href="#section-3" id="markdown-toc-section-3">패키지 매니저 설치</a></li>
+          <li><a href="#section-4" id="markdown-toc-section-4">진짜! 모듈 설치</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">데이터베이스</a>    <ul>
+      <li><a href="#section-6" id="markdown-toc-section-6">관계형 데이터베이스</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">데이터 베이스 활용하기</a>    <ul>
+      <li><a href="#sql--" id="markdown-toc-sql--">SQL 데이터베이스 생성</a></li>
+      <li><a href="#sql---1" id="markdown-toc-sql---1">SQL 데이터베이스 구조</a></li>
+      <li><a href="#sql---" id="markdown-toc-sql---">SQL 데이터베이스 방화벽 설정</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-8" id="markdown-toc-section-8">잠깐 정리</a></li>
+  <li><a href="#section-9" id="markdown-toc-section-9">폴더 추가</a></li>
+  <li><a href="#orm-" id="markdown-toc-orm-">ORM 설정</a>    <ul>
+      <li><a href="#section-10" id="markdown-toc-section-10">데이터베이스 접속 환경 추가</a></li>
+      <li><a href="#modelsindexjs--" id="markdown-toc-modelsindexjs--">models/index.js 파일 추가</a></li>
+      <li><a href="#serverjs--" id="markdown-toc-serverjs--">server.js 파일 수정</a></li>
+    </ul>
+  </li>
+  <li><a href="#vs-code---" id="markdown-toc-vs-code---">vs code 개발 환경 설정</a></li>
+  <li><a href="#azure----" id="markdown-toc-azure----">Azure 웹앱 환경 변수 추가</a></li>
+  <li><a href="#section-11" id="markdown-toc-section-11">맺는 말</a></li>
+</ul>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w8OZhTZy3d8" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="section">들어가는 말</h2>
+<p>첫 시간에 맛보기로 Azure 웹앱을 생성하고 배포까지 했다.
+오늘은 소스코드를 작성하기 앞서 필요한 각종 설치, 설정을 한다.</p>
+
+<p>다음 시간부터 필요한 SQL 데이터베이스를 생성하고 서버와 연결하는 작업까지 모두 진행한다.</p>
+
+<blockquote>
+  <p>노잼 시간은 계속된다.</p>
+</blockquote>
+
+<h2 id="section-1">프로그램 설치</h2>
+<p>본격적인 프로그래밍에 앞서 사용할 프로그램과 에디터를 설치해야한다.</p>
+
+<p>아래 링크에서 각각 필요한 프로그램을 다운받아서 설치한다.</p>
+
+<ul>
+  <li><a href="https://nodejs.org/ko/download/">Node.js v6.x</a></li>
+  <li><a href="https://code.visualstudio.com">VisualStudio Code</a></li>
+</ul>
+
+<blockquote>
+  <p>VisualStudio Code는 이하에서 vs code로 표현한다.</p>
+</blockquote>
+
+<h3 id="section-2">모듈 설치</h3>
+<p>지난 시간에 소스코드를 배포할 때 많은 모듈이 Azure 웹앱에 추가되는 것이 기억나는가?</p>
+
+<p>이는 로컬 개발 환경에서도 반드시 필요한 단계이나 지난 시간에는 체험을 위주로 진행했기때문에 건너뛰었다.</p>
+
+<p><code class="highlighter-rouge">yarn</code>이란 패키지 매니저를 통해 설치를 진행한다.</p>
+
+<h4 id="section-3">패키지 매니저 설치</h4>
+<p>필요한 모듈을 설치하기 앞서 패키지 매니저를 설치해야한다.</p>
+
+<ol>
+  <li>
+    <p>터미널을 실행한다.</p>
+
+    <blockquote>
+      <p>windows는 <code class="highlighter-rouge">cmd</code> 혹은 <code class="highlighter-rouge">명령 프롬프터</code>를 실행하면 된다.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>아래 명령으로 yarn을 설치한다.</p>
+
+    <blockquote>
+      <p>터미널과 관련된 명령을 나타날 때 <code class="highlighter-rouge">$</code> 표시는 터미널에서 입력한다는 뜻이다.</p>
+    </blockquote>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ npm install yarn -g
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h4 id="section-4">진짜! 모듈 설치</h4>
+<p>yarn이 설치되었으니 프로젝트에 필요한 모듈을 설치해보자.</p>
+
+<ol>
+  <li>
+    <p>터미널을 통해 지난 시간에 다운받은 소스코드가 있는 폴더로 이동한다.</p>
+
+    <blockquote>
+      <p>windows는 파일 탐색기로 해당 폴더를 선택한 뒤 <code class="highlighter-rouge">shift + 마우스 우클릭</code>하여 <code class="highlighter-rouge">여기서 명령창 열기</code>를 실행하면 편리하다.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>아래 명령을 입력하여 모듈을 설치한다.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ yarn install
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="section-5">데이터베이스</h2>
+<p>인터넷 상에서 해당 서비스가 어떤 정보를 기반으로 브라우저에 결과를 출력할 때 정보는 어디에 어떻게 저장될까?
+예전에 웹 페이지를 만들어봤다면 정보도 직접 기재하는 경우가 있었지만 같은 형식의 페이지를 데이터 변경만 변경해서 적용하기에는 맞지 않다.</p>
+
+<p>이런 문제를 해결할 때 데이터베이스에 정보를 저장하여 사용하는 것이 개발에 용이하다.</p>
+
+<p>이제부터 어떻게 정보를 저장하고 사용하는지 알아보자.</p>
+
+<h3 id="section-6">관계형 데이터베이스</h3>
+<p>데이터베이스는 데이터를 모아놓는 것이다.
+어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 <code class="highlighter-rouge">관계형 데이터베이스</code>를 사용할 것이다.</p>
+
+<p>그럼 관계형 데이터베이스는 무엇일까?</p>
+
+<p>간단히 설명하면 관계형 데이터베이스는 <code class="highlighter-rouge">엑셀</code> 화면을 떠올리면 된다.</p>
+
+<p><img src="/images/rvwendy02_01.png" alt="관계형데이터베이스" /></p>
+
+<p><code class="highlighter-rouge">행</code>과 <code class="highlighter-rouge">열</code>로 구분된다.</p>
+
+<h2 id="section-7">데이터 베이스 활용하기</h2>
+<p>Azure에서 활용가능한 관계형 데이터베이스는 다양하지만 우리는 SQL Database를 활용하도록한다.</p>
+
+<h3 id="sql--">SQL 데이터베이스 생성</h3>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+
+    <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">SQL Database</code>를 검색한다.</p>
+
+    <p><img src="/images/webapp_c01.png" alt="검색" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">SQL Database</code>를 선택한다.</p>
+
+    <p><img src="/images/webapp_c02.png" alt="선택" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">데이터베이스 이름</code>을 입력한다. 리소스그룹은 웹앱과 같은 것을 선택한다.</p>
+
+    <p><img src="/images/rvwendy02_02.jpg" alt="DB명입력" /></p>
+  </li>
+  <li>
+    <p>SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 <code class="highlighter-rouge">서버</code>를 클릭하여 <code class="highlighter-rouge">새 서버 만들기</code>를 선택한다.</p>
+
+    <p>이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.</p>
+
+    <p><img src="/images/webapp_c04.png" alt="서버" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">서버 이름</code>, <code class="highlighter-rouge">서버 관리자 로그인</code>, <code class="highlighter-rouge">암호</code>를 입력하고 <code class="highlighter-rouge">선택</code>을 클릭한다.
+ &gt; 관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.</p>
+
+    <p><img src="/images/webapp_c05.png" alt="새서버" /></p>
+  </li>
+  <li>
+    <p>생성된 서버를 선택하고 <code class="highlighter-rouge">만들기</code>를 클릭하여 SQL 데이터베이스를 생성한다.</p>
+
+    <p><img src="/images/rvwendy02_03.jpg" alt="DB명입력" /></p>
+  </li>
+</ol>
+
+<p>배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.</p>
+
+<h3 id="sql---1">SQL 데이터베이스 구조</h3>
+
+<p>SQL 데이터베이스 생성과정을 보면 <code class="highlighter-rouge">서버</code>를 만들고 <code class="highlighter-rouge">데이터베이스 이름</code>을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.</p>
+
+<blockquote>
+  <p>쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.</p>
+</blockquote>
+
+<p><img src="/images/document_ cabinet.png" alt="서류함서류철" /></p>
+
+<p>이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.</p>
+
+<h3 id="sql---">SQL 데이터베이스 방화벽 설정</h3>
+
+<p>Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어 외부 접근을 차단한다.</p>
+
+<p>로컬 개발 환경(A.K.A. 내 컴퓨터)에서 테스트하기 위해 반드시 이 과정을 진행해야한다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 <code class="highlighter-rouge">서버 방화벽 설정</code>이란 메뉴가 보인다.</p>
+
+    <p><img src="/images/webapp_c10.png" alt="서버방화벽" /></p>
+  </li>
+  <li>
+    <p>접속한 환경의 IP를 확인한 뒤 IP를 등록하고 <code class="highlighter-rouge">저장</code> 클릭하여 완료한다.</p>
+
+    <p><img src="/images/rvwendy02_04.jpg" alt="IP등록" /></p>
+  </li>
+</ol>
+
+<h2 id="section-8">잠깐 정리</h2>
+<p>지금까지 무엇을 했는지 간단히 정리해보자.</p>
+
+<p><img src="/images/rvwendy02_d01.png" alt="웹앱과 SQL데이터베이스" width="500px" /></p>
+
+<p>서버 로직을 수행하는 웹앱을 지난 시간에 생성했다. 그리고 이번 시간에 데이터를 저장할 SQL데이터베이스를 생성했다.</p>
+
+<p>이제는 웹앱과 SQL데이터베이스를 연결한 뒤 사용자의 요청을 처리하면 된다.</p>
+
+<h2 id="section-9">폴더 추가</h2>
+<p>프로그래밍을 시작하기 전에 필요한 폴더를 몇개 생성하도록 하겠다. 지난 시간에 압축을 해제한 소스코드를 vs code로 열어보자.</p>
+
+<blockquote>
+  <p>vs code 실행하고 <code class="highlighter-rouge">file</code> - <code class="highlighter-rouge">open</code> 선택해서 압축 해제한 폴더를 선택하면 된다.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">View Bar</code>에서 <code class="highlighter-rouge">Explorer</code>를 선택한다.
+ &gt; 기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.</p>
+  </li>
+  <li>
+    <p>빈 공간을 클릭한 뒤 <code class="highlighter-rouge">New Folder</code>버튼을 클릭하여 폴더를 생성한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">config</code>라고 입력한다.</p>
+  </li>
+</ol>
+
+<p><img src="/images/rvwendy02_05.jpg" alt="폴더생성" /></p>
+
+<p>위 과정을 반복해서 <code class="highlighter-rouge">models</code>, <code class="highlighter-rouge">utils</code> 폴더를 추가한다.</p>
+
+<h2 id="orm-">ORM 설정</h2>
+<p>관계형 데이터베이스는 SQL로 데이터를 관리할 수 있다. 그런데 이게 또 새로운 문법을 배우는 셈이 되고 데이터를 가공해서 프로그래밍할 때 불편하다.</p>
+
+<p>이런 단점을 극복하기 위해 ORM(Object-relational mapping)을 사용한다.</p>
+
+<p>ORM에게 데이터 가공을 부탁하면 SQL로 번역해서 우리가 지시한 일을 처리해준다.</p>
+
+<blockquote>
+  <p>굿 보이</p>
+</blockquote>
+
+<h3 id="section-10">데이터베이스 접속 환경 추가</h3>
+<p>서버가 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.</p>
+
+<blockquote>
+  <p>이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 <code class="highlighter-rouge">아이디</code>와 <code class="highlighter-rouge">비밀번호</code>를 입력하는 것과 같은 절차다.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>vs code에서 <code class="highlighter-rouge">config</code>폴더를 선택하고 <code class="highlighter-rouge">New File</code>을 클릭한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">config.json</code>이라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
+
+    <p><img src="/images/rvwendy02_06.jpg" alt="config.json생성" /></p>
+  </li>
+  <li>
+    <p>아래 소스코드를 입력한다.</p>
+  </li>
+</ol>
+
+<script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=config.json"> </script>
+
+<ul>
+  <li>2, 13번 줄 : production과 development로 개발 환경을 분리했다. Azure 웹앱은 기본이 <code class="highlighter-rouge">production</code>환경이다.</li>
+  <li>3 번 줄 : 데이터베이스 서버 주소지를 입력하면 된다. 앞서 생성한 SQL 데이터베이스 주소가 여기에 입력된다.</li>
+  <li>4 번 줄 : 데이터베이스 서버 주소지에 접속할 때 사용되는 포트번호이다.</li>
+  <li>5 번 줄 : ORM이 접속할 서버가 어떤 형태(MS SQL, MySQL, MariaDB 등)인지 인식시킨다.</li>
+  <li>6, 7 번 줄 : 데이터베이스에 로그인할 때 사용되는 아이디와 비밀번호. 아래에서도 설명하겠지만 <code class="highlighter-rouge">절대</code>로 공개된 레포지토리에 이게 입력된 상태로 배포하면 안된다.</li>
+  <li>8 번 줄 : ORM 설정에 해당하는 부분.</li>
+  <li>10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 <code class="highlighter-rouge">데이터베이스 명</code>을 입력해야한다.</li>
+</ul>
+
+<h3 id="modelsindexjs--">models/index.js 파일 추가</h3>
+
+<p>우리가 사용하는 ORM은 <code class="highlighter-rouge">sequelize.js</code>이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 <code class="highlighter-rouge">models</code>폴더에 <code class="highlighter-rouge">index.js</code>파일을 추가하도록 하겠다.</p>
+
+<ol>
+  <li>
+    <p>vs code에서 <code class="highlighter-rouge">models</code>폴더를 선택하고 <code class="highlighter-rouge">New File</code>을 클릭한다.</p>
+
+    <blockquote>
+      <p>파일을 생성할 때 어느 폴더를 선택하고 있는지에 따라 파일 위치가 변경되니 주의하자.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">index.js</code>라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
+  </li>
+  <li>
+    <p>아래 소스코드를 입력한다.</p>
+  </li>
+</ol>
+
+<script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=index.js"> </script>
+
+<ul>
+  <li>8, 9번 줄 : <code class="highlighter-rouge">NODE_ENV</code>란 환경변수로 어떤 환경에서 실행하는지 읽어서 필요한 설정을 로드한다.</li>
+  <li>13, 14번 줄 : 노출되면 보안에 민감한 username, password를 환경변수로 빼내서 소스코드에 담지 않아도 되도록 조치한 것이다. 이 조치를 통해 아래에서 <code class="highlighter-rouge">dbUsername</code>, <code class="highlighter-rouge">dbPassword</code> 환경변수 설정하는 것을 볼 수 있다.</li>
+</ul>
+
+<p>코드가 매우 길지만 가볍게 설명하자면 <code class="highlighter-rouge">models</code>폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.</p>
+
+<h3 id="serverjs--">server.js 파일 수정</h3>
+<p>우리가 만드는 소스코드는 <code class="highlighter-rouge">server.js</code>파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.</p>
+
+<ol>
+  <li>
+    <p>vs code에서 <code class="highlighter-rouge">server.js</code>파일을 선택한다.</p>
+  </li>
+  <li>
+    <p>server.js에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.</p>
+
+    <ul>
+      <li>찾아야하는 내용</li>
+    </ul>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     <span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ul>
+      <li>추가할 코드</li>
+    </ul>
+
+    <script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server1.js"> </script>
+  </li>
+  <li>
+    <p>server.js에서 아래 내용을 찾아서 아래 코드로 대체한다.</p>
+
+    <ul>
+      <li>찾아야하는 내용</li>
+    </ul>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ul>
+      <li>대체할 코드</li>
+    </ul>
+
+    <script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server2.js"> </script>
+  </li>
+</ol>
+
+<p>앞서 설명한 것처럼 서버가 실행되면 데이터베이스와 연결을 시도하고 완료 메시지를 출력하게 된다.</p>
+
+<h2 id="vs-code---">vs code 개발 환경 설정</h2>
+<p>지난 시간에 Azure 웹앱으로 소스코드를 배포해봤으니 알겠지만 배포 시간이 결코 짧지 않다. 기능 하나 만들고 테스트하려고 매번 배포하며 너무 불편하다.</p>
+
+<p>그러니 개발 중에 바로 기능을 테스트해볼 수 있도록 vs code 개발 환경을 설정해보자.</p>
+
+<ol>
+  <li>
+    <p>vs code의 <code class="highlighter-rouge">View Bar</code>에서 <code class="highlighter-rouge">Debug</code>를 선택한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Open launch.json</code>버튼을 클릭 한 뒤 <code class="highlighter-rouge">Node.js</code> 환경을 선택한다.</p>
+
+    <p><img src="/images/rvwendy02_07.jpg" alt="Node.js설정" /></p>
+  </li>
+  <li>
+    <p>아래처럼 <code class="highlighter-rouge">configurations</code> 노드 부분에 <code class="highlighter-rouge">cwd</code>노드 아래에 환경 변수를 추가한다. 반드시 <code class="highlighter-rouge">cwd</code> 부분에 쉼표(,)를 추가해야한다.</p>
+
+    <ul>
+      <li>찾아야하는 내용</li>
+    </ul>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     "cwd": "${workspaceRoot}"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ul>
+      <li>변경할 코드</li>
+    </ul>
+
+    <blockquote>
+      <p><code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
+    </blockquote>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>    "env": {
+        "NODE_ENV": "development",
+        "DEBUG":"Wendy:server:*",
+        "dbUsername":"username",
+        "dbPassword":"password"
+    }
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>위 변경할 코드 중에서 <code class="highlighter-rouge">NODE_ENV</code>는 <code class="highlighter-rouge">development</code>환경이란 것을 알려주기 위한 것이고 <code class="highlighter-rouge">DEBUG</code>는 실행 중에 나오는 로그를 확인하기 위해 추가한 것이다(필수는 아니다).</p>
+  </li>
+</ol>
+
+<h2 id="azure----">Azure 웹앱 환경 변수 추가</h2>
+<p>앞서 알아본 과정은 로컬 개발 환경에서 데이터베이스에 접속하기 위해 환경 변수를 추가하는 과정이었다.</p>
+
+<p>실제로 서버가 동작할 Azure 웹앱에서는 이런 처리를 어떻게 해야할까?</p>
+
+<p>여기서는 데이터베이스와 관계된 환경 변수 2개 - dbUsername, dbPassword - 를 추가하는 과정을 살펴보겠다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털(https://portal.azure.com)로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p>생성한 웹앱을 선택한 뒤 <code class="highlighter-rouge">응용 프로그램 설정</code> 메뉴를 선택한다.</p>
+
+    <p><img src="/images/rvwendy02_08.jpg" alt="응용 프로그램 설정" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">앱 설정</code> 부분을 찾아서 <code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code> 환경 변수를 등록하고 username과 password를 각각 입력한다.</p>
+
+    <blockquote>
+      <p><code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
+    </blockquote>
+
+    <p><img src="/images/rvwendy02_09.jpg" alt="앱 설정" /></p>
+  </li>
+  <li>
+    <p>모두 입력했으면 <code class="highlighter-rouge">저장</code> 버튼을 클릭하여 설정을 저장한다.</p>
+
+    <p><img src="/images/rvwendy02_10.jpg" alt="앱 설정 저장" /></p>
+  </li>
+</ol>
+
+<h2 id="section-11">맺는 말</h2>
+
+<p>지난 시간에 이어서 생성하고 설치하고 환경 설정하다가 한 강좌가 끝났다.</p>
+
+<blockquote>
+  <p>이게 뭔가하고 자괴감이 들지 않길 바란다 ㅠㅠ</p>
+</blockquote>
+
+<p>다음 시간부터는 드디어 프로그래밍을 할 수 있다.</p>
+
+<p><a href="http://totuworld.github.io/2017/01/12/azureandunity-03/">3강 바로가기</a></p>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/12/29/azureandunity-02/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

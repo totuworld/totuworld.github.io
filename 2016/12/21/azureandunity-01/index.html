@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>이세계에 진입한 서버 개발 - 1</title>
+	
+	
+	<meta content="2016-12-21T09:01:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>이세계에 진입한 서버 개발 - 1 - totuworld’s tech blog</title>
+<meta property="og:title" content="이세계에 진입한 서버 개발 - 1" />
+<meta name="description" content="Azure 웹앱 시작하기" />
+<meta property="og:description" content="Azure 웹앱 시작하기" />
+<link rel="canonical" href="http://totuworld.github.io/2016/12/21/azureandunity-01/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/12/21/azureandunity-01/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/rvwendy_tutorial_01.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_tutorial_01.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-21T09:01:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/12/29/azureandunity-02/" title="이세계에 진입한 서버 개발 - 2" />
+<link rel="prev" href="http://totuworld.github.io/2016/10/26/azurewebbapp-db/" title="Azure 웹앱에서 SQL DB사용하기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "이세계에 진입한 서버 개발 - 1",
+    "image": "http://totuworld.github.io/images/rvwendy_tutorial_01.png",
+    "datePublished": "2016-12-21T09:01:00+09:00",
+    "description": "Azure 웹앱 시작하기",
+    "url": "http://totuworld.github.io/2016/12/21/azureandunity-01/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Azure 웹앱 시작하기">
+	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_tutorial_01.png">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>이세계에 진입한 서버 개발 - 1</h1>
+        <p>Dec 21, 2016 • nodejs azure webapps webservice</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#azure-" id="markdown-toc-azure-">왜 Azure 웹앱인가?</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">처음 요리할 때 요리가 힘든이유?</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</a></li>
+      <li><a href="#azure---" id="markdown-toc-azure---">Azure 웹앱은 준비된 쉐프</a></li>
+    </ul>
+  </li>
+  <li><a href="#azure--" id="markdown-toc-azure--">Azure 웹앱 만들기</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">사전 준비</a></li>
+      <li><a href="#azure---1" id="markdown-toc-azure---1">진짜 Azure 웹앱 만들기</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">소스코드 배포</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">배포 옵션 설정</a></li>
+      <li><a href="#feat-sourcetree" id="markdown-toc-feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">결과 확인</a></li>
+  <li><a href="#section-7" id="markdown-toc-section-7">맺는 말</a></li>
+</ul>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Evwb2jwat6M" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="section">들어가는 말</h2>
+<p>레벨제로 카페에 올라오는 신규 게임 소식만 접해도 소규모로 모바일 게임을 만드는 사람이 얼마나 많은지 알 수 있다.</p>
+
+<p><img src="/images/lvzerogames.png" alt="소규모게임" /></p>
+
+<p>그런데 많은 경우 클라이언트만 제작하고 출시해서 운영에 어려움이 있다. 특히 문제가 되는 것은 크랙된 게임이 유통되어 그나마 있던 수익마저 다른 누군가가 가져가는 것이다.</p>
+
+<p>이런 문제를 해결하려면 출시단계부터 게임 서버를 운영하는 것이다. 하지만 게임 클라이언트 만들기도 바쁜데 언제 할 수 있을까?</p>
+
+<blockquote>
+  <p>소잃기 전에 한번 배우시길 추천한다.</p>
+</blockquote>
+
+<p>막상 배우려고 해도 어디서부터 해야할지 막막할 수 있다.</p>
+
+<p>길잡이라도 할 수 있게 소규모 게임 개발자들을 위한 <code class="highlighter-rouge">Azure 웹앱으로 만드는 게임 서버</code> 강좌를 시작하고자 한다.</p>
+
+<h2 id="azure-">왜 Azure 웹앱인가?</h2>
+<p>요리가 왜 어려운지 고민해봤는가? 결혼 전 계란후라이와 라면밖에 끓이지 못하던 사람이었다.
+아내따라서 뭔가 만들다보니 이제는 가끔 주말 아침 식사를 만들 수 있는 초보가 되었다.
+배우면서 느낀 어려운 점은 이렇다.</p>
+
+<h3 id="section-1">처음 요리할 때 요리가 힘든이유?</h3>
+<p>갖추어야할 장비, 재료가 많다.
+&gt; 아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!</p>
+
+<p>레시피가 있어도 그대로 따라하기가 어렵다. 해본적이 없으니 <code class="highlighter-rouge">데치세요</code> 라고 써있는걸 <code class="highlighter-rouge">풀죽</code>으로 만든다.</p>
+
+<p>이런 점은 프로그래밍도 비슷하다. 알아야할 것이 많고 누군가 방법을 알려줘도 그것을 해석하기 위한 노력이 필요하다.</p>
+
+<blockquote>
+  <p>설령 c나 c++ 수업을 들었다고 원하는걸 뚝딱뚝딱 만들 수 있는 수준일리 없다.</p>
+</blockquote>
+
+<h3 id="section-2">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</h3>
+<p>그런데 쉐프에게 레시피만 전달하면 요리를 받을 수 있게 된다면 어떨까? 안정적인 요리를 늘 먹을 수 있게된다.</p>
+
+<h3 id="azure---">Azure 웹앱은 준비된 쉐프</h3>
+<p>Azure 웹앱은 준비된 쉐프다. 레시피만 전달하면 무쇠 냄비나 스텐리스 프라이팬을 관리해주고 재료도 척척 준비한다.
+해야할 일이 레시피 작성에서 끝나게 된다.</p>
+
+<p>즉, 인프라 관리는 모두 Azure가 담당하니 소스코드만 만들어서 보내면 되는 것이다.</p>
+
+<h2 id="azure--">Azure 웹앱 만들기</h2>
+
+<h3 id="section-3">사전 준비</h3>
+<p>바로 Azure를 활용하고 싶지만 가입은 해야한다. 아래 동영상을 참고해도 좋고 인터넷에 자료를 검색해도 좋다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q380IeIsmPc" frameborder="0" allowfullscreen=""></iframe>
+
+<p>꼭 살아서 다음 단계에서 만나자!</p>
+
+<h3 id="azure---1">진짜 Azure 웹앱 만들기</h3>
+<p>처음으로 우리가 할 일은 쉐프를 섭외하는 일이다.</p>
+
+<p>멋진 전문가처럼 커맨드 라인 인터페이스(CLI)를 켜서 작업하고 싶겠지만 우리는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://portal.azure.com">Azure 포털(https://portal.azure.com)로 접속</a>한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+
+    <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Web App</code>으로 검색하거나 <code class="highlighter-rouge">웹 + 모바일</code>을 선택한 뒤</p>
+
+    <p><img src="/images/webapp_a02.png" alt="웹+모바일" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">웹앱</code>을 선택한다.</p>
+
+    <p><img src="/images/webapp_a03.png" alt="웹앱" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">앱이름</code>을 입력하고 <code class="highlighter-rouge">리소스 그룹</code>을 생성한다. 입력완료 후 <code class="highlighter-rouge">만들기</code>를 클릭하여 생성한다.</p>
+
+    <p><img src="/images/rvwendy01_01.jpg" alt="웹앱입력" /></p>
+  </li>
+</ol>
+
+<p>위 과정이 끝나면 웹앱을 확인할 수 있다.</p>
+
+<p><img src="/images/rvwendy01_02.jpg" alt="웹앱확인" width="500px" /></p>
+
+<p><code class="highlighter-rouge">웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.
+&gt; 그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.</p>
+
+<h2 id="section-4">소스코드 배포</h2>
+<blockquote>
+  <p>와 생성이 뭐이렇게 쉽나? 라고 생각하면 천만다행이지만 쉬운것도 어렵게 보이도록 만드는 것이 장기인만큼 걱정이 살짝된다.</p>
+</blockquote>
+
+<p>웹앱이 생성되었으면 이제 소스코드 - 앞서 예를 든 레시피 - 를 배포하여 자신이 원하는 형태로 가공해야한다.</p>
+
+<p>다양한 방법으로 소스코드를 배포할 수 있지만 여기서는 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
+
+<blockquote>
+  <p>git을 사용하면 ~~상상속에서~~ 핫하고 섹시해보이까 배워두자.</p>
+</blockquote>
+
+<h3 id="section-5">배포 옵션 설정</h3>
+
+<p>말이 조금 이상하게 들리지만 배포 옵션은 영문 사이트에서 Deploment Source라는 메뉴이다.</p>
+
+<p>배포 시 소스코드를 어떤 방식으로 관리할지 정하는 것이다.</p>
+
+<ol>
+  <li>
+    <p>메뉴 중 <code class="highlighter-rouge">배포 옵션</code>을 클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_03.jpg" alt="배포옵션" /></p>
+  </li>
+  <li>
+    <p>배포 옵션 메뉴에서 <code class="highlighter-rouge">소스 선택</code>클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_04.jpg" alt="소스선택" /></p>
+  </li>
+  <li>
+    <p>원본 선택 메뉴에서 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 선택한다.</p>
+
+    <p><img src="/images/rvwendy01_05.jpg" alt="로컬Git레포지토리" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">기본 인증 설정</code>을 클릭한 뒤 배포시 사용할 아이디와 패스워드를 입력한 뒤 <code class="highlighter-rouge">확인</code>을 클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_06_1.jpg" alt="기본 인증 설정1" /></p>
+
+    <p><img src="/images/rvwendy01_06_2.jpg" alt="기본 인증 설정1" /></p>
+  </li>
+  <li>
+    <p>입력이 완료되면 <code class="highlighter-rouge">확인</code>을 클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_07.jpg" alt="확인" /></p>
+  </li>
+</ol>
+
+<p>설정이 끝나면 아래처럼 웹앱 개요 화면에서 <code class="highlighter-rouge">Git 복제 URL</code>을 확인할 수 있다.</p>
+
+<p><img src="/images/rvwendy01_08.jpg" alt="Git복제URL확인" width="500px" /></p>
+
+<h3 id="feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
+
+<p>git을 다룰 때 CLI로 하면 멋지지만 멋을 조금 포기하면 굉장히 편한 방법이 있다. 클릭클릭으로 git을 다룰 수 있는 SourceTree라는 프로그램으로 말이다.</p>
+
+<p>SourceTree를 설치하고 소스코드를 배포하는 방법을 알아보겠다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://www.sourcetreeapp.com/">SourceTree</a>를 설치한다.</p>
+  </li>
+  <li>
+    <p>아래 링크를 클릭하여 소스코드를 다운받는다.</p>
+
+    <p><a href="https://github.com/totuworld/Wendy/archive/0.0.1.zip">Wendy-0.0.1 링크</a></p>
+  </li>
+  <li>
+    <p>압축을 해제한다.</p>
+  </li>
+  <li>
+    <p>SourceTree를 실행하여 <code class="highlighter-rouge">New Repository</code>클릭한 뒤 <code class="highlighter-rouge">Add exist local repository</code> 메뉴를 선택하낟.</p>
+
+    <blockquote>
+      <p>Windows에서는 File - Clone / New 선택 후 나오는 창에서 <code class="highlighter-rouge">Add Working Copy</code>탭으로 이동한다.</p>
+    </blockquote>
+
+    <p><img src="/images/webapp_a12.png" alt="NewRepository" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Destination Path</code>에 압축해제한 어플리케이션 폴더를 선택한 후 <code class="highlighter-rouge">Create</code>를 클릭한다.</p>
+
+    <blockquote>
+      <p>Windows에서는 Working Copy Path가 같은 역할을 한다.</p>
+    </blockquote>
+
+    <p><img src="/images/rvwendy01_09.jpg" alt="로컬레포지토리추가" /></p>
+  </li>
+  <li>
+    <p>추가된 레포지토리를 선택한다.</p>
+
+    <p><img src="/images/rvwendy01_10.jpg" alt="레포지토리열기" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Settings</code>를 클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_11.jpg" alt="설정" /></p>
+  </li>
+  <li>
+    <p>Azure 포털에서 웹앱을 선택하고 <code class="highlighter-rouge">Git 복제 URL</code>를 클릭하여 복사한다.</p>
+
+    <p><img src="/images/rvwendy01_08.jpg" alt="Git복제URL확인" width="500px" /></p>
+  </li>
+  <li>
+    <p>SourceTree로 돌아와 <code class="highlighter-rouge">Remote Name</code>을 azure로 입력하고 <code class="highlighter-rouge">URL</code>에 복사한 주소를 붙여넣고 <code class="highlighter-rouge">OK</code>를 클릭한다.</p>
+
+    <p><img src="/images/rvwendy01_12.jpg" alt="AddAzureRemote" /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">File Status</code>탭에서 <code class="highlighter-rouge">Staged files</code>를 클릭한 뒤 commit 메시지를 <code class="highlighter-rouge">init</code>으로 입력하고 <code class="highlighter-rouge">Push changes immdiatly to azure/master</code>옵션을 켜고 <code class="highlighter-rouge">Commit</code>한다.</p>
+
+    <p><img src="/images/rvwendy01_13.jpg" alt="Commit" /></p>
+  </li>
+  <li>
+    <p>Push 메시지에 아래와 같은 로그가 출력되는 것을 확인할 수 있다.</p>
+
+    <p><img src="/images/rvwendy01_14.jpg" alt="CommitLog" /></p>
+  </li>
+</ol>
+
+<h2 id="section-6">결과 확인</h2>
+
+<p>꽤 오래 걸렸지만 배포가 되었다. 이제 확인해볼 차례다.</p>
+
+<p>아래 그림처럼 Azure 포털에서 웹앱의 URL을 클릭한다.</p>
+
+<p><img src="/images/rvwendy01_15.jpg" alt="ClickURL" /></p>
+
+<p>웹 브라우저에 아래와 같은 결과가 표시된다.</p>
+
+<p><img src="/images/rvwendy01_16.png" alt="WebApp결과" /></p>
+
+<h2 id="section-7">맺는 말</h2>
+
+<p>지금 무슨 일이 일어났는지 어리둥절 할 수 있다. Azure도 생소한데 git에다가 SourceTree 프로그램까지 설치하고 난리난리했으니 그럴 수 있다.</p>
+
+<p>이것도 계속하면 익숙해진다.</p>
+
+<p>꼭 성공해서 다음 강좌를 만나도록하자!</p>
+
+<blockquote>
+  <p>첫 걸음을 걸었으니 이제 반을 지났다 :)</p>
+</blockquote>
+
+<p><a href="http://totuworld.github.io/2016/12/29/azureandunity-02/">2강 바로가기</a></p>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/12/21/azureandunity-01/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>애플 인앱결제 검증 웹 서비스 제작</title>
+	
+	
+	<meta content="2016-03-23T09:01:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>애플 인앱결제 검증 웹 서비스 제작 - totuworld’s tech blog</title>
+<meta property="og:title" content="애플 인앱결제 검증 웹 서비스 제작" />
+<meta name="description" content="Node.js로 애플 인앱결제(IAP) 결제 영수증 검증 웹 서비스 구현" />
+<meta property="og:description" content="Node.js로 애플 인앱결제(IAP) 결제 영수증 검증 웹 서비스 구현" />
+<link rel="canonical" href="http://totuworld.github.io/2016/03/23/ios-validation/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/03/23/ios-validation/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-03-23T09:01:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/04/08/zsh2line/" title="agnoster(oh-my-zsh 테마) 멀티라인으로 사용하기" />
+<link rel="prev" href="http://totuworld.github.io/2016/03/17/letsencrypt/" title="Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "애플 인앱결제 검증 웹 서비스 제작",
+    "datePublished": "2016-03-23T09:01:00+09:00",
+    "description": "Node.js로 애플 인앱결제(IAP) 결제 영수증 검증 웹 서비스 구현",
+    "url": "http://totuworld.github.io/2016/03/23/ios-validation/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Node.js로 애플 인앱결제(IAP) 결제 영수증 검증 웹 서비스 구현">
+	
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>애플 인앱결제 검증 웹 서비스 제작</h1>
+        <p>Mar 23, 2016 • ios iap validation</p>
+      </header>
+      <hr>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">웹 서비스 제작</a>    <ul>
+      <li><a href="#express--" id="markdown-toc-express--">Express 프로젝트 생성</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-2" id="markdown-toc-section-2">결제 영수증 검증 제작</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">사용방법</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">주의 사항</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+</ul>
+
+<h2 id="section">들어가는 말</h2>
+
+<p>아이폰 사용자는 안드로이드보다 탈옥 과정이 복잡하고 업데이트때마다 난리를 쳐야한다. 탈옥이 어려우니 탈옥후에 진행되는 결제 크랙도 적을 줄 알았다.</p>
+
+<p>하지만 <a href="http://drserverdev.japanwest.cloudapp.azure.com:3001">도트레인저스</a> 출시 후 로그를 살펴보니 내가 너무 순진했다.</p>
+
+<p>이런 실수를 막기 위해 <a href="/2016/02/10/google-oauth">구글 인앱 결제 검증 웹 서비스 만들기</a>처럼 애플용 웹 서비스도 제작하는 과정을 살펴보도록 하겠다.</p>
+
+<hr />
+
+<h2 id="section-1">웹 서비스 제작</h2>
+
+<p>애플의 인앱결제 검증은 간단하다. 결제 후 얻은 영수증을 애플이 제공하는 REST API로 송신하여 결과를 받아보면 끝이다.</p>
+
+<h3 id="express--">Express 프로젝트 생성</h3>
+
+<p>초기 작업을 또 진행하지 않는다. 대략의 과정은 <a href="/2016/02/10/google-oauth">구글 인앱 결제 검증 웹 서비스 만들기</a>에서 이미 설명했다.</p>
+
+<p>오늘은 이미 제작된 소스를 가지고 시작하겠다.</p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/totuworld/InAppPurchaseValidationWebService/archive/v0.0.1.zip">InAppPurchaseValidationWebService v0.0.1</a> 파일을 다운로드한 후 압축을 해제한다(이하 압축 해제 폴더를 <code class="highlighter-rouge">inapppurchaseWebService</code>라고 지칭한다).</p>
+  </li>
+  <li>
+    <p>압축해제한 폴더로 이동하여(inapppurchaseWebService 폴더) 필요한 module을 설치한다.</p>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">    <span class="nv">$ </span>npm install
+    </code></pre></figure>
+
+<hr />
+
+<h2 id="section-2">결제 영수증 검증 제작</h2>
+
+<p>이제 본격적으로 검증 서비스를 제작하겠다.</p>
+
+<p>사용할 모듈을 추가한다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>npm install --save <span class="k">in</span>-app-purchase</code></pre></figure>
+
+<p>모듈이 해주는 역할은 두 원격지(<code class="highlighter-rouge">buy.itunes.apple.com</code>와 <code class="highlighter-rouge">sandbox.itunes.apple.com</code>)에 <code class="highlighter-rouge">/verifyReceipt</code> path 영수증을 전송해서 올바른 값인지 확인하는 것이다. 허가 부분이 별도로 존재하지 않아서 몹시 간단하지만 여기서는 모듈로 간단히 처리하도록 한다.</p>
+
+<p>이제 <code class="highlighter-rouge">routes/index.js</code>파일의 10번 줄에 다음 내용을 추가한다.</p>
+
+<script src="https://gist.github.com/totuworld/8687dc2c59d26ca97ae9.js?file=index.js"> </script>
+
+<p>1~12 번째 줄 : 모듈을 사용하기 위해서 불러온 뒤 기본 설정을 진행하는 부분이다.</p>
+
+<p>31~46 번째 줄 : 검증을 진행하는 부분이다.</p>
+
+<p>너무 간단해서 어떻게 표현할 방법이 없다.</p>
+
+<p><img src="https://i.ytimg.com/vi/CaAZ6TCMiTY/hqdefault.jpg" alt="방법이 없다" /></p>
+
+<h3 id="section-3">사용방법</h3>
+
+<p>사용도 간단하다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>node /bin/www</code></pre></figure>
+
+<p>실행한 뒤 <code class="highlighter-rouge">localhost:3000/appleiap/receipt/validation</code> 주소로 <code class="highlighter-rouge">RawReceipt</code>포함하여 POST 방식으로 호출하면 끝이다.</p>
+
+<p>그럼 boolean 값을 얻게된다.</p>
+
+<h3 id="section-4">주의 사항</h3>
+
+<p>한가지 주의 사항이라면 <code class="highlighter-rouge">RawReceipt</code>의 형식이다.</p>
+
+<p>필자는 아래에서 나오는 것처럼 영수증을 String 형태로 파싱해서 사용했다.</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"RawReceipt"</span><span class="p">:</span><span class="s2">"{\"verification-state\":0,\"transaction-receipt\":\"MIISiAYJKoZIh=\",\"product-identifier\":\"yoyo\",\"transaction-identifier\":\"8FXXX\",\"quantity\":1,\"transaction-state\":1,\"error\":\"\"}"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>만약 JSON 형식으로 보낸다면 17번 줄을 다음처럼 변경해야한다.</p>
+
+<figure class="highlight"><pre><code class="language-javacript" data-lang="javacript">{
+    let parseRawRecipt = req.body.RawReceipt;
+}</code></pre></figure>
+
+<hr />
+
+<h2 id="section-5">맺음말</h2>
+
+<p>Apple 인앱결제 확인은 허가 과정이 없다는 이유만으로 매우 간단하다. 그러니 꼭 검증 서버를 마련해서 결제 검증을 진행하기 바란다.</p>
+
+<hr />
+
+<p><a href="https://github.com/totuworld/InAppPurchaseValidationWebService/archive/v0.0.2.zip">완료된 웹 서비스 소스코드</a></p>
+
+      </article>
+      <hr>
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/03/23/ios-validation/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    $(document).ready(function() {
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,2845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>totuworld&#39;s tech blog</title>
+    <description>Game Developer</description>
+    <link>http://totuworld.github.io/</link>
+    <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 12 Jan 2017 07:43:55 +0900</pubDate>
+    <lastBuildDate>Thu, 12 Jan 2017 07:43:55 +0900</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>Wendy 프로젝트 진행사항 1</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;기능 추가 목록&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;작명 및 로고&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;이상한모임 연말정산에서 반드시 올해는 프로젝트 진행 사항을 블로그 등으로 공지할 것을 천명한 바 있다.&lt;/p&gt;
+
+&lt;p&gt;12월부터 프로젝트가 작동 중이라서 첫 달의 진행 사항을 남긴다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
+&lt;p&gt;가장 기본에 해당하는 기기 관리와 사용자 관리가 추가되었다.&lt;/p&gt;
+
+&lt;p&gt;그리고 통화 관리에 기능도 완료되었다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;기능 추가 목록&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;기기 관리&lt;/li&gt;
+  &lt;li&gt;사용자 관리&lt;/li&gt;
+  &lt;li&gt;통화 관리&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;이세계에 진입한 서버 개발&lt;/code&gt;이란 이름으로 2개의 강좌가 제작되었다.&lt;/p&gt;
+
+&lt;p&gt;기초에 해당하는 부분이라서 1주마다 총 2개가 공유되었다.&lt;/p&gt;
+
+&lt;p&gt;하지만 소스코드 제작과 글 작성, 동영상 제작을 생각하면 격주 목요일 1개 강좌 공유를 목표로 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;3강 : 글 작성 완료, 동영상 녹화 예정&lt;/li&gt;
+  &lt;li&gt;4강 : 글 작성 완료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;작명 및 로고&lt;/h2&gt;
+&lt;p&gt;MagmaKick을 진행할 때 설치용 버전으로 MagMaKick CE를 공개할 예정이었다.&lt;/p&gt;
+
+&lt;p&gt;하지만 내 뒷심과 능력 부족으로 MagmaKick이 대차게 실패했다.&lt;/p&gt;
+
+&lt;p&gt;그러다가 다시 시작해보려고 했다.&lt;/p&gt;
+
+&lt;p&gt;그런데 MagmaKick CE로 이름을 쓰기 싫었다.&lt;/p&gt;
+
+&lt;p&gt;덕심을 발휘해 볼겸 매력덩어리 이쁜애인 &lt;a href=&quot;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3%20%EC%9B%AC%EB%94%94&quot;&gt;레드벨벳 웬디&lt;/a&gt;의 이름을 따서 프로젝트 명을 &lt;code class=&quot;highlighter-rouge&quot;&gt;Wendy&lt;/code&gt;로 지었다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;놀랍게도 이름을 변경했더니 작업할 맛이 난다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;로고는 웬디 얼굴을 대문짝만하게 걸고 싶었다. 소속사와 초상권을 생각해서 그녀의 별칭 중 하나인 &lt;code class=&quot;highlighter-rouge&quot;&gt;완라프&lt;/code&gt;에서 착안, 눈사람 로고로 정했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;와 말하고 나니까 되게 좋다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Wanlaf.png&quot; alt=&quot;WendyLogo&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;글만 쓰는게 아니라 동영상 녹화를 하고 후시 녹음으로 마무리하려니까 손이 좀 많이 가는게 아니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 내 맥은 하드디스크가 256GB인데 동영상 작업으로 30GB정도밖에 안남았다.&lt;/p&gt;
+
+&lt;p&gt;무엇보다 편집할 때 스크래치 디스크가 적어서 매우 힘들어한다.&lt;/p&gt;
+
+&lt;p&gt;후시 녹음을 진행하다보니 되도록 새벽 시간에 진행하는데 이렇다보니 목소리가 지 멋대로이고 잠이 덜깨어있다.&lt;/p&gt;
+
+&lt;p&gt;스스로 흑역사를 박제하는 기분이 든다.&lt;/p&gt;
+
+&lt;p&gt;그런데!!! 페이스북에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;좋아요&lt;/code&gt; 하나 볼때마다 힘이나서 다시하게 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;칭찬이 이렇게 무섭다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;여러분들의 힘으로(?) 2월말까지 계획했던 6개 항목에 대한 기능과 강좌가 모두 발행되길 바란다.&lt;/p&gt;
+</description>
+            <pubDate>Wed, 04 Jan 2017 09:00:01 +0900</pubDate>
+            <link>http://totuworld.github.io/2017/01/04/wendynotification/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2017/01/04/wendynotification/</guid>
+            
+            
+            <category>wendy</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>이세계에 진입한 서버 개발 - 2</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;프로그램 설치&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;모듈 설치&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;패키지 매니저 설치&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;진짜! 모듈 설치&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;데이터베이스&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;관계형 데이터베이스&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;데이터 베이스 활용하기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql--&quot; id=&quot;markdown-toc-sql--&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql---1&quot; id=&quot;markdown-toc-sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql---&quot; id=&quot;markdown-toc-sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;잠깐 정리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;폴더 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#orm-&quot; id=&quot;markdown-toc-orm-&quot;&gt;ORM 설정&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;데이터베이스 접속 환경 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#modelsindexjs--&quot; id=&quot;markdown-toc-modelsindexjs--&quot;&gt;models/index.js 파일 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#serverjs--&quot; id=&quot;markdown-toc-serverjs--&quot;&gt;server.js 파일 수정&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vs-code---&quot; id=&quot;markdown-toc-vs-code---&quot;&gt;vs code 개발 환경 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure----&quot; id=&quot;markdown-toc-azure----&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/w8OZhTZy3d8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;첫 시간에 맛보기로 Azure 웹앱을 생성하고 배포까지 했다.
+오늘은 소스코드를 작성하기 앞서 필요한 각종 설치, 설정을 한다.&lt;/p&gt;
+
+&lt;p&gt;다음 시간부터 필요한 SQL 데이터베이스를 생성하고 서버와 연결하는 작업까지 모두 진행한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;노잼 시간은 계속된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;프로그램 설치&lt;/h2&gt;
+&lt;p&gt;본격적인 프로그래밍에 앞서 사용할 프로그램과 에디터를 설치해야한다.&lt;/p&gt;
+
+&lt;p&gt;아래 링크에서 각각 필요한 프로그램을 다운받아서 설치한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nodejs.org/ko/download/&quot;&gt;Node.js v6.x&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com&quot;&gt;VisualStudio Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;VisualStudio Code는 이하에서 vs code로 표현한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;모듈 설치&lt;/h3&gt;
+&lt;p&gt;지난 시간에 소스코드를 배포할 때 많은 모듈이 Azure 웹앱에 추가되는 것이 기억나는가?&lt;/p&gt;
+
+&lt;p&gt;이는 로컬 개발 환경에서도 반드시 필요한 단계이나 지난 시간에는 체험을 위주로 진행했기때문에 건너뛰었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yarn&lt;/code&gt;이란 패키지 매니저를 통해 설치를 진행한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;패키지 매니저 설치&lt;/h4&gt;
+&lt;p&gt;필요한 모듈을 설치하기 앞서 패키지 매니저를 설치해야한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;터미널을 실행한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;windows는 &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd&lt;/code&gt; 혹은 &lt;code class=&quot;highlighter-rouge&quot;&gt;명령 프롬프터&lt;/code&gt;를 실행하면 된다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 명령으로 yarn을 설치한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;터미널과 관련된 명령을 나타날 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; 표시는 터미널에서 입력한다는 뜻이다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; $ npm install yarn -g
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;진짜! 모듈 설치&lt;/h4&gt;
+&lt;p&gt;yarn이 설치되었으니 프로젝트에 필요한 모듈을 설치해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;터미널을 통해 지난 시간에 다운받은 소스코드가 있는 폴더로 이동한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;windows는 파일 탐색기로 해당 폴더를 선택한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;shift + 마우스 우클릭&lt;/code&gt;하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;여기서 명령창 열기&lt;/code&gt;를 실행하면 편리하다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 명령을 입력하여 모듈을 설치한다.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; $ yarn install
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;데이터베이스&lt;/h2&gt;
+&lt;p&gt;인터넷 상에서 해당 서비스가 어떤 정보를 기반으로 브라우저에 결과를 출력할 때 정보는 어디에 어떻게 저장될까?
+예전에 웹 페이지를 만들어봤다면 정보도 직접 기재하는 경우가 있었지만 같은 형식의 페이지를 데이터 변경만 변경해서 적용하기에는 맞지 않다.&lt;/p&gt;
+
+&lt;p&gt;이런 문제를 해결할 때 데이터베이스에 정보를 저장하여 사용하는 것이 개발에 용이하다.&lt;/p&gt;
+
+&lt;p&gt;이제부터 어떻게 정보를 저장하고 사용하는지 알아보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;관계형 데이터베이스&lt;/h3&gt;
+&lt;p&gt;데이터베이스는 데이터를 모아놓는 것이다.
+어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 &lt;code class=&quot;highlighter-rouge&quot;&gt;관계형 데이터베이스&lt;/code&gt;를 사용할 것이다.&lt;/p&gt;
+
+&lt;p&gt;그럼 관계형 데이터베이스는 무엇일까?&lt;/p&gt;
+
+&lt;p&gt;간단히 설명하면 관계형 데이터베이스는 &lt;code class=&quot;highlighter-rouge&quot;&gt;엑셀&lt;/code&gt; 화면을 떠올리면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_01.png&quot; alt=&quot;관계형데이터베이스&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;행&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;열&lt;/code&gt;로 구분된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;데이터 베이스 활용하기&lt;/h2&gt;
+&lt;p&gt;Azure에서 활용가능한 관계형 데이터베이스는 다양하지만 우리는 SQL Database를 활용하도록한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql--&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL Database&lt;/code&gt;를 검색한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c01.png&quot; alt=&quot;검색&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL Database&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c02.png&quot; alt=&quot;선택&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 이름&lt;/code&gt;을 입력한다. 리소스그룹은 웹앱과 같은 것을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_02.jpg&quot; alt=&quot;DB명입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;를 클릭하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;새 서버 만들기&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c04.png&quot; alt=&quot;서버&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;서버 이름&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;서버 관리자 로그인&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;암호&lt;/code&gt;를 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;선택&lt;/code&gt;을 클릭한다.
+ &amp;gt; 관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c05.png&quot; alt=&quot;새서버&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;생성된 서버를 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;만들기&lt;/code&gt;를 클릭하여 SQL 데이터베이스를 생성한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_03.jpg&quot; alt=&quot;DB명입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
+
+&lt;p&gt;SQL 데이터베이스 생성과정을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;를 만들고 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 이름&lt;/code&gt;을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/document_ cabinet.png&quot; alt=&quot;서류함서류철&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
+
+&lt;p&gt;Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어 외부 접근을 차단한다.&lt;/p&gt;
+
+&lt;p&gt;로컬 개발 환경(A.K.A. 내 컴퓨터)에서 테스트하기 위해 반드시 이 과정을 진행해야한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버 방화벽 설정&lt;/code&gt;이란 메뉴가 보인다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c10.png&quot; alt=&quot;서버방화벽&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;접속한 환경의 IP를 확인한 뒤 IP를 등록하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;저장&lt;/code&gt; 클릭하여 완료한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_04.jpg&quot; alt=&quot;IP등록&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;잠깐 정리&lt;/h2&gt;
+&lt;p&gt;지금까지 무엇을 했는지 간단히 정리해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_d01.png&quot; alt=&quot;웹앱과 SQL데이터베이스&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;서버 로직을 수행하는 웹앱을 지난 시간에 생성했다. 그리고 이번 시간에 데이터를 저장할 SQL데이터베이스를 생성했다.&lt;/p&gt;
+
+&lt;p&gt;이제는 웹앱과 SQL데이터베이스를 연결한 뒤 사용자의 요청을 처리하면 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;폴더 추가&lt;/h2&gt;
+&lt;p&gt;프로그래밍을 시작하기 전에 필요한 폴더를 몇개 생성하도록 하겠다. 지난 시간에 압축을 해제한 소스코드를 vs code로 열어보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;vs code 실행하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt; 선택해서 압축 해제한 폴더를 선택하면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;View Bar&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Explorer&lt;/code&gt;를 선택한다.
+ &amp;gt; 기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;빈 공간을 클릭한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;New Folder&lt;/code&gt;버튼을 클릭하여 폴더를 생성한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt;라고 입력한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_05.jpg&quot; alt=&quot;폴더생성&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 과정을 반복해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;utils&lt;/code&gt; 폴더를 추가한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;orm-&quot;&gt;ORM 설정&lt;/h2&gt;
+&lt;p&gt;관계형 데이터베이스는 SQL로 데이터를 관리할 수 있다. 그런데 이게 또 새로운 문법을 배우는 셈이 되고 데이터를 가공해서 프로그래밍할 때 불편하다.&lt;/p&gt;
+
+&lt;p&gt;이런 단점을 극복하기 위해 ORM(Object-relational mapping)을 사용한다.&lt;/p&gt;
+
+&lt;p&gt;ORM에게 데이터 가공을 부탁하면 SQL로 번역해서 우리가 지시한 일을 처리해준다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;굿 보이&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;데이터베이스 접속 환경 추가&lt;/h3&gt;
+&lt;p&gt;서버가 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;아이디&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;비밀번호&lt;/code&gt;를 입력하는 것과 같은 절차다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;vs code에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt;폴더를 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;New File&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;config.json&lt;/code&gt;이라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_06.jpg&quot; alt=&quot;config.json생성&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 소스코드를 입력한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=config.json&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2, 13번 줄 : production과 development로 개발 환경을 분리했다. Azure 웹앱은 기본이 &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;환경이다.&lt;/li&gt;
+  &lt;li&gt;3 번 줄 : 데이터베이스 서버 주소지를 입력하면 된다. 앞서 생성한 SQL 데이터베이스 주소가 여기에 입력된다.&lt;/li&gt;
+  &lt;li&gt;4 번 줄 : 데이터베이스 서버 주소지에 접속할 때 사용되는 포트번호이다.&lt;/li&gt;
+  &lt;li&gt;5 번 줄 : ORM이 접속할 서버가 어떤 형태(MS SQL, MySQL, MariaDB 등)인지 인식시킨다.&lt;/li&gt;
+  &lt;li&gt;6, 7 번 줄 : 데이터베이스에 로그인할 때 사용되는 아이디와 비밀번호. 아래에서도 설명하겠지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;절대&lt;/code&gt;로 공개된 레포지토리에 이게 입력된 상태로 배포하면 안된다.&lt;/li&gt;
+  &lt;li&gt;8 번 줄 : ORM 설정에 해당하는 부분.&lt;/li&gt;
+  &lt;li&gt;10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 명&lt;/code&gt;을 입력해야한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;modelsindexjs--&quot;&gt;models/index.js 파일 추가&lt;/h3&gt;
+
+&lt;p&gt;우리가 사용하는 ORM은 &lt;code class=&quot;highlighter-rouge&quot;&gt;sequelize.js&lt;/code&gt;이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt;폴더에 &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;파일을 추가하도록 하겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;vs code에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt;폴더를 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;New File&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;파일을 생성할 때 어느 폴더를 선택하고 있는지에 따라 파일 위치가 변경되니 주의하자.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 소스코드를 입력한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=index.js&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;8, 9번 줄 : &lt;code class=&quot;highlighter-rouge&quot;&gt;NODE_ENV&lt;/code&gt;란 환경변수로 어떤 환경에서 실행하는지 읽어서 필요한 설정을 로드한다.&lt;/li&gt;
+  &lt;li&gt;13, 14번 줄 : 노출되면 보안에 민감한 username, password를 환경변수로 빼내서 소스코드에 담지 않아도 되도록 조치한 것이다. 이 조치를 통해 아래에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;dbUsername&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;dbPassword&lt;/code&gt; 환경변수 설정하는 것을 볼 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;코드가 매우 길지만 가볍게 설명하자면 &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt;폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;serverjs--&quot;&gt;server.js 파일 수정&lt;/h3&gt;
+&lt;p&gt;우리가 만드는 소스코드는 &lt;code class=&quot;highlighter-rouge&quot;&gt;server.js&lt;/code&gt;파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;vs code에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;server.js&lt;/code&gt;파일을 선택한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;server.js에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;추가할 코드&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server1.js&quot;&gt; &lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;server.js에서 아래 내용을 찾아서 아래 코드로 대체한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;     &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;대체할 코드&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server2.js&quot;&gt; &lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;앞서 설명한 것처럼 서버가 실행되면 데이터베이스와 연결을 시도하고 완료 메시지를 출력하게 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;vs-code---&quot;&gt;vs code 개발 환경 설정&lt;/h2&gt;
+&lt;p&gt;지난 시간에 Azure 웹앱으로 소스코드를 배포해봤으니 알겠지만 배포 시간이 결코 짧지 않다. 기능 하나 만들고 테스트하려고 매번 배포하며 너무 불편하다.&lt;/p&gt;
+
+&lt;p&gt;그러니 개발 중에 바로 기능을 테스트해볼 수 있도록 vs code 개발 환경을 설정해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;vs code의 &lt;code class=&quot;highlighter-rouge&quot;&gt;View Bar&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Debug&lt;/code&gt;를 선택한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Open launch.json&lt;/code&gt;버튼을 클릭 한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;Node.js&lt;/code&gt; 환경을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_07.jpg&quot; alt=&quot;Node.js설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;configurations&lt;/code&gt; 노드 부분에 &lt;code class=&quot;highlighter-rouge&quot;&gt;cwd&lt;/code&gt;노드 아래에 환경 변수를 추가한다. 반드시 &lt;code class=&quot;highlighter-rouge&quot;&gt;cwd&lt;/code&gt; 부분에 쉼표(,)를 추가해야한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;     &quot;cwd&quot;: &quot;${workspaceRoot}&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;변경할 코드&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dbUsername&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;dbPassword&lt;/code&gt;는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &quot;env&quot;: {
+        &quot;NODE_ENV&quot;: &quot;development&quot;,
+        &quot;DEBUG&quot;:&quot;Wendy:server:*&quot;,
+        &quot;dbUsername&quot;:&quot;username&quot;,
+        &quot;dbPassword&quot;:&quot;password&quot;
+    }
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;위 변경할 코드 중에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;NODE_ENV&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;환경이란 것을 알려주기 위한 것이고 &lt;code class=&quot;highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt;는 실행 중에 나오는 로그를 확인하기 위해 추가한 것이다(필수는 아니다).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;azure----&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/h2&gt;
+&lt;p&gt;앞서 알아본 과정은 로컬 개발 환경에서 데이터베이스에 접속하기 위해 환경 변수를 추가하는 과정이었다.&lt;/p&gt;
+
+&lt;p&gt;실제로 서버가 동작할 Azure 웹앱에서는 이런 처리를 어떻게 해야할까?&lt;/p&gt;
+
+&lt;p&gt;여기서는 데이터베이스와 관계된 환경 변수 2개 - dbUsername, dbPassword - 를 추가하는 과정을 살펴보겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털(https://portal.azure.com)로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;생성한 웹앱을 선택한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;응용 프로그램 설정&lt;/code&gt; 메뉴를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_08.jpg&quot; alt=&quot;응용 프로그램 설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱 설정&lt;/code&gt; 부분을 찾아서 &lt;code class=&quot;highlighter-rouge&quot;&gt;dbUsername&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;dbPassword&lt;/code&gt; 환경 변수를 등록하고 username과 password를 각각 입력한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dbUsername&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;dbPassword&lt;/code&gt;는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_09.jpg&quot; alt=&quot;앱 설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;모두 입력했으면 &lt;code class=&quot;highlighter-rouge&quot;&gt;저장&lt;/code&gt; 버튼을 클릭하여 설정을 저장한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_10.jpg&quot; alt=&quot;앱 설정 저장&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-11&quot;&gt;맺는 말&lt;/h2&gt;
+
+&lt;p&gt;지난 시간에 이어서 생성하고 설치하고 환경 설정하다가 한 강좌가 끝났다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이게 뭔가하고 자괴감이 들지 않길 바란다 ㅠㅠ&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;다음 시간부터는 드디어 프로그래밍을 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2017/01/12/azureandunity-03/&quot;&gt;3강 바로가기&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Thu, 29 Dec 2016 09:00:01 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/12/29/azureandunity-02/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/12/29/azureandunity-02/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>이세계에 진입한 서버 개발 - 1</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure-&quot; id=&quot;markdown-toc-azure-&quot;&gt;왜 Azure 웹앱인가?&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#azure---&quot; id=&quot;markdown-toc-azure---&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure--&quot; id=&quot;markdown-toc-azure--&quot;&gt;Azure 웹앱 만들기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;사전 준비&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#azure---1&quot; id=&quot;markdown-toc-azure---1&quot;&gt;진짜 Azure 웹앱 만들기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;소스코드 배포&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;배포 옵션 설정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#feat-sourcetree&quot; id=&quot;markdown-toc-feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;결과 확인&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Evwb2jwat6M&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;레벨제로 카페에 올라오는 신규 게임 소식만 접해도 소규모로 모바일 게임을 만드는 사람이 얼마나 많은지 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/lvzerogames.png&quot; alt=&quot;소규모게임&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그런데 많은 경우 클라이언트만 제작하고 출시해서 운영에 어려움이 있다. 특히 문제가 되는 것은 크랙된 게임이 유통되어 그나마 있던 수익마저 다른 누군가가 가져가는 것이다.&lt;/p&gt;
+
+&lt;p&gt;이런 문제를 해결하려면 출시단계부터 게임 서버를 운영하는 것이다. 하지만 게임 클라이언트 만들기도 바쁜데 언제 할 수 있을까?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;소잃기 전에 한번 배우시길 추천한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;막상 배우려고 해도 어디서부터 해야할지 막막할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;길잡이라도 할 수 있게 소규모 게임 개발자들을 위한 &lt;code class=&quot;highlighter-rouge&quot;&gt;Azure 웹앱으로 만드는 게임 서버&lt;/code&gt; 강좌를 시작하고자 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;azure-&quot;&gt;왜 Azure 웹앱인가?&lt;/h2&gt;
+&lt;p&gt;요리가 왜 어려운지 고민해봤는가? 결혼 전 계란후라이와 라면밖에 끓이지 못하던 사람이었다.
+아내따라서 뭔가 만들다보니 이제는 가끔 주말 아침 식사를 만들 수 있는 초보가 되었다.
+배우면서 느낀 어려운 점은 이렇다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/h3&gt;
+&lt;p&gt;갖추어야할 장비, 재료가 많다.
+&amp;gt; 아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!&lt;/p&gt;
+
+&lt;p&gt;레시피가 있어도 그대로 따라하기가 어렵다. 해본적이 없으니 &lt;code class=&quot;highlighter-rouge&quot;&gt;데치세요&lt;/code&gt; 라고 써있는걸 &lt;code class=&quot;highlighter-rouge&quot;&gt;풀죽&lt;/code&gt;으로 만든다.&lt;/p&gt;
+
+&lt;p&gt;이런 점은 프로그래밍도 비슷하다. 알아야할 것이 많고 누군가 방법을 알려줘도 그것을 해석하기 위한 노력이 필요하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;설령 c나 c++ 수업을 들었다고 원하는걸 뚝딱뚝딱 만들 수 있는 수준일리 없다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/h3&gt;
+&lt;p&gt;그런데 쉐프에게 레시피만 전달하면 요리를 받을 수 있게 된다면 어떨까? 안정적인 요리를 늘 먹을 수 있게된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;azure---&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/h3&gt;
+&lt;p&gt;Azure 웹앱은 준비된 쉐프다. 레시피만 전달하면 무쇠 냄비나 스텐리스 프라이팬을 관리해주고 재료도 척척 준비한다.
+해야할 일이 레시피 작성에서 끝나게 된다.&lt;/p&gt;
+
+&lt;p&gt;즉, 인프라 관리는 모두 Azure가 담당하니 소스코드만 만들어서 보내면 되는 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;azure--&quot;&gt;Azure 웹앱 만들기&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;사전 준비&lt;/h3&gt;
+&lt;p&gt;바로 Azure를 활용하고 싶지만 가입은 해야한다. 아래 동영상을 참고해도 좋고 인터넷에 자료를 검색해도 좋다.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/q380IeIsmPc&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;꼭 살아서 다음 단계에서 만나자!&lt;/p&gt;
+
+&lt;h3 id=&quot;azure---1&quot;&gt;진짜 Azure 웹앱 만들기&lt;/h3&gt;
+&lt;p&gt;처음으로 우리가 할 일은 쉐프를 섭외하는 일이다.&lt;/p&gt;
+
+&lt;p&gt;멋진 전문가처럼 커맨드 라인 인터페이스(CLI)를 켜서 작업하고 싶겠지만 우리는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털(https://portal.azure.com)로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Web App&lt;/code&gt;으로 검색하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;웹 + 모바일&lt;/code&gt;을 선택한 뒤&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a02.png&quot; alt=&quot;웹+모바일&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹앱&lt;/code&gt;을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a03.png&quot; alt=&quot;웹앱&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱이름&lt;/code&gt;을 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;리소스 그룹&lt;/code&gt;을 생성한다. 입력완료 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;만들기&lt;/code&gt;를 클릭하여 생성한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_01.jpg&quot; alt=&quot;웹앱입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위 과정이 끝나면 웹앱을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_02.jpg&quot; alt=&quot;웹앱확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹앱&lt;/code&gt;이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.
+&amp;gt; 그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;소스코드 배포&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;와 생성이 뭐이렇게 쉽나? 라고 생각하면 천만다행이지만 쉬운것도 어렵게 보이도록 만드는 것이 장기인만큼 걱정이 살짝된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;웹앱이 생성되었으면 이제 소스코드 - 앞서 예를 든 레시피 - 를 배포하여 자신이 원하는 형태로 가공해야한다.&lt;/p&gt;
+
+&lt;p&gt;다양한 방법으로 소스코드를 배포할 수 있지만 여기서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;로컬 Git 레포지토리&lt;/code&gt;를 설정하여 배포하는 방법을 설명할 것이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;git을 사용하면 ~~상상속에서~~ 핫하고 섹시해보이까 배워두자.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;배포 옵션 설정&lt;/h3&gt;
+
+&lt;p&gt;말이 조금 이상하게 들리지만 배포 옵션은 영문 사이트에서 Deploment Source라는 메뉴이다.&lt;/p&gt;
+
+&lt;p&gt;배포 시 소스코드를 어떤 방식으로 관리할지 정하는 것이다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;메뉴 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;배포 옵션&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_03.jpg&quot; alt=&quot;배포옵션&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;배포 옵션 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;소스 선택&lt;/code&gt;클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_04.jpg&quot; alt=&quot;소스선택&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;원본 선택 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;로컬 Git 레포지토리&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_05.jpg&quot; alt=&quot;로컬Git레포지토리&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;기본 인증 설정&lt;/code&gt;을 클릭한 뒤 배포시 사용할 아이디와 패스워드를 입력한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;확인&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_06_1.jpg&quot; alt=&quot;기본 인증 설정1&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_06_2.jpg&quot; alt=&quot;기본 인증 설정1&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;입력이 완료되면 &lt;code class=&quot;highlighter-rouge&quot;&gt;확인&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_07.jpg&quot; alt=&quot;확인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;설정이 끝나면 아래처럼 웹앱 개요 화면에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Git 복제 URL&lt;/code&gt;을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_08.jpg&quot; alt=&quot;Git복제URL확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/h3&gt;
+
+&lt;p&gt;git을 다룰 때 CLI로 하면 멋지지만 멋을 조금 포기하면 굉장히 편한 방법이 있다. 클릭클릭으로 git을 다룰 수 있는 SourceTree라는 프로그램으로 말이다.&lt;/p&gt;
+
+&lt;p&gt;SourceTree를 설치하고 소스코드를 배포하는 방법을 알아보겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.sourcetreeapp.com/&quot;&gt;SourceTree&lt;/a&gt;를 설치한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 링크를 클릭하여 소스코드를 다운받는다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.1.zip&quot;&gt;Wendy-0.0.1 링크&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;압축을 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SourceTree를 실행하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;New Repository&lt;/code&gt;클릭한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;Add exist local repository&lt;/code&gt; 메뉴를 선택하낟.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Windows에서는 File - Clone / New 선택 후 나오는 창에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Add Working Copy&lt;/code&gt;탭으로 이동한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a12.png&quot; alt=&quot;NewRepository&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Destination Path&lt;/code&gt;에 압축해제한 어플리케이션 폴더를 선택한 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Windows에서는 Working Copy Path가 같은 역할을 한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_09.jpg&quot; alt=&quot;로컬레포지토리추가&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;추가된 레포지토리를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_10.jpg&quot; alt=&quot;레포지토리열기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Settings&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_11.jpg&quot; alt=&quot;설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Azure 포털에서 웹앱을 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Git 복제 URL&lt;/code&gt;를 클릭하여 복사한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_08.jpg&quot; alt=&quot;Git복제URL확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SourceTree로 돌아와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Remote Name&lt;/code&gt;을 azure로 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;에 복사한 주소를 붙여넣고 &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_12.jpg&quot; alt=&quot;AddAzureRemote&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;File Status&lt;/code&gt;탭에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Staged files&lt;/code&gt;를 클릭한 뒤 commit 메시지를 &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;으로 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Push changes immdiatly to azure/master&lt;/code&gt;옵션을 켜고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Commit&lt;/code&gt;한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_13.jpg&quot; alt=&quot;Commit&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Push 메시지에 아래와 같은 로그가 출력되는 것을 확인할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_14.jpg&quot; alt=&quot;CommitLog&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;결과 확인&lt;/h2&gt;
+
+&lt;p&gt;꽤 오래 걸렸지만 배포가 되었다. 이제 확인해볼 차례다.&lt;/p&gt;
+
+&lt;p&gt;아래 그림처럼 Azure 포털에서 웹앱의 URL을 클릭한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_15.jpg&quot; alt=&quot;ClickURL&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;웹 브라우저에 아래와 같은 결과가 표시된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_16.png&quot; alt=&quot;WebApp결과&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;맺는 말&lt;/h2&gt;
+
+&lt;p&gt;지금 무슨 일이 일어났는지 어리둥절 할 수 있다. Azure도 생소한데 git에다가 SourceTree 프로그램까지 설치하고 난리난리했으니 그럴 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이것도 계속하면 익숙해진다.&lt;/p&gt;
+
+&lt;p&gt;꼭 성공해서 다음 강좌를 만나도록하자!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;첫 걸음을 걸었으니 이제 반을 지났다 :)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;2강 바로가기&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Wed, 21 Dec 2016 09:01:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/12/21/azureandunity-01/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/12/21/azureandunity-01/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Azure 웹앱에서 SQL DB사용하기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;데이터베이스 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql--&quot; id=&quot;markdown-toc-sql--&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql---1&quot; id=&quot;markdown-toc-sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql---&quot; id=&quot;markdown-toc-sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mysql-&quot; id=&quot;markdown-toc-mysql-&quot;&gt;MySQL 생성&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;데이터베이스 사용&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;업데이트된 소스코드 적용하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;설정 변경&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;접속 테스트&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#development--&quot; id=&quot;markdown-toc-development--&quot;&gt;development 환경 테스트&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#devmysql--&quot; id=&quot;markdown-toc-devmysql--&quot;&gt;devMySQL 환경 테스트&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;웹 서비스를 만들면 데이터베이스를 다루게된다.&lt;/p&gt;
+
+&lt;p&gt;이럴 때 MEAN이나 MERN 스택처럼 NoSQL를 활용해도 좋다.&lt;/p&gt;
+
+&lt;p&gt;핫하며 JSON을 그대로 저장할 수 도 있는 NoSQL 데이터베이스를 선택하면 Javascript와 찰떡궁합 매칭이 가능한 이점도 있다.&lt;/p&gt;
+
+&lt;p&gt;그래도 나처럼 배움이 늦은 사람에게는 엑셀 표처럼 보이는 SQL이 편하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;SQL아, 힘내!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;데이터베이스 추가&lt;/h2&gt;
+
+&lt;p&gt;Azure는 SQL 데이터베이스, MySQL, MariaDB, PostgreSQL 등 다양한 데이터베이스를 활용할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NoSQL도 다양한 것을 지원하고 있다. 써드파티가 Azure에서 힘내고 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그 중 SQL 데이터베이스와 MySQL을 활용하는 방법을 다루도록 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql--&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL Database&lt;/code&gt;를 검색한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c01.png&quot; alt=&quot;검색&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL Database&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c02.png&quot; alt=&quot;선택&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 이름&lt;/code&gt;을 입력한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c03.png&quot; alt=&quot;DB명입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;를 클릭하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;새 서버 만들기&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c04.png&quot; alt=&quot;서버&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;서버 이름&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;서버 관리자 로그인&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;암호&lt;/code&gt;를 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;선택&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c05.png&quot; alt=&quot;새서버&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;생성된 서버를 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;만들기&lt;/code&gt;를 클릭하여 SQL 데이터베이스를 생성한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c03_1.png&quot; alt=&quot;만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
+
+&lt;p&gt;SQL 데이터베이스 생성과정을 보면 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버&lt;/code&gt;를 만들고 &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 이름&lt;/code&gt;을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/document_ cabinet.png&quot; alt=&quot;서류함서류철&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
+
+&lt;p&gt;Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어서 외부에서 접근을 차단한다.&lt;/p&gt;
+
+&lt;p&gt;로컬 개발 환경에서 테스트하기 위해 반드시 이 과정을 진행해야한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 &lt;code class=&quot;highlighter-rouge&quot;&gt;서버 방화벽 설정&lt;/code&gt;이란 메뉴가 보인다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c10.png&quot; alt=&quot;서버방화벽&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;접속한 환경의 IP를 확인한 뒤 IP를 등록한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c10_1.png&quot; alt=&quot;IP등록&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;mysql-&quot;&gt;MySQL 생성&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;를 검색한 뒤 원하는 제품을 선택한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;이 글에서는 테스트 용도이므로 20MB지원하는 ClearDB 제품을 선택했다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c06.png&quot; alt=&quot;검색&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 이름&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;위치&lt;/code&gt; 등을 모두 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;가격 정책 계층&lt;/code&gt;을 무료 등급인 수성으로 설정한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c07.png&quot; alt=&quot;정보입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;만들기&lt;/code&gt;를 클릭하여 MySQL 데이터베이스를 생성한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_c07_1.png&quot; alt=&quot;만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;한가지 주의할 점이 있다. &lt;code class=&quot;highlighter-rouge&quot;&gt;데이터베이스 유형&lt;/code&gt;을 공용으로 설정했다면 해당 서비스에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;설정&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;속성&lt;/code&gt;으로 이동해 &lt;code class=&quot;highlighter-rouge&quot;&gt;호스트 이름&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;사용자 이름&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;암호&lt;/code&gt;를 확인해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_c08.png&quot; alt=&quot;정보확인&quot; width=&quot;150px&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;데이터베이스 사용&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;여기서부터는 지난 시간에 다룬 웹앱을 변경하여 설명한다(Node.js + Express.js).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;웹앱이 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;아이디&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;비밀번호&lt;/code&gt;를 입력하는 것과 같은 절차다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_c09.png&quot; alt=&quot;DB연결&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;간단하게 주소, 아이디, 비밀번호만 입력하면면 MSSQL, MySQL, MariaDB 등 DBMS를 가리지않고 사용할 수 있다면 좋겠지만 각 DBMS가 차이가 있다.&lt;/p&gt;
+
+&lt;p&gt;거기다가 DBMS에 어떤 일(검색, 변경, 제거 등)을 시키려면 SQL 문법으로 작성된 명령어를 입력해야한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;SELECT ID, NAME, SALARY FROM CUSTOMERS;
+
+SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;여기서는 MySQL과 MSSQL을 다루므로 각 DBMS 교체 비용을 줄이고 SQL 작성을 건너뛰기위해 ORM을 사용한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;선택한 ORM은 sequelize.js 이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;간결하게 웹앱이 DB를 사용해야하는 예제치고 되게 불필요해보이는 짓이지만 하기로한다. 주르륵&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_c09_1.png&quot; alt=&quot;ORM&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;업데이트된 소스코드 적용하기&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 소스코드를 다운 받아 기존에 웹앱을 설정한 폴더에 덮어쓴다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/AzureWebAppsTutorial/archive/v0.0.2.zip&quot;&gt;AzureWebAppsTutorial-0.0.2 링크&lt;/a&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;기존에 아무런 변경이 없다면 대상 폴더는 &lt;code class=&quot;highlighter-rouge&quot;&gt;AzureWebAppsTutorial-0.0.1&lt;/code&gt;이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AzureWebAppsTutorial-0.0.1&lt;/code&gt; 폴더에서 아래 명령을 입력하여 sequelize, mysql, tedious 등 필요한 모듈을 설치한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&quot;https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=installmodule&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;위 명령으로 package.json 내용중 dependencies에 해당하는 모듈이 모두 설치된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;설정 변경&lt;/h3&gt;
+
+&lt;p&gt;이제 설정을 변경해야한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;config/config.json&lt;/code&gt; 파일을 열어보면 크게 3가지 object가 보인다.&lt;/p&gt;
+
+&lt;p&gt;위에서부터 열거하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;devMySQL&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;필요에따라 더 늘려도되고 변경해도 무관한 내용이다. 여기서는 예를 들어야해서 3가지로 기본 등록한 것이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;각각의 설정값과 역할은 아래 표를 참고하자.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;설정 key&lt;/th&gt;
+      &lt;th&gt;데이터 타입&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;host&lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;접속해야하는 DB주소&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;port&lt;/td&gt;
+      &lt;td&gt;number&lt;/td&gt;
+      &lt;td&gt;DB 접속시 사용되는 port 번호(1433 : MSSQL, 3306 : MySQL, MariaDB)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;username&lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;DB 접속시 사용되는 사용자명(외부로 공개될 프로젝트의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;DBUSERNAME&lt;/code&gt; 등의 환경변수로 관리하길 권한다. )&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;password&lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;DB 접속시 사용되는 비밀번호(외부로 공개될 프로젝트의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;DBPASSWORD&lt;/code&gt; 등의 환경변수로 관리하길 권한다. )&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;dialect&lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;ORM(여기서는 sequelize)가 접속하게되는 DBMS 종류&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;앞서 준비한 DB는 2가지 이다. 하나는 MSSQL과 같은 SQL Database 다른 하나는 MySQL.&lt;/p&gt;
+
+&lt;p&gt;SQL Database에 접근하는 내용은 &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;에 적고 MySQL에 필요한 내용은 &lt;code class=&quot;highlighter-rouge&quot;&gt;devMySQL&lt;/code&gt;에 넣는다.&lt;/p&gt;
+
+&lt;p&gt;MySQL로 예를 들면 대략 이렇다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=devmysql.json&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;그럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;에는 어떤 내용을 넣어야할까?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;은 Azure 웹앱에 소스코드가 적용될 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;NODE_ENV&lt;/code&gt;로 기본 설정되는 환경변수이다.&lt;/p&gt;
+
+&lt;p&gt;그러므로 &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;에 넣은 내용은 Azure 웹앱의 설정이 변경되지 않으면 기본으로 적용되는 설정이 된다.&lt;/p&gt;
+
+&lt;p&gt;여기서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;나 &lt;code class=&quot;highlighter-rouge&quot;&gt;devMySQL&lt;/code&gt;에 넣은 내용을 복사해서 붙여넣어도 무방하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;서비스활 때 이렇게 차이를 두는 이유는 로컬 환경, 배포 전 stage 환경, 배포 환경이 모두 다를때 대응하기 위함이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;접속 테스트&lt;/h3&gt;
+
+&lt;p&gt;자 이제 설정은 모두 끝났다.&lt;/p&gt;
+
+&lt;p&gt;소스코드를 웹앱에 적용하기 전에 잘 작동하는지 확인해보자.&lt;/p&gt;
+
+&lt;h4 id=&quot;development--&quot;&gt;development 환경 테스트&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NODE_ENV&lt;/code&gt;로 &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt; 환경임을 지시하고 server.js 파일을 실행시키면 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;안전을 위해 username과 password를 환경변수로 전달하는 방법까지 함께 한 명령으로 필요에 따라 환경변수를 제거하여 실행한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=runsqldb&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;만약 이러한 로그를 보지 못했다면 대부분의 이유는 Azure SQL 데이터베이스가 방화벽으로 접근을 차단하기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/code&gt; 부분을 보고 설정했는지 체크하도록 한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;devmysql--&quot;&gt;devMySQL 환경 테스트&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;devMySQL&lt;/code&gt;도 거의 비슷하다. 환경변수만 변경하면 된다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=runmysql&quot;&gt; &lt;/script&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;위 과정을 크게 압축하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;DB 설정&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;접속설정&lt;/code&gt;에 불과하다.&lt;/p&gt;
+
+&lt;p&gt;테이블 디자인, 쿼리 최적화, 기본키, 외래키 등 관계형 데이터베이스가 많은 키워드를 쏟아낼 것이다. 이러한 내용은 훌륭한 강의가 많으니 찾아보길 바란다.&lt;/p&gt;
+</description>
+            <pubDate>Wed, 26 Oct 2016 06:00:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/10/26/azurewebbapp-db/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/10/26/azurewebbapp-db/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>디지털 기록의 허망함</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;정말 지키고 싶었던 추억&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;돌에 음각 »»넘사벽»» 종이 »&amp;gt; 하드디스크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;아이를 키우느라 정신없었을 아내가 메시지로 사진 하나를 보내왔다.&lt;/p&gt;
+
+&lt;p&gt;연애 시절 내가 쓴 편지였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/letter.png&quot; alt=&quot;편지&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;지금보면 너무 오글거려서 차마 눈뜨고 볼 수 없는 지경이지만 우리 부부는 그 내용을 가지고 깔깔거리고 웃으며 추억을 회상할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;그 일로 연애하는 2년동안 이벤트가 있으면 한번씩 적어둔 내 일기가 궁금해서 일기앱을 찾았는데 내가 알던 자리에 다른 앱 아이콘이 있었다.&lt;/p&gt;
+
+&lt;p&gt;내가 기억하는 아이콘과 앱이름은 &lt;code class=&quot;highlighter-rouge&quot;&gt;Flava&lt;/code&gt;였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/flava.jpg&quot; alt=&quot;Flava&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그런데 왠 &lt;code class=&quot;highlighter-rouge&quot;&gt;me.time&lt;/code&gt;인가?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/metime.jpeg&quot; alt=&quot;Flava&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 식은땀이 한번 났다.&lt;/p&gt;
+
+&lt;p&gt;그리고 앱을 켠 뒤 정말 몇 초간 먹먹해졌다.&lt;/p&gt;
+
+&lt;p&gt;앱은 생소하 모습으로 변했고 모든 기록이 사라졌다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/h2&gt;
+
+&lt;p&gt;20대 초 내 찌질함은 모두 &lt;code class=&quot;highlighter-rouge&quot;&gt;싸이월드&lt;/code&gt;에 남아있었다. 그리고 DSLR 사진기를 가지던 시점에 블로그가 유행을 타서 그 시절 이후부터 연애가 시작될 무렵까지의 찌질함은 &lt;code class=&quot;highlighter-rouge&quot;&gt;Paran 블로그&lt;/code&gt;에 있었다.&lt;/p&gt;
+
+&lt;p&gt;하지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;Paran&lt;/code&gt;을 운영하던 KTH가 서비스를 중단(2012. 07. 31)하면서 압축 파일 하나로 그동안 블로그에 쌓아둔 사진과 글을 받았다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;당시 다음으로 이전할 수 있게해주었지만 그다지 끌리지 않았다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그리고 지금은 그 파일이 어디있는지 모른다. 이렇게 첫번째 &lt;code class=&quot;highlighter-rouge&quot;&gt;잊혀질 권리&lt;/code&gt;를 행사당하게 되었다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;엄밀히는 압축 파일 관리 소홀로 잃어버린 것…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그리고 시간이 조금 지나 유명무실해진 싸이월드를 스스로 접었다.&lt;/p&gt;
+
+&lt;p&gt;이로써 공개된 찌질감의 크기가 줄어 다행이고 젊은 날 무슨 미친짓을 했는지 알 수 없어 가끔 아쉽고 그렇다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;정말 지키고 싶었던 추억&lt;/h2&gt;
+
+&lt;p&gt;후련함과 아쉬움을 극도로 상쇄시켜주는 것이 마침 시작된 연애였다.&lt;/p&gt;
+
+&lt;p&gt;시간이지나면 많은 것을 잊어버리니까 소중한 사람과 있었던 즐겁고 소소한 일상을 어떤 앱에 가끔 남겼다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;처음에 기록을 남기던 앱이 무엇인지 정확히 기억이 나지 않지만 조금 불편했고 못 생겼었던 것이 생각난다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그러다 &lt;code class=&quot;highlighter-rouge&quot;&gt;Flava&lt;/code&gt;를 알게되고는 내용을 하나하나 복붙하여 기록을 모두 옮겼다.&lt;/p&gt;
+
+&lt;p&gt;그 뒤에도 꾸준히 사용하다보니 연애때도 예전 기록을 꺼내보며 아내와 함께 오글거려 몸서리치던 일이 생기곤 했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Flava&lt;/code&gt;에 기록된 내용은 결혼식날 아내에게 읽어준 편지를 작성할 때도 인용할 얘기를 쉽게 찾을 수 있게해주었었다.&lt;/p&gt;
+
+&lt;p&gt;결혼 뒤에는 미래의 아이가 이 내용을 발견했을 때 세침한 눈을 뜨고 구토하는 모습을 흉내내며 힘들어할 것을 상상하곤 했었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;돌에 음각 »»넘사벽»» 종이 »&amp;gt; 하드디스크&lt;/h2&gt;
+
+&lt;p&gt;기술이 발전했지만 인류가 멸망하면 단 몇년만에 완전 못쓰게되는 것이 디지털 기기라는 얘기를 들었던 기억이 있다.&lt;/p&gt;
+
+&lt;p&gt;그때 과학기술이 이렇게나 발전했지만 여전히 돌에 음각을 하는 기록이 종이, 하드 디스크보다 월등히 오래간다는 얘기도 나왔다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://cfile203.uf.daum.net/image/1713003F5008C1E924B1BA&quot; alt=&quot;광개토왕릉비&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 얘기를 들으면서 멸망하지 않았으니 내 기록은 유효하겠지하며 흘러 넘겼고 돌에 음각을 할만한 명필은 아니니 상관없다고 했다.&lt;/p&gt;
+
+&lt;p&gt;그 때로부터 지금이 얼마나 지났을까?&lt;/p&gt;
+
+&lt;p&gt;6년전 기록조차 글자하나 건질 수 없게 되었다.&lt;/p&gt;
+
+&lt;p&gt;그리고 언젠가 이 블로그의 내용도 읽을 수 없게 될 것이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;malrang 측에 문의를 해놓은 상태지만 리뷰가 아래 상태인걸보면 답이 없는듯하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/review_flava.png&quot; alt=&quot;FlavaReview&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우리는 어떻게 기록을 남겨야하고 어떤 마음가짐으로 서비스를 제작해야하는 것인지 생각해봐야겠다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;서비스 종료되면 다시 할 수 없는 게임… 너무 아쉽다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Flava 개발자분이 계시다면 부디 백업파일 해석방법이라도 알려주세요 ㅠㅠ&lt;/p&gt;
+</description>
+            <pubDate>Wed, 07 Sep 2016 09:01:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/09/07/adiosflava/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/09/07/adiosflava/</guid>
+            
+            
+            <category>note</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Azure 웹앱 로그 살펴보기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;진단 로그 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;로그 다운받기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ftp--&quot; id=&quot;markdown-toc-ftp--&quot;&gt;FTP로 로그 다운받기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#azure-cli-&quot; id=&quot;markdown-toc-azure-cli-&quot;&gt;Azure CLI 로그인&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#azure-cli--&quot; id=&quot;markdown-toc-azure-cli--&quot;&gt;Azure CLI로 로그 다운받기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;실시간 로그 조회하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kudu&quot; id=&quot;markdown-toc-kudu&quot;&gt;기승전 Kudu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;테스트코드를 돌리고 나온 모든 버그를 잡았다.&lt;/p&gt;
+
+&lt;p&gt;하지만 배포 후 버그가 튀어나온다.&lt;/p&gt;
+
+&lt;p&gt;로그가 보고 싶다 :(&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/bug.png&quot; alt=&quot;버그놈&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 도움이 되는 기능이 뭐 없을까?&lt;/p&gt;
+
+&lt;p&gt;Azure 웹앱은 디버그에 도움되는 기본 기능을 제공한다. 그 중 이번에는 로그를 조회하는 방법을 알아보겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;진단 로그 설정&lt;/h2&gt;
+
+&lt;p&gt;웹앱에서 로그를 조회하려면 먼저 로그가 기록되도록 해야한다.&lt;/p&gt;
+
+&lt;p&gt;웹앱을 생성하고 소스코드를 배포했다고 로그가 어딘가에 기록되는 것이 아니다.&lt;/p&gt;
+
+&lt;p&gt;어떤 방식으로 어느 수준의 로그를 축적할지 설정이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;Azure에서 이를 설정하는 메뉴를 &lt;code class=&quot;highlighter-rouge&quot;&gt;진단 로그&lt;/code&gt;(Diagnostics logs)로 부른다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이름만 들어서는 이게 뭔가 싶을 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;설정법은 간단하다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;웹앱을 선택하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;설정&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a06.png&quot; alt=&quot;웹앱설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;기능 아래에 &lt;code class=&quot;highlighter-rouge&quot;&gt;진단 로그&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b01.png&quot; alt=&quot;진단로그&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;여기까지 진행하면 아래와 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;진단 로그&lt;/code&gt; 메뉴가 나타난다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_b02.png&quot; alt=&quot;로그&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;크게 2가지 구역으로 나뉘는데 a 구역은 웹 응용 프로그램(즉 자신의 코드)가 만들어낸(혹은 수행중) 정보를 캡처한다. 이를 파일 시스템으로 저장할지 blob으로 저장할지 결정한다.&lt;/p&gt;
+
+&lt;p&gt;그 중 응용 프로그램 로깅(파일 시스템)은 설정 후 12시간 뒤에 해제된다. 로그를 오래도록 저장하고자하면 blob을 이용하자.&lt;/p&gt;
+
+&lt;p&gt;b 구역은 웹 서버의 로그를 제공하는 옵션이다. 이를테면 &lt;code class=&quot;highlighter-rouge&quot;&gt;자세한 오류 로깅&lt;/code&gt;은 오류 상태를 나타내는 HTTP 상태 코드(400 이상)의 자세한 오류 정보를 기록한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;각 기능별 세부 사항은 &lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/&quot;&gt;Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정&lt;/a&gt;의 설명을 참고바란다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;여기서는 코드에 대한 로그를 살펴볼 예정이므로 아래와 같이 &lt;code class=&quot;highlighter-rouge&quot;&gt;응용 프로그램 로깅(파일 시스템)&lt;/code&gt;만 설정하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;수준&lt;/code&gt;(Level)을 정보로 선택한 뒤 저장한다.&lt;/p&gt;
+
+&lt;p&gt;수준은 총 4가지 분류(오류, 경고, 정보, 세부 정보 표시)로 나뉜다. 수준별로 필터링하여 로그를 저장한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_b03.png&quot; alt=&quot;로그설정&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이로써 진단 로그 설정이 완료되었다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;하!고!싶!다!&lt;/code&gt;고 생각하시면 &lt;a href=&quot;#kudu&quot;&gt;기승전 Kudu&lt;/a&gt;로 넘어가면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;로그 다운받기&lt;/h2&gt;
+
+&lt;p&gt;위 설정을 통해 웹앱이 작동하면서 로그를 쌓고있다. 이를 조회하려면 로그를 다운받거나 실시간으로 스트리밍하면 된다.&lt;/p&gt;
+
+&lt;p&gt;2가지 방법 중 먼저 다운로드 받는 방법을 알아보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;다운로드는 FTP, Azure CLI, PowerShell로 가능하지만 여기서는 FTP, Azure CLI만 커버한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ftp--&quot;&gt;FTP로 로그 다운받기&lt;/h3&gt;
+
+&lt;p&gt;Azure 웹앱은 생성과 함께 ftp로 접근가능하다. 다들 ftp 사용법을 알겠지만 혹시나 하는 마음으로 다뤄본다.&lt;/p&gt;
+
+&lt;ol width=&quot;540px&quot;&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://filezilla-project.org/&quot;&gt;FileZilla&lt;/a&gt;같은 ftp 프로그램을 다운받아 설치한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;여기서는 FileZilla로 설명하겠지만 다들 비슷할 것이다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;웹앱을 선택하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;게시 프로필 가져오기&lt;/code&gt;를 클릭하여 게시 프로필(파일 확장자가 .PublishSettings 인 파일)을 다운받는다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b04.png&quot; alt=&quot;게시 프로필&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;다운받은 게시 프로필을 &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;같은 텍스트 에디터로 확인해보면 XML 형식으로 작성된 파일 내용을 열람할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;그중에서 아래 그림처럼 publishMethod가 ftp인 부분을 살펴보면 ftp 접속 시 사용할 URL, username, password를 확인할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;한가지 유의해야할 점은 URL에서 뒤쪽의 상세경로는 제거하고 입력하는 것이다. 전체경로를 입력하면 소소크드가 동작중인 폴더로 이동하기 때문이다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b05.png&quot; alt=&quot;게시 프로필확인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Quickconnect&lt;/code&gt;클릭하여 접속한다.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;FileZilla 입력창&lt;/th&gt;
+          &lt;th&gt;게시 프로필의 명칭&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Host&lt;/td&gt;
+          &lt;td&gt;publishUrl&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Username&lt;/td&gt;
+          &lt;td&gt;userName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Password&lt;/td&gt;
+          &lt;td&gt;userPWD&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b06.png&quot; alt=&quot;FileZilla 접속&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;FileZilla 우측 Remote site에 폴더 목록이 나타난다. 이 중에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;LogFiles&lt;/code&gt;에 들어가본다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b07.png&quot; alt=&quot;remotesite&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;LogFiles 안에는 여러 폴더가 있을 수 잇다. 그중에서 앞서 진단 로그에서 설정한 응용 프로그램 로깅은 &lt;code class=&quot;highlighter-rouge&quot;&gt;Application&lt;/code&gt;폴더에 저장된다. txt 형식의 파일을 다운받는다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;FileZilla에서 좌측 Local site로 드래그하거나 우클릭하여 Download를 실행하면 파일을 다운받을 수 있다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b08.png&quot; alt=&quot;Application폴더&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;다운 받은 파일을 확인해보면 아래와 비슷한 형식의 내용을 볼 수 있다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=filelog&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 로그 파일의 크기가 점점 커지는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;azure-cli-&quot;&gt;Azure CLI 로그인&lt;/h3&gt;
+
+&lt;p&gt;Azure CLI는 개발, 배포, 관리를 목적으로 제작된 크로스 플랫폼(Windows, Mac, Linux) CLI이다.&lt;/p&gt;
+
+&lt;p&gt;커맨드 라인 인터페이스에 익숙하다면 이 내용이 훨씬 간단할 것이다.&lt;/p&gt;
+
+&lt;p&gt;Azure CLI를 사용하기 앞서 내가 누구인지 증명해야하니 로그인을 시작해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/&quot;&gt;Azure CLI 설치&lt;/a&gt; 문서를 참고해서 Azure CLI를 설치한다.&lt;/p&gt;
+
+    &lt;p&gt;node.js를 활용하고 있지 않다면 설치 관리자를 사용해서 직접 다운받으면 된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;자신이 익숙한 터미널을 열고 다음 명령을 입력하여 Azure CLI에 권한을 획득하도록 한다.&lt;/p&gt;
+
+    &lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=login&quot;&gt; &lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;위 내용처럼 나왔다면 브라우저를 열어 &lt;a href=&quot;https://aka.ms/devicelogin&quot;&gt;https://aka.ms/devicelogin&lt;/a&gt;에 접속한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; 뒤에 9자리 code를 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;계속&lt;/code&gt; 버튼이 나타나면 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b09.png&quot; alt=&quot;AzureCLI로그인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;로그인 창이 나오면 자신의 아이디로 로그인한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b10.png&quot; alt=&quot;AzureCLI로그인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;과정이 완료되면 아래와 같은 메시지가 나온다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_b11.png&quot; alt=&quot;AzureCLI로그인완료&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;브라우저 창을 닫으면 터미널에도 완료메시지가 나타난다&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logindone&quot;&gt; &lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;기능 하나를 사용할 때마다 로그인을 해야하는 것은 아니지만 컴퓨터를 재부팅한 후 Azure CLI를 사용할 일이 발생하면 로그인이 필요하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;azure-cli--&quot;&gt;Azure CLI로 로그 다운받기&lt;/h3&gt;
+
+&lt;p&gt;로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ 부분이 명령어 이다. 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;[웹앱이름]&lt;/code&gt;이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야 결과가 나온다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logdownload&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;결과를 보면 알겠지만 바로 diagnostics.zip 파일이 다운로드 된다. 압축을 해제하면 LogFiles란 폴더가 존재한다. 이 폴더의 구조는 FTP에서 살펴본것과 동일하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;실시간 로그 조회하기&lt;/h2&gt;
+
+&lt;p&gt;앞서 로그를 다운 받는 방법을 알아봤다. 내 경우는 개인 프로젝트라서 그런지 다운받아 로그를 살펴보기보단 어떤 로그가 남는지 실시간으로 출력되는 로그를 살펴보고 문제를 해결하는 경우가 많다.&lt;/p&gt;
+
+&lt;p&gt;웹앱도 스트림 로그를 지원하므로 실시간으로 로그를 조회할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;Visual Studio Application Insights, PowerShell 등으로 가능하지만 여기서는 Azure CLI 내용만 커버하도록 한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;어디까지나 내가 OSX 사용자이며 Visual Studio는 Unity용 MonoDevelop이 만족스럽지 않아 Visual Studio를 사용해본게 전부여서 그런것이다(앱등앱등).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이미 Azure CLI 로그인이 완료되었다면 아래 명령을 입력해보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[웹앱이름]&lt;/code&gt;이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=streamlog&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 터미털에 로그가 계속 들어오는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;kudu&quot;&gt;기승전 Kudu&lt;/h2&gt;
+
+&lt;p&gt;지금까지 FTP나 Azure CLI를 이용해서 로그를 다운받고 실시간으로 조회도 했다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이런 모든 과정이 귀찮고 브라우저에서 이런것을 처리해도 하등 문제가 없다고 생각한다면 Azure 포털에서 이 모두를 처리할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그 비밀의 이름은 Kudu이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_b13.png&quot; alt=&quot;Kudu&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;난~ Azure CLI 성애자니깐~~ ㅋㅋㅋ&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;웹앱에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;도구&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b12.png&quot; alt=&quot;도구&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;도구 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Kudu&lt;/code&gt;를 클릭하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;이동&lt;/code&gt;을 클릭하면 브라우저에 탭이 새로 생성되면서 Kudu를 영접할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b14.png&quot; alt=&quot;Kudu열기&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kudu 메인 화면에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Debug Console&lt;/code&gt;을 클릭하여 하위 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b15.png&quot; alt=&quot;DebugConsole&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_b16.png&quot; alt=&quot;CMD&quot; width=&quot;200px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;자 이제 아래 화면이 나타난다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_b17.png&quot; alt=&quot;LogFiles폴더&quot; width=&quot;540px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면만 봐도 느낌이 온다. 그렇다. LogFiles 폴더로 진입하면 FTP에서 봤던 폴더 구조가 펼쳐지고 그 안에 로그 파일을 다운받을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;심지어 폴더를 이동하면 하단의 console 창이 알아서 폴더를 이동한다.&lt;/p&gt;
+
+&lt;p&gt;실시간 로그를 보고 싶다면 어떻게 해야할까?&lt;/p&gt;
+
+&lt;p&gt;아래 처럼 리눅스의 tail 명령을 사용하면 된다(파일명은 반드시 자신의 로그 파일로 수정해야한다).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;파일명은 모두 타이핑하지 말고 앞쪽 몇글자를 타이핑하고 tab 버튼을 누르면 자동완성된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=kudutail&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;뭔가 허무한가? 아니다. Azure CLI를 따라해봤다면 적어도 Azure CLI를 설치하지 않았는가!!&lt;/p&gt;
+
+&lt;p&gt;그거면 됐다(왠지 도망가야할 듯한 느낌인데).&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;다루면 다룰수록 Azure는 사용자가 뭔소리인지 알지못하게 기능을 잘 감춰두었다. 찾아서 쓰면 편리한 것이 많다.&lt;/p&gt;
+
+&lt;p&gt;옛말에 &lt;code class=&quot;highlighter-rouge&quot;&gt;필요는 발명의 어머니&lt;/code&gt;라고 했다. Azure에 적용하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;필요는 삽질의 어머니&lt;/code&gt;쯤 될듯하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;그래도 너 이 Azure 사..사…좋아한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;다음에는 웹앱 튜토리얼 글감의 어머니(?) chiyodad님이 필요로하는 웹앱에서 SQL 데이터베이스 사용하는 방법을 다루도록 하겠다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/&quot;&gt;Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/&quot;&gt;Azure CLI 설치&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+            <pubDate>Wed, 01 Jun 2016 09:01:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/06/01/azurewebapp-log/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/06/01/azurewebapp-log/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Azure 웹앱 시작하기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;웹앱 만들기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;어플리케이션 배포하기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;배포 원본 설정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#feat-cli&quot; id=&quot;markdown-toc-feat-cli&quot;&gt;테스트 어플리케이션 배포하기(feat. CLI)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#feat-sourcetree&quot; id=&quot;markdown-toc-feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;배포 결과 확인&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.weirdx.io&quot;&gt;이상한모임&lt;/a&gt;에서 얘기를 하던 중 Azure 앱 서비스 중 하나인 웹앱이 사용하기 편한데 기본 내용이 부족하단 말을 들었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/devcloud_chiyodad.png&quot; alt=&quot;치요아버님say&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;동감한다. 웹앱을 사용하기까지 기본 튜토리얼을 얼마나 많이 봤는지 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;어색한 단어 선정으로 이해를 어려운데 개선할 수 도 없다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;영문 튜토리얼처럼 github로 고칠 수 있게 해달라!!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이런 상황에 누군가 웹앱의 문턱에서 엄한 삽질을 피하길 기대하며 시작해보겠다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;웹앱을 시작할 때 크게 2가지만 알면 된다. 첫째는 웹앱을 생성하는 것이고 둘째는 자신의 코드를 배포하는 하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;이번에는 이 두가지를 집중하여 익혀보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;웹앱 만들기&lt;/h2&gt;
+
+&lt;p&gt;웹앱을 생성하는 것은 Azure 포털을 통한 방법과 Azure CLI를 통한 방법이 있으나 여기서는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이미지를 보고 따라하기 힘들다면 아래 비디오를 참고하면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/2NANGcI_8iY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹 + 모바일&lt;/code&gt;을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a02.png&quot; alt=&quot;웹+모바일&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹앱&lt;/code&gt;을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a03.png&quot; alt=&quot;웹앱&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;앱이름&lt;/code&gt;을 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;리소스 그룹&lt;/code&gt;을 선택한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;만들기&lt;/code&gt;를 클릭하면 생성이 시작된다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;리소스 그룹은 새로 만들어도 된다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a04.png&quot; alt=&quot;웹앱입력&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위 과정이 끝나면 웹앱을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_a05.png&quot; alt=&quot;웹앱확인&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹앱&lt;/code&gt;이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;어플리케이션 배포하기&lt;/h2&gt;
+
+&lt;p&gt;웹앱이 생성되었으면 이제 소스코드를 배포하여 자신이 원하는 형태로 가공해야한다.&lt;/p&gt;
+
+&lt;p&gt;웹앱에 소스코드를 배포하는 것은 ftp를 이용하거나 github의 특정 브랜치와 연결하여 연속 배포가 가능하게도 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;또한 각 웹앱마다 로컬 Git 레포지토리를 생성하고 git을 통해 commit하고 push하여 배포할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이번에는 git을 활용할 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;로컬 Git 레포지토리&lt;/code&gt;를 설정하여 배포하는 방법을 설명할 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;배포 원본 설정&lt;/h3&gt;
+
+&lt;p&gt;말이 조금 이상하게 들리지만 배포 원본은 영문 사이트에서 Deploment Source라는 메뉴이다.&lt;/p&gt;
+
+&lt;p&gt;배포 시 소스를 어떤 방식으로 관리할지 결정한다고 보면 된다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;생성한 웹앱에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;설정&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a06.png&quot; alt=&quot;웹앱설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;설정 메뉴 중에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;배포 원본&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a07.png&quot; alt=&quot;배포원본&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;배포 원본 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;소스 선택&lt;/code&gt;클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a08.png&quot; alt=&quot;소스선택&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;원본 선택 메뉴에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;로컬 Git 레포지토리&lt;/code&gt;를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a09.png&quot; alt=&quot;로컬Git레포지토리&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;선택이 완료되었으니 &lt;code class=&quot;highlighter-rouge&quot;&gt;확인&lt;/code&gt;을 클릭하여 완료한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a10.png&quot; alt=&quot;확인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;설정이 끝나면 아래처럼 웹앱 메인 화면에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Git 복제 URL&lt;/code&gt;을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_a11.png&quot; alt=&quot;Git복제URL확인&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;feat-cli&quot;&gt;테스트 어플리케이션 배포하기(feat. CLI)&lt;/h3&gt;
+
+&lt;p&gt;Azure 웹앱을 생성했고 배포하는 방식도 결정했다. 이제 Git을 통한 배포를 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;먼저 커맨드 라인 인터페이스(Command Line Interface)로 하는 방법이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CLI가 익숙치않다면 다음 단계로 건너뛴다. &lt;a href=&quot;#feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;CLI 창(OSX의 터미널이나 Windows 10의 bash)을 켜고 아래 명령을 순서대로 입력한다.&lt;/p&gt;
+
+    &lt;script src=&quot;https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=downloadapp&quot;&gt; &lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Azure 포털에서 웹앱을 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Git 복제 URL&lt;/code&gt;를 클릭하여 복사한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a11.png&quot; alt=&quot;Git복제URL확인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 명령을 CLI에 입력한다. 단, &lt;code class=&quot;highlighter-rouge&quot;&gt;[웹앱 git 주소]&lt;/code&gt;라고 써진 부분은 반드시 자신의 주소로 치환해야한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;AzureWebAppsTutorial-0.0.1 폴더 안에서 입력해야한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;script src=&quot;https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=addgitremote&quot;&gt; &lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위 코드는 git 으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;AzureWebAppsTutorial-0.0.1&lt;/code&gt;폴더를 관리할 수 있도록 한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;azure&lt;/code&gt;란 이름으로 remote를 등록한 것이다.&lt;/p&gt;
+
+&lt;p&gt;그리고 commit을 한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;azure&lt;/code&gt; 리모트로 push하여 코드를 반영 시킨 것이다.&lt;/p&gt;
+
+&lt;p&gt;실제로 push하면 아래와 같은 로그가 출력된다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=deploylog&quot;&gt; &lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CLI로 위 과정을 마쳤다면 다음 단계는 건너뛴다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/h3&gt;
+
+&lt;p&gt;CLI가 익숙치않다면 웹 브라우저와 &lt;a href=&quot;https://www.sourcetreeapp.com/&quot;&gt;SourceTree&lt;/a&gt;나 &lt;a href=&quot;https://www.git-tower.com/&quot;&gt;Tower&lt;/a&gt;등의 프로그램을 활용해서 처리하는 방법도 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;여기서는 OSX에서 구동되는 SourceTree로 설명한다(Windows에서는 메뉴 위치등이 다를 수 있다).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.sourcetreeapp.com/&quot;&gt;SourceTree&lt;/a&gt;를 설치한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 링크를 클릭하여 소스코드를 다운받는다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/AzureWebAppsTutorial/archive/v0.0.1.zip&quot;&gt;AzureWebAppsTutorial-0.0.1 링크&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;압축을 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SourceTree를 실행하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;New Repository&lt;/code&gt;클릭한 뒤 &lt;code class=&quot;highlighter-rouge&quot;&gt;Add exist local repository&lt;/code&gt; 메뉴를 선택하낟.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Windows에서는 File - Clone / New 선택 후 나오는 창에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Add Working Copy&lt;/code&gt;탭으로 이동한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a12.png&quot; alt=&quot;NewRepository&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Destination Path&lt;/code&gt;에 압축해제한 어플리케이션 폴더를 선택한 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Windows에서는 Working Copy Path가 같은 역할을 한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a13.png&quot; alt=&quot;로컬레포지토리추가&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;추가된 레포지토리를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a14.png&quot; alt=&quot;레포지토리열기&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Settings&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a15.png&quot; alt=&quot;설정&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Azure 포털에서 웹앱을 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Git 복제 URL&lt;/code&gt;를 클릭하여 복사한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a11.png&quot; alt=&quot;Git복제URL확인&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SourceTree로 돌아와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Remote Name&lt;/code&gt;을 azure로 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;에 복사한 주소를 붙여넣고 &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a16.png&quot; alt=&quot;AddAzureRemote&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;File Status&lt;/code&gt;탭에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Staged files&lt;/code&gt;를 클릭한 뒤 commit 메시지를 &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;으로 입력하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Push changes immdiatly to azure/master&lt;/code&gt;옵션을 켜고 &lt;code class=&quot;highlighter-rouge&quot;&gt;Commit&lt;/code&gt;한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a17.png&quot; alt=&quot;Commit&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Push 메시지에 아래와 같은 로그가 출력되는 것을 확인할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webapp_a18.png&quot; alt=&quot;CommitLog&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;배포 결과 확인&lt;/h3&gt;
+
+&lt;p&gt;배포가 완료되었으니 정상 동작하는지 결과를 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;아래 그림처럼 Azure 포털에서 웹앱의 URL을 클릭한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_a19.png&quot; alt=&quot;ClickURL&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;웹 브라우저에 아래와 같은 결과가 표시된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webapp_a20.png&quot; alt=&quot;WebApp결과&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;보는 바와 같이 Azure 웹앱을 사용하는데는 배포 설정이 주요하다.&lt;/p&gt;
+
+&lt;p&gt;배포 설정까지 마무리되면 commit하고 push만해도 계속 웹앱이 업데이되기 되니 편리하다.&lt;/p&gt;
+
+&lt;p&gt;다음에는 배포한 웹앱의 로그를 확인하는 방법을 다루도록 하겠다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/app-service-web-nodejs-get-started/&quot;&gt;Azure 앱 서비스에서 Node.js 웹앱 시작&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 30 May 2016 09:01:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/05/30/azurewebapp/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/05/30/azurewebapp/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Docker Machine으로 Azure 다루기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#docker-machine-&quot; id=&quot;markdown-toc-docker-machine-&quot;&gt;Docker Machine 설치&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;로컬 가상 머신 다루기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#dev--&quot; id=&quot;markdown-toc-dev--&quot;&gt;dev 머신 생성&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dev--nodejs---&quot; id=&quot;markdown-toc-dev--nodejs---&quot;&gt;dev 머신에 Node.js 웹 어플리케이션 배포&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#dev----&quot; id=&quot;markdown-toc-dev----&quot;&gt;dev 머신 환경 변수 설정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;이미지 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;컨네이너 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dev---1&quot; id=&quot;markdown-toc-dev---1&quot;&gt;dev 머신 정리&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure--&quot; id=&quot;markdown-toc-azure--&quot;&gt;Azure 드라이버 활용하기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#totuworld--&quot; id=&quot;markdown-toc-totuworld--&quot;&gt;totuworld 머신 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#totuworld----&quot; id=&quot;markdown-toc-totuworld----&quot;&gt;totuworld 머신 환경 변수 설정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;이미지 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;컨네이너 생성&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;Docker를 사용해서 웹 어플리케이션 등을 배포하면 환경을 맞추는 수고를 대폭 줄일 수 있고 확장할 때도 편리하다.&lt;/p&gt;
+
+&lt;p&gt;그런데 이를 다수의 리모트 호스트에 설치하고 각각을 관리하는건 귀찮은 일이다.&lt;/p&gt;
+
+&lt;p&gt;이런 수고를 덜어주는 것이 &lt;a href=&quot;https://docs.docker.com/machine/overview/&quot;&gt;Docker Machine&lt;/a&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/logo.png&quot; alt=&quot;DockerMachineLogo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker Machine은 로컬 시스템뿐 아니라 다양한 클라우드 서비스 제공자(AWS, Digital Ocean 등)의 환경도 제어할 수 있게 드라이버를 제공한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://docs.docker.com/machine/img/machine.png&quot; alt=&quot;DockerMachine&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그럼 Docker Machine의 Azure 드라이버를 이용해서 환경 설정과 컨테이너 배포를 살펴보도록 하자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;모든 과정은 OSX에서 진행된다. Windows 10의 bash를 사용해도 가능하지만 이 글에서 해당 과정을 모두 커버하지 않는다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;docker-machine-&quot;&gt;Docker Machine 설치&lt;/h2&gt;
+
+&lt;p&gt;Docker Engine은 이미 설치되어있다고 치고 Docker Machine을 설치해보도록 하자. 터미널에 아래 명령을 입력한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;uname -s&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;-&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;uname -m&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &amp;gt;/usr/local/bin/docker-machine &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  chmod +x /usr/local/bin/docker-machine&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;주의 : v0.7.0이상으로 설치.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;설치가 완료되었다면 아래 명령으로 버전을 확인할 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-machine -v
+docker-machine version 0.7.0, build a650a40&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Docker Machine이 설치 되었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;로컬 가상 머신 다루기&lt;/h2&gt;
+
+&lt;p&gt;이제 로컬 환경에 가상 머신을 생성하고 컨테이너를 배포해보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;여기서는 dev라는 이름을 사용한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;dev--&quot;&gt;dev 머신 생성&lt;/h3&gt;
+
+&lt;p&gt;생성은 간단하다. virtualbox 드라이버를 이용해서 명령만 입력하면 된다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-machine create --driver virtualbox dev
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Creating VirtualBox VM...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Creating SSH key...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Starting the VM...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Check network to re-create &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;needed...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;an IP...
+...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;이하생략&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;위 명령이 실행되면 dev라는 가상머신이 생성된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;dev--nodejs---&quot;&gt;dev 머신에 Node.js 웹 어플리케이션 배포&lt;/h2&gt;
+
+&lt;p&gt;docker명령으로 dev 머신을 제어할 수 있도록 환경을 먼저 구성한 후 이미지를 생성하여 배포해보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;dev----&quot;&gt;dev 머신 환경 변수 설정&lt;/h3&gt;
+
+&lt;p&gt;우선 아래 명령으로 dev 머신의 환경 변수를 확인한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-machine env dev
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_TLS_VERIFY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tcp://192.168.99.100:2376&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_CERT_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/Users/yo/.docker/machine/machines/dev&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_MACHINE_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dev&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Run this command to configure your shell:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# eval $(docker-machine env dev)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;docker 명령으로 dev 머신을 제어할 것이므로 위 커맨드에 마지막에 안내한 명령을 입력한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker-machine env dev&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;이미지 생성&lt;/h3&gt;
+
+&lt;p&gt;아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip 0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NodejsExampleApp-0.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;아래 명령으로 이미지를 생성한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker build --tag&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp:0.0.1 .
+Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM node:4-slim
+...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;이하생략&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;컨네이너 생성&lt;/h3&gt;
+
+&lt;p&gt;이미지를 생성했으니 배포해보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker run --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp -d -p 80:3000 nodeapp:0.0.1
+78ea5a20bb83121157235dc7104aae639054c3cd37d6ff6650d27875e188863e&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;위 명령은 nodeapp이란 이름으로 nodeapp:0.0.1 이미지를 배포한 것이다. 그리고 컨테이너의 3000번 포트를 외부 포트 80번에 연결했다.&lt;/p&gt;
+
+&lt;p&gt;결과를 확인하려면 환경 변수의 &lt;code class=&quot;highlighter-rouge&quot;&gt;DOCKER_HOST&lt;/code&gt;부분에 있던 주소를 브라우저에 입력해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ACSAppResult.png&quot; alt=&quot;ACSAppResult&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;dev---1&quot;&gt;dev 머신 정리&lt;/h3&gt;
+
+&lt;p&gt;일단 아래 그림을 보자. Docker가 컨테이너를 실행하는 것은 다음과 같은 구조를 가진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.docker.com/sites/default/files/what-is-vm-diagram.png&quot; alt=&quot;Docker&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 진행한 것은 Docker Engine 위에 올라갈 이미지를 생성한 후 이미지를 컨테이너로 생성한 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;azure--&quot;&gt;Azure 드라이버 활용하기&lt;/h2&gt;
+
+&lt;p&gt;위와 동일한 행동을 Azure 환경에서 진행하려면 어떻게 해야할지 알아보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;여기서는 totuworld란 이름을 사용한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;totuworld--&quot;&gt;totuworld 머신 생성&lt;/h3&gt;
+
+&lt;p&gt;Docker Machine을 활용해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;totuworld&lt;/code&gt;란 머신을 생성해보자. dev 머신을 생성하는 것과 크게 다르지는 않다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;자신의 Azure 계정에서 구독 ID(Subscription ID)를 확인해두어야한다. Azure 포털에서 구독 부분을 클릭하여 확인할 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AZURE_SUBSCRIPTION_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=[&lt;/span&gt;구독 ID]
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-machine create --driver azure --azure-open-port 80 totuworld
+Running pre-create checks...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;totuworld&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Stored Azure credentials expired. Please reauthenticate.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;totuworld&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Microsoft Azure: To sign &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;, use a web browser to open the page https://aka.ms/devicelogin. Enter the code GQKWVKL58 to authenticate.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;자 위와 같이 나오면 반드시 &lt;a href=&quot;https://aka.ms/devicelogin&quot;&gt;https://aka.ms/devicelogin&lt;/a&gt; 다음 주소로 접속하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;를 입력하여 권한을 준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/dockermachine.png&quot; alt=&quot;dockermachineazure&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;권한이 확인되면 아래와 같은 내용이 터미널에 출력되면서 머신이 생성될 것이다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;totuworld&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Completed machine pre-create checks.
+Creating machine...
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;totuworld&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Querying existing resource group.  &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker-machine&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;totuworld&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Creating resource group.  &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker-machine&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;westus&quot;&lt;/span&gt;
+...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;이하생략&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;모든 과정이 마쳐지면 Azure 포털에서 리소스 그룹 중에 docker-machine이란 그룹이 생성된 것을 확인할 수 있다. 그 안에는 다양한 리소스가 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/dockermachine_resource.png&quot; alt=&quot;dockermachine리소스&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;totuworld----&quot;&gt;totuworld 머신 환경 변수 설정&lt;/h3&gt;
+
+&lt;p&gt;환경 변수를 설정하는 것은 앞서 본것처럼 간단하다. env 뒤에 자신의 머신 이름을 입력하면 끝이다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker-machine env totuworld&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;이미지 생성&lt;/h3&gt;
+
+&lt;p&gt;앞서 생성한 이미지는 dev 머신에 있다. Docker Hub로 이미지를 공유하거나 개인 레지스터를 사용하지 않는한 totuworld 머신에도 이미지를 생성해야한다.&lt;/p&gt;
+
+&lt;p&gt;NodejsExampleApp-0.0.1 폴더에서 이미지를 생성하는 명령을 입력한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker build --tag&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp:0.0.1 .
+Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM node:4-slim
+...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;이하생략&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;컨네이너 생성&lt;/h3&gt;
+
+&lt;p&gt;배포도 같은 방법으로 가능하다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker run --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp -d -p 80:3000 nodeapp:0.0.1
+0fbfa68f9f97b742759317a5846a084d7efaa370535cf9342150402374cf3067&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;아래 명령을 입력해서 확인한 ip 주소를 브라우저에 입력하면 같은 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-machine ip totuworld
+13.91.254.246&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ACSAppResult.png&quot; alt=&quot;ACSAppResult&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;Docker Machine 사용은 이번이 처음이다(전에는 다수의 머신을 다룰 일이 없었다).&lt;/p&gt;
+
+&lt;p&gt;사용해보니 머신마다 터미널로 접속하는 일이 없어서 좋았다.&lt;/p&gt;
+
+&lt;p&gt;무엇보다 Azure 드라이버를 사용하니 환경을 셋업하는 것이 편리했다.&lt;/p&gt;
+
+&lt;p&gt;요즘 MS의 행보가 눈에 자주 들어온다. 또 어떤 것으로 놀래켜줄지 지켜보는 재미가 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이상의 내용은 참고 자료에 링크한 &lt;a href=&quot;https://channel9.msdn.com/Shows/Cloud+Cover/Episode-204-Using-Docker-Machine-with-Azure-with-Ahmet-Balkan&quot;&gt;Episode 204: Using Docker Machine with Azure with Ahmet Balkan&lt;/a&gt;을 바탕으로 했다. 자세한 진행이 궁금하다면 영상을 한번 살펴보길 바란다. 영상에서 내용을 진행하는  Ahmet Alp Balkans는 Azure 리눅스팀에서 오픈소스 엔지니어로 활동한다. 실제 Docker Machine의 Azure 드라이버 관련 커밋에서 그의 이름을 발견할 수 있다(MS직원인데 Google이 만든 Go 언어로 Docker Machine의 Azure 드라이버를 만들고 있다).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://channel9.msdn.com/Shows/Cloud+Cover/Episode-204-Using-Docker-Machine-with-Azure-with-Ahmet-Balkan&quot;&gt;Episode 204: Using Docker Machine with Azure with Ahmet Balkan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 09 May 2016 09:02:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/05/09/dockermachine-with-azure/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/05/09/dockermachine-with-azure/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Azure 웹 앱 staging 환경 설정하기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;배포슬롯&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#staging--&quot; id=&quot;markdown-toc-staging--&quot;&gt;웹 앱에 staging 배포슬롯 추가&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;웹 앱 배포&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;프로덕션 배포 설정&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;코드 수정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#staging-production-&quot; id=&quot;markdown-toc-staging-production-&quot;&gt;staging과 production 교환&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;웹 앱(Web Apps)를 사용하여 서비스를 운영하면 배포될 때 서비스가 중단되는 불편함이 있다.&lt;/p&gt;
+
+&lt;p&gt;아래 이미지에서 보는 것처럼 배포가 될 때마다 회색영역처럼 응답이 없는 시점이 발생한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webappdeployslot01.png&quot; alt=&quot;배포공백&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;중단되어도 무관한 서비스라면 상관없지만 무중단 서비스를 제공하는 경우는 어떻게 해야할까?&lt;/p&gt;
+
+&lt;p&gt;이제부터 알아보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;배포슬롯&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/azure-deployment-slots.png&quot; alt=&quot;배포슬롯&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;앞서했던 질문에 답으로 Azure가 제공하는 기능은 &lt;code class=&quot;highlighter-rouge&quot;&gt;배포슬롯&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;배포슬롯은 표준(Standard)나 프리미엄(Premium)이상의 웹 앱에서만 가능하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;원리는 1개의 웹 앱에 다수의 배포슬롯을 생성하여 배포하여 검증한 것으로 production에 반영하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래 그림처럼 a, b 슬롯이 있다고 해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webappdeployslot02.png&quot; alt=&quot;배포공백해결책&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;b 슬롯이 production에 사용중이라면 a 슬롯에 v0.0.2a를 배포한다. a 슬롯은 배포중이지만 b 슬롯이 production이므로 서비스는 중단되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;그리고 a 슬롯의 배포가 완료되면 a 슬롯과 b슬롯을 교환한다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 배포하면 그림의 녹색영역처럼 서비스는 언제나 작동하게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;staging--&quot;&gt;웹 앱에 staging 배포슬롯 추가&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure portal로 접속&lt;/a&gt;에서 대상이 될 웹 앱을 선택한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;설정을 클릭한 다음 배포슬롯을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webappds01.png&quot; alt=&quot;설정&quot; /&gt; &lt;img src=&quot;/images/webappds02.png&quot; alt=&quot;배포슬롯&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;배포슬롯에서 추가를 선택하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;이름&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;구성소스&lt;/code&gt;를 선택한 후 추가한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webappds03.png&quot; alt=&quot;배포슬롯추가&quot; /&gt; &lt;img src=&quot;/images/webappds04.png&quot; alt=&quot;배포슬롯추가1&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;슬롯이 추가가된 후 슬롯을 클릭하면 웹 앱과 동일한 타일이 나타난다. 해당 타일에서 연속배포는 별도로 설정할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이 글에서는 staging과 production을 모두 로컬 git레포지토리로 연속배포하도록 설정하여 사용한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;웹 앱 배포&lt;/h2&gt;
+
+&lt;p&gt;Azure 웹 앱에 배포할 소스코드가 필요한데 여기서는 &lt;a href=&quot;http://totuworld.github.io/2016/04/25/acs/&quot;&gt;Azure 컨테이너 서비스로 Node.js 앱 배포하기&lt;/a&gt;에서 사용한 Node.js 웹 어플리케이션을 사용하겠다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;자신이 제작한 서비스로 진행해도 무방하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;프로덕션 배포 설정&lt;/h3&gt;
+
+&lt;p&gt;아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip 0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NodejsExampleApp-0.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;그리고 git을 설정한 후 모든 소스코드를 포함시켜서 커밋한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git init
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;init&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;프로덕션 배포 레포지토리를 추가한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;아래 명령에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;레포지토리주소&lt;/code&gt;를 자신의 주소로 변경하여 입력한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote add azureproduction &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;레포지토리주소] &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;이제 azureproduction remote로 배포한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push azureproduction master
+remote: Updating branch &lt;span class=&quot;s1&quot;&gt;&#39;master&#39;&lt;/span&gt;.
+remote: Updating submodules.
+remote: Preparing deployment &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;commit id &lt;span class=&quot;s1&quot;&gt;&#39;6381c66539&#39;&lt;/span&gt;.
+remote: Generating deployment script.
+...중략...
+remote: Finished successfully.
+remote: Running post deployment &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...
+remote: Deployment successful.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;배포가 완료되고 브라우저에 웹 앱의 프로덕션 URL을 입력하면 아래와 같은 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;글에서 사용된 주소 : http://mktestyo.azurewebsites.net/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ACSAppResult.png&quot; alt=&quot;ACSAppResult&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;코드 수정&lt;/h2&gt;
+
+&lt;p&gt;routes폴더의 &lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;파일의 6번째 줄을 아래처럼 수정한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;index&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Web Apps&#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;그리고 새로운 커밋을 작성한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;update index.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;이제 staging 배포 레포지토리를 추가한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote add azurestaging &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;레포지토리주소] &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;이제 수정한 코드를 azurestaging remote로 배포한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push azurestaging master
+remote: Updating branch &lt;span class=&quot;s1&quot;&gt;&#39;master&#39;&lt;/span&gt;.
+remote: Updating submodules.
+remote: Preparing deployment &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;commit id &lt;span class=&quot;s1&quot;&gt;&#39;6381c66539&#39;&lt;/span&gt;.
+remote: Generating deployment script.
+...중략...
+remote: Finished successfully.
+remote: Running post deployment &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...
+remote: Deployment successful.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;배포가 완료되고 브라우저에 staging URL을 입력하면 아래와 같은 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;글에서 사용된 주소 : http://mktestyo-staging.azurewebsites.net/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webappsresult.png&quot; alt=&quot;webappsresult&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;staging-production-&quot;&gt;staging과 production 교환&lt;/h2&gt;
+
+&lt;p&gt;배포가 완료되어 작동하는 staging을 production과 교환해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure portal로 접속&lt;/a&gt;에서 대상이 될 웹 앱을 선택한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;설정을 클릭한 다음 배포슬롯을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webappds01.png&quot; alt=&quot;설정&quot; /&gt; &lt;img src=&quot;/images/webappds02.png&quot; alt=&quot;배포슬롯&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;교환을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webappds05.png&quot; alt=&quot;배포슬롯교환&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;교환 내용을 확인하고 확인 버튼을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/webappds06.png&quot; alt=&quot;배포슬롯교환1&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;교환이 되는 동안에는 아래와 같은 메시지가 나온다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webappds07.png&quot; alt=&quot;배포슬롯교환중&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;교환이 완료되고 브라우저에 웹 앱의 프로덕션 URL을 입력하면 다음 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/webappsresult.png&quot; alt=&quot;webappsresult&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이런 배포가 익숙해진다면 Azure에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;자동 교환&lt;/code&gt;을 설정하여 편리하게 사용할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;테스트&lt;/h2&gt;
+
+&lt;p&gt;배포슬롯이 어떤 방식으로 작동하는지 알아봤다. 이제 배포슬롯을 교환하는 동안에 서비스가 이상없이 작동하는지 테스트해보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;테스트에는 아래 코드를 활용했다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/f68a6447f75117290de47cb9672c114a.js?file=httpRequestTest.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;위 코드는 1초 주기로 특정 URL에 요청을 보내서 응답을 확인한다. 이 코드를 활용해서 테스트용 웹 앱이 배포슬롯을 교환할 때도 잘 작동하는지 알아보겠다.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/92eMExt7Tu8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;바쁘신 분들은 3분 15초부터&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;위 동영상은 화면이 고르지못해 날려버린 14초와 추가한 파란색 박스를 제외하고 어떤 편집도 이뤄지지않았다.&lt;/p&gt;
+
+&lt;p&gt;(길고 지루하지만 보시바와 같이) 교환이 일어나는 시점에도 응답이 고르다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://attachment.namuwikiusercontent.com/올ㅋ__hhjallk.jpg&quot; alt=&quot;올ㅋ&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;개인적으로 제작하고 있는 서비스가 무중단이 필요해 Azure 측에 문의했더니 참고자료로 사용한 문서를 안내해주었다.&lt;/p&gt;
+
+&lt;p&gt;문서를 바탕으로 작동하는 방법을 익히고 동영상 녹화까지해서 테스트 해보니 문제없이 서비스가 작동할 것이란 믿음이 생겼다.&lt;/p&gt;
+
+&lt;p&gt;사용법도 그다지 어렵지 않았다. 롤백도 간단하게 가능하다. Azure 웹 앱을 사용하고 있다면 배포슬롯 사용해보길 권한다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-staged-publishing/&quot;&gt;Azure 앱 서비스에서 웹 앱에 대한 스테이징 환경 설정&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Tue, 26 Apr 2016 15:40:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/04/26/webapp-stage/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/04/26/webapp-stage/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+        </item>
+      
+    
+      
+        <item>
+            <title>Azure 컨테이너 서비스로 Node.js 앱 배포하기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;사건의 발단&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;필수사항&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#acs--&quot; id=&quot;markdown-toc-acs--&quot;&gt;ACS 클러스터 배포&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ssh-&quot; id=&quot;markdown-toc-ssh-&quot;&gt;SSH 터널&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#fqdn-&quot; id=&quot;markdown-toc-fqdn-&quot;&gt;FQDN 확인&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ssh--&quot; id=&quot;markdown-toc-ssh--&quot;&gt;SSH 터널 생성&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#nodejs---&quot; id=&quot;markdown-toc-nodejs---&quot;&gt;Node.js 앱 컨테이너 배포&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;컨테이너 빌드&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;컨테이너 배포&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#orchestration&quot; id=&quot;markdown-toc-orchestration&quot;&gt;Orchestration&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#orchestration--&quot; id=&quot;markdown-toc-orchestration--&quot;&gt;Orchestration 환경 조성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#docker-compose--orchestration&quot; id=&quot;markdown-toc-docker-compose--orchestration&quot;&gt;Docker Compose로 앱 Orchestration하기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;사건의 발단&lt;/h2&gt;
+
+&lt;p&gt;지난 2016년 4월 20일, Azure 컨테이너 서비스(ACS:Azure Container Service, 이하 ACS) &lt;a href=&quot;https://azure.microsoft.com/en-us/blog/azure-container-service-is-now-generally-available/&quot;&gt;Microsoft Azure 블로그&lt;/a&gt;에 공개되었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Azure-Container-Service.png&quot; alt=&quot;ACS&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 소식을 Microsoft Azure MVP인 &lt;a href=&quot;https://www.facebook.com/rkttu&quot;&gt;남정현님&lt;/a&gt;의 글을 통해서 접했다.&lt;/p&gt;
+
+&lt;p&gt;그리고 패기있게 댓글을 남기게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/comment0420.png&quot; alt=&quot;내가왜&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;나도 내가 왜 그랬는지 모르겠다. 바보같은 과거의 나.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;뱉어놓은 말에 책임을 느끼고 삽을 떠봤다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;필수사항&lt;/h2&gt;
+
+&lt;p&gt;글의 내용을 진행하기 위해 Docker Engine과 Docker Compose가 필요하다. Linux 환경에서 진행하기때문에 OS도 Linux나 OSX에서 진행하길 권한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/&quot;&gt;Docker Engine&lt;/a&gt; &amp;gt;= 1.11.x&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot;&gt;Docker Compose&lt;/a&gt; &amp;gt;= 1.7.x&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;중요한 것은 Docker Compose 버전이다. Docker Swarm으로 ACS를 구성할 예정인데 Docker Compose 1.5 버전만 해도 생성된 컨테이너를 찾지 못해 링크하지 못하는 에러가 발생했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Docker Compose 1.5.1을 설치한게 작년 11월인데 글 작성일로부터 9일전에 1.7.0 버전이 나왔다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;acs--&quot;&gt;ACS 클러스터 배포&lt;/h2&gt;
+
+&lt;p&gt;ACS 클러스터를 배포하는 방법은 크게 3가지다. 내가 사랑하는 Azure portal을 이용하거나, Azure CLI 혹은 PowerShell을 이용하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;각자 편한 방법으로 진행하면 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;글에서는 Azure portal로 진행한다. 다른 방법을 사용하고자한다면 &lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/container-service-deployment/&quot;&gt;Azure 컨네이너 서비스 클러스터 배포&lt;/a&gt; 글을 참고하고 &lt;a href=&quot;#SSH 터널&quot;&gt;SSH 터널&lt;/a&gt;넘어가도 좋다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure portal로 접속&lt;/a&gt;해서 ACS를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal1.png&quot; alt=&quot;acs-portal1&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;사용자이름(User Name), SSH 공개키(SSH public key), 리소스그룹(Resource Group) 명을 입력하고 위치(Location)을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;SSH 공개키를 생성하는 것은 생활코딩의 &lt;a href=&quot;https://opentutorials.org/module/432/3742&quot;&gt;SSH Key - 비밀번호 없이 로그인&lt;/a&gt; SSH Key 만들기 부분을 참고하면 된다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal3.png&quot; alt=&quot;acs-portal3&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Orchestrator configuration은 Swarm으로 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;Docker Compose를 활용하기 위해서 Swarm으로 선택으나 자신이 Mesos와 Marathon이 익숙하다면 &lt;a href=&quot;https://dcos.io/&quot;&gt;DC/OS&lt;/a&gt;를 선택하기 바란다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;그러나 Marathon으로 컨테이너를 배포하는 방법은 다루지 않는다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal4.png&quot; alt=&quot;acs-portal4&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Agent count, Agent virtual machine size, Master count를 필요한만큼 입력한 뒤 DNS prefix를 입력한다.&lt;/p&gt;
+
+    &lt;p&gt;단순한 테스트이기 때문에 Agent count는 2로 했고 Master count는 1로 했다. Agent virtual machine size는 저렴한 Standard A1을 선택했다.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;아래 이미지와는 Agent count 숫자와 DNS prefix만 차이가 있다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal5.png&quot; alt=&quot;acsp-portal5&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;나머지 과정을 확인하고 진행하면 15~20분 정도 배포가 진행된다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-deployment/20160419045039/acs-portal8.png&quot; alt=&quot;acs-portal8&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;배포가 끝나면 리소스그룹이 생성되고 그 안에 로드밸런스, 가상컴퓨터, 가상 컴퓨터 크기 집합 등 Azure의 다양한 서비스가 일괄 생성된 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/acsdeploydone.png&quot; alt=&quot;acs배포완료&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-&quot;&gt;SSH 터널&lt;/h2&gt;
+
+&lt;p&gt;로컬환경에서 배포된 ACS 환경을 사용하기 위해 SSH 터널을 생성하여야한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Windows 환경이라면 Azure 컨테이너 서비스 클러스터에 연결의 &lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/container-service-connect/#windows-ssh&quot;&gt;Windows에서 SSH 터널 만들기&lt;/a&gt; 부분을 참고하기 바란다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;SSH 터널 개념은 &lt;a href=&quot;https://milooy.wordpress.com/2016/04/14/ssh-tunneling/&quot;&gt;SSH Tunneling&lt;/a&gt; 글을 참고하자.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;먼저 SSH 터널을 생성하려면 &lt;code class=&quot;highlighter-rouge&quot;&gt;FQDN&lt;/code&gt;(Fully Qualified Domain Name)를 알아야한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;fqdn-&quot;&gt;FQDN 확인&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure portal로 접속&lt;/a&gt;해서 리소스그룹을 선택한 뒤 ACS로 생성한 리소스그룹을 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/AzureFQDN01.png&quot; alt=&quot;acsFQDN1&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;마지막 배포를 선택한다. 그리고 배포기록에서 가장 마지막 배포를 선택한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/AzureFQDN02.png&quot; alt=&quot;acsFQDN2&quot; width=&quot;300px&quot; /&gt;
+ &lt;img src=&quot;/images/AzureFQDN03.png&quot; alt=&quot;acsFQDN3&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;출력에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;MASTERFQDN&lt;/code&gt;을 확인한다(이미지에는 없지만 아래 쪽에 &lt;code class=&quot;highlighter-rouge&quot;&gt;AGENTFQDN&lt;/code&gt;도 함께 확인해둔다).&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/AzureFQDN04.png&quot; alt=&quot;acsFQDN4&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;ssh--&quot;&gt;SSH 터널 생성&lt;/h3&gt;
+
+&lt;p&gt;SSH 터널을 생성할 차례다.&lt;/p&gt;
+
+&lt;p&gt;아래 명령에에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;User Name&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;FQDN&lt;/code&gt;(Fully Qualified Domain Name)을 자신의 ACS 환경에 맞게 대체하여 터미널에 입력하면 SSH 터널이 생성된다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh -L 2375:localhost:2375 -N &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;User Name]@[FQDN] -p 2200&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;연결이 되었으면 터미널 창을 새로 열어서 아래 명령을 입력한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;DOCKER_HOST&lt;/code&gt; 환경 변수에 설정하여 배포된 ACS 환경을 자신의 로컬환경에서 Docker CLI(Command Line Interface)로 사용할 수 있게 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;터미널 창을 새로 여는 것은 SSH 터널이 연결된 상태에서는 프롬프트가 돌아오지 않기 때문이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;:2375&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;nodejs---&quot;&gt;Node.js 앱 컨테이너 배포&lt;/h2&gt;
+
+&lt;p&gt;이제 사용할 컨테이너가 필요하다. 여기서는 Node.js와 Express.js로 웹 어플리케이션을 만드는 과정은 생략하고 제작해둔 샘플 앱을 빌드하여 사용하도록 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;컨테이너 빌드&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Github에서 Node.js 앱을 다운받아 압축을 해제한 후 NodejsExampleApp 폴더로 이동한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;아래 명령을 순서대로 입력하면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip 0.0.1.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NodejsExampleApp-0.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ACS에 컨테이너를 빌드한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker build --tag&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp:0.0.1 .&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;빌드가 완료되면 아래 명령으로 빌드된 컨테이너를 확인할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker images
+
+REPOSITORY      TAG         IMAGE ID        CREATED         VIRTUAL SIZE
+nodeapp         0.0.1       sha256:bab5a    5 minutes ago   221.1 MB
+node            4-slim      sha256:d1e5c    9 days ago      206.7 MB&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;컨테이너 배포&lt;/h3&gt;
+
+&lt;p&gt;이제 빌드한 컨테이너를 ACS 환경에 배포해보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker run --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodeapp -d -p 80:3000 nodeapp:0.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;위 명령은 &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeapp&lt;/code&gt;이란 이름으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeapp:0.0.1&lt;/code&gt; 컨테이너를 배포한 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; 옵션 뒤에 값은 호스트의 80번 포트와 컨테이너 3000번 포트를 연결한 것이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://pyrasis.com/docker.html&quot;&gt;가장 빨리 만나는 Docker&lt;/a&gt;에서 Docker 명령은 자세히 익힐 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;아래 명령을 입력하면 작동하는 컨테이너를 확인할 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker ps&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;CONTAINER ID    IMAGE           COMMAND         CREATED         STATUS          PORTS                 NAMES
+0e8c2e2712a5    nodeapp:0.0.1   &quot;npm start&quot;     16 minutes ago  Up 16 minutes   10.0.0.6:80-&amp;gt;3000/tcp swarm-agent-F6767C68000002/nodeapp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;앞서 확인한 AGENTFQDN 주소를 브라우저에 입력하면 아래와 같은 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ACSAppResult.png&quot; alt=&quot;ACSAppResult&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 잠깐!&lt;/p&gt;
+
+&lt;p&gt;갑자기 왜 AGETNFQDN을 입력해서 확인하는지 궁금할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/container-service-intro/20160419045039/acs-swarm2.png&quot; alt=&quot;ACSSwarm구조&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그림에서 보는것처럼 좌측은 ACS를 관리하기 위한 클러스터이다. 이 관리용 클러스터에 접속할 때 MASTERFQDN을 사용한다. 실제로 컨테이너가 배포되는 곳은 우측의 agent이 클러스터이므로 agent에 접근할 수 있는 주소인 AGENTFQDN을 입력해야 nodeapp이 보내는 결과값을 받을 수 있는 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;orchestration&quot;&gt;Orchestration&lt;/h2&gt;
+
+&lt;p&gt;ACS 환경에 컨테이너를 배포해봤다. 그러나 Docker를 로컬 환경에서 활용해 봤다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;너무 간단한 예제 아닌가&lt;/code&gt; 하며 실망할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그래서 준비했다! 바로 &lt;code class=&quot;highlighter-rouge&quot;&gt;Orchestration&lt;/code&gt;!!!&lt;/p&gt;
+
+&lt;p&gt;이제 5개 컨테이너가 연결되어 하나의 서비스로 작동하도록 구성해보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이부분은 &lt;a href=&quot;http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/&quot;&gt;A sample Docker workflow with Nginx, Node.js and Redis&lt;/a&gt;를 참고했다. 단계별 자세한 설명을 원한다면 원문을 보자.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;구성할 컨테이너 구조는 아래와 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 Redis 컨테이너&lt;/li&gt;
+  &lt;li&gt;3 Node.js 앱 컨테이너&lt;/li&gt;
+  &lt;li&gt;1 Nginx 컨테이너&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://anandmanisankar.com/assets/images/DockerSample.png&quot; alt=&quot;DockerSample&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;orchestration--&quot;&gt;Orchestration 환경 조성&lt;/h3&gt;
+
+&lt;p&gt;우리는 Docker Compose로 Orchestration할 것이다. 그럼 (Docker Engine이 Dockerfile이 필요하듯) docker-compose.yml 파일이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;그래서 하나 만들어 두었다.&lt;/p&gt;
+
+&lt;p&gt;이전에 작업하던 폴더(NodejsExampleApp-0.0.1)를 빠져나와서 다음 명령을 순서대로 입력한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.2.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip 0.0.2.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NodejsExampleApp-0.0.2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;docker-compose--orchestration&quot;&gt;Docker Compose로 앱 Orchestration하기&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;앞서 진행한 SSH 터널과 &lt;code class=&quot;highlighter-rouge&quot;&gt;DOCKER_HOST&lt;/code&gt; 환경 변수가 유지된 환경이어야 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;NodejsExampleApp-0.0.2 폴더에서 다음 명령을 입력한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker-compose up -d
+
+Creating nodejsexampleapp_redis_1
+Creating nodejsexampleapp_node3_1
+Creating nodejsexampleapp_node2_1
+Creating nodejsexampleapp_node1_1
+Creating nodejsexampleapp_nginx_1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Creating&lt;/code&gt; 메시지가 나온 뒤에 Node.js 앱 컨테이너를 생성하고 nginx 컨테이너를 생성하느라 시간이 좀 걸릴 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;컨테이너 생성이 끝나고 배포되면 AGENTFQDN 주소를 브라우저하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ACSAppResult1.png&quot; alt=&quot;ACSAppResult&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;결과를 보면 알겠지만 업데이트된 Node.js 앱은 접속이 이뤄질 때마다 Redis에 View횟수를 누적하여 보여준다.&lt;/p&gt;
+
+&lt;p&gt;만약 각 컨테이너가 어떤 agent 배포되어있는지 확인하고 싶다면 앞서 말한 아래 명령을 입력하면 된다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;docker ps&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;Docker를 로컬 환경에서만 사용하다가 클러스터된 환경을 구성하려고 많은 삽을 뜬 기억이 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CoreOS, Mesos, Marathon, Consul, Docker Swarm, Docker Compose 등 Docker도 제대로 못 쓰면서 보느라고 고생 좀 했다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그런데 ACS는 한번에 클러스터링된 환경을 구성해준다.&lt;/p&gt;
+
+&lt;p&gt;덕분에 학습 비용이 낮고 서비스에만 집중할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;말로만 듣던 CaaS(Container as a Service)가 명령어 몇 개로 다가오다니 Azure 좋구나~&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;하지만 이 좋은 ACS에도 단점을 말하라면 참고할만한 레퍼런스가 적다는 점이다(튜토리얼 포함).&lt;/p&gt;
+
+&lt;p&gt;그러나 이제 일반에 공개되었다고 생각해보면 큰 단점도 아니다. 다만 시간이 필요할 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;끝으로 이번에 ACS보다 더 배운것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;말조심&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;고작 Docker 조금 다뤄봐놓고 ACS 다룰려니 지식이 부족하여 아주 혼났다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;그래도 맺음말인데 자뻑 컷 하나는 있어야지.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://image.chosun.com/sitedata/image/201604/04/2016040400688_0.jpg&quot; alt=&quot;그어려운걸제가&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/container-service-deployment/&quot;&gt;Azure 컨네이너 서비스 클러스터 배포&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/container-service-connect/&quot;&gt;Azure 컨테이너 서비스 클러스터에 연결&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/container-service-docker-swarm/&quot;&gt;Container management with Docker Swarm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pyrasis.com/docker.html&quot;&gt;가장 빨리 만나는 Docker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/&quot;&gt;A sample Docker workflow with Nginx, Node.js and Redis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 25 Apr 2016 09:02:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2016/04/25/acs/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2016/04/25/acs/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+        </item>
+      
+    
+  </channel>
+</rss>
