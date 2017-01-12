@@ -196,9 +196,7 @@ module.exports = router;
 
     * 찾아야하는 내용
 
-       ```javascript
        const routes = require('./routes/index');
-       ```
 
     * 추가할 코드
 
@@ -210,9 +208,7 @@ module.exports = router;
 
     * 찾아야하는 내용
 
-       ```javascript
        app.use('/', routes);
-       ```
 
     * 추가할 코드
 
