@@ -61,6 +61,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -205,7 +206,7 @@
     </tr>
     <tr>
       <td>osx</td>
-      <td>터미널에서 <code class="highlighter-rouge">vagrant up</code> 실행 <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></td>
+      <td>터미널에서 <code>vagrant up</code> 실행 <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></td>
     </tr>
   </tbody>
 </table>
@@ -214,26 +215,25 @@
 
 <p>정상적으로 실행이 되었다면 터미널 창에 아래와 같은 내용이 표시되기 시작할 것이다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">Bringing machine <span class="s1">'default'</span> up with <span class="s1">'virtualbox'</span> provider...
-<span class="gp">==&gt; </span>default: Clearing any previously <span class="nb">set </span>forwarded ports...
-<span class="gp">==&gt; </span>default: Clearing any previously <span class="nb">set </span>network interfaces...
-<span class="gp">==&gt; </span>default: Preparing network interfaces based on configuration...
---<span class="o">(</span>중략<span class="o">)</span>--
-<span class="k">************</span>
-<span class="gp">==&gt; </span>default: 127.0.0.1                  : <span class="nv">ok</span><span class="o">=</span>37   <span class="nv">changed</span><span class="o">=</span>22   <span class="nv">unreachable</span><span class="o">=</span>0    <span class="nv">failed</span><span class="o">=</span>0
-        </code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
+==&gt; default: Clearing any previously set forwarded ports...
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+--(중략)--
+************
+==&gt; default: 127.0.0.1                  : ok=37   changed=22   unreachable=0    failed=0</code></pre></figure>
 
-<p>해당 내용은 마지막 줄이 가장 중요하다. <code class="highlighter-rouge">failed=0</code>인지 확인한다.</p>
+<p>해당 내용은 마지막 줄이 가장 중요하다. <code>failed=0</code>인지 확인한다.</p>
 
 <hr />
 
 <h2 id="section-3">설치 확인</h2>
 
-<p>올바로 작동하는 확인하기 위해서는 브라우저의 주소창에 <code class="highlighter-rouge">http://localhost:8080</code>을 입력한다. 아래 그림처럼 Welcome to Nginx 메시지가 보일 것이다.</p>
+<p>올바로 작동하는 확인하기 위해서는 브라우저의 주소창에 <code>http://localhost:8080</code>을 입력한다. 아래 그림처럼 Welcome to Nginx 메시지가 보일 것이다.</p>
 
 <p><img src="/images/welcome_nginx.png" alt="WelcomeToNginx" /></p>
 
-<p>구성된 DB를 phpMyAdmin으로 직접 확인할 수 있다. <code class="highlighter-rouge">http://localhost:8080/phpmyamin</code>을 입력한 후 아래 표처럼 Username과 Password를 입력하면 로그인할 수 있다.</p>
+<p>구성된 DB를 phpMyAdmin으로 직접 확인할 수 있다. <code>http://localhost:8080/phpmyamin</code>을 입력한 후 아래 표처럼 Username과 Password를 입력하면 로그인할 수 있다.</p>
 
 <table>
   <thead>
@@ -269,7 +269,7 @@ stopserver.bat –&gt; destroyserver.bat –&gt; startserver.bat 순으로 실�
   </li>
   <li>
     <p>OSX 환경
-터미널에서 <code class="highlighter-rouge">vagrant halt</code> –&gt; <code class="highlighter-rouge">vagrant destroy</code> –&gt; <code class="highlighter-rouge">vagrant up</code>순으로 명령 입력.</p>
+터미널에서 <code>vagrant halt</code> –&gt; <code>vagrant destroy</code> –&gt; <code>vagrant up</code>순으로 명령 입력.</p>
   </li>
 </ul>
 
@@ -292,17 +292,7 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
 
 <p>우리가 사용한 Vagrantfile을 살펴보면 아래와 같다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11</pre></td><td class="code"><pre>    Vagrant.configure(2) do |config|
+<pre><code>    Vagrant.configure(2) do |config|
       config.vm.box = "ubuntu/trusty64"
       config.vm.hostname = "lempUbuntu"
     
@@ -313,17 +303,15 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
 
       config.vm.provision "shell", path: "ansible/install_lemp.sh"
     end   
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
-<p>config부분을 살펴보면 <code class="highlighter-rouge">ubuntu/trusty64</code>를 사용하여 <code class="highlighter-rouge">lempUbuntu</code>라고 명명된 VM을 생성하게 된다. 그리고 VM의 80번 3306번 포트를 호스트(사용된 컴퓨터)의 8080번, 6306번 포트에 연결한다. 그리고 마지막으로 <code class="highlighter-rouge">ansible/install_lemp.sh</code>파일을 실행한다.</p>
+<p>config부분을 살펴보면 <code>ubuntu/trusty64</code>를 사용하여 <code>lempUbuntu</code>라고 명명된 VM을 생성하게 된다. 그리고 VM의 80번 3306번 포트를 호스트(사용된 컴퓨터)의 8080번, 6306번 포트에 연결한다. 그리고 마지막으로 <code>ansible/install_lemp.sh</code>파일을 실행한다.</p>
 
-<p>그런데 Vagrantfile 어디에 mariadb, PHP, nginx, phpMyAdmin을 설치하는 과정은 없다. 이것은 마지막에 실행된 <code class="highlighter-rouge">ansible/install_lemp.sh</code>파일이 관장한다.</p>
+<p>그런데 Vagrantfile 어디에 mariadb, PHP, nginx, phpMyAdmin을 설치하는 과정은 없다. 이것은 마지막에 실행된 <code>ansible/install_lemp.sh</code>파일이 관장한다.</p>
 
 <p>앞서서 살펴본 Vagrant가 VM을 생성하도록 한다면 Chef, Puppet, Ansible과 같은 프로그램은 VM안에 어플리케이션이나 환경을 구축하는데 사용된다. 여기서는 그중에서 Ansible을 활용했다.</p>
 
-<p>Ansible은 플레이북(Playbook)이란 설정 파일을 통해서 어떤 작업을 할지 명시할 수 있다. <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  <code class="highlighter-rouge">ansible/install_lemp.sh</code>파일은 ansible을 VM내부에 설치하고 <code class="highlighter-rouge">ansible/lemp_install.yml</code> 플레이북에 따라 필요한 어플리케이션을 설치한다.</p>
+<p>Ansible은 플레이북(Playbook)이란 설정 파일을 통해서 어떤 작업을 할지 명시할 수 있다. <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  <code>ansible/install_lemp.sh</code>파일은 ansible을 VM내부에 설치하고 <code>ansible/lemp_install.yml</code> 플레이북에 따라 필요한 어플리케이션을 설치한다.</p>
 
 <hr />
 
@@ -350,7 +338,7 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
       <p>Vagarant는 간소화된 VM관리 도구이다. VM의 생성, 변경, 삭제 등에 매우 유용하다. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p><code class="highlighter-rouge">control + space</code>를 누르고 <code class="highlighter-rouge">terminal</code>혹은 <code class="highlighter-rouge">터미널</code>로 입력한다. 폴더로 이동 하려면 파인더의 해당 폴더를 터미널에 끌어다 놓으면 된다. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p><code>control + space</code>를 누르고 <code>terminal</code>혹은 <code>터미널</code>로 입력한다. 폴더로 이동 하려면 파인더의 해당 폴더를 터미널에 끌어다 놓으면 된다. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
       <p>Vagrantfile에 직접적으로 Ansible을 사용할 수 있지만 Windows 환경에서는 올바로 작동하지 않아서 VM내부에서 실행하도록 했다. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
@@ -373,7 +361,71 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

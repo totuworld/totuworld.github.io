@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -224,12 +225,12 @@
     <p><img src="/images/azurefunctoins.png" alt="Functions추가" width="500px" /></p>
   </li>
   <li>
-    <p>생성된 Function App을 클릭한 후 <code class="highlighter-rouge">+ New Function</code>를 클릭한다.</p>
+    <p>생성된 Function App을 클릭한 후 <code>+ New Function</code>를 클릭한다.</p>
 
     <p><img src="/images/azurefunctoins1.png" alt="신규Function추가" /></p>
   </li>
   <li>
-    <p>Language를 Javascript로 변경하고(<code class="highlighter-rouge">1</code>) HttpTrigger - Node 템플릿을 선택(<code class="highlighter-rouge">2</code>)한 후 Function 이름을 입력(<code class="highlighter-rouge">3</code>)한다(이하 SlackWiki로 칭한다).</p>
+    <p>Language를 Javascript로 변경하고(<code>1</code>) HttpTrigger - Node 템플릿을 선택(<code>2</code>)한 후 Function 이름을 입력(<code>3</code>)한다(이하 SlackWiki로 칭한다).</p>
 
     <p><img src="/images/azurefunctoins2.png" alt="HttpTrigger생성" width="500px" /></p>
   </li>
@@ -242,7 +243,7 @@
 
 <h3 id="url-">슬랫 슬래시 명령 URL 입력</h3>
 
-<p>Azure Functions에서 HttpTrigger는 생성하면 <code class="highlighter-rouge">Function Url</code>을 제공한다.</p>
+<p>Azure Functions에서 HttpTrigger는 생성하면 <code>Function Url</code>을 제공한다.</p>
 
 <p><img src="/images/azurefunctions4.png" alt="FunctionURL" /></p>
 
@@ -266,9 +267,9 @@
 
 <p>여기서 다뤘던 HttpTrigger 외에도 TimerTrigger로 cron 작업 돌리는 것처럼 일정 주기로 작업을 돌릴 수 있다.</p>
 
-<p>단점도 존재한다. 가장 난해한 부분은 Node.js의 package를 Web App처럼 <code class="highlighter-rouge">package.json</code>을 해석하는 것이었다.</p>
+<p>단점도 존재한다. 가장 난해한 부분은 Node.js의 package를 Web App처럼 <code>package.json</code>을 해석하는 것이었다.</p>
 
-<p>바로 해석해서 설치하는 것까진 좋은데 폴더 내부에 <code class="highlighter-rouge">package.json</code> 을 넣어서 폴더별로 설치되진 않았다. 이를 위해서 굳이 console에 들어가야하는 불편함이 존재했다.</p>
+<p>바로 해석해서 설치하는 것까진 좋은데 폴더 내부에 <code>package.json</code> 을 넣어서 폴더별로 설치되진 않았다. 이를 위해서 굳이 console에 들어가야하는 불편함이 존재했다.</p>
 
 <p>~~(이에 관해서는 MS에 문의했으나 아직 답변을 받진 못했다.)~~</p>
 
@@ -304,7 +305,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

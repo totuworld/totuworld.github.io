@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -224,7 +225,7 @@
 
 <p>이는 로컬 개발 환경에서도 반드시 필요한 단계이나 지난 시간에는 체험을 위주로 진행했기때문에 건너뛰었다.</p>
 
-<p><code class="highlighter-rouge">yarn</code>이란 패키지 매니저를 통해 설치를 진행한다.</p>
+<p><code>yarn</code>이란 패키지 매니저를 통해 설치를 진행한다.</p>
 
 <h4 id="section-3">패키지 매니저 설치</h4>
 <p>필요한 모듈을 설치하기 앞서 패키지 매니저를 설치해야한다.</p>
@@ -234,20 +235,18 @@
     <p>터미널을 실행한다.</p>
 
     <blockquote>
-      <p>windows는 <code class="highlighter-rouge">cmd</code> 혹은 <code class="highlighter-rouge">명령 프롬프터</code>를 실행하면 된다.</p>
+      <p>windows는 <code>cmd</code> 혹은 <code>명령 프롬프터</code>를 실행하면 된다.</p>
     </blockquote>
   </li>
   <li>
     <p>아래 명령으로 yarn을 설치한다.</p>
 
     <blockquote>
-      <p>터미널과 관련된 명령을 나타날 때 <code class="highlighter-rouge">$</code> 표시는 터미널에서 입력한다는 뜻이다.</p>
+      <p>터미널과 관련된 명령을 나타날 때 <code>$</code> 표시는 터미널에서 입력한다는 뜻이다.</p>
     </blockquote>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ npm install yarn -g
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ npm install yarn -g
+</code></pre>
   </li>
 </ol>
 
@@ -259,16 +258,14 @@
     <p>터미널을 통해 지난 시간에 다운받은 소스코드가 있는 폴더로 이동한다.</p>
 
     <blockquote>
-      <p>windows는 파일 탐색기로 해당 폴더를 선택한 뒤 <code class="highlighter-rouge">shift + 마우스 우클릭</code>하여 <code class="highlighter-rouge">여기서 명령창 열기</code>를 실행하면 편리하다.</p>
+      <p>windows는 파일 탐색기로 해당 폴더를 선택한 뒤 <code>shift + 마우스 우클릭</code>하여 <code>여기서 명령창 열기</code>를 실행하면 편리하다.</p>
     </blockquote>
   </li>
   <li>
     <p>아래 명령을 입력하여 모듈을 설치한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ yarn install
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ yarn install
+</code></pre>
   </li>
 </ol>
 
@@ -282,15 +279,15 @@
 
 <h3 id="section-6">관계형 데이터베이스</h3>
 <p>데이터베이스는 데이터를 모아놓는 것이다.
-어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 <code class="highlighter-rouge">관계형 데이터베이스</code>를 사용할 것이다.</p>
+어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 <code>관계형 데이터베이스</code>를 사용할 것이다.</p>
 
 <p>그럼 관계형 데이터베이스는 무엇일까?</p>
 
-<p>간단히 설명하면 관계형 데이터베이스는 <code class="highlighter-rouge">엑셀</code> 화면을 떠올리면 된다.</p>
+<p>간단히 설명하면 관계형 데이터베이스는 <code>엑셀</code> 화면을 떠올리면 된다.</p>
 
 <p><img src="/images/rvwendy02_01.png" alt="관계형데이터베이스" /></p>
 
-<p><code class="highlighter-rouge">행</code>과 <code class="highlighter-rouge">열</code>로 구분된다.</p>
+<p><code>행</code>과 <code>열</code>로 구분된다.</p>
 
 <h2 id="section-7">데이터 베이스 활용하기</h2>
 <p>Azure에서 활용가능한 관계형 데이터베이스는 다양하지만 우리는 SQL Database를 활용하도록한다.</p>
@@ -302,40 +299,40 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+    <p><code>새로 만들기</code> 클릭한다.</p>
 
     <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">SQL Database</code>를 검색한다.</p>
+    <p><code>SQL Database</code>를 검색한다.</p>
 
     <p><img src="/images/webapp_c01.png" alt="검색" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">SQL Database</code>를 선택한다.</p>
+    <p><code>SQL Database</code>를 선택한다.</p>
 
     <p><img src="/images/webapp_c02.png" alt="선택" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">데이터베이스 이름</code>을 입력한다. 리소스그룹은 웹앱과 같은 것을 선택한다.</p>
+    <p><code>데이터베이스 이름</code>을 입력한다. 리소스그룹은 웹앱과 같은 것을 선택한다.</p>
 
     <p><img src="/images/rvwendy02_02.jpg" alt="DB명입력" /></p>
   </li>
   <li>
-    <p>SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 <code class="highlighter-rouge">서버</code>를 클릭하여 <code class="highlighter-rouge">새 서버 만들기</code>를 선택한다.</p>
+    <p>SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 <code>서버</code>를 클릭하여 <code>새 서버 만들기</code>를 선택한다.</p>
 
     <p>이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.</p>
 
     <p><img src="/images/webapp_c04.png" alt="서버" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">서버 이름</code>, <code class="highlighter-rouge">서버 관리자 로그인</code>, <code class="highlighter-rouge">암호</code>를 입력하고 <code class="highlighter-rouge">선택</code>을 클릭한다.
+    <p><code>서버 이름</code>, <code>서버 관리자 로그인</code>, <code>암호</code>를 입력하고 <code>선택</code>을 클릭한다.
  &gt; 관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.</p>
 
     <p><img src="/images/webapp_c05.png" alt="새서버" /></p>
   </li>
   <li>
-    <p>생성된 서버를 선택하고 <code class="highlighter-rouge">만들기</code>를 클릭하여 SQL 데이터베이스를 생성한다.</p>
+    <p>생성된 서버를 선택하고 <code>만들기</code>를 클릭하여 SQL 데이터베이스를 생성한다.</p>
 
     <p><img src="/images/rvwendy02_03.jpg" alt="DB명입력" /></p>
   </li>
@@ -345,7 +342,7 @@
 
 <h3 id="sql---1">SQL 데이터베이스 구조</h3>
 
-<p>SQL 데이터베이스 생성과정을 보면 <code class="highlighter-rouge">서버</code>를 만들고 <code class="highlighter-rouge">데이터베이스 이름</code>을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.</p>
+<p>SQL 데이터베이스 생성과정을 보면 <code>서버</code>를 만들고 <code>데이터베이스 이름</code>을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.</p>
 
 <blockquote>
   <p>쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.</p>
@@ -363,12 +360,12 @@
 
 <ol>
   <li>
-    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 <code class="highlighter-rouge">서버 방화벽 설정</code>이란 메뉴가 보인다.</p>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 <code>서버 방화벽 설정</code>이란 메뉴가 보인다.</p>
 
     <p><img src="/images/webapp_c10.png" alt="서버방화벽" /></p>
   </li>
   <li>
-    <p>접속한 환경의 IP를 확인한 뒤 IP를 등록하고 <code class="highlighter-rouge">저장</code> 클릭하여 완료한다.</p>
+    <p>접속한 환경의 IP를 확인한 뒤 IP를 등록하고 <code>저장</code> 클릭하여 완료한다.</p>
 
     <p><img src="/images/rvwendy02_04.jpg" alt="IP등록" /></p>
   </li>
@@ -387,25 +384,25 @@
 <p>프로그래밍을 시작하기 전에 필요한 폴더를 몇개 생성하도록 하겠다. 지난 시간에 압축을 해제한 소스코드를 vs code로 열어보자.</p>
 
 <blockquote>
-  <p>vs code 실행하고 <code class="highlighter-rouge">file</code> - <code class="highlighter-rouge">open</code> 선택해서 압축 해제한 폴더를 선택하면 된다.</p>
+  <p>vs code 실행하고 <code>file</code> - <code>open</code> 선택해서 압축 해제한 폴더를 선택하면 된다.</p>
 </blockquote>
 
 <ol>
   <li>
-    <p><code class="highlighter-rouge">View Bar</code>에서 <code class="highlighter-rouge">Explorer</code>를 선택한다.
+    <p><code>View Bar</code>에서 <code>Explorer</code>를 선택한다.
  &gt; 기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.</p>
   </li>
   <li>
-    <p>빈 공간을 클릭한 뒤 <code class="highlighter-rouge">New Folder</code>버튼을 클릭하여 폴더를 생성한다.</p>
+    <p>빈 공간을 클릭한 뒤 <code>New Folder</code>버튼을 클릭하여 폴더를 생성한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">config</code>라고 입력한다.</p>
+    <p><code>config</code>라고 입력한다.</p>
   </li>
 </ol>
 
 <p><img src="/images/rvwendy02_05.jpg" alt="폴더생성" /></p>
 
-<p>위 과정을 반복해서 <code class="highlighter-rouge">models</code>, <code class="highlighter-rouge">utils</code> 폴더를 추가한다.</p>
+<p>위 과정을 반복해서 <code>models</code>, <code>utils</code> 폴더를 추가한다.</p>
 
 <h2 id="orm-">ORM 설정</h2>
 <p>관계형 데이터베이스는 SQL로 데이터를 관리할 수 있다. 그런데 이게 또 새로운 문법을 배우는 셈이 되고 데이터를 가공해서 프로그래밍할 때 불편하다.</p>
@@ -422,15 +419,15 @@
 <p>서버가 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.</p>
 
 <blockquote>
-  <p>이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 <code class="highlighter-rouge">아이디</code>와 <code class="highlighter-rouge">비밀번호</code>를 입력하는 것과 같은 절차다.</p>
+  <p>이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 <code>아이디</code>와 <code>비밀번호</code>를 입력하는 것과 같은 절차다.</p>
 </blockquote>
 
 <ol>
   <li>
-    <p>vs code에서 <code class="highlighter-rouge">config</code>폴더를 선택하고 <code class="highlighter-rouge">New File</code>을 클릭한다.</p>
+    <p>vs code에서 <code>config</code>폴더를 선택하고 <code>New File</code>을 클릭한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">config.json</code>이라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
+    <p><code>config.json</code>이라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
 
     <p><img src="/images/rvwendy02_06.jpg" alt="config.json생성" /></p>
   </li>
@@ -442,29 +439,29 @@
 <script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=config.json"> </script>
 
 <ul>
-  <li>2, 13번 줄 : production과 development로 개발 환경을 분리했다. Azure 웹앱은 기본이 <code class="highlighter-rouge">production</code>환경이다.</li>
+  <li>2, 13번 줄 : production과 development로 개발 환경을 분리했다. Azure 웹앱은 기본이 <code>production</code>환경이다.</li>
   <li>3 번 줄 : 데이터베이스 서버 주소지를 입력하면 된다. 앞서 생성한 SQL 데이터베이스 주소가 여기에 입력된다.</li>
   <li>4 번 줄 : 데이터베이스 서버 주소지에 접속할 때 사용되는 포트번호이다.</li>
   <li>5 번 줄 : ORM이 접속할 서버가 어떤 형태(MS SQL, MySQL, MariaDB 등)인지 인식시킨다.</li>
-  <li>6, 7 번 줄 : 데이터베이스에 로그인할 때 사용되는 아이디와 비밀번호. 아래에서도 설명하겠지만 <code class="highlighter-rouge">절대</code>로 공개된 레포지토리에 이게 입력된 상태로 배포하면 안된다.</li>
+  <li>6, 7 번 줄 : 데이터베이스에 로그인할 때 사용되는 아이디와 비밀번호. 아래에서도 설명하겠지만 <code>절대</code>로 공개된 레포지토리에 이게 입력된 상태로 배포하면 안된다.</li>
   <li>8 번 줄 : ORM 설정에 해당하는 부분.</li>
-  <li>10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 <code class="highlighter-rouge">데이터베이스 명</code>을 입력해야한다.</li>
+  <li>10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 <code>데이터베이스 명</code>을 입력해야한다.</li>
 </ul>
 
 <h3 id="modelsindexjs--">models/index.js 파일 추가</h3>
 
-<p>우리가 사용하는 ORM은 <code class="highlighter-rouge">sequelize.js</code>이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 <code class="highlighter-rouge">models</code>폴더에 <code class="highlighter-rouge">index.js</code>파일을 추가하도록 하겠다.</p>
+<p>우리가 사용하는 ORM은 <code>sequelize.js</code>이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 <code>models</code>폴더에 <code>index.js</code>파일을 추가하도록 하겠다.</p>
 
 <ol>
   <li>
-    <p>vs code에서 <code class="highlighter-rouge">models</code>폴더를 선택하고 <code class="highlighter-rouge">New File</code>을 클릭한다.</p>
+    <p>vs code에서 <code>models</code>폴더를 선택하고 <code>New File</code>을 클릭한다.</p>
 
     <blockquote>
       <p>파일을 생성할 때 어느 폴더를 선택하고 있는지에 따라 파일 위치가 변경되니 주의하자.</p>
     </blockquote>
   </li>
   <li>
-    <p><code class="highlighter-rouge">index.js</code>라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
+    <p><code>index.js</code>라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.</p>
   </li>
   <li>
     <p>아래 소스코드를 입력한다.</p>
@@ -474,18 +471,18 @@
 <script src="https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=index.js"> </script>
 
 <ul>
-  <li>8, 9번 줄 : <code class="highlighter-rouge">NODE_ENV</code>란 환경변수로 어떤 환경에서 실행하는지 읽어서 필요한 설정을 로드한다.</li>
-  <li>13, 14번 줄 : 노출되면 보안에 민감한 username, password를 환경변수로 빼내서 소스코드에 담지 않아도 되도록 조치한 것이다. 이 조치를 통해 아래에서 <code class="highlighter-rouge">dbUsername</code>, <code class="highlighter-rouge">dbPassword</code> 환경변수 설정하는 것을 볼 수 있다.</li>
+  <li>8, 9번 줄 : <code>NODE_ENV</code>란 환경변수로 어떤 환경에서 실행하는지 읽어서 필요한 설정을 로드한다.</li>
+  <li>13, 14번 줄 : 노출되면 보안에 민감한 username, password를 환경변수로 빼내서 소스코드에 담지 않아도 되도록 조치한 것이다. 이 조치를 통해 아래에서 <code>dbUsername</code>, <code>dbPassword</code> 환경변수 설정하는 것을 볼 수 있다.</li>
 </ul>
 
-<p>코드가 매우 길지만 가볍게 설명하자면 <code class="highlighter-rouge">models</code>폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.</p>
+<p>코드가 매우 길지만 가볍게 설명하자면 <code>models</code>폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.</p>
 
 <h3 id="serverjs--">server.js 파일 수정</h3>
-<p>우리가 만드는 소스코드는 <code class="highlighter-rouge">server.js</code>파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.</p>
+<p>우리가 만드는 소스코드는 <code>server.js</code>파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.</p>
 
 <ol>
   <li>
-    <p>vs code에서 <code class="highlighter-rouge">server.js</code>파일을 선택한다.</p>
+    <p>vs code에서 <code>server.js</code>파일을 선택한다.</p>
   </li>
   <li>
     <p>server.js에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.</p>
@@ -494,10 +491,8 @@
       <li>찾아야하는 내용</li>
     </ul>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     <span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">);</span>
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code class="language-javascript">     var http = require('http');
+</code></pre>
 
     <ul>
       <li>추가할 코드</li>
@@ -512,10 +507,8 @@
       <li>찾아야하는 내용</li>
     </ul>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code class="language-javascript">     server.listen(port);
+</code></pre>
 
     <ul>
       <li>대체할 코드</li>
@@ -534,49 +527,40 @@
 
 <ol>
   <li>
-    <p>vs code의 <code class="highlighter-rouge">View Bar</code>에서 <code class="highlighter-rouge">Debug</code>를 선택한다.</p>
+    <p>vs code의 <code>View Bar</code>에서 <code>Debug</code>를 선택한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">Open launch.json</code>버튼을 클릭 한 뒤 <code class="highlighter-rouge">Node.js</code> 환경을 선택한다.</p>
+    <p><code>Open launch.json</code>버튼을 클릭 한 뒤 <code>Node.js</code> 환경을 선택한다.</p>
 
     <p><img src="/images/rvwendy02_07.jpg" alt="Node.js설정" /></p>
   </li>
   <li>
-    <p>아래처럼 <code class="highlighter-rouge">configurations</code> 노드 부분에 <code class="highlighter-rouge">cwd</code>노드 아래에 환경 변수를 추가한다. 반드시 <code class="highlighter-rouge">cwd</code> 부분에 쉼표(,)를 추가해야한다.</p>
+    <p>아래처럼 <code>configurations</code> 노드 부분에 <code>cwd</code>노드 아래에 환경 변수를 추가한다. 반드시 <code>cwd</code> 부분에 쉼표(,)를 추가해야한다.</p>
 
     <ul>
       <li>찾아야하는 내용</li>
     </ul>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>     "cwd": "${workspaceRoot}"
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code>     "cwd": "${workspaceRoot}"
+</code></pre>
 
     <ul>
       <li>변경할 코드</li>
     </ul>
 
     <blockquote>
-      <p><code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
+      <p><code>dbUsername</code>과 <code>dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
     </blockquote>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6</pre></td><td class="code"><pre>    "env": {
+    <pre><code>    "env": {
         "NODE_ENV": "development",
         "DEBUG":"Wendy:server:*",
         "dbUsername":"username",
         "dbPassword":"password"
     }
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
 
-    <p>위 변경할 코드 중에서 <code class="highlighter-rouge">NODE_ENV</code>는 <code class="highlighter-rouge">development</code>환경이란 것을 알려주기 위한 것이고 <code class="highlighter-rouge">DEBUG</code>는 실행 중에 나오는 로그를 확인하기 위해 추가한 것이다(필수는 아니다).</p>
+    <p>위 변경할 코드 중에서 <code>NODE_ENV</code>는 <code>development</code>환경이란 것을 알려주기 위한 것이고 <code>DEBUG</code>는 실행 중에 나오는 로그를 확인하기 위해 추가한 것이다(필수는 아니다).</p>
   </li>
 </ol>
 
@@ -592,21 +576,21 @@
     <p><a href="https://portal.azure.com">Azure 포털(https://portal.azure.com)로 접속</a>한다.</p>
   </li>
   <li>
-    <p>생성한 웹앱을 선택한 뒤 <code class="highlighter-rouge">응용 프로그램 설정</code> 메뉴를 선택한다.</p>
+    <p>생성한 웹앱을 선택한 뒤 <code>응용 프로그램 설정</code> 메뉴를 선택한다.</p>
 
     <p><img src="/images/rvwendy02_08.jpg" alt="응용 프로그램 설정" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">앱 설정</code> 부분을 찾아서 <code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code> 환경 변수를 등록하고 username과 password를 각각 입력한다.</p>
+    <p><code>앱 설정</code> 부분을 찾아서 <code>dbUsername</code>과 <code>dbPassword</code> 환경 변수를 등록하고 username과 password를 각각 입력한다.</p>
 
     <blockquote>
-      <p><code class="highlighter-rouge">dbUsername</code>과 <code class="highlighter-rouge">dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
+      <p><code>dbUsername</code>과 <code>dbPassword</code>는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.</p>
     </blockquote>
 
     <p><img src="/images/rvwendy02_09.jpg" alt="앱 설정" /></p>
   </li>
   <li>
-    <p>모두 입력했으면 <code class="highlighter-rouge">저장</code> 버튼을 클릭하여 설정을 저장한다.</p>
+    <p>모두 입력했으면 <code>저장</code> 버튼을 클릭하여 설정을 저장한다.</p>
 
     <p><img src="/images/rvwendy02_10.jpg" alt="앱 설정 저장" /></p>
   </li>
@@ -639,7 +623,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

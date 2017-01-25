@@ -64,6 +64,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -283,7 +284,7 @@
   <p>SSH 터널 개념은 <a href="https://milooy.wordpress.com/2016/04/14/ssh-tunneling/">SSH Tunneling</a> 글을 참고하자.</p>
 </blockquote>
 
-<p>먼저 SSH 터널을 생성하려면 <code class="highlighter-rouge">FQDN</code>(Fully Qualified Domain Name)를 알아야한다.</p>
+<p>먼저 SSH 터널을 생성하려면 <code>FQDN</code>(Fully Qualified Domain Name)를 알아야한다.</p>
 
 <h3 id="fqdn-">FQDN 확인</h3>
 
@@ -300,7 +301,7 @@
  <img src="/images/AzureFQDN03.png" alt="acsFQDN3" width="300px" /></p>
   </li>
   <li>
-    <p>출력에서 <code class="highlighter-rouge">MASTERFQDN</code>을 확인한다(이미지에는 없지만 아래 쪽에 <code class="highlighter-rouge">AGENTFQDN</code>도 함께 확인해둔다).</p>
+    <p>출력에서 <code>MASTERFQDN</code>을 확인한다(이미지에는 없지만 아래 쪽에 <code>AGENTFQDN</code>도 함께 확인해둔다).</p>
 
     <p><img src="/images/AzureFQDN04.png" alt="acsFQDN4" width="500px" /></p>
   </li>
@@ -310,17 +311,17 @@
 
 <p>SSH 터널을 생성할 차례다.</p>
 
-<p>아래 명령에에서 <code class="highlighter-rouge">User Name</code>과 <code class="highlighter-rouge">FQDN</code>(Fully Qualified Domain Name)을 자신의 ACS 환경에 맞게 대체하여 터미널에 입력하면 SSH 터널이 생성된다.</p>
+<p>아래 명령에에서 <code>User Name</code>과 <code>FQDN</code>(Fully Qualified Domain Name)을 자신의 ACS 환경에 맞게 대체하여 터미널에 입력하면 SSH 터널이 생성된다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>ssh -L 2375:localhost:2375 -N <span class="o">[</span>User Name]@[FQDN] -p 2200</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ ssh -L 2375:localhost:2375 -N [User Name]@[FQDN] -p 2200</code></pre></figure>
 
-<p>연결이 되었으면 터미널 창을 새로 열어서 아래 명령을 입력한다. <code class="highlighter-rouge">DOCKER_HOST</code> 환경 변수에 설정하여 배포된 ACS 환경을 자신의 로컬환경에서 Docker CLI(Command Line Interface)로 사용할 수 있게 된다.</p>
+<p>연결이 되었으면 터미널 창을 새로 열어서 아래 명령을 입력한다. <code>DOCKER_HOST</code> 환경 변수에 설정하여 배포된 ACS 환경을 자신의 로컬환경에서 Docker CLI(Command Line Interface)로 사용할 수 있게 된다.</p>
 
 <blockquote>
   <p>터미널 창을 새로 여는 것은 SSH 터널이 연결된 상태에서는 프롬프트가 돌아오지 않기 때문이다.</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">export </span><span class="nv">DOCKER_HOST</span><span class="o">=</span>:2375</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ export DOCKER_HOST=:2375</code></pre></figure>
 
 <h2 id="nodejs---">Node.js 앱 컨테이너 배포</h2>
 
@@ -336,21 +337,21 @@
   <p>아래 명령을 순서대로 입력하면 된다.</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
-<span class="gp">$ </span>unzip 0.0.1.zip
-<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+$ unzip 0.0.1.zip
+$ cd NodejsExampleApp-0.0.1</code></pre></figure>
 
 <ul>
   <li>ACS에 컨테이너를 빌드한다.</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker build --tag=nodeapp:0.0.1 .</code></pre></figure>
 
 <ul>
   <li>빌드가 완료되면 아래 명령으로 빌드된 컨테이너를 확인할 수 있다.</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker images
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker images
 
 REPOSITORY      TAG         IMAGE ID        CREATED         VIRTUAL SIZE
 nodeapp         0.0.1       sha256:bab5a    5 minutes ago   221.1 MB
@@ -360,11 +361,11 @@ node            4-slim      sha256:d1e5c    9 days ago      206.7 MB</code></pre
 
 <p>이제 빌드한 컨테이너를 ACS 환경에 배포해보자.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker run --name=nodeapp -d -p 80:3000 nodeapp:0.0.1</code></pre></figure>
 
-<p>위 명령은 <code class="highlighter-rouge">nodeapp</code>이란 이름으로 <code class="highlighter-rouge">nodeapp:0.0.1</code> 컨테이너를 배포한 것이다.</p>
+<p>위 명령은 <code>nodeapp</code>이란 이름으로 <code>nodeapp:0.0.1</code> 컨테이너를 배포한 것이다.</p>
 
-<p><code class="highlighter-rouge">-p</code> 옵션 뒤에 값은 호스트의 80번 포트와 컨테이너 3000번 포트를 연결한 것이다.</p>
+<p><code>-p</code> 옵션 뒤에 값은 호스트의 80번 포트와 컨테이너 3000번 포트를 연결한 것이다.</p>
 
 <blockquote>
   <p><a href="http://pyrasis.com/docker.html">가장 빨리 만나는 Docker</a>에서 Docker 명령은 자세히 익힐 수 있다.</p>
@@ -372,14 +373,11 @@ node            4-slim      sha256:d1e5c    9 days ago      206.7 MB</code></pre
 
 <p>아래 명령을 입력하면 작동하는 컨테이너를 확인할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker ps</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker ps</code></pre></figure>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>CONTAINER ID    IMAGE           COMMAND         CREATED         STATUS          PORTS                 NAMES
+<pre><code>CONTAINER ID    IMAGE           COMMAND         CREATED         STATUS          PORTS                 NAMES
 0e8c2e2712a5    nodeapp:0.0.1   "npm start"     16 minutes ago  Up 16 minutes   10.0.0.6:80-&gt;3000/tcp swarm-agent-F6767C68000002/nodeapp
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
 <p>앞서 확인한 AGENTFQDN 주소를 브라우저에 입력하면 아래와 같은 결과를 확인할 수 있다.</p>
 
@@ -395,9 +393,9 @@ node            4-slim      sha256:d1e5c    9 days ago      206.7 MB</code></pre
 
 <h2 id="orchestration">Orchestration</h2>
 
-<p>ACS 환경에 컨테이너를 배포해봤다. 그러나 Docker를 로컬 환경에서 활용해 봤다면 <code class="highlighter-rouge">너무 간단한 예제 아닌가</code> 하며 실망할 수 있다.</p>
+<p>ACS 환경에 컨테이너를 배포해봤다. 그러나 Docker를 로컬 환경에서 활용해 봤다면 <code>너무 간단한 예제 아닌가</code> 하며 실망할 수 있다.</p>
 
-<p>그래서 준비했다! 바로 <code class="highlighter-rouge">Orchestration</code>!!!</p>
+<p>그래서 준비했다! 바로 <code>Orchestration</code>!!!</p>
 
 <p>이제 5개 컨테이너가 연결되어 하나의 서비스로 작동하도록 구성해보자.</p>
 
@@ -423,19 +421,19 @@ node            4-slim      sha256:d1e5c    9 days ago      206.7 MB</code></pre
 
 <p>이전에 작업하던 폴더(NodejsExampleApp-0.0.1)를 빠져나와서 다음 명령을 순서대로 입력한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.2.zip
-<span class="gp">$ </span>unzip 0.0.2.zip
-<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.2</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.2.zip
+$ unzip 0.0.2.zip
+$ cd NodejsExampleApp-0.0.2</code></pre></figure>
 
 <h3 id="docker-compose--orchestration">Docker Compose로 앱 Orchestration하기</h3>
 
 <blockquote>
-  <p>앞서 진행한 SSH 터널과 <code class="highlighter-rouge">DOCKER_HOST</code> 환경 변수가 유지된 환경이어야 한다.</p>
+  <p>앞서 진행한 SSH 터널과 <code>DOCKER_HOST</code> 환경 변수가 유지된 환경이어야 한다.</p>
 </blockquote>
 
 <p>NodejsExampleApp-0.0.2 폴더에서 다음 명령을 입력한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-compose up -d
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker-compose up -d
 
 Creating nodejsexampleapp_redis_1
 Creating nodejsexampleapp_node3_1
@@ -444,7 +442,7 @@ Creating nodejsexampleapp_node1_1
 Creating nodejsexampleapp_nginx_1</code></pre></figure>
 
 <blockquote>
-  <p><code class="highlighter-rouge">Creating</code> 메시지가 나온 뒤에 Node.js 앱 컨테이너를 생성하고 nginx 컨테이너를 생성하느라 시간이 좀 걸릴 수 있다.</p>
+  <p><code>Creating</code> 메시지가 나온 뒤에 Node.js 앱 컨테이너를 생성하고 nginx 컨테이너를 생성하느라 시간이 좀 걸릴 수 있다.</p>
 </blockquote>
 
 <p>컨테이너 생성이 끝나고 배포되면 AGENTFQDN 주소를 브라우저하자.</p>
@@ -455,7 +453,7 @@ Creating nodejsexampleapp_nginx_1</code></pre></figure>
 
 <p>만약 각 컨테이너가 어떤 agent 배포되어있는지 확인하고 싶다면 앞서 말한 아래 명령을 입력하면 된다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker ps</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker ps</code></pre></figure>
 
 <hr />
 
@@ -479,7 +477,7 @@ Creating nodejsexampleapp_nginx_1</code></pre></figure>
 
 <p>그러나 이제 일반에 공개되었다고 생각해보면 큰 단점도 아니다. 다만 시간이 필요할 뿐이다.</p>
 
-<p>끝으로 이번에 ACS보다 더 배운것은 <code class="highlighter-rouge">말조심</code>이다.</p>
+<p>끝으로 이번에 ACS보다 더 배운것은 <code>말조심</code>이다.</p>
 
 <p>고작 Docker 조금 다뤄봐놓고 ACS 다룰려니 지식이 부족하여 아주 혼났다.</p>
 
@@ -516,7 +514,71 @@ Creating nodejsexampleapp_nginx_1</code></pre></figure>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

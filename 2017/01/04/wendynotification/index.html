@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -197,7 +198,7 @@
 </ul>
 
 <h2 id="section-3">튜토리얼 제작 사항</h2>
-<p><code class="highlighter-rouge">이세계에 진입한 서버 개발</code>이란 이름으로 2개의 강좌가 제작되었다.</p>
+<p><code>이세계에 진입한 서버 개발</code>이란 이름으로 2개의 강좌가 제작되었다.</p>
 
 <p>기초에 해당하는 부분이라서 1주마다 총 2개가 공유되었다.</p>
 
@@ -224,13 +225,13 @@
 
 <p>그런데 MagmaKick CE로 이름을 쓰기 싫었다.</p>
 
-<p>덕심을 발휘해 볼겸 매력덩어리 이쁜애인 <a href="https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3%20%EC%9B%AC%EB%94%94">레드벨벳 웬디</a>의 이름을 따서 프로젝트 명을 <code class="highlighter-rouge">Wendy</code>로 지었다.</p>
+<p>덕심을 발휘해 볼겸 매력덩어리 이쁜애인 <a href="https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3%20%EC%9B%AC%EB%94%94">레드벨벳 웬디</a>의 이름을 따서 프로젝트 명을 <code>Wendy</code>로 지었다.</p>
 
 <blockquote>
   <p>놀랍게도 이름을 변경했더니 작업할 맛이 난다.</p>
 </blockquote>
 
-<p>로고는 웬디 얼굴을 대문짝만하게 걸고 싶었다. 소속사와 초상권을 생각해서 그녀의 별칭 중 하나인 <code class="highlighter-rouge">완라프</code>에서 착안, 눈사람 로고로 정했다.</p>
+<p>로고는 웬디 얼굴을 대문짝만하게 걸고 싶었다. 소속사와 초상권을 생각해서 그녀의 별칭 중 하나인 <code>완라프</code>에서 착안, 눈사람 로고로 정했다.</p>
 
 <blockquote>
   <p>와 말하고 나니까 되게 좋다.</p>
@@ -250,7 +251,7 @@
 
 <p>스스로 흑역사를 박제하는 기분이 든다.</p>
 
-<p>그런데!!! 페이스북에서 <code class="highlighter-rouge">좋아요</code> 하나 볼때마다 힘이나서 다시하게 된다.</p>
+<p>그런데!!! 페이스북에서 <code>좋아요</code> 하나 볼때마다 힘이나서 다시하게 된다.</p>
 
 <blockquote>
   <p>칭찬이 이렇게 무섭다.</p>
@@ -273,7 +274,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

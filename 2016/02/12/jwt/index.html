@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -177,7 +178,7 @@
   <p><a href="http://totuworld.github.io/2016/02/10/google-oauth/">구글 인앱 결제 검증 웹 서비스 만들기</a></p>
 </blockquote>
 
-<p>글을 다 적을 때쯤 공식 API를 보다가 우연히 <code class="highlighter-rouge">서비스 어카운트(service account)</code>를 활용해서 <code class="highlighter-rouge">JSON Web Token(이하 JWT)</code>를 생성한 후 로그인 절차없이 <code class="highlighter-rouge">access_token</code>을 얻는 방법을 알게되었다.</p>
+<p>글을 다 적을 때쯤 공식 API를 보다가 우연히 <code>서비스 어카운트(service account)</code>를 활용해서 <code>JSON Web Token(이하 JWT)</code>를 생성한 후 로그인 절차없이 <code>access_token</code>을 얻는 방법을 알게되었다.</p>
 
 <blockquote>
   <p>내 눈이 그렇지 뭐…</p>
@@ -197,55 +198,55 @@
 
 <p>JSON 형태의 토큰이라고 생각하면 되겠다. 장점이라면 토큰 자체에 정보를 보유하고 있어서 다른거 안보고 알 수 있어서 좋더라.</p>
 
-<p>하지만 여기서의 최대 장점이라면 <code class="highlighter-rouge">로그인 화면없이</code> 허가 코드를 얻을 수 있다는 점이다.</p>
+<p>하지만 여기서의 최대 장점이라면 <code>로그인 화면없이</code> 허가 코드를 얻을 수 있다는 점이다.</p>
 
 <hr />
 
 <h2 id="jwt-">JWT 활용하기</h2>
 
-<p>바로 <code class="highlighter-rouge">JWT</code>를 생성해서 사용하면 좋겠지만 이를 사용하기 위해서도 준비 사항이 필요하다. 이를 거치고 진행하도록 하겠다.</p>
+<p>바로 <code>JWT</code>를 생성해서 사용하면 좋겠지만 이를 사용하기 위해서도 준비 사항이 필요하다. 이를 거치고 진행하도록 하겠다.</p>
 
 <h3 id="jwt--">JWT를 위한 준비사항</h3>
 
-<p>구글 개발자 콘솔에서 <code class="highlighter-rouge">JWT</code>에 사용될 <code class="highlighter-rouge">서비스 어카운트</code>를 생성하도록하자.</p>
+<p>구글 개발자 콘솔에서 <code>JWT</code>에 사용될 <code>서비스 어카운트</code>를 생성하도록하자.</p>
 
 <ol>
   <li>
-    <p><a href="https://console.developers.google.com/apis">구글 개발자 콘솔 API 관리자</a>에 접속한 후 <code class="highlighter-rouge">사용자 인증 정보</code> 탭으로 이동한다.</p>
+    <p><a href="https://console.developers.google.com/apis">구글 개발자 콘솔 API 관리자</a>에 접속한 후 <code>사용자 인증 정보</code> 탭으로 이동한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">사용자 인증 정보 - 새 사용자 인증 정보</code> 버튼을 클릭하고 <code class="highlighter-rouge">서비스 계정 키</code>를 선택한다.<br />
+    <p><code>사용자 인증 정보 - 새 사용자 인증 정보</code> 버튼을 클릭하고 <code>서비스 계정 키</code>를 선택한다.<br />
  <img src="/images/serviceaccount1.png" alt="서비스 계정 키 생성" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">새 서비스 계정</code>을 선택하고 <code class="highlighter-rouge">이름</code>을 입력한 후 <code class="highlighter-rouge">생성</code>버튼을 클릭한다.
+    <p><code>새 서비스 계정</code>을 선택하고 <code>이름</code>을 입력한 후 <code>생성</code>버튼을 클릭한다.
  <img src="/images/serviceaccount2.png" alt="서비스 계정 키 생성 완료" /></p>
   </li>
 </ol>
 
-<p>그럼 자연히 파일을 하나 다운받게 될 것이다. 아래에서는 이를 <code class="highlighter-rouge">key.json</code>이라고 칭하겠다.</p>
+<p>그럼 자연히 파일을 하나 다운받게 될 것이다. 아래에서는 이를 <code>key.json</code>이라고 칭하겠다.</p>
 
 <blockquote>
-  <p>주의 사항 : <code class="highlighter-rouge">p12</code>가 아니라 <code class="highlighter-rouge">json</code>으로 선택해야 정신건강에 이로우며 완료 후 다운받은 json 파일은 하나뿐이라서 잃어버리면 안된다!!!!</p>
+  <p>주의 사항 : <code>p12</code>가 아니라 <code>json</code>으로 선택해야 정신건강에 이로우며 완료 후 다운받은 json 파일은 하나뿐이라서 잃어버리면 안된다!!!!</p>
 </blockquote>
 
 <p><a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>과는 별도의 웹 서비스로 제작하기위해 <a href="http://totuworld.github.io/2016/02/10/google-oauth/#express---">Express 프로젝트 기초 작업</a>을 진행한다.</p>
 
 <h3 id="section-1">기능 제작</h3>
 
-<p><code class="highlighter-rouge">key.json</code> 파일을 사용하기 위해 프로젝트 root 폴더에 위치시킨다. 그리고 <code class="highlighter-rouge">routes/index.js</code>파일에 다음 내용을 추가한다.</p>
+<p><code>key.json</code> 파일을 사용하기 위해 프로젝트 root 폴더에 위치시킨다. 그리고 <code>routes/index.js</code>파일에 다음 내용을 추가한다.</p>
 
 <script src="https://gist.github.com/totuworld/3cff7e34ed3750571650.js?file=function.js"> </script>
 
 <p>1~2 번째 줄 : key파일의 위치를 저장하는 변수와 access_token을 저장할 변수를 추가했다.</p>
 
-<p>9 번째 줄 : <code class="highlighter-rouge">access_token</code>이 유효한지 체크하는 메서드이다.</p>
+<p>9 번째 줄 : <code>access_token</code>이 유효한지 체크하는 메서드이다.</p>
 
 <p>27 번째 줄 : 가장 핵심 부분이다. Node.js에서 사용가능한 google api 클라이언트를 활용하여 JWT를 생성한 후 허가를 획득한다.</p>
 
 <p>51 번째 줄 : 영수증을 검증하는 메서드이다. <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 만든 메서드에 파라미터를 추가한것이 전부이다.</p>
 
-<p>JWT를 활용하여 <code class="highlighter-rouge">access_token</code>을 얻는것은 이처럼 단순하다. 다만 <code class="highlighter-rouge">refresh_token</code>이 지급되지 않으므로 유효시간(1시간)이 지나면 갱신을 하도록만 하면 된다.</p>
+<p>JWT를 활용하여 <code>access_token</code>을 얻는것은 이처럼 단순하다. 다만 <code>refresh_token</code>이 지급되지 않으므로 유효시간(1시간)이 지나면 갱신을 하도록만 하면 된다.</p>
 
 <hr />
 
@@ -255,13 +256,13 @@
 
 <script src="https://gist.github.com/totuworld/3cff7e34ed3750571650.js?file=index.js"> </script>
 
-<p>13 번째 줄 : <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 설명했던 코드이다. 변경된 것은 <code class="highlighter-rouge">ValidationIAB</code> 메서드를 활용하기전에 <code class="highlighter-rouge">access_token</code>이 유효하지 않으면 획득하게 하는 로직을 추가한 것 뿐이다.</p>
+<p>13 번째 줄 : <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 설명했던 코드이다. 변경된 것은 <code>ValidationIAB</code> 메서드를 활용하기전에 <code>access_token</code>이 유효하지 않으면 획득하게 하는 로직을 추가한 것 뿐이다.</p>
 
 <hr />
 
 <h2 id="section-3">맺음말</h2>
 
-<p><code class="highlighter-rouge">JWT</code>를 활용하면 이처럼 간단하게 영수증 검증이 가능하다. 하지만 반드시 유의해야하는 것이 있다. 서비스 계정으로 획득한 <code class="highlighter-rouge">key.json</code>파일을 잘 관리해야한다. 공개된 git 레포지토리에 함께 올려버리면 보안에 큰 위험이 된다. 이를 숙지하자.</p>
+<p><code>JWT</code>를 활용하면 이처럼 간단하게 영수증 검증이 가능하다. 하지만 반드시 유의해야하는 것이 있다. 서비스 계정으로 획득한 <code>key.json</code>파일을 잘 관리해야한다. 공개된 git 레포지토리에 함께 올려버리면 보안에 큰 위험이 된다. 이를 숙지하자.</p>
 
 <hr />
 
@@ -282,7 +283,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

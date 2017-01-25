@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -215,39 +216,39 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+    <p><code>새로 만들기</code> 클릭한다.</p>
 
     <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">SQL Database</code>를 검색한다.</p>
+    <p><code>SQL Database</code>를 검색한다.</p>
 
     <p><img src="/images/webapp_c01.png" alt="검색" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">SQL Database</code>를 선택한다.</p>
+    <p><code>SQL Database</code>를 선택한다.</p>
 
     <p><img src="/images/webapp_c02.png" alt="선택" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">데이터베이스 이름</code>을 입력한다.</p>
+    <p><code>데이터베이스 이름</code>을 입력한다.</p>
 
     <p><img src="/images/webapp_c03.png" alt="DB명입력" /></p>
   </li>
   <li>
-    <p>SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 <code class="highlighter-rouge">서버</code>를 클릭하여 <code class="highlighter-rouge">새 서버 만들기</code>를 선택한다.</p>
+    <p>SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 <code>서버</code>를 클릭하여 <code>새 서버 만들기</code>를 선택한다.</p>
 
     <p>이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.</p>
 
     <p><img src="/images/webapp_c04.png" alt="서버" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">서버 이름</code>, <code class="highlighter-rouge">서버 관리자 로그인</code>, <code class="highlighter-rouge">암호</code>를 입력하고 <code class="highlighter-rouge">선택</code>을 클릭한다.</p>
+    <p><code>서버 이름</code>, <code>서버 관리자 로그인</code>, <code>암호</code>를 입력하고 <code>선택</code>을 클릭한다.</p>
 
     <p><img src="/images/webapp_c05.png" alt="새서버" /></p>
   </li>
   <li>
-    <p>생성된 서버를 선택하고 <code class="highlighter-rouge">만들기</code>를 클릭하여 SQL 데이터베이스를 생성한다.</p>
+    <p>생성된 서버를 선택하고 <code>만들기</code>를 클릭하여 SQL 데이터베이스를 생성한다.</p>
 
     <p><img src="/images/webapp_c03_1.png" alt="만들기" /></p>
   </li>
@@ -257,7 +258,7 @@
 
 <h3 id="sql---1">SQL 데이터베이스 구조</h3>
 
-<p>SQL 데이터베이스 생성과정을 보면 <code class="highlighter-rouge">서버</code>를 만들고 <code class="highlighter-rouge">데이터베이스 이름</code>을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.</p>
+<p>SQL 데이터베이스 생성과정을 보면 <code>서버</code>를 만들고 <code>데이터베이스 이름</code>을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.</p>
 
 <blockquote>
   <p>쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.</p>
@@ -275,7 +276,7 @@
 
 <ol>
   <li>
-    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 <code class="highlighter-rouge">서버 방화벽 설정</code>이란 메뉴가 보인다.</p>
+    <p><a href="https://portal.azure.com">Azure 포털로 접속</a>로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 <code>서버 방화벽 설정</code>이란 메뉴가 보인다.</p>
 
     <p><img src="/images/webapp_c10.png" alt="서버방화벽" /></p>
   </li>
@@ -293,12 +294,12 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+    <p><code>새로 만들기</code> 클릭한다.</p>
 
     <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">MySQL</code>를 검색한 뒤 원하는 제품을 선택한다.</p>
+    <p><code>MySQL</code>를 검색한 뒤 원하는 제품을 선택한다.</p>
 
     <blockquote>
       <p>이 글에서는 테스트 용도이므로 20MB지원하는 ClearDB 제품을 선택했다.</p>
@@ -307,18 +308,18 @@
     <p><img src="/images/webapp_c06.png" alt="검색" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">데이터베이스 이름</code>, <code class="highlighter-rouge">위치</code> 등을 모두 입력하고 <code class="highlighter-rouge">가격 정책 계층</code>을 무료 등급인 수성으로 설정한다.</p>
+    <p><code>데이터베이스 이름</code>, <code>위치</code> 등을 모두 입력하고 <code>가격 정책 계층</code>을 무료 등급인 수성으로 설정한다.</p>
 
     <p><img src="/images/webapp_c07.png" alt="정보입력" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">만들기</code>를 클릭하여 MySQL 데이터베이스를 생성한다.</p>
+    <p><code>만들기</code>를 클릭하여 MySQL 데이터베이스를 생성한다.</p>
 
     <p><img src="/images/webapp_c07_1.png" alt="만들기" /></p>
   </li>
 </ol>
 
-<p>한가지 주의할 점이 있다. <code class="highlighter-rouge">데이터베이스 유형</code>을 공용으로 설정했다면 해당 서비스에서 <code class="highlighter-rouge">설정</code> - <code class="highlighter-rouge">속성</code>으로 이동해 <code class="highlighter-rouge">호스트 이름</code>, <code class="highlighter-rouge">사용자 이름</code>, <code class="highlighter-rouge">암호</code>를 확인해야한다.</p>
+<p>한가지 주의할 점이 있다. <code>데이터베이스 유형</code>을 공용으로 설정했다면 해당 서비스에서 <code>설정</code> - <code>속성</code>으로 이동해 <code>호스트 이름</code>, <code>사용자 이름</code>, <code>암호</code>를 확인해야한다.</p>
 
 <p><img src="/images/webapp_c08.png" alt="정보확인" width="150px" /></p>
 
@@ -331,7 +332,7 @@
 <p>웹앱이 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.</p>
 
 <blockquote>
-  <p>이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 <code class="highlighter-rouge">아이디</code>와 <code class="highlighter-rouge">비밀번호</code>를 입력하는 것과 같은 절차다.</p>
+  <p>이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 <code>아이디</code>와 <code>비밀번호</code>를 입력하는 것과 같은 절차다.</p>
 </blockquote>
 
 <p><img src="/images/webapp_c09.png" alt="DB연결" /></p>
@@ -340,14 +341,10 @@
 
 <p>거기다가 DBMS에 어떤 일(검색, 변경, 제거 등)을 시키려면 SQL 문법으로 작성된 명령어를 입력해야한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre>SELECT ID, NAME, SALARY FROM CUSTOMERS;
+<pre><code>SELECT ID, NAME, SALARY FROM CUSTOMERS;
 
 SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
 <p>여기서는 MySQL과 MSSQL을 다루므로 각 DBMS 교체 비용을 줄이고 SQL 작성을 건너뛰기위해 ORM을 사용한다.</p>
 
@@ -371,10 +368,10 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
       <p><a href="https://github.com/totuworld/AzureWebAppsTutorial/archive/v0.0.2.zip">AzureWebAppsTutorial-0.0.2 링크</a></p>
     </blockquote>
 
-    <p>기존에 아무런 변경이 없다면 대상 폴더는 <code class="highlighter-rouge">AzureWebAppsTutorial-0.0.1</code>이다.</p>
+    <p>기존에 아무런 변경이 없다면 대상 폴더는 <code>AzureWebAppsTutorial-0.0.1</code>이다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">AzureWebAppsTutorial-0.0.1</code> 폴더에서 아래 명령을 입력하여 sequelize, mysql, tedious 등 필요한 모듈을 설치한다.</p>
+    <p><code>AzureWebAppsTutorial-0.0.1</code> 폴더에서 아래 명령을 입력하여 sequelize, mysql, tedious 등 필요한 모듈을 설치한다.</p>
   </li>
 </ol>
 
@@ -384,9 +381,9 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
 
 <h3 id="section-4">설정 변경</h3>
 
-<p>이제 설정을 변경해야한다. <code class="highlighter-rouge">config/config.json</code> 파일을 열어보면 크게 3가지 object가 보인다.</p>
+<p>이제 설정을 변경해야한다. <code>config/config.json</code> 파일을 열어보면 크게 3가지 object가 보인다.</p>
 
-<p>위에서부터 열거하면 <code class="highlighter-rouge">development</code>, <code class="highlighter-rouge">devMySQL</code>, <code class="highlighter-rouge">production</code>이다.</p>
+<p>위에서부터 열거하면 <code>development</code>, <code>devMySQL</code>, <code>production</code>이다.</p>
 
 <blockquote>
   <p>필요에따라 더 늘려도되고 변경해도 무관한 내용이다. 여기서는 예를 들어야해서 3가지로 기본 등록한 것이다.</p>
@@ -416,12 +413,12 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
     <tr>
       <td>username</td>
       <td>string</td>
-      <td>DB 접속시 사용되는 사용자명(외부로 공개될 프로젝트의 경우 <code class="highlighter-rouge">DBUSERNAME</code> 등의 환경변수로 관리하길 권한다. )</td>
+      <td>DB 접속시 사용되는 사용자명(외부로 공개될 프로젝트의 경우 <code>DBUSERNAME</code> 등의 환경변수로 관리하길 권한다. )</td>
     </tr>
     <tr>
       <td>password</td>
       <td>string</td>
-      <td>DB 접속시 사용되는 비밀번호(외부로 공개될 프로젝트의 경우 <code class="highlighter-rouge">DBPASSWORD</code> 등의 환경변수로 관리하길 권한다. )</td>
+      <td>DB 접속시 사용되는 비밀번호(외부로 공개될 프로젝트의 경우 <code>DBPASSWORD</code> 등의 환경변수로 관리하길 권한다. )</td>
     </tr>
     <tr>
       <td>dialect</td>
@@ -433,19 +430,19 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
 
 <p>앞서 준비한 DB는 2가지 이다. 하나는 MSSQL과 같은 SQL Database 다른 하나는 MySQL.</p>
 
-<p>SQL Database에 접근하는 내용은 <code class="highlighter-rouge">development</code>에 적고 MySQL에 필요한 내용은 <code class="highlighter-rouge">devMySQL</code>에 넣는다.</p>
+<p>SQL Database에 접근하는 내용은 <code>development</code>에 적고 MySQL에 필요한 내용은 <code>devMySQL</code>에 넣는다.</p>
 
 <p>MySQL로 예를 들면 대략 이렇다.</p>
 
 <script src="https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=devmysql.json"> </script>
 
-<p>그럼 <code class="highlighter-rouge">production</code>에는 어떤 내용을 넣어야할까?</p>
+<p>그럼 <code>production</code>에는 어떤 내용을 넣어야할까?</p>
 
-<p><code class="highlighter-rouge">production</code>은 Azure 웹앱에 소스코드가 적용될 때 <code class="highlighter-rouge">NODE_ENV</code>로 기본 설정되는 환경변수이다.</p>
+<p><code>production</code>은 Azure 웹앱에 소스코드가 적용될 때 <code>NODE_ENV</code>로 기본 설정되는 환경변수이다.</p>
 
-<p>그러므로 <code class="highlighter-rouge">production</code>에 넣은 내용은 Azure 웹앱의 설정이 변경되지 않으면 기본으로 적용되는 설정이 된다.</p>
+<p>그러므로 <code>production</code>에 넣은 내용은 Azure 웹앱의 설정이 변경되지 않으면 기본으로 적용되는 설정이 된다.</p>
 
-<p>여기서는 <code class="highlighter-rouge">development</code>나 <code class="highlighter-rouge">devMySQL</code>에 넣은 내용을 복사해서 붙여넣어도 무방하다.</p>
+<p>여기서는 <code>development</code>나 <code>devMySQL</code>에 넣은 내용을 복사해서 붙여넣어도 무방하다.</p>
 
 <blockquote>
   <p>서비스활 때 이렇게 차이를 두는 이유는 로컬 환경, 배포 전 stage 환경, 배포 환경이 모두 다를때 대응하기 위함이다.</p>
@@ -459,7 +456,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
 
 <h4 id="development--">development 환경 테스트</h4>
 
-<p><code class="highlighter-rouge">NODE_ENV</code>로 <code class="highlighter-rouge">development</code> 환경임을 지시하고 server.js 파일을 실행시키면 된다.</p>
+<p><code>NODE_ENV</code>로 <code>development</code> 환경임을 지시하고 server.js 파일을 실행시키면 된다.</p>
 
 <blockquote>
   <p>안전을 위해 username과 password를 환경변수로 전달하는 방법까지 함께 한 명령으로 필요에 따라 환경변수를 제거하여 실행한다.</p>
@@ -469,17 +466,17 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
 
 <p>만약 이러한 로그를 보지 못했다면 대부분의 이유는 Azure SQL 데이터베이스가 방화벽으로 접근을 차단하기 때문이다.</p>
 
-<p><code class="highlighter-rouge">SQL 데이터베이스 방화벽 설정</code> 부분을 보고 설정했는지 체크하도록 한다.</p>
+<p><code>SQL 데이터베이스 방화벽 설정</code> 부분을 보고 설정했는지 체크하도록 한다.</p>
 
 <h4 id="devmysql--">devMySQL 환경 테스트</h4>
 
-<p><code class="highlighter-rouge">devMySQL</code>도 거의 비슷하다. 환경변수만 변경하면 된다.</p>
+<p><code>devMySQL</code>도 거의 비슷하다. 환경변수만 변경하면 된다.</p>
 
 <script src="https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=runmysql"> </script>
 
 <h2 id="section-6">맺음말</h2>
 
-<p>위 과정을 크게 압축하면 <code class="highlighter-rouge">DB 설정</code>, <code class="highlighter-rouge">접속설정</code>에 불과하다.</p>
+<p>위 과정을 크게 압축하면 <code>DB 설정</code>, <code>접속설정</code>에 불과하다.</p>
 
 <p>테이블 디자인, 쿼리 최적화, 기본키, 외래키 등 관계형 데이터베이스가 많은 키워드를 쏟아낼 것이다. 이러한 내용은 훌륭한 강의가 많으니 찾아보길 바란다.</p>
 
@@ -498,7 +495,71 @@ SELECT * FROM CUSTOMERS WHERE SALARY &gt; 150;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

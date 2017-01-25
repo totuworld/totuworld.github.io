@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -211,22 +212,22 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">새로 만들기</code> 클릭한다.</p>
+    <p><code>새로 만들기</code> 클릭한다.</p>
 
     <p><img src="/images/webapp_a01.png" alt="새로만들기" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">웹 + 모바일</code>을 선택한다.</p>
+    <p><code>웹 + 모바일</code>을 선택한다.</p>
 
     <p><img src="/images/webapp_a02.png" alt="웹+모바일" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">웹앱</code>을 선택한다.</p>
+    <p><code>웹앱</code>을 선택한다.</p>
 
     <p><img src="/images/webapp_a03.png" alt="웹앱" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">앱이름</code>을 입력하고 <code class="highlighter-rouge">리소스 그룹</code>을 선택한다. <code class="highlighter-rouge">만들기</code>를 클릭하면 생성이 시작된다.</p>
+    <p><code>앱이름</code>을 입력하고 <code>리소스 그룹</code>을 선택한다. <code>만들기</code>를 클릭하면 생성이 시작된다.</p>
 
     <blockquote>
       <p>리소스 그룹은 새로 만들어도 된다.</p>
@@ -240,7 +241,7 @@
 
 <p><img src="/images/webapp_a05.png" alt="웹앱확인" /></p>
 
-<p><code class="highlighter-rouge">웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.</p>
+<p><code>웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.</p>
 
 <h2 id="section-2">어플리케이션 배포하기</h2>
 
@@ -250,7 +251,7 @@
 
 <p>또한 각 웹앱마다 로컬 Git 레포지토리를 생성하고 git을 통해 commit하고 push하여 배포할 수 있다.</p>
 
-<p>이번에는 git을 활용할 수 있는 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
+<p>이번에는 git을 활용할 수 있는 <code>로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
 
 <h3 id="section-3">배포 원본 설정</h3>
 
@@ -260,33 +261,33 @@
 
 <ol>
   <li>
-    <p>생성한 웹앱에서 <code class="highlighter-rouge">설정</code>을 클릭한다.</p>
+    <p>생성한 웹앱에서 <code>설정</code>을 클릭한다.</p>
 
     <p><img src="/images/webapp_a06.png" alt="웹앱설정" /></p>
   </li>
   <li>
-    <p>설정 메뉴 중에서 <code class="highlighter-rouge">배포 원본</code>을 클릭한다.</p>
+    <p>설정 메뉴 중에서 <code>배포 원본</code>을 클릭한다.</p>
 
     <p><img src="/images/webapp_a07.png" alt="배포원본" /></p>
   </li>
   <li>
-    <p>배포 원본 메뉴에서 <code class="highlighter-rouge">소스 선택</code>클릭한다.</p>
+    <p>배포 원본 메뉴에서 <code>소스 선택</code>클릭한다.</p>
 
     <p><img src="/images/webapp_a08.png" alt="소스선택" /></p>
   </li>
   <li>
-    <p>원본 선택 메뉴에서 <code class="highlighter-rouge">로컬 Git 레포지토리</code>를 선택한다.</p>
+    <p>원본 선택 메뉴에서 <code>로컬 Git 레포지토리</code>를 선택한다.</p>
 
     <p><img src="/images/webapp_a09.png" alt="로컬Git레포지토리" /></p>
   </li>
   <li>
-    <p>선택이 완료되었으니 <code class="highlighter-rouge">확인</code>을 클릭하여 완료한다.</p>
+    <p>선택이 완료되었으니 <code>확인</code>을 클릭하여 완료한다.</p>
 
     <p><img src="/images/webapp_a10.png" alt="확인" /></p>
   </li>
 </ol>
 
-<p>설정이 끝나면 아래처럼 웹앱 메인 화면에서 <code class="highlighter-rouge">Git 복제 URL</code>을 확인할 수 있다.</p>
+<p>설정이 끝나면 아래처럼 웹앱 메인 화면에서 <code>Git 복제 URL</code>을 확인할 수 있다.</p>
 
 <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
 
@@ -307,12 +308,12 @@
     <script src="https://gist.github.com//161542851ecbd0276501d56e6ca42a44.js?file=downloadapp"> </script>
   </li>
   <li>
-    <p>Azure 포털에서 웹앱을 선택하고 <code class="highlighter-rouge">Git 복제 URL</code>를 클릭하여 복사한다.</p>
+    <p>Azure 포털에서 웹앱을 선택하고 <code>Git 복제 URL</code>를 클릭하여 복사한다.</p>
 
     <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
   </li>
   <li>
-    <p>아래 명령을 CLI에 입력한다. 단, <code class="highlighter-rouge">[웹앱 git 주소]</code>라고 써진 부분은 반드시 자신의 주소로 치환해야한다.</p>
+    <p>아래 명령을 CLI에 입력한다. 단, <code>[웹앱 git 주소]</code>라고 써진 부분은 반드시 자신의 주소로 치환해야한다.</p>
 
     <blockquote>
       <p>AzureWebAppsTutorial-0.0.1 폴더 안에서 입력해야한다.</p>
@@ -322,9 +323,9 @@
   </li>
 </ol>
 
-<p>위 코드는 git 으로 <code class="highlighter-rouge">AzureWebAppsTutorial-0.0.1</code>폴더를 관리할 수 있도록 한 뒤 <code class="highlighter-rouge">azure</code>란 이름으로 remote를 등록한 것이다.</p>
+<p>위 코드는 git 으로 <code>AzureWebAppsTutorial-0.0.1</code>폴더를 관리할 수 있도록 한 뒤 <code>azure</code>란 이름으로 remote를 등록한 것이다.</p>
 
-<p>그리고 commit을 한 뒤 <code class="highlighter-rouge">azure</code> 리모트로 push하여 코드를 반영 시킨 것이다.</p>
+<p>그리고 commit을 한 뒤 <code>azure</code> 리모트로 push하여 코드를 반영 시킨 것이다.</p>
 
 <p>실제로 push하면 아래와 같은 로그가 출력된다.</p>
 
@@ -355,16 +356,16 @@
     <p>압축을 해제한다.</p>
   </li>
   <li>
-    <p>SourceTree를 실행하여 <code class="highlighter-rouge">New Repository</code>클릭한 뒤 <code class="highlighter-rouge">Add exist local repository</code> 메뉴를 선택하낟.</p>
+    <p>SourceTree를 실행하여 <code>New Repository</code>클릭한 뒤 <code>Add exist local repository</code> 메뉴를 선택하낟.</p>
 
     <blockquote>
-      <p>Windows에서는 File - Clone / New 선택 후 나오는 창에서 <code class="highlighter-rouge">Add Working Copy</code>탭으로 이동한다.</p>
+      <p>Windows에서는 File - Clone / New 선택 후 나오는 창에서 <code>Add Working Copy</code>탭으로 이동한다.</p>
     </blockquote>
 
     <p><img src="/images/webapp_a12.png" alt="NewRepository" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">Destination Path</code>에 압축해제한 어플리케이션 폴더를 선택한 후 <code class="highlighter-rouge">Create</code>를 클릭한다.</p>
+    <p><code>Destination Path</code>에 압축해제한 어플리케이션 폴더를 선택한 후 <code>Create</code>를 클릭한다.</p>
 
     <blockquote>
       <p>Windows에서는 Working Copy Path가 같은 역할을 한다.</p>
@@ -378,22 +379,22 @@
     <p><img src="/images/webapp_a14.png" alt="레포지토리열기" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">Settings</code>를 클릭한다.</p>
+    <p><code>Settings</code>를 클릭한다.</p>
 
     <p><img src="/images/webapp_a15.png" alt="설정" /></p>
   </li>
   <li>
-    <p>Azure 포털에서 웹앱을 선택하고 <code class="highlighter-rouge">Git 복제 URL</code>를 클릭하여 복사한다.</p>
+    <p>Azure 포털에서 웹앱을 선택하고 <code>Git 복제 URL</code>를 클릭하여 복사한다.</p>
 
     <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
   </li>
   <li>
-    <p>SourceTree로 돌아와 <code class="highlighter-rouge">Remote Name</code>을 azure로 입력하고 <code class="highlighter-rouge">URL</code>에 복사한 주소를 붙여넣고 <code class="highlighter-rouge">OK</code>를 클릭한다.</p>
+    <p>SourceTree로 돌아와 <code>Remote Name</code>을 azure로 입력하고 <code>URL</code>에 복사한 주소를 붙여넣고 <code>OK</code>를 클릭한다.</p>
 
     <p><img src="/images/webapp_a16.png" alt="AddAzureRemote" /></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">File Status</code>탭에서 <code class="highlighter-rouge">Staged files</code>를 클릭한 뒤 commit 메시지를 <code class="highlighter-rouge">init</code>으로 입력하고 <code class="highlighter-rouge">Push changes immdiatly to azure/master</code>옵션을 켜고 <code class="highlighter-rouge">Commit</code>한다.</p>
+    <p><code>File Status</code>탭에서 <code>Staged files</code>를 클릭한 뒤 commit 메시지를 <code>init</code>으로 입력하고 <code>Push changes immdiatly to azure/master</code>옵션을 켜고 <code>Commit</code>한다.</p>
 
     <p><img src="/images/webapp_a17.png" alt="Commit" /></p>
   </li>
@@ -447,7 +448,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

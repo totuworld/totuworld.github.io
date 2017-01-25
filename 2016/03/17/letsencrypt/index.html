@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -194,10 +195,8 @@
 
 <p><img src="/images/webapp_s1.png" alt="S1" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>이하 웹앱은 `yotest`로 명명하겠다.
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>이하 웹앱은 `yotest`로 명명하겠다.
+</code></pre>
 
 <h3 id="section-1">배포 설정</h3>
 
@@ -219,12 +218,9 @@
 
     <p><img src="/images/webappdeploy3.png" alt="git 주소" /></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> git 주소 https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
+    <pre><code> git 주소 https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
  url yotest.azurewebsites.net
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
   </li>
 </ol>
 
@@ -273,10 +269,8 @@
 
     <p>변경된 설정이 반영되려면 20분정도 걸렸다. 차를 마시고 오자(적용 여부를 확인하는 것은 <a href="http://www.digwebinterface.com">http://www.digwebinterface.com</a>에서 확인하자).</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> 보통은 위와 같이 연결하나 필자의 경우 www 대신에 yotest란 서브 도메인을 사용했기때문에 CNAME의 Name이 yotest로 하였다. 
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> 보통은 위와 같이 연결하나 필자의 경우 www 대신에 yotest란 서브 도메인을 사용했기때문에 CNAME의 Name이 yotest로 하였다. 
+</code></pre>
   </li>
   <li>
     <p>이제 아래 그림 1번 위치에 구입한 도메인을 입력한다(아래에서는 yotest.magmakick.io라고 예를 든다).</p>
@@ -305,30 +299,23 @@
   <li>
     <p>클라이언트를 클론받는다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> $ git clone https://github.com/letsencrypt/letsencrypt
+    <pre><code> $ git clone https://github.com/letsencrypt/letsencrypt
  $ cd letsencrypt
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
   </li>
   <li>
     <p>관련 의존성을 해결하기 위해서 아래 명령을 입력한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ ./letsencrypt-auto --help
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ ./letsencrypt-auto --help
+</code></pre>
 
     <p>생각보다 시간이 걸린다.</p>
   </li>
   <li>
     <p>인증서 발급을 위해서 아래 명령을 입력한다. -d 뒤에는 도메인을 –email 뒤에는 자신의 email을 입력한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ ./letsencrypt-auto certonly --manual -d yotest.magmakick.io --email totuworld@gmail.com
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ ./letsencrypt-auto certonly --manual -d yotest.magmakick.io --email totuworld@gmail.com
+</code></pre>
 
     <p>다수의 도메인을 활용하려면 -d 도메인 -d 도메인 형태로 추가하면 된다.</p>
 
@@ -339,22 +326,7 @@
   <li>
     <p>3번 과정을 통하면 아래와 같은 결과가 나온다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16</pre></td><td class="code"><pre> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA before continuing:
+    <pre><code> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA before continuing:
 
  hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
 
@@ -370,25 +342,19 @@
  s = BaseHTTPServer.HTTPServer(('', 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
  s.serve_forever()"
  Press ENTER to continue
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
 
     <p>엔터를 바로 누르지말고 일단 내용을 해석해보자.</p>
 
     <p>브라우저로 아래 주소에 접속한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA 
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> http://yotest.magmakick.io/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA 
+</code></pre>
 
     <p>다음 값이 반환되어야한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
+</code></pre>
 
     <p>이를 위해서 아래 과정을 진행한다.</p>
   </li>
@@ -398,70 +364,46 @@
 
 <p>위에서 살펴본 것처럼 특정 주소지로 접속했을 때 값을 반환하기 위해서 다음 과정을 진행한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre>단계가 여러개지만 결론은 아래 값을 반환하는 것이므로 자신이 편한 방법으로 진행해도 무방하다.
+<pre><code>단계가 여러개지만 결론은 아래 값을 반환하는 것이므로 자신이 편한 방법으로 진행해도 무방하다.
 
 hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
 <ol>
   <li>
     <p>아래 프로젝트를 클론 받는다(클론은 vagrant 환경에서 받지 않아도 된다).</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> $ git clone https://github.com/totuworld/returnserver.git
+    <pre><code> $ git clone https://github.com/totuworld/returnserver.git
  $ cd returnserver
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
   </li>
   <li>
-    <p><code class="highlighter-rouge">server.js</code> 파일에서 <code class="highlighter-rouge">targetPath</code>와 <code class="highlighter-rouge">returnValue</code>를 변경한다.</p>
+    <p><code>server.js</code> 파일에서 <code>targetPath</code>와 <code>returnValue</code>를 변경한다.</p>
 
     <p>위의 결과대로 받아야하기때문에 여기서는 다음과 같이 수정했다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> let targetPath = '/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA';
+    <pre><code> let targetPath = '/.well-known/acme-challenge/hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA';
  let returnValue = 'hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqTrqwP1KU';
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
   </li>
   <li>
     <p>이제 Azure yotest 웹앱의 git 레포지토리와 연결한다(azure 뒤쪽은 자신의 git 레포지토리를 입력한다).</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ git remote add azure https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ git remote add azure https://totuworld@yotest.scm.azurewebsites.net:443/yotest.git
+</code></pre>
   </li>
   <li>
     <p>커밋을 하나 만들고 azure 리모트로 push한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre> $ git add *
+    <pre><code> $ git add *
  $ git commit -m 'update targetpath&amp;returnValue'
  $ git push azure master
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
   </li>
   <li>
     <p>ubuntu 환경에서 enter를 입력한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9</pre></td><td class="code"><pre> IMPORTANT NOTES:
+    <pre><code> IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at
  /etc/letsencrypt/live/yotest.magmakick.io/fullchain.pem. Your
  cert will expire on 2016-06-15. To obtain a new version of the
@@ -470,9 +412,7 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
 
  Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
  Donating to EFF:                    https://eff.org/donate-le
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
 
     <p>위에 보는 것처럼 SSL 인증서가 생성되었다.</p>
   </li>
@@ -488,34 +428,26 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
   <li>
     <p>ubuntu 환경에서 다음 명령을 입력하여 root 권한을 얻는다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ sudo su
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+    <pre><code> $ sudo su
+</code></pre>
   </li>
   <li>
     <p>해당 폴더로 이동한다(자신의 도메인 명과 뒤쪽 폴더명이 같이 해야한다). 그리고 변경 명령을 입력한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> $ cd /etc/letsencrypt/live/yotest.magmakick.io/
+    <pre><code> $ cd /etc/letsencrypt/live/yotest.magmakick.io/
  $ openssl pkcs12 -export -out cert.pfx -inkey privkey.pem -in cert.pem
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
 
     <p>비밀번호하도록 나오면 암호를 입력하고 기억해둔다.</p>
   </li>
   <li>
     <p>파일을 확인한다.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre> $ ls
+    <pre><code> $ ls
  cert.pem  cert.pfx  chain.pem  fullchain.pem  privkey.pem
-</pre></td></tr></tbody></table>
-</div>
-    </div>
+</code></pre>
 
-    <p><code class="highlighter-rouge">cert.pfx</code>가 생성된 것을 확인할 수 있다. vagrant 환경이라면 ftp 등을 이용해서 cert.pfx 파일을 복사한다.</p>
+    <p><code>cert.pfx</code>가 생성된 것을 확인할 수 있다. vagrant 환경이라면 ftp 등을 이용해서 cert.pfx 파일을 복사한다.</p>
   </li>
 </ol>
 
@@ -593,7 +525,71 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
