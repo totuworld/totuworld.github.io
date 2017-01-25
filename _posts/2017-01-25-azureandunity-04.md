@@ -15,6 +15,8 @@ publish : true
 * content
 {:toc}
 
+{% include youtubePlayer.html id="Zrem0cNKWiM" %}
+
 ## 들어가는 말
 통화는 위키피디아에 의하면 아래와 같이 정의된다. 
 
