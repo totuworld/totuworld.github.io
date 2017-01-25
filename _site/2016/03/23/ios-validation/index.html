@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -191,15 +192,14 @@
 
 <ol>
   <li>
-    <p><a href="https://github.com/totuworld/InAppPurchaseValidationWebService/archive/v0.0.1.zip">InAppPurchaseValidationWebService v0.0.1</a> 파일을 다운로드한 후 압축을 해제한다(이하 압축 해제 폴더를 <code class="highlighter-rouge">inapppurchaseWebService</code>라고 지칭한다).</p>
+    <p><a href="https://github.com/totuworld/InAppPurchaseValidationWebService/archive/v0.0.1.zip">InAppPurchaseValidationWebService v0.0.1</a> 파일을 다운로드한 후 압축을 해제한다(이하 압축 해제 폴더를 <code>inapppurchaseWebService</code>라고 지칭한다).</p>
   </li>
   <li>
     <p>압축해제한 폴더로 이동하여(inapppurchaseWebService 폴더) 필요한 module을 설치한다.</p>
   </li>
 </ol>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">    <span class="nv">$ </span>npm install
-    </code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ npm install</code></pre></figure>
 
 <hr />
 
@@ -209,11 +209,11 @@
 
 <p>사용할 모듈을 추가한다.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>npm install --save <span class="k">in</span>-app-purchase</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ npm install --save in-app-purchase</code></pre></figure>
 
-<p>모듈이 해주는 역할은 두 원격지(<code class="highlighter-rouge">buy.itunes.apple.com</code>와 <code class="highlighter-rouge">sandbox.itunes.apple.com</code>)에 <code class="highlighter-rouge">/verifyReceipt</code> path 영수증을 전송해서 올바른 값인지 확인하는 것이다. 허가 부분이 별도로 존재하지 않아서 몹시 간단하지만 여기서는 모듈로 간단히 처리하도록 한다.</p>
+<p>모듈이 해주는 역할은 두 원격지(<code>buy.itunes.apple.com</code>와 <code>sandbox.itunes.apple.com</code>)에 <code>/verifyReceipt</code> path 영수증을 전송해서 올바른 값인지 확인하는 것이다. 허가 부분이 별도로 존재하지 않아서 몹시 간단하지만 여기서는 모듈로 간단히 처리하도록 한다.</p>
 
-<p>이제 <code class="highlighter-rouge">routes/index.js</code>파일의 10번 줄에 다음 내용을 추가한다.</p>
+<p>이제 <code>routes/index.js</code>파일의 10번 줄에 다음 내용을 추가한다.</p>
 
 <script src="https://gist.github.com/totuworld/8687dc2c59d26ca97ae9.js?file=index.js"> </script>
 
@@ -229,21 +229,21 @@
 
 <p>사용도 간단하다.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>node /bin/www</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ node /bin/www</code></pre></figure>
 
-<p>실행한 뒤 <code class="highlighter-rouge">localhost:3000/appleiap/receipt/validation</code> 주소로 <code class="highlighter-rouge">RawReceipt</code>포함하여 POST 방식으로 호출하면 끝이다.</p>
+<p>실행한 뒤 <code>localhost:3000/appleiap/receipt/validation</code> 주소로 <code>RawReceipt</code>포함하여 POST 방식으로 호출하면 끝이다.</p>
 
 <p>그럼 boolean 값을 얻게된다.</p>
 
 <h3 id="section-4">주의 사항</h3>
 
-<p>한가지 주의 사항이라면 <code class="highlighter-rouge">RawReceipt</code>의 형식이다.</p>
+<p>한가지 주의 사항이라면 <code>RawReceipt</code>의 형식이다.</p>
 
 <p>필자는 아래에서 나오는 것처럼 영수증을 String 형태로 파싱해서 사용했다.</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"RawReceipt"</span><span class="p">:</span><span class="s2">"{\"verification-state\":0,\"transaction-receipt\":\"MIISiAYJKoZIh=\",\"product-identifier\":\"yoyo\",\"transaction-identifier\":\"8FXXX\",\"quantity\":1,\"transaction-state\":1,\"error\":\"\"}"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json">{
+    &quot;RawReceipt&quot;:&quot;{\&quot;verification-state\&quot;:0,\&quot;transaction-receipt\&quot;:\&quot;MIISiAYJKoZIh=\&quot;,\&quot;product-identifier\&quot;:\&quot;yoyo\&quot;,\&quot;transaction-identifier\&quot;:\&quot;8FXXX\&quot;,\&quot;quantity\&quot;:1,\&quot;transaction-state\&quot;:1,\&quot;error\&quot;:\&quot;\&quot;}&quot;
+}</code></pre></figure>
 
 <p>만약 JSON 형식으로 보낸다면 17번 줄을 다음처럼 변경해야한다.</p>
 
@@ -276,7 +276,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

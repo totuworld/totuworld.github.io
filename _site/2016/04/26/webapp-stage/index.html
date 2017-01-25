@@ -64,6 +64,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -190,7 +191,7 @@
 
 <p><img src="/images/azure-deployment-slots.png" alt="배포슬롯" /></p>
 
-<p>앞서했던 질문에 답으로 Azure가 제공하는 기능은 <code class="highlighter-rouge">배포슬롯</code>이다.</p>
+<p>앞서했던 질문에 답으로 Azure가 제공하는 기능은 <code>배포슬롯</code>이다.</p>
 
 <blockquote>
   <p>배포슬롯은 표준(Standard)나 프리미엄(Premium)이상의 웹 앱에서만 가능하다.</p>
@@ -220,7 +221,7 @@
     <p><img src="/images/webappds01.png" alt="설정" /> <img src="/images/webappds02.png" alt="배포슬롯" /></p>
   </li>
   <li>
-    <p>배포슬롯에서 추가를 선택하고 <code class="highlighter-rouge">이름</code>과 <code class="highlighter-rouge">구성소스</code>를 선택한 후 추가한다.</p>
+    <p>배포슬롯에서 추가를 선택하고 <code>이름</code>과 <code>구성소스</code>를 선택한 후 추가한다.</p>
 
     <p><img src="/images/webappds03.png" alt="배포슬롯추가" /> <img src="/images/webappds04.png" alt="배포슬롯추가1" /></p>
   </li>
@@ -244,34 +245,34 @@
 
 <p>아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
-<span class="gp">$ </span>unzip 0.0.1.zip
-<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+$ unzip 0.0.1.zip
+$ cd NodejsExampleApp-0.0.1</code></pre></figure>
 
 <p>그리고 git을 설정한 후 모든 소스코드를 포함시켜서 커밋한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git init
-<span class="gp">$ </span>git add <span class="k">*</span>
-<span class="gp">$ </span>git commit -m <span class="s2">"init"</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git init
+$ git add *
+$ git commit -m &quot;init&quot;</code></pre></figure>
 
 <p>프로덕션 배포 레포지토리를 추가한다.</p>
 
 <blockquote>
-  <p>아래 명령에서 <code class="highlighter-rouge">레포지토리주소</code>를 자신의 주소로 변경하여 입력한다.</p>
+  <p>아래 명령에서 <code>레포지토리주소</code>를 자신의 주소로 변경하여 입력한다.</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git remote add azureproduction <span class="o">[</span>레포지토리주소] </code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git remote add azureproduction [레포지토리주소]</code></pre></figure>
 
 <p>이제 azureproduction remote로 배포한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git push azureproduction master
-remote: Updating branch <span class="s1">'master'</span>.
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git push azureproduction master
+remote: Updating branch &#39;master&#39;.
 remote: Updating submodules.
-remote: Preparing deployment <span class="k">for </span>commit id <span class="s1">'6381c66539'</span>.
+remote: Preparing deployment for commit id &#39;6381c66539&#39;.
 remote: Generating deployment script.
 ...중략...
 remote: Finished successfully.
-remote: Running post deployment <span class="nb">command</span><span class="o">(</span>s<span class="o">)</span>...
+remote: Running post deployment command(s)...
 remote: Deployment successful.</code></pre></figure>
 
 <p>배포가 완료되고 브라우저에 웹 앱의 프로덕션 URL을 입력하면 아래와 같은 결과를 확인할 수 있다.</p>
@@ -284,29 +285,29 @@ remote: Deployment successful.</code></pre></figure>
 
 <h2 id="section-4">코드 수정</h2>
 
-<p>routes폴더의 <code class="highlighter-rouge">index.js</code>파일의 6번째 줄을 아래처럼 수정한다.</p>
+<p>routes폴더의 <code>index.js</code>파일의 6번째 줄을 아래처럼 수정한다.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Web Apps'</span> <span class="p">});</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">res.render(&#39;index&#39;, { title: &#39;Web Apps&#39; });</code></pre></figure>
 
 <p>그리고 새로운 커밋을 작성한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git add <span class="k">*</span>
-<span class="gp">$ </span>git commit -m <span class="s2">"update index.js"</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git add *
+$ git commit -m &quot;update index.js&quot;</code></pre></figure>
 
 <p>이제 staging 배포 레포지토리를 추가한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git remote add azurestaging <span class="o">[</span>레포지토리주소] </code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git remote add azurestaging [레포지토리주소]</code></pre></figure>
 
 <p>이제 수정한 코드를 azurestaging remote로 배포한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git push azurestaging master
-remote: Updating branch <span class="s1">'master'</span>.
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ git push azurestaging master
+remote: Updating branch &#39;master&#39;.
 remote: Updating submodules.
-remote: Preparing deployment <span class="k">for </span>commit id <span class="s1">'6381c66539'</span>.
+remote: Preparing deployment for commit id &#39;6381c66539&#39;.
 remote: Generating deployment script.
 ...중략...
 remote: Finished successfully.
-remote: Running post deployment <span class="nb">command</span><span class="o">(</span>s<span class="o">)</span>...
+remote: Running post deployment command(s)...
 remote: Deployment successful.</code></pre></figure>
 
 <p>배포가 완료되고 브라우저에 staging URL을 입력하면 아래와 같은 결과를 확인할 수 있다.</p>
@@ -350,7 +351,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <p><img src="/images/webappsresult.png" alt="webappsresult" /></p>
 
-<p>이런 배포가 익숙해진다면 Azure에서는 <code class="highlighter-rouge">자동 교환</code>을 설정하여 편리하게 사용할 수 있다.</p>
+<p>이런 배포가 익숙해진다면 Azure에서는 <code>자동 교환</code>을 설정하여 편리하게 사용할 수 있다.</p>
 
 <h2 id="section-5">테스트</h2>
 
@@ -407,7 +408,71 @@ remote: Deployment successful.</code></pre></figure>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

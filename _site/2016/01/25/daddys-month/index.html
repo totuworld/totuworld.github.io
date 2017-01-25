@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -181,7 +182,7 @@
 
 <p>내 경우는 회사의 배려를 받아 모두 사용했지만 보통 눈치보여서 3일 쓰기도 힘들 것이다.</p>
 
-<p>이런 현실속에서 2014년 10월부터 <code class="highlighter-rouge">아빠의 달</code>이란 (일종의) 육아 휴직 인센티브 제도가 시행중이다.</p>
+<p>이런 현실속에서 2014년 10월부터 <code>아빠의 달</code>이란 (일종의) 육아 휴직 인센티브 제도가 시행중이다.</p>
 
 <hr />
 
@@ -193,7 +194,7 @@
 
 <h3 id="section-2">아빠의 달</h3>
 
-<p><code class="highlighter-rouge">아빠의 달</code>이란 한 자녀에 대해 부부 중 두 번째로 육아휴직을 사용하는 사람에게 첫 달의 육아휴직급여를 통상 임금의 100%, 최대 150만원까지 상향향 지원하는 제도이다.</p>
+<p><code>아빠의 달</code>이란 한 자녀에 대해 부부 중 두 번째로 육아휴직을 사용하는 사람에게 첫 달의 육아휴직급여를 통상 임금의 100%, 최대 150만원까지 상향향 지원하는 제도이다.</p>
 
 <p>쉽게 말해서 육아 휴직 인센티브라고 생각할 수 있다.</p>
 
@@ -201,7 +202,7 @@
 
 <p><a href="http://www.korea.kr/policy/economyView.do?newsId=148807470&amp;call_from=naver_news">2015년 12월 29일 기획재정부는 아래와 같은 내용을 안내했다.</a></p>
 
-<p><code class="highlighter-rouge">남성의 육아휴직 사용 장려를 위해 도입된 ‘아빠의 달’ 지원기간이 내년부터 1개월에서 3개월로 확대됩니다.</code></p>
+<p><code>남성의 육아휴직 사용 장려를 위해 도입된 ‘아빠의 달’ 지원기간이 내년부터 1개월에서 3개월로 확대됩니다.</code></p>
 
 <p><img src="/images/daddys_month.jpg" alt="2016년 아빠의 달" /></p>
 
@@ -243,7 +244,7 @@
 
 <p>연 평균 2163시간 일하는 사람이 평소보다 150% 더 일해야한다면 성자아닌 이상 쉽게 양해하기 어렵다.</p>
 
-<p>상황이 이렇다보니 최대 존엄께서 아무리 <code class="highlighter-rouge">아빠의 달</code>을 강조하셔도 2014년 3달간 90명이 신청한게 전부다.</p>
+<p>상황이 이렇다보니 최대 존엄께서 아무리 <code>아빠의 달</code>을 강조하셔도 2014년 3달간 90명이 신청한게 전부다.</p>
 
 <hr />
 
@@ -268,7 +269,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

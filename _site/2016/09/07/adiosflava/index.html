@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -179,11 +180,11 @@
 
 <p>그 일로 연애하는 2년동안 이벤트가 있으면 한번씩 적어둔 내 일기가 궁금해서 일기앱을 찾았는데 내가 알던 자리에 다른 앱 아이콘이 있었다.</p>
 
-<p>내가 기억하는 아이콘과 앱이름은 <code class="highlighter-rouge">Flava</code>였다.</p>
+<p>내가 기억하는 아이콘과 앱이름은 <code>Flava</code>였다.</p>
 
 <p><img src="/images/flava.jpg" alt="Flava" /></p>
 
-<p>그런데 왠 <code class="highlighter-rouge">me.time</code>인가?</p>
+<p>그런데 왠 <code>me.time</code>인가?</p>
 
 <p><img src="/images/metime.jpeg" alt="Flava" /></p>
 
@@ -195,15 +196,15 @@
 
 <h2 id="section-1">찌질함, 삭제하거나 삭제당하거나</h2>
 
-<p>20대 초 내 찌질함은 모두 <code class="highlighter-rouge">싸이월드</code>에 남아있었다. 그리고 DSLR 사진기를 가지던 시점에 블로그가 유행을 타서 그 시절 이후부터 연애가 시작될 무렵까지의 찌질함은 <code class="highlighter-rouge">Paran 블로그</code>에 있었다.</p>
+<p>20대 초 내 찌질함은 모두 <code>싸이월드</code>에 남아있었다. 그리고 DSLR 사진기를 가지던 시점에 블로그가 유행을 타서 그 시절 이후부터 연애가 시작될 무렵까지의 찌질함은 <code>Paran 블로그</code>에 있었다.</p>
 
-<p>하지만 <code class="highlighter-rouge">Paran</code>을 운영하던 KTH가 서비스를 중단(2012. 07. 31)하면서 압축 파일 하나로 그동안 블로그에 쌓아둔 사진과 글을 받았다.</p>
+<p>하지만 <code>Paran</code>을 운영하던 KTH가 서비스를 중단(2012. 07. 31)하면서 압축 파일 하나로 그동안 블로그에 쌓아둔 사진과 글을 받았다.</p>
 
 <blockquote>
   <p>당시 다음으로 이전할 수 있게해주었지만 그다지 끌리지 않았다.</p>
 </blockquote>
 
-<p>그리고 지금은 그 파일이 어디있는지 모른다. 이렇게 첫번째 <code class="highlighter-rouge">잊혀질 권리</code>를 행사당하게 되었다.</p>
+<p>그리고 지금은 그 파일이 어디있는지 모른다. 이렇게 첫번째 <code>잊혀질 권리</code>를 행사당하게 되었다.</p>
 
 <blockquote>
   <p>엄밀히는 압축 파일 관리 소홀로 잃어버린 것…</p>
@@ -223,11 +224,11 @@
   <p>처음에 기록을 남기던 앱이 무엇인지 정확히 기억이 나지 않지만 조금 불편했고 못 생겼었던 것이 생각난다.</p>
 </blockquote>
 
-<p>그러다 <code class="highlighter-rouge">Flava</code>를 알게되고는 내용을 하나하나 복붙하여 기록을 모두 옮겼다.</p>
+<p>그러다 <code>Flava</code>를 알게되고는 내용을 하나하나 복붙하여 기록을 모두 옮겼다.</p>
 
 <p>그 뒤에도 꾸준히 사용하다보니 연애때도 예전 기록을 꺼내보며 아내와 함께 오글거려 몸서리치던 일이 생기곤 했다.</p>
 
-<p><code class="highlighter-rouge">Flava</code>에 기록된 내용은 결혼식날 아내에게 읽어준 편지를 작성할 때도 인용할 얘기를 쉽게 찾을 수 있게해주었었다.</p>
+<p><code>Flava</code>에 기록된 내용은 결혼식날 아내에게 읽어준 편지를 작성할 때도 인용할 얘기를 쉽게 찾을 수 있게해주었었다.</p>
 
 <p>결혼 뒤에는 미래의 아이가 이 내용을 발견했을 때 세침한 눈을 뜨고 구토하는 모습을 흉내내며 힘들어할 것을 상상하곤 했었다.</p>
 
@@ -278,7 +279,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

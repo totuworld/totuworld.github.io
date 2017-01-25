@@ -64,6 +64,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -208,17 +209,15 @@
 
 <p>Docker Engine은 이미 설치되어있다고 치고 Docker Machine을 설치해보도록 하자. 터미널에 아래 명령을 입력한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-<span class="sb">`</span>uname -s<span class="sb">`</span>-<span class="sb">`</span>uname -m<span class="sb">`</span> &gt;/usr/local/bin/docker-machine <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` &gt;/usr/local/bin/docker-machine &amp;&amp; \
   chmod +x /usr/local/bin/docker-machine</code></pre></figure>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>주의 : v0.7.0이상으로 설치.
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>주의 : v0.7.0이상으로 설치.
+</code></pre>
 
 <p>설치가 완료되었다면 아래 명령으로 버전을 확인할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine -v
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker-machine -v
 docker-machine version 0.7.0, build a650a40</code></pre></figure>
 
 <p>Docker Machine이 설치 되었다.</p>
@@ -235,13 +234,13 @@ docker-machine version 0.7.0, build a650a40</code></pre></figure>
 
 <p>생성은 간단하다. virtualbox 드라이버를 이용해서 명령만 입력하면 된다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine create --driver virtualbox dev
-<span class="o">(</span>dev<span class="o">)</span> Creating VirtualBox VM...
-<span class="o">(</span>dev<span class="o">)</span> Creating SSH key...
-<span class="o">(</span>dev<span class="o">)</span> Starting the VM...
-<span class="o">(</span>dev<span class="o">)</span> Check network to re-create <span class="k">if </span>needed...
-<span class="o">(</span>dev<span class="o">)</span> Waiting <span class="k">for </span>an IP...
-...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker-machine create --driver virtualbox dev
+(dev) Creating VirtualBox VM...
+(dev) Creating SSH key...
+(dev) Starting the VM...
+(dev) Check network to re-create if needed...
+(dev) Waiting for an IP...
+...(이하생략)...</code></pre></figure>
 
 <p>위 명령이 실행되면 dev라는 가상머신이 생성된다.</p>
 
@@ -253,43 +252,43 @@ docker-machine version 0.7.0, build a650a40</code></pre></figure>
 
 <p>우선 아래 명령으로 dev 머신의 환경 변수를 확인한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine env dev
-<span class="nb">export </span><span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="s2">"1"</span>
-<span class="nb">export </span><span class="nv">DOCKER_HOST</span><span class="o">=</span><span class="s2">"tcp://192.168.99.100:2376"</span>
-<span class="nb">export </span><span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s2">"/Users/yo/.docker/machine/machines/dev"</span>
-<span class="nb">export </span><span class="nv">DOCKER_MACHINE_NAME</span><span class="o">=</span><span class="s2">"dev"</span>
-<span class="c"># Run this command to configure your shell:</span>
-<span class="c"># eval $(docker-machine env dev)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker-machine env dev
+export DOCKER_TLS_VERIFY=&quot;1&quot;
+export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;
+export DOCKER_CERT_PATH=&quot;/Users/yo/.docker/machine/machines/dev&quot;
+export DOCKER_MACHINE_NAME=&quot;dev&quot;
+# Run this command to configure your shell:
+# eval $(docker-machine env dev)</code></pre></figure>
 
 <p>docker 명령으로 dev 머신을 제어할 것이므로 위 커맨드에 마지막에 안내한 명령을 입력한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">eval</span> <span class="k">$(</span>docker-machine env dev<span class="k">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ eval $(docker-machine env dev)</code></pre></figure>
 
 <h3 id="section-2">이미지 생성</h3>
 
 <p>아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
-<span class="gp">$ </span>unzip 0.0.1.zip
-<span class="gp">$ </span><span class="nb">cd </span>NodejsExampleApp-0.0.1</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ wget https://github.com/totuworld/NodejsExampleApp/archive/0.0.1.zip
+$ unzip 0.0.1.zip
+$ cd NodejsExampleApp-0.0.1</code></pre></figure>
 
 <p>아래 명령으로 이미지를 생성한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker build --tag=nodeapp:0.0.1 .
 Sending build context to Docker daemon 17.92 kB
 Step 1 : FROM node:4-slim
-...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+...(이하생략)...</code></pre></figure>
 
 <h3 id="section-3">컨네이너 생성</h3>
 
 <p>이미지를 생성했으니 배포해보자.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker run --name=nodeapp -d -p 80:3000 nodeapp:0.0.1
 78ea5a20bb83121157235dc7104aae639054c3cd37d6ff6650d27875e188863e</code></pre></figure>
 
 <p>위 명령은 nodeapp이란 이름으로 nodeapp:0.0.1 이미지를 배포한 것이다. 그리고 컨테이너의 3000번 포트를 외부 포트 80번에 연결했다.</p>
 
-<p>결과를 확인하려면 환경 변수의 <code class="highlighter-rouge">DOCKER_HOST</code>부분에 있던 주소를 브라우저에 입력해보자.</p>
+<p>결과를 확인하려면 환경 변수의 <code>DOCKER_HOST</code>부분에 있던 주소를 브라우저에 입력해보자.</p>
 
 <p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
 
@@ -311,29 +310,29 @@ Step 1 : FROM node:4-slim
 
 <h3 id="totuworld--">totuworld 머신 생성</h3>
 
-<p>Docker Machine을 활용해서 <code class="highlighter-rouge">totuworld</code>란 머신을 생성해보자. dev 머신을 생성하는 것과 크게 다르지는 않다.</p>
+<p>Docker Machine을 활용해서 <code>totuworld</code>란 머신을 생성해보자. dev 머신을 생성하는 것과 크게 다르지는 않다.</p>
 
 <blockquote>
   <p>자신의 Azure 계정에서 구독 ID(Subscription ID)를 확인해두어야한다. Azure 포털에서 구독 부분을 클릭하여 확인할 수 있다.</p>
 </blockquote>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">export </span><span class="nv">AZURE_SUBSCRIPTION_ID</span><span class="o">=[</span>구독 ID]
-<span class="gp">$ </span>docker-machine create --driver azure --azure-open-port 80 totuworld
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ export AZURE_SUBSCRIPTION_ID=[구독 ID]
+$ docker-machine create --driver azure --azure-open-port 80 totuworld
 Running pre-create checks...
-<span class="o">(</span>totuworld<span class="o">)</span> Stored Azure credentials expired. Please reauthenticate.
-<span class="o">(</span>totuworld<span class="o">)</span> Microsoft Azure: To sign <span class="k">in</span>, use a web browser to open the page https://aka.ms/devicelogin. Enter the code GQKWVKL58 to authenticate.</code></pre></figure>
+(totuworld) Stored Azure credentials expired. Please reauthenticate.
+(totuworld) Microsoft Azure: To sign in, use a web browser to open the page https://aka.ms/devicelogin. Enter the code GQKWVKL58 to authenticate.</code></pre></figure>
 
-<p>자 위와 같이 나오면 반드시 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a> 다음 주소로 접속하여 <code class="highlighter-rouge">code</code>를 입력하여 권한을 준다.</p>
+<p>자 위와 같이 나오면 반드시 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a> 다음 주소로 접속하여 <code>code</code>를 입력하여 권한을 준다.</p>
 
 <p><img src="/images/dockermachine.png" alt="dockermachineazure" /></p>
 
 <p>권한이 확인되면 아래와 같은 내용이 터미널에 출력되면서 머신이 생성될 것이다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="o">(</span>totuworld<span class="o">)</span> Completed machine pre-create checks.
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">(totuworld) Completed machine pre-create checks.
 Creating machine...
-<span class="o">(</span>totuworld<span class="o">)</span> Querying existing resource group.  <span class="nv">name</span><span class="o">=</span><span class="s2">"docker-machine"</span>
-<span class="o">(</span>totuworld<span class="o">)</span> Creating resource group.  <span class="nv">name</span><span class="o">=</span><span class="s2">"docker-machine"</span> <span class="nv">location</span><span class="o">=</span><span class="s2">"westus"</span>
-...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+(totuworld) Querying existing resource group.  name=&quot;docker-machine&quot;
+(totuworld) Creating resource group.  name=&quot;docker-machine&quot; location=&quot;westus&quot;
+...(이하생략)...</code></pre></figure>
 
 <p>모든 과정이 마쳐지면 Azure 포털에서 리소스 그룹 중에 docker-machine이란 그룹이 생성된 것을 확인할 수 있다. 그 안에는 다양한 리소스가 있다.</p>
 
@@ -343,7 +342,7 @@ Creating machine...
 
 <p>환경 변수를 설정하는 것은 앞서 본것처럼 간단하다. env 뒤에 자신의 머신 이름을 입력하면 끝이다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">eval</span> <span class="k">$(</span>docker-machine env totuworld<span class="k">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ eval $(docker-machine env totuworld)</code></pre></figure>
 
 <h3 id="section-4">이미지 생성</h3>
 
@@ -351,21 +350,21 @@ Creating machine...
 
 <p>NodejsExampleApp-0.0.1 폴더에서 이미지를 생성하는 명령을 입력한다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker build --tag<span class="o">=</span>nodeapp:0.0.1 .
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker build --tag=nodeapp:0.0.1 .
 Sending build context to Docker daemon 17.92 kB
 Step 1 : FROM node:4-slim
-...<span class="o">(</span>이하생략<span class="o">)</span>...</code></pre></figure>
+...(이하생략)...</code></pre></figure>
 
 <h3 id="section-5">컨네이너 생성</h3>
 
 <p>배포도 같은 방법으로 가능하다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker run --name<span class="o">=</span>nodeapp -d -p 80:3000 nodeapp:0.0.1
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker run --name=nodeapp -d -p 80:3000 nodeapp:0.0.1
 0fbfa68f9f97b742759317a5846a084d7efaa370535cf9342150402374cf3067</code></pre></figure>
 
 <p>아래 명령을 입력해서 확인한 ip 주소를 브라우저에 입력하면 같은 결과를 확인할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>docker-machine ip totuworld
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">$ docker-machine ip totuworld
 13.91.254.246</code></pre></figure>
 
 <p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
@@ -407,7 +406,71 @@ Step 1 : FROM node:4-slim
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

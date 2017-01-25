@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -187,12 +188,9 @@
 
 <p>linux 환경이라면 32bit나 64bit에 따라 아래 명령중 하나를 실행하여 직접 다운받을 수 있다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>$ wget http://stedolan.github.io/jq/download/linux32/jq
+<pre><code>$ wget http://stedolan.github.io/jq/download/linux32/jq
 $ wget http://stedolan.github.io/jq/download/linux64/jq
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
 <hr />
 
@@ -202,37 +200,35 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
 
 <p>example.json 파일이 있다고 해보자.</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"production"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-json" data-lang="json">{
+    &quot;dev&quot;: {
+        &quot;name&quot;: &quot;dev&quot;,
+        &quot;version&quot;: 2
+    },
+    &quot;production&quot;: {
+        &quot;name&quot;: &quot;release&quot;,
+        &quot;version&quot;: 1
+    }
+}</code></pre></figure>
 
 <h3 id="jq-json----">jq로 json 파일의 특정 내용 조회</h3>
 
-<p><code class="highlighter-rouge">production</code>의 <code class="highlighter-rouge">version</code>을 읽기 위해서는 다음과 같이 커맨드라인에서 입력하면 된다.</p>
+<p><code>production</code>의 <code>version</code>을 읽기 위해서는 다음과 같이 커맨드라인에서 입력하면 된다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ cat example.json | jq .production.version
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>$ cat example.json | jq .production.version
+</code></pre>
 
-<p><code class="highlighter-rouge">cat</code> 명령어는 텍스트로 된 파일의 내용을 확인할 때 사용한다.</p>
+<p><code>cat</code> 명령어는 텍스트로 된 파일의 내용을 확인할 때 사용한다.</p>
 
-<p><code class="highlighter-rouge">|</code> (파이프)는 왼쪽 명령의 결과를 오른쪽에 전달한다.</p>
+<p><code>|</code> (파이프)는 왼쪽 명령의 결과를 오른쪽에 전달한다.</p>
 
 <p>위 명령을 해석하면 cat으로 excample.json 파일을 읽어서 jq에 전달한 것이다.</p>
 
-<p>그리고 jq 뒤에 <code class="highlighter-rouge">.production.version</code>는 필터에 해당한다.</p>
+<p>그리고 jq 뒤에 <code>.production.version</code>는 필터에 해당한다.</p>
 
-<p><code class="highlighter-rouge">.production</code> 만 입력하면 production의 내용 전체를 보여준다. 그 뒤에 <code class="highlighter-rouge">.version</code>을 입력하여 production 안의 version을 확인한 것이다.</p>
+<p><code>.production</code> 만 입력하면 production의 내용 전체를 보여준다. 그 뒤에 <code>.version</code>을 입력하여 production 안의 version을 확인한 것이다.</p>
 
-<p>출력 결과는 <code class="highlighter-rouge">1</code> 이다.</p>
+<p>출력 결과는 <code>1</code> 이다.</p>
 
 <hr />
 
@@ -240,19 +236,15 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
 
 <p>생성된 결과를 Shell에 변수로 등록하는 것은 간단하다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ totuworld=$(cat example.json | jq .production.version)
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>$ totuworld=$(cat example.json | jq .production.version)
+</code></pre>
 
-<p>변수명(여기서는 totuworld)을 입력하고 <code class="highlighter-rouge">=</code>과 <code class="highlighter-rouge">$()</code>로 명령을 감싸면 된다.</p>
+<p>변수명(여기서는 totuworld)을 입력하고 <code>=</code>과 <code>$()</code>로 명령을 감싸면 된다.</p>
 
 <p>echo 명령어로 값을 확인할 수 있다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ echo $totuworld
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>$ echo $totuworld
+</code></pre>
 
 <hr />
 
@@ -275,7 +267,71 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

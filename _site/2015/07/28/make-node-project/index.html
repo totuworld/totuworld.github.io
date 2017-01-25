@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -202,7 +203,7 @@
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">window + r</code> 실행 후 <code class="highlighter-rouge">cmd</code> 입력하고 실행</p>
+  <p><code>window + r</code> 실행 후 <code>cmd</code> 입력하고 실행</p>
 </blockquote>
 
 <ul>
@@ -210,42 +211,22 @@
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">control + space</code>를 누르고 <code class="highlighter-rouge">terminal</code>혹은 <code class="highlighter-rouge">터미널</code>로 입력한 후 <code class="highlighter-rouge">Enter</code>키</p>
+  <p><code>control + space</code>를 누르고 <code>terminal</code>혹은 <code>터미널</code>로 입력한 후 <code>Enter</code>키</p>
 </blockquote>
 
 <p>커맨드라인 툴이 준비되었다면 <a href="http://expressjs.com/starter/generator.html">express 공식 문서</a>에 의거하여 npm<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>을 통해서 express-generator를 설치한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>npm install express-generator -g
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>npm install express-generator -g
+</code></pre>
 
 <p>이제 프로젝트를 생성해보자. 프로젝트가 위치했으면하는 폴더로 이동한 후 아래와 같이 명령을 입력한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>express myapp
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>express myapp
+</code></pre>
 
-<p><code class="highlighter-rouge">myapp</code>은 프로젝트의 이름으로 자신이 원하는 이름을 입력해도 된다. 만들어진 폴더로 이동하면 아래와 같이 파일과 디렉토리가 생성된다.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+<p><code>myapp</code>은 프로젝트의 이름으로 자신이 원하는 이름을 입력해도 된다. 만들어진 폴더로 이동하면 아래와 같이 파일과 디렉토리가 생성된다.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17</pre></td><td class="code"><pre>.
+<pre><code>.
 ├── app.js
 ├── bin
 │   └── www
@@ -262,40 +243,29 @@
     ├── error.jade
     ├── index.jade
     └── layout.jade
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
-<p><code class="highlighter-rouge">myapp</code> 프로젝트가 필요로하는 모듈을 설치하기 위해 아래와 같이 명령을 순서대로 입력한다.</p>
+<p><code>myapp</code> 프로젝트가 필요로하는 모듈을 설치하기 위해 아래와 같이 명령을 순서대로 입력한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>cd myapp
+<pre><code>cd myapp
 npm install
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
-<p>명령을 수행하면 node_modules이란 폴더가 생성되고 <code class="highlighter-rouge">package.json</code>의 <code class="highlighter-rouge">dependencies</code>부분에 열거된 모듈이 설치된다.</p>
+<p>명령을 수행하면 node_modules이란 폴더가 생성되고 <code>package.json</code>의 <code>dependencies</code>부분에 열거된 모듈이 설치된다.</p>
 
-<p>이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 <code class="highlighter-rouge">http://localhost:3000</code>으로 접속한다.</p>
+<p>이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 <code>http://localhost:3000</code>으로 접속한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>node bin/www
-</pre></td></tr></tbody></table>
-</div>
-</div>
+<pre><code>node bin/www
+</code></pre>
 
 <p><img src="/images/welcome_express.png" alt="WelcomeToExpress" /></p>
 
 <p>위 그림처럼 브라우저에 출력되고 커맨드라인 툴에는 아래와 같은 내용이 출력될 것이다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre>GET / 200 440.741 ms - 170
+<pre><code>GET / 200 440.741 ms - 170
 GET /stylesheets/style.css 200 69.064 ms - 110
 GET /favicon.ico 404 90.681 ms - 1246
-</pre></td></tr></tbody></table>
-</div>
-</div>
+</code></pre>
 
 <hr />
 
@@ -337,7 +307,71 @@ GET /favicon.ico 404 90.681 ms - 1246
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

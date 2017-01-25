@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -197,7 +198,7 @@
 
 <p>어떤 방식으로 어느 수준의 로그를 축적할지 설정이 필요하다.</p>
 
-<p>Azure에서 이를 설정하는 메뉴를 <code class="highlighter-rouge">진단 로그</code>(Diagnostics logs)로 부른다.</p>
+<p>Azure에서 이를 설정하는 메뉴를 <code>진단 로그</code>(Diagnostics logs)로 부른다.</p>
 
 <blockquote>
   <p>이름만 들어서는 이게 뭔가 싶을 수 있다.</p>
@@ -210,18 +211,18 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p>웹앱을 선택하여 <code class="highlighter-rouge">설정</code>을 클릭한다.</p>
+    <p>웹앱을 선택하여 <code>설정</code>을 클릭한다.</p>
 
     <p><img src="/images/webapp_a06.png" alt="웹앱설정" /></p>
   </li>
   <li>
-    <p>기능 아래에 <code class="highlighter-rouge">진단 로그</code>를 클릭한다.</p>
+    <p>기능 아래에 <code>진단 로그</code>를 클릭한다.</p>
 
     <p><img src="/images/webapp_b01.png" alt="진단로그" width="300px" /></p>
   </li>
 </ol>
 
-<p>여기까지 진행하면 아래와 같은 <code class="highlighter-rouge">진단 로그</code> 메뉴가 나타난다.</p>
+<p>여기까지 진행하면 아래와 같은 <code>진단 로그</code> 메뉴가 나타난다.</p>
 
 <p><img src="/images/webapp_b02.png" alt="로그" width="320px" /></p>
 
@@ -229,13 +230,13 @@
 
 <p>그 중 응용 프로그램 로깅(파일 시스템)은 설정 후 12시간 뒤에 해제된다. 로그를 오래도록 저장하고자하면 blob을 이용하자.</p>
 
-<p>b 구역은 웹 서버의 로그를 제공하는 옵션이다. 이를테면 <code class="highlighter-rouge">자세한 오류 로깅</code>은 오류 상태를 나타내는 HTTP 상태 코드(400 이상)의 자세한 오류 정보를 기록한다.</p>
+<p>b 구역은 웹 서버의 로그를 제공하는 옵션이다. 이를테면 <code>자세한 오류 로깅</code>은 오류 상태를 나타내는 HTTP 상태 코드(400 이상)의 자세한 오류 정보를 기록한다.</p>
 
 <blockquote>
   <p>각 기능별 세부 사항은 <a href="https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/">Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정</a>의 설명을 참고바란다.</p>
 </blockquote>
 
-<p>여기서는 코드에 대한 로그를 살펴볼 예정이므로 아래와 같이 <code class="highlighter-rouge">응용 프로그램 로깅(파일 시스템)</code>만 설정하고 <code class="highlighter-rouge">수준</code>(Level)을 정보로 선택한 뒤 저장한다.</p>
+<p>여기서는 코드에 대한 로그를 살펴볼 예정이므로 아래와 같이 <code>응용 프로그램 로깅(파일 시스템)</code>만 설정하고 <code>수준</code>(Level)을 정보로 선택한 뒤 저장한다.</p>
 
 <p>수준은 총 4가지 분류(오류, 경고, 정보, 세부 정보 표시)로 나뉜다. 수준별로 필터링하여 로그를 저장한다.</p>
 
@@ -244,7 +245,7 @@
 <p>이로써 진단 로그 설정이 완료되었다.</p>
 
 <blockquote>
-  <p>아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 <code class="highlighter-rouge">하!고!싶!다!</code>고 생각하시면 <a href="#kudu">기승전 Kudu</a>로 넘어가면 된다.</p>
+  <p>아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 <code>하!고!싶!다!</code>고 생각하시면 <a href="#kudu">기승전 Kudu</a>로 넘어가면 된다.</p>
 </blockquote>
 
 <h2 id="section-2">로그 다운받기</h2>
@@ -273,7 +274,7 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p>웹앱을 선택하여 <code class="highlighter-rouge">게시 프로필 가져오기</code>를 클릭하여 게시 프로필(파일 확장자가 .PublishSettings 인 파일)을 다운받는다.</p>
+    <p>웹앱을 선택하여 <code>게시 프로필 가져오기</code>를 클릭하여 게시 프로필(파일 확장자가 .PublishSettings 인 파일)을 다운받는다.</p>
 
     <p><img src="/images/webapp_b04.png" alt="게시 프로필" /></p>
   </li>
@@ -290,7 +291,7 @@
 
 <ol>
   <li>
-    <p>FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 <code class="highlighter-rouge">Quickconnect</code>클릭하여 접속한다.</p>
+    <p>FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 <code>Quickconnect</code>클릭하여 접속한다.</p>
 
     <table>
       <thead>
@@ -318,12 +319,12 @@
     <p><img src="/images/webapp_b06.png" alt="FileZilla 접속" /></p>
   </li>
   <li>
-    <p>FileZilla 우측 Remote site에 폴더 목록이 나타난다. 이 중에서 <code class="highlighter-rouge">LogFiles</code>에 들어가본다.</p>
+    <p>FileZilla 우측 Remote site에 폴더 목록이 나타난다. 이 중에서 <code>LogFiles</code>에 들어가본다.</p>
 
     <p><img src="/images/webapp_b07.png" alt="remotesite" width="300px" /></p>
   </li>
   <li>
-    <p>LogFiles 안에는 여러 폴더가 있을 수 잇다. 그중에서 앞서 진단 로그에서 설정한 응용 프로그램 로깅은 <code class="highlighter-rouge">Application</code>폴더에 저장된다. txt 형식의 파일을 다운받는다.</p>
+    <p>LogFiles 안에는 여러 폴더가 있을 수 잇다. 그중에서 앞서 진단 로그에서 설정한 응용 프로그램 로깅은 <code>Application</code>폴더에 저장된다. txt 형식의 파일을 다운받는다.</p>
 
     <blockquote>
       <p>FileZilla에서 좌측 Local site로 드래그하거나 우클릭하여 Download를 실행하면 파일을 다운받을 수 있다.</p>
@@ -359,7 +360,7 @@
     <script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=login"> </script>
   </li>
   <li>
-    <p>위 내용처럼 나왔다면 브라우저를 열어 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a>에 접속한 뒤 <code class="highlighter-rouge">code</code> 뒤에 9자리 code를 입력하고 <code class="highlighter-rouge">계속</code> 버튼이 나타나면 클릭한다.</p>
+    <p>위 내용처럼 나왔다면 브라우저를 열어 <a href="https://aka.ms/devicelogin">https://aka.ms/devicelogin</a>에 접속한 뒤 <code>code</code> 뒤에 9자리 code를 입력하고 <code>계속</code> 버튼이 나타나면 클릭한다.</p>
 
     <p><img src="/images/webapp_b09.png" alt="AzureCLI로그인" /></p>
   </li>
@@ -387,7 +388,7 @@
 <p>로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.</p>
 
 <blockquote>
-  <p>$ 부분이 명령어 이다. 그리고 <code class="highlighter-rouge">[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야 결과가 나온다.</p>
+  <p>$ 부분이 명령어 이다. 그리고 <code>[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야 결과가 나온다.</p>
 </blockquote>
 
 <script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logdownload"> </script>
@@ -409,7 +410,7 @@
 <p>이미 Azure CLI 로그인이 완료되었다면 아래 명령을 입력해보자.</p>
 
 <blockquote>
-  <p><code class="highlighter-rouge">[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야한다.</p>
+  <p><code>[웹앱이름]</code>이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야한다.</p>
 </blockquote>
 
 <script src="https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=streamlog"> </script>
@@ -435,17 +436,17 @@
     <p><a href="https://portal.azure.com">Azure 포털로 접속</a>한다.</p>
   </li>
   <li>
-    <p>웹앱에서 <code class="highlighter-rouge">도구</code>를 클릭한다.</p>
+    <p>웹앱에서 <code>도구</code>를 클릭한다.</p>
 
     <p><img src="/images/webapp_b12.png" alt="도구" /></p>
   </li>
   <li>
-    <p>도구 메뉴에서 <code class="highlighter-rouge">Kudu</code>를 클릭하고 <code class="highlighter-rouge">이동</code>을 클릭하면 브라우저에 탭이 새로 생성되면서 Kudu를 영접할 수 있다.</p>
+    <p>도구 메뉴에서 <code>Kudu</code>를 클릭하고 <code>이동</code>을 클릭하면 브라우저에 탭이 새로 생성되면서 Kudu를 영접할 수 있다.</p>
 
     <p><img src="/images/webapp_b14.png" alt="Kudu열기" width="500px" /></p>
   </li>
   <li>
-    <p>Kudu 메인 화면에서 <code class="highlighter-rouge">Debug Console</code>을 클릭하여 하위 메뉴에서 <code class="highlighter-rouge">CMD</code>를 선택한다.</p>
+    <p>Kudu 메인 화면에서 <code>Debug Console</code>을 클릭하여 하위 메뉴에서 <code>CMD</code>를 선택한다.</p>
 
     <p><img src="/images/webapp_b15.png" alt="DebugConsole" width="500px" /></p>
 
@@ -479,7 +480,7 @@
 
 <p>다루면 다룰수록 Azure는 사용자가 뭔소리인지 알지못하게 기능을 잘 감춰두었다. 찾아서 쓰면 편리한 것이 많다.</p>
 
-<p>옛말에 <code class="highlighter-rouge">필요는 발명의 어머니</code>라고 했다. Azure에 적용하면 <code class="highlighter-rouge">필요는 삽질의 어머니</code>쯤 될듯하다.</p>
+<p>옛말에 <code>필요는 발명의 어머니</code>라고 했다. Azure에 적용하면 <code>필요는 삽질의 어머니</code>쯤 될듯하다.</p>
 
 <blockquote>
   <p>그래도 너 이 Azure 사..사…좋아한다.</p>
@@ -512,7 +513,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);

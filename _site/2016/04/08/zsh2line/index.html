@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 	<script type="text/javascript" src="/static/js/index.js"></script>
 	
@@ -195,7 +196,7 @@
 
 <p>(역자주 : 백슬래쉬는 제거한 코드이다.)</p>
 
-<p>(역자주 : 위 내용은 <code class="highlighter-rouge">~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 이 파일에 넣어야한다.)</p>
+<p>(역자주 : 위 내용은 <code>~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 이 파일에 넣어야한다.)</p>
 
 <p>위 코드는 터미널에서 커맨드를 입력하는 부분 앞쪽에 화살표 모양의 분리기호(seperator)를 추가한다.</p>
 
@@ -203,7 +204,7 @@
 
 <script src="https://gist.github.com/totuworld/db5d79ed76220f0b3ce37ab8e81bc1e5.js?file=build_prompt"> </script>
 
-<p>(역자주 : 위 내용은 <code class="highlighter-rouge">~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 파일 하단에 위치한 <code class="highlighter-rouge">build_prompt()</code>에 <code class="highlighter-rouge">prompt_newline</code>을 추가하는 내용이다.)</p>
+<p>(역자주 : 위 내용은 <code>~/.oh-my-zsh/themes/agnoster.zsh-theme</code> 파일 하단에 위치한 <code>build_prompt()</code>에 <code>prompt_newline</code>을 추가하는 내용이다.)</p>
 
 <p>이제 터미널이 아래처럼 보일 것이다.</p>
 
@@ -234,7 +235,71 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
     $(document).ready(function() {
+
+      addLineNumber();
       hljs.initHighlightingOnLoad();
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
