@@ -34,7 +34,7 @@ publish : true
 
 이 중 사용자가 가장 소중히 여기는 것은 무엇일까? 당연히 보석이다.
 
-![friendspopcorn](/images/IMG_4984.PNG){:width="500px"}
+![friendspopcorn](http://file.thisisgame.com/upload/nboard/news/2016/10/31/20161031183400_4668o.jpg)
 
 게임 내에서 희귀한 통화이고 인앱 결제 상품으로 구입이 가능한 형태로 주로 제공되기 때문이다.
 
