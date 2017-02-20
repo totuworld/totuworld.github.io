@@ -393,6 +393,8 @@ DBeaver에서 `OwnItem` 테이블의 Data탭에서 `새로고침`버튼을 클�
 
 다음 강좌에서 지급 기능을 만들고 차차 진행해보도록 하자.
 
+[6강 바로가기](http://totuworld.github.io/2017/02/21/azureandunity-06/)
+
 ---
 
 ## 참고자료

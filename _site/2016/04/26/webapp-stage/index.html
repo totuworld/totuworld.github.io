@@ -140,6 +140,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -159,23 +161,23 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">배포슬롯</a>    <ul>
-      <li><a href="#staging--" id="markdown-toc-staging--">웹 앱에 staging 배포슬롯 추가</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#배포슬롯" id="markdown-toc-배포슬롯">배포슬롯</a>    <ul>
+      <li><a href="#웹-앱에-staging-배포슬롯-추가" id="markdown-toc-웹-앱에-staging-배포슬롯-추가">웹 앱에 staging 배포슬롯 추가</a></li>
     </ul>
   </li>
-  <li><a href="#section-2" id="markdown-toc-section-2">웹 앱 배포</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">프로덕션 배포 설정</a></li>
+  <li><a href="#웹-앱-배포" id="markdown-toc-웹-앱-배포">웹 앱 배포</a>    <ul>
+      <li><a href="#프로덕션-배포-설정" id="markdown-toc-프로덕션-배포-설정">프로덕션 배포 설정</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">코드 수정</a></li>
-  <li><a href="#staging-production-" id="markdown-toc-staging-production-">staging과 production 교환</a></li>
-  <li><a href="#section-5" id="markdown-toc-section-5">테스트</a></li>
-  <li><a href="#section-6" id="markdown-toc-section-6">맺음말</a></li>
-  <li><a href="#section-7" id="markdown-toc-section-7">참고자료</a></li>
+  <li><a href="#코드-수정" id="markdown-toc-코드-수정">코드 수정</a></li>
+  <li><a href="#staging과-production-교환" id="markdown-toc-staging과-production-교환">staging과 production 교환</a></li>
+  <li><a href="#테스트" id="markdown-toc-테스트">테스트</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>웹 앱(Web Apps)를 사용하여 서비스를 운영하면 배포될 때 서비스가 중단되는 불편함이 있다.</p>
 
@@ -187,7 +189,7 @@
 
 <p>이제부터 알아보자.</p>
 
-<h2 id="section-1">배포슬롯</h2>
+<h2 id="배포슬롯">배포슬롯</h2>
 
 <p><img src="/images/azure-deployment-slots.png" alt="배포슬롯" /></p>
 
@@ -209,7 +211,7 @@
 
 <p>이렇게 배포하면 그림의 녹색영역처럼 서비스는 언제나 작동하게 된다.</p>
 
-<h3 id="staging--">웹 앱에 staging 배포슬롯 추가</h3>
+<h3 id="웹-앱에-staging-배포슬롯-추가">웹 앱에 staging 배포슬롯 추가</h3>
 
 <ol>
   <li>
@@ -233,7 +235,7 @@
   <p>이 글에서는 staging과 production을 모두 로컬 git레포지토리로 연속배포하도록 설정하여 사용한다.</p>
 </blockquote>
 
-<h2 id="section-2">웹 앱 배포</h2>
+<h2 id="웹-앱-배포">웹 앱 배포</h2>
 
 <p>Azure 웹 앱에 배포할 소스코드가 필요한데 여기서는 <a href="http://totuworld.github.io/2016/04/25/acs/">Azure 컨테이너 서비스로 Node.js 앱 배포하기</a>에서 사용한 Node.js 웹 어플리케이션을 사용하겠다.</p>
 
@@ -241,7 +243,7 @@
   <p>자신이 제작한 서비스로 진행해도 무방하다.</p>
 </blockquote>
 
-<h3 id="section-3">프로덕션 배포 설정</h3>
+<h3 id="프로덕션-배포-설정">프로덕션 배포 설정</h3>
 
 <p>아래 명령을 순서대로 입력하여 Node.js 웹 어플리케이션을 다운받는다.</p>
 
@@ -283,7 +285,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <p><img src="/images/ACSAppResult.png" alt="ACSAppResult" /></p>
 
-<h2 id="section-4">코드 수정</h2>
+<h2 id="코드-수정">코드 수정</h2>
 
 <p>routes폴더의 <code>index.js</code>파일의 6번째 줄을 아래처럼 수정한다.</p>
 
@@ -318,7 +320,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <p><img src="/images/webappsresult.png" alt="webappsresult" /></p>
 
-<h2 id="staging-production-">staging과 production 교환</h2>
+<h2 id="staging과-production-교환">staging과 production 교환</h2>
 
 <p>배포가 완료되어 작동하는 staging을 production과 교환해보자.</p>
 
@@ -353,7 +355,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <p>이런 배포가 익숙해진다면 Azure에서는 <code>자동 교환</code>을 설정하여 편리하게 사용할 수 있다.</p>
 
-<h2 id="section-5">테스트</h2>
+<h2 id="테스트">테스트</h2>
 
 <p>배포슬롯이 어떤 방식으로 작동하는지 알아봤다. 이제 배포슬롯을 교환하는 동안에 서비스가 이상없이 작동하는지 테스트해보자.</p>
 
@@ -377,7 +379,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <p><img src="https://attachment.namuwikiusercontent.com/올ㅋ__hhjallk.jpg" alt="올ㅋ" /></p>
 
-<h2 id="section-6">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>개인적으로 제작하고 있는 서비스가 무중단이 필요해 Azure 측에 문의했더니 참고자료로 사용한 문서를 안내해주었다.</p>
 
@@ -387,7 +389,7 @@ remote: Deployment successful.</code></pre></figure>
 
 <hr />
 
-<h2 id="section-7">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 
 <ul>
   <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-staged-publishing/">Azure 앱 서비스에서 웹 앱에 대한 스테이징 환경 설정</a></li>

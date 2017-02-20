@@ -137,6 +137,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -156,25 +158,25 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">필요사항</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">설치방법</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">설치 확인</a></li>
-  <li><a href="#failed-" id="markdown-toc-failed-">failed 대응</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">원리 이해</a></li>
-  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#필요사항" id="markdown-toc-필요사항">필요사항</a></li>
+  <li><a href="#설치방법" id="markdown-toc-설치방법">설치방법</a></li>
+  <li><a href="#설치-확인" id="markdown-toc-설치-확인">설치 확인</a></li>
+  <li><a href="#failed-대응" id="markdown-toc-failed-대응">failed 대응</a></li>
+  <li><a href="#원리-이해" id="markdown-toc-원리-이해">원리 이해</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
 <p><a href="https://www.youtube.com/watch?v=-oBXdAmu-V8&amp;list=PLI69hfdYKNQcv9caOXl4CVHRw8lsY1I19&amp;index=16"><img src="/images/nodejs_tuto_title_01.png" alt="video tutorial" height="360px" width="640px" /></a></p>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p><a href="http://wikibook.co.kr/unity-ngui/">따라하면서 배우는 NGUI 유니티 게임 프로그래밍</a> 내용 중 136페이지 이상을 차지한 내용이 네트워크 작업이었다. 네트워크 작업을 하는 환경구축이 어려울까봐 <a href="http://wpn-xm.org/">WPN-XM</a>을 소개했다. <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
 하지만 해당 환경은 windows 사용자에게만 해당하는 내용이었고 유연하지도 못했다. 이 글을 통해 쉽게 환경을 구축하도록 설명하겠다. <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 
 <hr />
 
-<h2 id="section-1">필요사항</h2>
+<h2 id="필요사항">필요사항</h2>
 
 <ul>
   <li>VirtualBox &gt;= 4.3.10 - <a href="https://www.virtualbox.org/wiki/Downloads">Install</a></li>
@@ -185,7 +187,7 @@
 
 <hr />
 
-<h2 id="section-2">설치방법</h2>
+<h2 id="설치방법">설치방법</h2>
 
 <ol>
   <li><a href="https://github.com/totuworld/lemp">lemp레포지토리</a>로 이동하여 <a href="https://github.com//totuworld/lemp/archive/master.zip">DownloadZip</a>버튼으로 다운받거나 git으로 클론(복제)한다.</li>
@@ -227,7 +229,7 @@
 
 <hr />
 
-<h2 id="section-3">설치 확인</h2>
+<h2 id="설치-확인">설치 확인</h2>
 
 <p>올바로 작동하는 확인하기 위해서는 브라우저의 주소창에 <code>http://localhost:8080</code>을 입력한다. 아래 그림처럼 Welcome to Nginx 메시지가 보일 것이다.</p>
 
@@ -256,7 +258,7 @@
 
 <hr />
 
-<h2 id="failed-">failed 대응</h2>
+<h2 id="failed-대응">failed 대응</h2>
 
 <p>같은 환경을 구성하는 것이지만 가끔 failed=1 혹은 그 이상일 때가 있다. 이때는 어떤 조치보다도 가상 머신(Virtual Machine, VM)을 제거하고 다시 띄우는 것이 빠르다.</p>
 
@@ -277,7 +279,7 @@ stopserver.bat –&gt; destroyserver.bat –&gt; startserver.bat 순으로 실�
 
 <hr />
 
-<h2 id="section-4">원리 이해</h2>
+<h2 id="원리-이해">원리 이해</h2>
 
 <p><a href="https://ko.wikipedia.org/wiki/가상_머신">가상 머신</a>을 다음과 같이 wikipedia에서 설명한다.</p>
 
@@ -315,7 +317,7 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
 
 <hr />
 
-<h2 id="section-5">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>앞서 진행한 일을 한마디로 요약하면 Vagrant로 VM을 구성하고 Ansible을 통해서 어플리케이션을 설치했다. 한번 설치할 때 해줘야하는 설정도 많고 함께 설치할 것들도 많다보니 서버 하나 띄우는 일이 꽤나 어려운 일로 받아드려질 수 있다. 하지만 Vagrant와 Ansible 등의 프로그램을 통해서 많이 편해졌다.</p>
 
@@ -326,22 +328,22 @@ Vagrant는 Vagrantfile에 나온 내용에 따라서 설치를 진행한다.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>소개는 했지만 실제 문서 작성을 osx 환경에서 진행하여 사용하지는 않았었다. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>소개는 했지만 실제 문서 작성을 osx 환경에서 진행하여 사용하지는 않았었다.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>사실은 책 후반부가 허술하다고 생각되어 연재되는 강좌로 만회하고자 한다. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>사실은 책 후반부가 허술하다고 생각되어 연재되는 강좌로 만회하고자 한다.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>VirtualBox는 VM을 실제로 작동시키는 소프트웨어이다. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>VirtualBox는 VM을 실제로 작동시키는 소프트웨어이다.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Vagarant는 간소화된 VM관리 도구이다. VM의 생성, 변경, 삭제 등에 매우 유용하다. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Vagarant는 간소화된 VM관리 도구이다. VM의 생성, 변경, 삭제 등에 매우 유용하다.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p><code>control + space</code>를 누르고 <code>terminal</code>혹은 <code>터미널</code>로 입력한다. 폴더로 이동 하려면 파인더의 해당 폴더를 터미널에 끌어다 놓으면 된다. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p><code>control + space</code>를 누르고 <code>terminal</code>혹은 <code>터미널</code>로 입력한다. 폴더로 이동 하려면 파인더의 해당 폴더를 터미널에 끌어다 놓으면 된다.&nbsp;<a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>Vagrantfile에 직접적으로 Ansible을 사용할 수 있지만 Windows 환경에서는 올바로 작동하지 않아서 VM내부에서 실행하도록 했다. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+      <p>Vagrantfile에 직접적으로 Ansible을 사용할 수 있지만 Windows 환경에서는 올바로 작동하지 않아서 VM내부에서 실행하도록 했다.&nbsp;<a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

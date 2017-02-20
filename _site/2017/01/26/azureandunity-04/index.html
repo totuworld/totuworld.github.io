@@ -143,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -162,54 +164,54 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">모델 추가</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">통화 정의, 통화 보유 모델 추가</a>        <ul>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#모델-추가" id="markdown-toc-모델-추가">모델 추가</a>    <ul>
+      <li><a href="#통화-정의-통화-보유-모델-추가" id="markdown-toc-통화-정의-통화-보유-모델-추가">통화 정의, 통화 보유 모델 추가</a>        <ul>
           <li><a href="#definecurrencyjs" id="markdown-toc-definecurrencyjs">DefineCurrency.js</a></li>
         </ul>
       </li>
       <li><a href="#owncurrencyjs" id="markdown-toc-owncurrencyjs">OwnCurrency.js</a></li>
     </ul>
   </li>
-  <li><a href="#section-3" id="markdown-toc-section-3">라우터 추가</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">로직 추가</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">정의된 통화 목록 요청</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">보유한 통화 목록 요청</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">라우터 등록</a></li>
+  <li><a href="#라우터-추가" id="markdown-toc-라우터-추가">라우터 추가</a></li>
+  <li><a href="#로직-추가" id="markdown-toc-로직-추가">로직 추가</a>    <ul>
+      <li><a href="#정의된-통화-목록-요청" id="markdown-toc-정의된-통화-목록-요청">정의된 통화 목록 요청</a></li>
+      <li><a href="#보유한-통화-목록-요청" id="markdown-toc-보유한-통화-목록-요청">보유한 통화 목록 요청</a></li>
+      <li><a href="#라우터-등록" id="markdown-toc-라우터-등록">라우터 등록</a></li>
     </ul>
   </li>
-  <li><a href="#section-8" id="markdown-toc-section-8">일정 시간마다 충전되는 통화는?</a>    <ul>
-      <li><a href="#section-9" id="markdown-toc-section-9">기능 정의</a></li>
-      <li><a href="#definerechargecurrency--" id="markdown-toc-definerechargecurrency--">DefineRechargeCurrency 모델 추가</a></li>
-      <li><a href="#modelsdefinecurrencyjs-" id="markdown-toc-modelsdefinecurrencyjs-">models/DefineCurrency.js 수정</a></li>
-      <li><a href="#section-10" id="markdown-toc-section-10">재충전 로직 작성</a>        <ul>
-          <li><a href="#later--" id="markdown-toc-later--">later 모듈 추가</a></li>
-          <li><a href="#section-11" id="markdown-toc-section-11">환경 설정</a></li>
+  <li><a href="#일정-시간마다-충전되는-통화는" id="markdown-toc-일정-시간마다-충전되는-통화는">일정 시간마다 충전되는 통화는?</a>    <ul>
+      <li><a href="#기능-정의" id="markdown-toc-기능-정의">기능 정의</a></li>
+      <li><a href="#definerechargecurrency-모델-추가" id="markdown-toc-definerechargecurrency-모델-추가">DefineRechargeCurrency 모델 추가</a></li>
+      <li><a href="#modelsdefinecurrencyjs-수정" id="markdown-toc-modelsdefinecurrencyjs-수정">models/DefineCurrency.js 수정</a></li>
+      <li><a href="#재충전-로직-작성" id="markdown-toc-재충전-로직-작성">재충전 로직 작성</a>        <ul>
+          <li><a href="#later-모듈-추가" id="markdown-toc-later-모듈-추가">later 모듈 추가</a></li>
+          <li><a href="#환경-설정" id="markdown-toc-환경-설정">환경 설정</a></li>
         </ul>
       </li>
-      <li><a href="#routescurrencyjs-" id="markdown-toc-routescurrencyjs-">routes/currency.js 수정</a>        <ul>
-          <li><a href="#currencydefine-api-" id="markdown-toc-currencydefine-api-">currency/define api 수정</a></li>
-          <li><a href="#currencyown-api-" id="markdown-toc-currencyown-api-">currency/own api 수정</a></li>
+      <li><a href="#routescurrencyjs-수정" id="markdown-toc-routescurrencyjs-수정">routes/currency.js 수정</a>        <ul>
+          <li><a href="#currencydefine-api-수정" id="markdown-toc-currencydefine-api-수정">currency/define api 수정</a></li>
+          <li><a href="#currencyown-api-수정" id="markdown-toc-currencyown-api-수정">currency/own api 수정</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#section-12" id="markdown-toc-section-12">테스트</a>    <ul>
-      <li><a href="#dbeaver-" id="markdown-toc-dbeaver-">DBeaver 설치</a></li>
-      <li><a href="#connection-" id="markdown-toc-connection-">Connection 추가</a></li>
-      <li><a href="#section-13" id="markdown-toc-section-13">재충전 통화 정보 추가</a></li>
-      <li><a href="#section-14" id="markdown-toc-section-14">정의된 통화 추가</a></li>
-      <li><a href="#section-15" id="markdown-toc-section-15">보유한 통화 추가</a></li>
-      <li><a href="#postman-" id="markdown-toc-postman-">postman으로 테스트</a></li>
+  <li><a href="#테스트" id="markdown-toc-테스트">테스트</a>    <ul>
+      <li><a href="#dbeaver-설치" id="markdown-toc-dbeaver-설치">DBeaver 설치</a></li>
+      <li><a href="#connection-추가" id="markdown-toc-connection-추가">Connection 추가</a></li>
+      <li><a href="#재충전-통화-정보-추가" id="markdown-toc-재충전-통화-정보-추가">재충전 통화 정보 추가</a></li>
+      <li><a href="#정의된-통화-추가" id="markdown-toc-정의된-통화-추가">정의된 통화 추가</a></li>
+      <li><a href="#보유한-통화-추가" id="markdown-toc-보유한-통화-추가">보유한 통화 추가</a></li>
+      <li><a href="#postman으로-테스트" id="markdown-toc-postman으로-테스트">postman으로 테스트</a></li>
     </ul>
   </li>
-  <li><a href="#section-16" id="markdown-toc-section-16">맺음말</a></li>
-  <li><a href="#section-17" id="markdown-toc-section-17">참고자료</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Zrem0cNKWiM" frameborder="0" allowfullscreen=""></iframe>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 <p>통화는 위키피디아에 의하면 아래와 같이 정의된다.</p>
 
 <blockquote>
@@ -244,12 +246,12 @@
   <p>지급 관리에서 지급과 관계된 내용을 다루므로 이번 내용에서는 빠진다.</p>
 </blockquote>
 
-<h2 id="section-1">모델 추가</h2>
+<h2 id="모델-추가">모델 추가</h2>
 <p>크게 2가지 모델이 필요하다. 하나는 게임 안에서 통용되는 통화를 정의하는 모델이다. 큰 변화는 없다.</p>
 
 <p>남은 하나는 통화 보유 모델이다. 어떤 것을 얼마나 가지고 있는지 기록해야하기 때문이다.</p>
 
-<h3 id="section-2">통화 정의, 통화 보유 모델 추가</h3>
+<h3 id="통화-정의-통화-보유-모델-추가">통화 정의, 통화 보유 모델 추가</h3>
 <p>아래 2개 파일을 <code>models</code>폴더에 <code>DefineCurrency.js</code>, <code>OwnCurrency.js</code>파일을 추가한다.</p>
 
 <h4 id="definecurrencyjs">DefineCurrency.js</h4>
@@ -286,7 +288,7 @@ module.exports = function(sequelize, DataTypes) {
 
 <p>또한 보유 수량(CurrentQNTY)을 기록할 수 있으며 특정 조건에 의해 최대 보유 수량을 늘릴 수 있는 AddMaxQNTY 컬럼도 있다. 실제 컬럼으로 존재하지 않지만 getterMethods로 <code>TotalQNTY</code>를 등록해서 실제 최대보유수량을 계산한다.</p>
 
-<h2 id="section-3">라우터 추가</h2>
+<h2 id="라우터-추가">라우터 추가</h2>
 
 <p>통화에 사용된 라우터를 추가하겠다.</p>
 
@@ -315,7 +317,7 @@ module.exports = router;
 
 <p>앞으로 라우터를 추가하는 것은 자주 할 것이므로 금방 익숙해질 것이다.</p>
 
-<h2 id="section-4">로직 추가</h2>
+<h2 id="로직-추가">로직 추가</h2>
 <p>2가지 로직을 추가할 것이다.</p>
 
 <ul>
@@ -325,7 +327,7 @@ module.exports = router;
 
 <p>2가지로 로직은 거의 차이가 없을 것이다.</p>
 
-<h3 id="section-5">정의된 통화 목록 요청</h3>
+<h3 id="정의된-통화-목록-요청">정의된 통화 목록 요청</h3>
 <p>아래 코드를 <code>routes/currency.js</code>의 <code>module.exports</code> 위쪽에 추가한다.</p>
 
 <pre><code class="language-javascript">/**
@@ -348,7 +350,7 @@ router.get('/define', auth.isAuthenticated, (req, res, next)=&gt;{
   <li>9번 줄 : 찾아진 모든 내용을 <code>list</code>노드에 담아서 리턴한다. 이때 <code>list</code>노드는 별뜻이 없다(fxxk이라고 해도 된다). 클라이언트가 헷갈리지 않고 구분할 수 있으면 된다.</li>
 </ul>
 
-<h3 id="section-6">보유한 통화 목록 요청</h3>
+<h3 id="보유한-통화-목록-요청">보유한 통화 목록 요청</h3>
 <p>앞서 제작한 <code>정의된 통화 목록 요청</code>과 다른 것은 조회해야할 테이블 다르다는 것과 findAll메서드에 조건을 추가한 정도다.</p>
 
 <p>아래 코드를 <code>routes/currency.js</code>의 <code>module.exports</code> 위쪽에 추가한다.</p>
@@ -374,7 +376,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p>모든 것이 이렇게 간단하면 좋으련만.</p>
 
-<h3 id="section-7">라우터 등록</h3>
+<h3 id="라우터-등록">라우터 등록</h3>
 <p><code>app.js</code> 파일을 수정하여 currency 라우터를 추가해보자.</p>
 
 <ol>
@@ -416,7 +418,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
   </li>
 </ol>
 
-<h2 id="section-8">일정 시간마다 충전되는 통화는?</h2>
+<h2 id="일정-시간마다-충전되는-통화는">일정 시간마다 충전되는 통화는?</h2>
 
 <p><code>애니x</code>이나 <code>드래곤플x이트</code>가 공전의 히트를 칠 때 하트 구하려고 대포친구(?)를 구했던 기억이 있다.</p>
 
@@ -436,7 +438,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p>어떤 <code>열쇠</code>는 기준시각(예를들어 새벽 4시)이 지나면 재충전 시간 계산없이 보유할 수 있는 최대 수량으로 채워지는 형태도 있을 수 있다.</p>
 
-<h3 id="section-9">기능 정의</h3>
+<h3 id="기능-정의">기능 정의</h3>
 
 <p>얘기된 몇가지 특징을 뽑아보면 대략 아래와 같다.</p>
 
@@ -480,7 +482,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
   </tbody>
 </table>
 
-<h3 id="definerechargecurrency--">DefineRechargeCurrency 모델 추가</h3>
+<h3 id="definerechargecurrency-모델-추가">DefineRechargeCurrency 모델 추가</h3>
 
 <ol>
   <li>
@@ -503,7 +505,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p><code>SetMaxPattern</code>이 Cron 표현식을 사용하므로 잘못된 입력을 막기 위해 검증코드를 넣은 것이다.</p>
 
-<h3 id="modelsdefinecurrencyjs-">models/DefineCurrency.js 수정</h3>
+<h3 id="modelsdefinecurrencyjs-수정">models/DefineCurrency.js 수정</h3>
 <p>통화 중에서 재충전이 필요한 경우 <code>DefineRechargeCurrency</code> 모델을 참조해야하므로 <code>RechargeCurrencyID</code>를 외래키로 등록한다.</p>
 
 <p>models/<code>DefineCurrency.js</code> 파일에서 아래 내용을 찾는다.</p>
@@ -542,7 +544,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p>외래키를 등록할 때 <code>as</code> 노드는 별명(alias)으로 <code>DefineRechargeCurrency</code> 이름이 너무 길어서 짧게 줄이려고 추가한 것이다.</p>
 
-<h3 id="section-10">재충전 로직 작성</h3>
+<h3 id="재충전-로직-작성">재충전 로직 작성</h3>
 <p>vs code에서 <code>logics</code> 폴더를 새로 생성하고 <code>currency.js</code> 파일을 추가한다.</p>
 
 <ol>
@@ -567,7 +569,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
   <li>43~65번 줄 : 재충전 주기를 기준으로 시간경과를 고려하여 충전량을 계산한다.</li>
 </ul>
 
-<h4 id="later--">later 모듈 추가</h4>
+<h4 id="later-모듈-추가">later 모듈 추가</h4>
 <p>logics/currency.js에서 later 모듈로 cron 표현식을 해석한다.</p>
 
 <p>모듈을 추가해보자.</p>
@@ -588,7 +590,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
   </li>
 </ol>
 
-<h4 id="section-11">환경 설정</h4>
+<h4 id="환경-설정">환경 설정</h4>
 <p>Azure 웹앱은 기본 타임존이 UTC(GMT+0)로 설정되어있다. 하지만 우리의 로컬환경은 다르기때문에 이를 맞춰야 시간과 관련된 계산이 편리하다.</p>
 
 <p>vs code의 환경 설정을 수정하여 이를 동일하게 맞추도록 한다.</p>
@@ -605,10 +607,10 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
   </li>
 </ol>
 
-<h3 id="routescurrencyjs-">routes/currency.js 수정</h3>
+<h3 id="routescurrencyjs-수정">routes/currency.js 수정</h3>
 <p>2개의 api를 모두 수정할 것이다.</p>
 
-<h4 id="currencydefine-api-">currency/define api 수정</h4>
+<h4 id="currencydefine-api-수정">currency/define api 수정</h4>
 <p>정의된 통화목록을 로딩할 때 재충전 관련 데이터도 함께 엮어서 내려질 수 있도록 변경한다.</p>
 
 <p>아래 내용을 찾아서 변경한다.</p>
@@ -635,7 +637,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p>findAll()할 때 include로 DefineRechargeCurrency 모델의 데이터를 포함하여 내려지게 된다.</p>
 
-<h4 id="currencyown-api-">currency/own api 수정</h4>
+<h4 id="currencyown-api-수정">currency/own api 수정</h4>
 <p>앞서 만든 logics/currency.js를 routes/currency.js에서 활용하도록 해보자.</p>
 
 <p>아래 코드를 찾아서 코드를 추가한다.</p>
@@ -766,12 +768,12 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
   <p>단 성능에 큰 문제를 야기할 수 있다면 순차적으로 처리하는 것을 권한다.</p>
 </blockquote>
 
-<h2 id="section-12">테스트</h2>
+<h2 id="테스트">테스트</h2>
 <p>필요한 데이터를 넣고 테스트를 진행할 것이다.</p>
 
 <p>하지만 아직 Wendy가 데이터를 넣는 어떤 로직도 제공하지 않기때문에 DB에 직접 데이터를 넣어야한다.</p>
 
-<h3 id="dbeaver-">DBeaver 설치</h3>
+<h3 id="dbeaver-설치">DBeaver 설치</h3>
 <p>DB에 접속해서 필요한 일을 처리해줄 GUI 툴로 <code>DBeaver</code>를 사용하겠다.</p>
 
 <blockquote>
@@ -780,7 +782,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 <p>다음 링크로 이동해서 <a href="http://dbeaver.jkiss.org/">DBeaver</a>를 설치한다.</p>
 
-<h3 id="connection-">Connection 추가</h3>
+<h3 id="connection-추가">Connection 추가</h3>
 <p>DB에 접속하기 위해 Connection을 등록해보자.</p>
 
 <blockquote>
@@ -805,7 +807,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
   </li>
 </ol>
 
-<h3 id="section-13">재충전 통화 정보 추가</h3>
+<h3 id="재충전-통화-정보-추가">재충전 통화 정보 추가</h3>
 
 <blockquote>
   <p>Connection 전에 로컬 서버를 실행한다.</p>
@@ -862,7 +864,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
   </li>
 </ol>
 
-<h3 id="section-14">정의된 통화 추가</h3>
+<h3 id="정의된-통화-추가">정의된 통화 추가</h3>
 
 <p>위의 과정처럼 <code>DefineCurrency</code> 테이블에 데이터를 입력한다.</p>
 
@@ -899,7 +901,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 <p>위 테이블처러 2가지 상품을 등록한다. 그 중 101 상품은 재충전 가능한 상품이 된다.</p>
 
-<h3 id="section-15">보유한 통화 추가</h3>
+<h3 id="보유한-통화-추가">보유한 통화 추가</h3>
 <p>지난 강좌에서 사용자를 등록했다는 가정하에 진행한다.</p>
 
 <blockquote>
@@ -951,7 +953,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 <p><code>OwnCurrencyUID</code>는 자동으로 증가되므로 NULL을 넣어도 알아서 값을 가지게 된다.</p>
 
-<h3 id="postman-">postman으로 테스트</h3>
+<h3 id="postman으로-테스트">postman으로 테스트</h3>
 
 <ul>
   <li>패스 : GET</li>
@@ -990,7 +992,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 <p>보는 바와 같이 101 상품은 재충전이 일어나서 CurrentQNTY가 5가 되었고 UpdateTimeStamp도 변경이 있다.</p>
 
-<h2 id="section-16">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 <p>이번에 다룬 것은 통화였다. 그중에서 재충전에 관한 것이 많은 부분을 차지했다.</p>
 
 <p>실제로 통화 관리는 이보다 더 복잡하게 이뤄질 수 있다.</p>
@@ -1001,7 +1003,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 <hr />
 
-<h2 id="section-17">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 <p>완성된 소스코드는 아래 링크에서 다운로드받으면 된다.</p>
 
 <p><a href="https://github.com/totuworld/Wendy/archive/0.0.3.zip">Wendy 4강 완료 버전</a></p>

@@ -5,42 +5,44 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>아빠의 달</title>
+	<title>Setting up a local dev environment for Azure Functions</title>
 	
 	
-	<meta content="2016-01-25T08:20:00+09:00" property="article:published_time">
+	<meta content="2016-04-26T09:02:00+09:00" property="article:published_time">
 	
 	
 	<!-- Begin Jekyll SEO tag v1.4.0 -->
-<title>아빠의 달 - totuworld’s tech blog</title>
-<meta property="og:title" content="아빠의 달" />
-<meta name="description" content="아빠의 육아휴직" />
-<meta property="og:description" content="아빠의 육아휴직" />
-<link rel="canonical" href="http://totuworld.github.io/2016/01/25/daddys-month/" />
-<meta property="og:url" content="http://totuworld.github.io/2016/01/25/daddys-month/" />
+<title>Setting up a local dev environment for Azure Functions - totuworld’s tech blog</title>
+<meta property="og:title" content="Setting up a local dev environment for Azure Functions" />
+<meta name="description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
+<meta property="og:description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
+<link rel="canonical" href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
+<meta property="og:url" content="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
 <meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.ioazure-deployment-slots.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-01-25T08:20:00+09:00" />
-<link rel="next" href="http://totuworld.github.io/2016/02/10/google-oauth/" title="구글 인앱 결제 검증 웹 서비스 만들기" />
-<link rel="prev" href="http://totuworld.github.io/2016/01/20/shell-jq/" title="jq로 json 데이터 다루기" />
-<meta name="twitter:card" content="summary" />
+<meta property="article:published_time" content="2016-04-26T09:02:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2016/04/26/webapp-stage/" title="Azure 웹 앱 staging 환경 설정하기" />
+<link rel="prev" href="http://totuworld.github.io/2016/04/25/acs/" title="Azure 컨테이너 서비스로 Node.js 앱 배포하기" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@totuworld" />
 <meta name="twitter:creator" content="@totuworld" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "아빠의 달",
-    "datePublished": "2016-01-25T08:20:00+09:00",
-    "description": "아빠의 육아휴직",
-    "url": "http://totuworld.github.io/2016/01/25/daddys-month/"
+    "headline": "Setting up a local dev environment for Azure Functions",
+    "image": "http://totuworld.github.ioazure-deployment-slots.png",
+    "datePublished": "2016-04-26T09:02:00+09:00",
+    "description": "로컬에 Azure Functions 개발 환경을 구성한다.",
+    "url": "http://totuworld.github.io/2016/04/26/azurefunctions-local/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
 	
 	
 	<meta property="fb:app_id" content="129561850715980">
-	<meta name="twitter:description" content="아빠의 육아휴직">
+	<meta name="twitter:description" content="로컬에 Azure Functions 개발 환경을 구성한다.">
 	
 	
 	
@@ -153,113 +155,25 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>아빠의 달</h1>
-        <p>Jan 25, 2016 • etc</p>
+        <h1>Setting up a local dev environment for Azure Functions</h1>
+        <p>Apr 26, 2016 • nodejs azure webapps</p>
       </header>
       <hr>
       <article>
-        <ul id="markdown-toc">
-  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
-  <li><a href="#육아휴직" id="markdown-toc-육아휴직">육아휴직</a>    <ul>
-      <li><a href="#아빠의-달" id="markdown-toc-아빠의-달">아빠의 달</a></li>
-      <li><a href="#2016년-아빠의-달" id="markdown-toc-2016년-아빠의-달">2016년 아빠의 달</a></li>
-    </ul>
-  </li>
-  <li><a href="#함정" id="markdown-toc-함정">함정</a>    <ul>
-      <li><a href="#내-통상-임금-내-생각과-같은가" id="markdown-toc-내-통상-임금-내-생각과-같은가">내 통상 임금, 내 생각과 같은가?</a></li>
-      <li><a href="#최대-출력-40" id="markdown-toc-최대-출력-40">최대 출력 40%</a></li>
-    </ul>
-  </li>
-  <li><a href="#최대-장애물--동료" id="markdown-toc-최대-장애물--동료">최대 장애물 = 동료(?)</a></li>
-  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+        <p>트위터에서 보고 https://twitter.com/haleyjason/status/724716213339840512
+<a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a> 자료를 기반으로 작업</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+  <li><a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a></li>
+  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/functions-run-local/">How to code and test Azure functions in Visual Studio</a></li>
 </ul>
-
-<h2 id="들어가는-말">들어가는 말</h2>
-
-<p>2015년 11월 26일 서울에 눈이 펑펑오던 날 은서가 태어났다.</p>
-
-<p>아기가 태어나고 그렇게 많은 일이 생길 줄 몰랐다.</p>
-
-<p>그런데 국가에서 허락한 아빠의 출산 휴가는 3일 유급, 2일 무급이 전부다.</p>
-
-<p>내 경우는 회사의 배려를 받아 모두 사용했지만 보통 눈치보여서 3일 쓰기도 힘들 것이다.</p>
-
-<p>이런 현실속에서 2014년 10월부터 <code>아빠의 달</code>이란 (일종의) 육아 휴직 인센티브 제도가 시행중이다.</p>
-
-<hr />
-
-<h2 id="육아휴직">육아휴직</h2>
-
-<p>현행 육아휴직은 통상 임금의 40%를 지급하고 복직 후 6개월 후 급여액의 일부(2015년 7월 1일 이전 15%, 2015년 7월 1일 이후 25%)를 일시불로 지급한다.</p>
-
-<p>상한액이 월 100만원이고 하한액이 월 50만원이다.</p>
-
-<h3 id="아빠의-달">아빠의 달</h3>
-
-<p><code>아빠의 달</code>이란 한 자녀에 대해 부부 중 두 번째로 육아휴직을 사용하는 사람에게 첫 달의 육아휴직급여를 통상 임금의 100%, 최대 150만원까지 상향향 지원하는 제도이다.</p>
-
-<p>쉽게 말해서 육아 휴직 인센티브라고 생각할 수 있다.</p>
-
-<h3 id="2016년-아빠의-달">2016년 아빠의 달</h3>
-
-<p><a href="http://www.korea.kr/policy/economyView.do?newsId=148807470&amp;call_from=naver_news">2015년 12월 29일 기획재정부는 아래와 같은 내용을 안내했다.</a></p>
-
-<p><code>남성의 육아휴직 사용 장려를 위해 도입된 ‘아빠의 달’ 지원기간이 내년부터 1개월에서 3개월로 확대됩니다.</code></p>
-
-<p><img src="/images/daddys_month.jpg" alt="2016년 아빠의 달" /></p>
-
-<hr />
-
-<h2 id="함정">함정</h2>
-
-<p>하지만 이런 제도의 혜택을 받는데 함정이 많다.</p>
-
-<h3 id="내-통상-임금-내-생각과-같은가">내 통상 임금, 내 생각과 같은가?</h3>
-
-<p>가족같은 분위기를 추구하는 우리 기업들이 통상 임금을 내가 아는 만큼 산정하고 있을까?</p>
-
-<p>예를들어 연봉이 2400만원이라고 해보자. 세금모두 포함해서 월 200만원 받는다.</p>
-
-<p>그런데 이 내역을 얼마나 자세히 알고 있는가?</p>
-
-<p>금여에는 회사의 복지, 식비 등등이 주욱 계산 들어가있다.</p>
-
-<p>노동의 가치로 돈을 받는줄 알았는데 노동에 관해서는 돈을 작게 책정하고 온갖 다른 방법으로 연봉을 늘려놓았을 가능성이 높다.</p>
-
-<h3 id="최대-출력-40">최대 출력 40%</h3>
-
-<p>퉁쳐서 150만원이 통상 임금이라고 해보자. 40%로 계산하면 60만원이다. 맞벌이 부부가 동일하게 200만원 받는다고 하면 월 400만원이 월 260만원이 된다.</p>
-
-<p>출산용품 구비와 출산과정의 비용 600~1000만원이 들었는데 수입이 거의 반토막 나버린다.</p>
-
-<p>결혼하면서 대출을 4% 이자로 받았다면 2년 전세살면서 대출 상환하기도 바쁜데 짧은 시간안에 비용은 많이 들고 들어오는 돈은 줄어든다.</p>
-
-<p>그런데 요즘 전세 구하기가 어려워 월세라도 살면 그냥 눈물만 나온다.</p>
-
-<hr />
-
-<h2 id="최대-장애물--동료">최대 장애물 = 동료(?)</h2>
-
-<p>동료가 육아휴직을 쓴다. 그러면 누군가는 그 사람 일을 커버해야한다. 3명이 한 팀이라면 2명이서 3사람 몫을 해야하니 남는 동료의 양해가 필요하다.</p>
-
-<p><img src="http://i.huffpost.com/gen/3722272/original.jpg" alt="2013년 OECD 주요국 연평균 근로시간" /></p>
-
-<p>연 평균 2163시간 일하는 사람이 평소보다 150% 더 일해야한다면 성자아닌 이상 쉽게 양해하기 어렵다.</p>
-
-<p>상황이 이렇다보니 최대 존엄께서 아무리 <code>아빠의 달</code>을 강조하셔도 2014년 3달간 90명이 신청한게 전부다.</p>
-
-<hr />
-
-<h2 id="맺음말">맺음말</h2>
-
-<p>최근 보육대란으로 자녀가 있는 가정과 유치원, 어린이집이 각각 다른 모양으로 흉흉하다.</p>
-
-<p>과연 은서가 다닐때는 괜찮아질까? 1초같은 일요일 한 숨이 난다.</p>
 
       </article>
       <hr>
       <div class="fb-foot-area" style="width:104px;height:24px">
-        <div class="fb-like" data-href="http://totuworld.github.io/2016/01/25/daddys-month/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
     <div id="fb-root"></div>

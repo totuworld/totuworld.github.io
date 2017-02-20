@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,20 +159,20 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a>    <ul>
-      <li><a href="#jwt" id="markdown-toc-jwt">JWT란?</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a>    <ul>
+      <li><a href="#jwt란" id="markdown-toc-jwt란">JWT란?</a></li>
     </ul>
   </li>
-  <li><a href="#jwt-" id="markdown-toc-jwt-">JWT 활용하기</a>    <ul>
-      <li><a href="#jwt--" id="markdown-toc-jwt--">JWT를 위한 준비사항</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">기능 제작</a></li>
+  <li><a href="#jwt-활용하기" id="markdown-toc-jwt-활용하기">JWT 활용하기</a>    <ul>
+      <li><a href="#jwt를-위한-준비사항" id="markdown-toc-jwt를-위한-준비사항">JWT를 위한 준비사항</a></li>
+      <li><a href="#기능-제작" id="markdown-toc-기능-제작">기능 제작</a></li>
     </ul>
   </li>
-  <li><a href="#section-2" id="markdown-toc-section-2">영수증 검증</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">맺음말</a></li>
+  <li><a href="#영수증-검증" id="markdown-toc-영수증-검증">영수증 검증</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>아래 글에서 더럽게 어렵게 설명한 구글의 허가(Authorization) 획득.</p>
 
@@ -188,7 +190,7 @@
 
 <p>그래도 알게되었으니 소개해보겠다.</p>
 
-<h3 id="jwt">JWT란?</h3>
+<h3 id="jwt란">JWT란?</h3>
 
 <p>공식 사이트에 아래와 같이 설명되어있다.</p>
 
@@ -202,11 +204,11 @@
 
 <hr />
 
-<h2 id="jwt-">JWT 활용하기</h2>
+<h2 id="jwt-활용하기">JWT 활용하기</h2>
 
 <p>바로 <code>JWT</code>를 생성해서 사용하면 좋겠지만 이를 사용하기 위해서도 준비 사항이 필요하다. 이를 거치고 진행하도록 하겠다.</p>
 
-<h3 id="jwt--">JWT를 위한 준비사항</h3>
+<h3 id="jwt를-위한-준비사항">JWT를 위한 준비사항</h3>
 
 <p>구글 개발자 콘솔에서 <code>JWT</code>에 사용될 <code>서비스 어카운트</code>를 생성하도록하자.</p>
 
@@ -232,7 +234,7 @@
 
 <p><a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>과는 별도의 웹 서비스로 제작하기위해 <a href="http://totuworld.github.io/2016/02/10/google-oauth/#express---">Express 프로젝트 기초 작업</a>을 진행한다.</p>
 
-<h3 id="section-1">기능 제작</h3>
+<h3 id="기능-제작">기능 제작</h3>
 
 <p><code>key.json</code> 파일을 사용하기 위해 프로젝트 root 폴더에 위치시킨다. 그리고 <code>routes/index.js</code>파일에 다음 내용을 추가한다.</p>
 
@@ -250,7 +252,7 @@
 
 <hr />
 
-<h2 id="section-2">영수증 검증</h2>
+<h2 id="영수증-검증">영수증 검증</h2>
 
 <p>이제 위에 추가한 메서드를 활용해서 영수증 검증을 하도록 해보자.</p>
 
@@ -260,7 +262,7 @@
 
 <hr />
 
-<h2 id="section-3">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p><code>JWT</code>를 활용하면 이처럼 간단하게 영수증 검증이 가능하다. 하지만 반드시 유의해야하는 것이 있다. 서비스 계정으로 획득한 <code>key.json</code>파일을 잘 관리해야한다. 공개된 git 레포지토리에 함께 올려버리면 보안에 큰 위험이 된다. 이를 숙지하자.</p>
 

@@ -5,57 +5,828 @@
     <description>Game Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 09 Feb 2017 05:17:29 +0900</pubDate>
-    <lastBuildDate>Thu, 09 Feb 2017 05:17:29 +0900</lastBuildDate>
+    <pubDate>Tue, 21 Feb 2017 05:51:43 +0900</pubDate>
+    <lastBuildDate>Tue, 21 Feb 2017 05:51:43 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>이세계에 진입한 서버 개발 - 6</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs에-등록&quot; id=&quot;markdown-toc-appjs에-등록&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#공통-사용-로직-추가&quot; id=&quot;markdown-toc-공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#자원-추가-메서드-incrementmaterials&quot; id=&quot;markdown-toc-자원-추가-메서드-incrementmaterials&quot;&gt;자원 추가 메서드 incrementMaterials&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#logicsrewardjs-추가&quot; id=&quot;markdown-toc-logicsrewardjs-추가&quot;&gt;logics/reward.js 추가&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#간단-테스트&quot; id=&quot;markdown-toc-간단-테스트&quot;&gt;간단 테스트&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#간단-테스트용-라우터-추가&quot; id=&quot;markdown-toc-간단-테스트용-라우터-추가&quot;&gt;간단 테스트용 라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#데이터-입력&quot; id=&quot;markdown-toc-데이터-입력&quot;&gt;데이터 입력&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#즉시-지급-테스트&quot; id=&quot;markdown-toc-즉시-지급-테스트&quot;&gt;즉시 지급 테스트&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#쿠폰-제작&quot; id=&quot;markdown-toc-쿠폰-제작&quot;&gt;쿠폰 제작&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#쿠폰-모델-추가&quot; id=&quot;markdown-toc-쿠폰-모델-추가&quot;&gt;쿠폰 모델 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#쿠폰-라우터-추가&quot; id=&quot;markdown-toc-쿠폰-라우터-추가&quot;&gt;쿠폰 라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs에-등록-1&quot; id=&quot;markdown-toc-appjs에-등록-1&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#테스트용-데이터-추가&quot; id=&quot;markdown-toc-테스트용-데이터-추가&quot;&gt;테스트용 데이터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#쿠폰-테스트&quot; id=&quot;markdown-toc-쿠폰-테스트&quot;&gt;쿠폰 테스트&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;지난 시간에 아이템 관리까지 다루면서 게임 내 자원을 지급할 수 있는 기반이 마련되었다.&lt;/p&gt;
+
+&lt;p&gt;이번 시간에는 자원을 지급하도록 해보겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
+&lt;p&gt;모델은 총 4개가 필요하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardSetGroup.js&quot;&gt;RewardSetGroup.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardSet.js&quot;&gt;RewardSet.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardGoodsGroup.js&quot;&gt;RewardGoodsGroup.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardGoods.js&quot;&gt;RewardGoods.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위 모델 중 가장 기본이 되는 것은 &lt;code&gt;RewardGoodsGroup&lt;/code&gt;과 &lt;code&gt;RewardGoods&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;RewardGoodsGroup&lt;/code&gt;에서 관리되는 &lt;code&gt;RewardGoodsGroupID&lt;/code&gt;를 통해 다수의 &lt;code&gt;RewardGoods&lt;/code&gt; 목록을 그룹으로 묶는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_03.png&quot; alt=&quot;RewardGoodsGroup과RewardGoods의 관계&quot; width=&quot;250px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 묶어두는 이유는 하나의 상품으로 다수의 자원이 지급될 수 있도록 하기 위함이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;행운 상자라고 지칭한 뒤 최소 확율로 요원이 나오고 높은 확율로 골드 정도를 묶은 상품을 생각하면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;RewardSetGroup&lt;/code&gt;은 &lt;code&gt;RewardSetGroupID&lt;/code&gt;를 통해 &lt;code&gt;RewardSet&lt;/code&gt;에 다수의 &lt;code&gt;RewardGoodsGroupID&lt;/code&gt;를 등록할 수 있는 형태이다.&lt;/p&gt;
+
+&lt;p&gt;이렇게되면 묶음(패키지) 상품을 제공할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;골드와 보석, 키 등이 한번에 포함된 상품을 제공하는 스타터 팩을 생각하면 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_04.png&quot; alt=&quot;RewardSetGroup과RewardSet의 관계&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;단순한 묶음 상품이상으로 작동하도록 &lt;code&gt;RewardSet&lt;/code&gt;에도 드랍 확율을 넣었다. 묶음 상품 안에서 운이 좋으면 추가 재화를 얻을 수 있도록 말이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
+
+&lt;p&gt;자원 세트(묶음 상품)와 지급 가능한 자원 정보를 추가하겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GET /reward/set&lt;/li&gt;
+  &lt;li&gt;GET /reward/goods&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;reward.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/routes/reward.js&quot;&gt;routes/reward.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;appjs에-등록&quot;&gt;app.js에 등록&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 reward 라우터를 추가해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const reward = require(&#39;./routes/reward&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/reward&#39;, reward);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/h2&gt;
+&lt;p&gt;지금까지 모델을 추가했으며 간단한 2개의 API를 등록했다.&lt;/p&gt;
+
+&lt;p&gt;이제 지급과 관련된 작업을 할 때 필요한 메서드를 추가하도록 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;자원-추가-메서드-incrementmaterials&quot;&gt;자원 추가 메서드 incrementMaterials&lt;/h3&gt;
+
+&lt;p&gt;지난 시간에 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt;를 추가한 것이 기억나는가? 자원을 차감하는 메서드가 있었다.&lt;/p&gt;
+
+&lt;p&gt;여기에 자원을 추가하는 메서드를 추가한다.&lt;/p&gt;
+
+&lt;p&gt;다른 메서드와 겹치지 않게 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt; 제일 아래쪽에 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let incrementMaterial = (GameUserID, ItemID, Amount, NowMaxQNTY=null)=&amp;gt;{
+    return models.DefineItem.findOne({
+        where:{
+            ItemID:ItemID
+        }
+    })
+    .then((defineItem)=&amp;gt;{
+        if(defineItem === null || defineItem === undefined)
+            throw wendyError(&#39;UndefinedItem&#39;);
+
+        switch(defineItem.ItemType) {
+            case 10://통화 상품
+                return incrementMaterialForCurrency(
+                    GameUserID, ItemID, Amount, NowMaxQNTY);
+                break;
+            default ://특별한 정의가 없다면 모두 아이템을 처리한다.
+                return incrementMaterialForItem(
+                    GameUserID, defineItem, ItemID, Amount);
+                break;
+        }
+    })
+}
+
+exports.incrementMaterial = incrementMaterial;
+
+let createCurrency = (GameUserID, ItemID, Amount, defineCurrency=null, NowMaxQNTY=null)=&amp;gt;{
+    let createObj = {
+        GameUserID:GameUserID, 
+        CurrencyID:ItemID,
+        CurrentQNTY:Amount,
+        NowMaxQNTY:NowMaxQNTY===null?100:NowMaxQNTY,
+        UpdateTimeStamp:new Date()
+    }
+
+    return Promise.resolve()
+    .then(()=&amp;gt;{
+        if(NowMaxQNTY!==null)
+            return Promise.reject(&#39;pass&#39;);
+        return Promise.resolve();
+    })
+    .then(()=&amp;gt;{
+        if( defineCurrency!==null )
+            createObj.NowMaxQNTY = defineCurrency.MaxQNTY;
+        return Promise.resolve();
+    })
+    .catch((err)=&amp;gt;{
+        if(err &amp;amp;&amp;amp; err instanceof Error) {
+            return Promise.reject(err);
+        }
+        else if(err===&#39;pass&#39;)
+            return Promise.resolve();
+    })
+    .then(()=&amp;gt;{
+        return models.OwnCurrency.create(createObj);
+    })
+}
+
+let incrementMaterialForCurrency = (GameUserID, ItemID, Amount, NowMaxQNTY=null)=&amp;gt;{
+    let defineCurrency = null;
+
+    return models.DefineCurrency.findOne({where:{CurrencyID:ItemID}})
+    .then((loadDefineCurrency)=&amp;gt;{
+        if( !(loadDefineCurrency === null || loadDefineCurrency===undefined) )
+            defineCurrency = loadDefineCurrency;
+        return Promise.resolve();
+    })
+    .then(()=&amp;gt;{
+        return models.OwnCurrency.findOne({
+            where:{
+                GameUserID:GameUserID, 
+                CurrencyID:ItemID
+            }})
+    })
+    .then((ownCurrency)=&amp;gt;{
+        if(ownCurrency === null || ownCurrency === undefined)
+            return createCurrency(
+                GameUserID, 
+                ItemID, 
+                Amount, 
+                defineCurrency,
+                NowMaxQNTY);
+        
+        let incrementValue = (ownCurrency.CurrentQNTY + Amount);
+        if(incrementValue&amp;gt;defineCurrency.MaxQNTY)
+            incrementValue = defineCurrency.MaxQNTY;
+
+        return models.OwnCurrency.update(
+            { CurrentQNTY: incrementValue, UpdateTimeStamp: new Date() },
+            { where: { OwnCurrencyUID: ownCurrency[&#39;OwnCurrencyUID&#39;] } }
+        )
+            .then(() =&amp;gt; {
+                return models.OwnCurrency.findOne({
+                    where: { OwnCurrencyUID: ownCurrency[&#39;OwnCurrencyUID&#39;] }
+                })
+            })
+    })
+    
+}
+
+let incrementMaterialForItem = (GameUserID, defineItem, ItemID, Amount)=&amp;gt;{
+    return Promise.resolve()
+    .then(()=&amp;gt;{
+        if(defineItem.Multiple===false)
+            return Promise.reject(&#39;create&#39;);
+        return Promise.resolve();
+    })
+    .then(()=&amp;gt;{
+        return models.OwnItem.findOne({where:{
+            GameUserID:GameUserID,
+            ItemID:ItemID
+        }})
+    })
+    .then((ownItem)=&amp;gt;{
+        if(ownItem === null || ownItem === undefined)
+            return Promise.reject(&#39;create&#39;);
+        
+        let incrementValue = 
+            (ownItem.CurrentQNTY + Amount)&amp;gt;defineItem.MaxQNTY
+            ? defineItem.MaxQNTY - ownItem.CurrentQNTY
+            : Amount;
+        
+        return ownItem.increment(&#39;CurrentQNTY&#39;, {by:incrementValue})
+        .then(()=&amp;gt;{
+            return models.OwnItem.findOne({where:{
+                OwnItemID:ownItem[&#39;OwnItemUID&#39;]
+            }})
+        })
+    })
+    .catch((err)=&amp;gt;{
+        if(err &amp;amp;&amp;amp; err instanceof Error) {
+            return Promise.reject(err);
+        }
+        else if(err===&#39;create&#39;) {
+            return models.OwnItem.create({
+                GameUserID:GameUserID,
+                ItemID:ItemID,
+                CurrentQNTY:Amount,
+                UpdateTimeStamp:new Date()
+            });
+        }
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;logicsrewardjs-추가&quot;&gt;logics/reward.js 추가&lt;/h3&gt;
+
+&lt;p&gt;RewardSetGroup과 RewardGoodsGroup을 바탕으로 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt;의 자원 추가 메서드로 자원을 지급하는 로직을 제작하겠다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;logics/reward.js&lt;/code&gt; 파일을 추가한 뒤 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/logics/reward.js&quot;&gt;logics/reward.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위 코드가 문제 없이 작동하려면 2가지를 더 추가해야한다.&lt;/p&gt;
+
+&lt;p&gt;먼저 &lt;code&gt;utils/commonFunc.js&lt;/code&gt;에 아래 2가지 메서드를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * low와 high 사이의 숫자를 랜덤으로 리턴한다.
+ * @returns {number}
+ */
+exports.RandomInt = (low, high)=&amp;gt;{
+    return Math.floor(Math.random() * (high - low + 1) + low);
+};
+
+function async(makeGenerator) {
+    return function () {
+        let generator = makeGenerator.apply(this, arguments)
+
+        function handle(result) { // { done: [Boolean], value: [Object] }
+            if (result.done) return result.value
+
+            return result.value.then(function (res) {
+                return handle(generator.next(res))
+            }, function (err) {
+                return handle(generator.throw(err))
+            })
+        }
+
+        return handle(generator.next())
+    }
+}
+
+exports.async = async;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;그리고 에러코드를 추가한다. &lt;code&gt;utils/error.js&lt;/code&gt;에 아래 클래스를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/** 80611 */
+class NotPresentRewardSetGroupID extends CustomError {
+    constructor() {
+        let message = &#39;RewardSetGroupID가 존재하지 않는다.&#39;;
+        let code = 80611;
+        super(message, code);
+    }
+}
+
+/** 80612 */
+class DidntRegisterRewardSet extends CustomError {
+    constructor() {
+        let message = &#39;RewardSetGroupID와 관련된 정보를 RewardSet에 등록하지 않았다.&#39;;
+        let code = 80612;
+        super(message, code);
+    }
+}
+
+
+/** 80621 */
+class NotPresentRewardGoodsGroupID extends CustomError {
+    constructor() {
+        let message = &#39;RewardGoodsGroupID가 존재하지 않는다.&#39;;
+        let code = 80621;
+        super(message, code);
+    }
+}
+
+/** 80622 */
+class DidntRegisterRewardGoods extends CustomError {
+    constructor() {
+        let message = &#39;RewardGoodsGroupID와 관련된 정보를 RewardGoods에 등록하지 않았다.&#39;;
+        let code = 80622;
+        super(message, code);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;utils/error.js&lt;/code&gt;의 &lt;code&gt;errorMap&lt;/code&gt; 오브젝트에 추가할 클래스를 등록한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;추가할 때 이전의 마지막 부분 - 여기서는 NoLongerUpgrade - 에 콤마(,)를 추가하여야 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;NotPresentRewardSetGroupID&quot;:NotPresentRewardSetGroupID,
+&quot;DidntRegisterRewardSet&quot;:DidntRegisterRewardSet,
+
+&quot;NotPresentRewardGoodsGroupID&quot;:NotPresentRewardGoodsGroupID,
+&quot;DidntRegisterRewardGoods&quot;:DidntRegisterRewardGoods
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;간단-테스트&quot;&gt;간단 테스트&lt;/h2&gt;
+&lt;p&gt;지급 가능하도록 테이블에 데이터를 입력하고 실제 지급이 이뤄지는 테스트해보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;간단-테스트용-라우터-추가&quot;&gt;간단 테스트용 라우터 추가&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;routes/reward.js&lt;/code&gt; 하단에 아래 코드를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const env       = process.env.NODE_ENV || &quot;development&quot;;
+
+if(env === &#39;development&#39;) {
+    router.get(&#39;/test/:RewardGroupID&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
+
+        rewardCtrl.paymentMaterial(req.user.GameUserID, req.params.RewardGroupID)
+        .then((result)=&amp;gt;{
+            res.send({result:0, reward:result});
+        })
+        .catch((err)=&amp;gt;{
+            if(err === &#39;pass&#39;)
+                res.send({result:0, reward:[]})
+            else
+                next(err);
+        })
+    });
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;환경변수 &lt;code&gt;NODE_ENV&lt;/code&gt;가 &lt;code&gt;development&lt;/code&gt;일 때만 사용가능도록 조치했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;데이터-입력&quot;&gt;데이터 입력&lt;/h3&gt;
+
+&lt;p&gt;테스트를 진행하기 위해서는 총 4개 테이블에 데이터를 등록해야한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;DBeaver를 이용한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;RewardGoodsGroup&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1012&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;RewardGoods&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;RewardGoodsUID&lt;/th&gt;
+      &lt;th&gt;AmountMin&lt;/th&gt;
+      &lt;th&gt;AmountMax&lt;/th&gt;
+      &lt;th&gt;DropRatio&lt;/th&gt;
+      &lt;th&gt;ItemID&lt;/th&gt;
+      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;1000&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+      &lt;td&gt;103&lt;/td&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;0.15&lt;/td&gt;
+      &lt;td&gt;102&lt;/td&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0.05&lt;/td&gt;
+      &lt;td&gt;2001&lt;/td&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;0.1&lt;/td&gt;
+      &lt;td&gt;102&lt;/td&gt;
+      &lt;td&gt;1012&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;RewardSetGroup&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6001&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6002&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;RewardSet&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;RewardSetUID&lt;/th&gt;
+      &lt;th&gt;DropRatio&lt;/th&gt;
+      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
+      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+      &lt;td&gt;6001&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;1012&lt;/td&gt;
+      &lt;td&gt;6001&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1012&lt;/td&gt;
+      &lt;td&gt;6002&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;즉시-지급-테스트&quot;&gt;즉시 지급 테스트&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;패스 : GET&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL : localhost:3000/reward/test/6001&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;정상적으로 요청되면 아래와 같은 형식의 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;result&quot;: 0,
+  &quot;reward&quot;: {
+    &quot;item&quot;: [],
+    &quot;currency&quot;: [
+      {
+        &quot;TotalQNTY&quot;: 900000,
+        &quot;OwnCurrencyUID&quot;: 7,
+        &quot;CurrencyID&quot;: 103,
+        &quot;CurrentQNTY&quot;: 1217,
+        &quot;NowMaxQNTY&quot;: 900000,
+        &quot;AddMaxQNTY&quot;: 0,
+        &quot;UpdateTimeStamp&quot;: &quot;2017-02-21T00:00:00.000Z&quot;,
+        &quot;GameUserID&quot;: 1
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;쿠폰-제작&quot;&gt;쿠폰 제작&lt;/h2&gt;
+
+&lt;p&gt;자원을 지급할 수 있으면 제작가능한 기능이 많다.&lt;/p&gt;
+
+&lt;p&gt;빨리 만들 수 있는 쿠폰을 제작해보도록 하겠다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy06_01.png&quot; alt=&quot;쿠폰&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;쿠폰-모델-추가&quot;&gt;쿠폰 모델 추가&lt;/h3&gt;
+
+&lt;p&gt;쿠폰은 총 3개의 모델이 필요하다. &lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/DefineCoupon.js&quot;&gt;DefineCoupon.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/CouponQNTY.js&quot;&gt;CouponQNTY.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/LogCoupon.js&quot;&gt;LogCoupon.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt;은 쿠폰을 정의하고 &lt;code&gt;CouponQNTY&lt;/code&gt;는 정의된 쿠폰 중 수량만 별도로 적을 수 있도록 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt;은 &lt;code&gt;RewardGoodsGroup&lt;/code&gt;이나 &lt;code&gt;RewardSetGroup&lt;/code&gt;의 ID를 이용해서 지급한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이때 주의할 점은 둘 중 하나는 꼭 등록을해야 올바로 지급이 가능하다는 점이다. 관리자 도구 제작 시 참고한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy06_02.png&quot; alt=&quot;DefineCoupon예시&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;LogCoupon&lt;/code&gt;은 사용자의 쿠폰 사용 이력을 기록하여 중복 사용을 방지한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;쿠폰-라우터-추가&quot;&gt;쿠폰 라우터 추가&lt;/h3&gt;
+
+&lt;p&gt;정의된 쿠폰 리스트를 요청할 수 있고 쿠폰을 사용할 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GET /coupon/list&lt;/li&gt;
+  &lt;li&gt;POST /coupon/use/:CouponName&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;coupon.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/routes/coupon.js&quot;&gt;routes/coupon.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;쿠폰 사용부분이 조금 복잡하게 되어있을 것이다. 중복 사용이 불가능하도록 해야하고 유효한 쿠폰인지 검증하는 부분이 많아서 그렇다.&lt;/p&gt;
+
+&lt;p&gt;단순하게 절차를 나타내면 아래처럼 진행된다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;유효한 쿠폰인지 검증&lt;/li&gt;
+  &lt;li&gt;쿠폰 사용 기록&lt;/li&gt;
+  &lt;li&gt;자원 지급&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;appjs에-등록-1&quot;&gt;app.js에 등록&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 coupon 라우터를 추가해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const coupon = require(&#39;./routes/coupon&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/coupon&#39;, coupon);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;테스트용-데이터-추가&quot;&gt;테스트용 데이터 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;CouponQNTY&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;CouponQNTYID&lt;/th&gt;
+      &lt;th&gt;CurrentQNTY&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;CouponID&lt;/th&gt;
+      &lt;th&gt;CouponName&lt;/th&gt;
+      &lt;th&gt;ExpiredDate&lt;/th&gt;
+      &lt;th&gt;CouponQNTYID&lt;/th&gt;
+      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
+      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;test&lt;/td&gt;
+      &lt;td&gt;2017-02-24&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;1011&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code&gt;CouponQNTYID&lt;/code&gt;는 반드시 앞서 CouponQNTY 테이블에 등록된 CouponQNTYID를 확인하여 올바로 입력한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;쿠폰-테스트&quot;&gt;쿠폰 테스트&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;패스 : POST&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL : localhost:3000/coupon/use/test&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;요청이 올바르면 앞서 살펴본 &lt;code&gt;즉시 지급 테스트&lt;/code&gt;와 유사한 결과를 얻을 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;아직 관리자 도구가 없어서 운영까지는 불가능하지만 어쨌든 Wendy에 쿠폰까지 제작해봤다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;쿠폰은 1차 제작 범위 안에 없었는데 만들다보니 들어갔다. 서비스~ 서비스~&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;다음 강좌는 인앱 영수증 검증부분이다. 영수증을 검증하는 부분을 제외하면 자원 지급을 그대로 사용하므로 비교적 간단하다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+&lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.5.zip&quot;&gt;Wendy 6강 완료 버전&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Tue, 21 Feb 2017 04:01:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2017/02/21/azureandunity-06/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2017/02/21/azureandunity-06/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
     
       
         <item>
             <title>이세계에 진입한 서버 개발 - 5</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;관계 설명&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#관계-설명&quot; id=&quot;markdown-toc-관계-설명&quot;&gt;관계 설명&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;라우터 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs-&quot; id=&quot;markdown-toc-appjs-&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs에-등록&quot; id=&quot;markdown-toc-appjs에-등록&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;로직 작성&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;보유 아이템 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;아이템 정보 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;강화 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;승급 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;강화 요청&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;공통 사용 로직 추가&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;강화 요청 등록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#로직-작성&quot; id=&quot;markdown-toc-로직-작성&quot;&gt;로직 작성&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#보유-아이템-목록-요청&quot; id=&quot;markdown-toc-보유-아이템-목록-요청&quot;&gt;보유 아이템 목록 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#아이템-정보-목록-요청&quot; id=&quot;markdown-toc-아이템-정보-목록-요청&quot;&gt;아이템 정보 목록 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#강화-관련-데이터-요청&quot; id=&quot;markdown-toc-강화-관련-데이터-요청&quot;&gt;강화 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#승급-관련-데이터-요청&quot; id=&quot;markdown-toc-승급-관련-데이터-요청&quot;&gt;승급 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#강화-요청&quot; id=&quot;markdown-toc-강화-요청&quot;&gt;강화 요청&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#공통-사용-로직-추가&quot; id=&quot;markdown-toc-공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#강화-요청-등록&quot; id=&quot;markdown-toc-강화-요청-등록&quot;&gt;강화 요청 등록&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;승급 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#승급-요청&quot; id=&quot;markdown-toc-승급-요청&quot;&gt;승급 요청&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;에러코드 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;정의된 아이템 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;강화 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;승급 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;정의된 아이템 수정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;보유한 아이템 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#postman-&quot; id=&quot;markdown-toc-postman-&quot;&gt;postman으로 테스트&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;강화 요청 테스트&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;승급 요청 테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#에러코드-추가&quot; id=&quot;markdown-toc-에러코드-추가&quot;&gt;에러코드 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#정의된-아이템-추가&quot; id=&quot;markdown-toc-정의된-아이템-추가&quot;&gt;정의된 아이템 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#강화-관련-데이터-입력&quot; id=&quot;markdown-toc-강화-관련-데이터-입력&quot;&gt;강화 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#승급-관련-데이터-입력&quot; id=&quot;markdown-toc-승급-관련-데이터-입력&quot;&gt;승급 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#정의된-아이템-수정&quot; id=&quot;markdown-toc-정의된-아이템-수정&quot;&gt;정의된 아이템 수정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#보유한-아이템-추가&quot; id=&quot;markdown-toc-보유한-아이템-추가&quot;&gt;보유한 아이템 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#postman으로-테스트&quot; id=&quot;markdown-toc-postman으로-테스트&quot;&gt;postman으로 테스트&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#강화-요청-테스트&quot; id=&quot;markdown-toc-강화-요청-테스트&quot;&gt;강화 요청 테스트&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#승급-요청-테스트&quot; id=&quot;markdown-toc-승급-요청-테스트&quot;&gt;승급 요청 테스트&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/KVK4JgeWe6c&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;퍼즐 게임이 아니라면 게임 내에서 아이템은 그 종류가 정말 다양하다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -72,7 +843,7 @@
 
 &lt;p&gt;이번 강좌에서는 아이템 보유와 강화, 승급 기능을 제작해도보도록 하겠다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;모델 추가&lt;/h2&gt;
+&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
 &lt;p&gt;기본이 되는 것은 아래 2개이다. 아이템 정의와 아이템 보유 모델.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
@@ -97,7 +868,7 @@
 
 &lt;p&gt;각각 클릭해서 models 폴더에 추가한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;관계 설명&lt;/h3&gt;
+&lt;h3 id=&quot;관계-설명&quot;&gt;관계 설명&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;와 이렇게 뭐 없이 설명하니까 되게 좋네!!&lt;/p&gt;
@@ -125,14 +896,14 @@
   &lt;p&gt;좋은 고민거리죠?!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;라우터 추가&lt;/h2&gt;
+&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;item.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.1/routes/item.js&quot;&gt;item.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;appjs-&quot;&gt;app.js에 등록&lt;/h3&gt;
+&lt;h3 id=&quot;appjs에-등록&quot;&gt;app.js에 등록&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 item 라우터를 추가해보자.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -178,7 +949,7 @@
   &lt;p&gt;몇번 해본 작업이라서 손이 알아서 처리하고 있을것이다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;로직 작성&lt;/h2&gt;
+&lt;h2 id=&quot;로직-작성&quot;&gt;로직 작성&lt;/h2&gt;
 &lt;p&gt;로직은 총 6개를 추가할 것인데 그중 4개는 정보를 요청하는 것이고 2개는 강화, 승급을 각각 처리하는 것이다.&lt;/p&gt;
 
 &lt;p&gt;통화를 기억해보면 단순히 정보를 요청하는 코드는 단순하다&lt;/p&gt;
@@ -189,7 +960,7 @@
   &lt;p&gt;자주 해봐서 알겠지만 modules.export = router; 위쪽에 추가하면 된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;보유 아이템 목록 요청&lt;/h3&gt;
+&lt;h3 id=&quot;보유-아이템-목록-요청&quot;&gt;보유 아이템 목록 요청&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
  * @api {GET} /item/own
@@ -211,7 +982,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;아이템 정보 목록 요청&lt;/h3&gt;
+&lt;h3 id=&quot;아이템-정보-목록-요청&quot;&gt;아이템 정보 목록 요청&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
  * @api {GET} /item/define
@@ -231,7 +1002,7 @@ router.get(&#39;/define&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;강화 관련 데이터 요청&lt;/h3&gt;
+&lt;h3 id=&quot;강화-관련-데이터-요청&quot;&gt;강화 관련 데이터 요청&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
 /**
@@ -254,7 +1025,7 @@ router.get(&#39;/define/reinforce&#39;, auth.isAuthenticated, (req, res, next)=&
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;승급 관련 데이터 요청&lt;/h3&gt;
+&lt;h3 id=&quot;승급-관련-데이터-요청&quot;&gt;승급 관련 데이터 요청&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
  * @api {GET} /item/define/upgrade
@@ -277,12 +1048,12 @@ router.get(&#39;/define/upgrade&#39;, auth.isAuthenticated, (req, res, next)=&am
 
 &lt;p&gt;정의된 데이터를 요청하는 것은 이처럼 간단하다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;강화 요청&lt;/h3&gt;
+&lt;h3 id=&quot;강화-요청&quot;&gt;강화 요청&lt;/h3&gt;
 &lt;p&gt;강화와 승급의 로직은 기본은 같다.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;Define__RequireItem&lt;/code&gt;에 등록된 &lt;code&gt;ItemID&lt;/code&gt;가 &lt;code&gt;RequireQNTY&lt;/code&gt;만큼 보유했으면 아이템을 소모시키고 해당 레벨이나 등급을 올리면 된다.&lt;/p&gt;
 
-&lt;h4 id=&quot;section-10&quot;&gt;공통 사용 로직 추가&lt;/h4&gt;
+&lt;h4 id=&quot;공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/h4&gt;
 
 &lt;p&gt;자원 - 아이템, 통화를 통합하여 지칭 - 이 충분하지 체크하거나 소모시키는 일은 자주 일어날 수 있다.&lt;/p&gt;
 
@@ -309,7 +1080,7 @@ router.get(&#39;/define/upgrade&#39;, auth.isAuthenticated, (req, res, next)=&am
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;section-11&quot;&gt;강화 요청 등록&lt;/h4&gt;
+&lt;h4 id=&quot;강화-요청-등록&quot;&gt;강화 요청 등록&lt;/h4&gt;
 
 &lt;p&gt;앞서 말한 로직을 바탕으로 내용을 추가해보자.&lt;/p&gt;
 
@@ -521,7 +1292,7 @@ router.post(&#39;/reinforce/:OwnItemUID&#39;, auth.isAuthenticated, (req, res, n
   &lt;li&gt;103~110 줄 : 레벨을 증가시켜 기록한다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;승급 요청&lt;/h3&gt;
+&lt;h3 id=&quot;승급-요청&quot;&gt;승급 요청&lt;/h3&gt;
 &lt;p&gt;앞서 살펴본 강화 요청과 승급은 거의 비슷하다.&lt;/p&gt;
 
 &lt;p&gt;다른점이라면 불러야하는 테이블이 다르고 에러 코드가 다르다는 것 정도다.&lt;/p&gt;
@@ -649,7 +1420,7 @@ router.post(&#39;/upgrade/:OwnItemUID&#39;, auth.isAuthenticated, (req, res, nex
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;section-13&quot;&gt;에러코드 추가&lt;/h2&gt;
+&lt;h2 id=&quot;에러코드-추가&quot;&gt;에러코드 추가&lt;/h2&gt;
 
 &lt;p&gt;아이템과 관련한 공통 에러가 3개, 강화와 승급에 각각 3개의 에러코드가 추가된다.&lt;/p&gt;
 
@@ -787,10 +1558,10 @@ class NoLongerUpgrade extends CustomError {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;section-14&quot;&gt;테스트&lt;/h2&gt;
+&lt;h2 id=&quot;테스트&quot;&gt;테스트&lt;/h2&gt;
 &lt;p&gt;아이템을 몇개 등록하고 강화와 승급도 진행해보자.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-15&quot;&gt;정의된 아이템 추가&lt;/h3&gt;
+&lt;h3 id=&quot;정의된-아이템-추가&quot;&gt;정의된 아이템 추가&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;DefineItem&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
 
@@ -860,7 +1631,7 @@ class NoLongerUpgrade extends CustomError {
 
 &lt;p&gt;2001번 아이템은 현재는 강화와 승급이 불가능하다. 강화 승급에 관련한 데이터를 추가로 등록하자.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-16&quot;&gt;강화 관련 데이터 입력&lt;/h3&gt;
+&lt;h3 id=&quot;강화-관련-데이터-입력&quot;&gt;강화 관련 데이터 입력&lt;/h3&gt;
 &lt;p&gt;아이템 강화와 관련된 테이블은 2개다.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;DefineReinforceItem&lt;/code&gt;과 &lt;code&gt;DefineReinforceRequireItem&lt;/code&gt;.&lt;/p&gt;
@@ -912,7 +1683,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;section-17&quot;&gt;승급 관련 데이터 입력&lt;/h3&gt;
+&lt;h3 id=&quot;승급-관련-데이터-입력&quot;&gt;승급 관련 데이터 입력&lt;/h3&gt;
 &lt;p&gt;승급도 강화와 마찬가지로 2개 테이블에 입력해야한다.&lt;/p&gt;
 
 &lt;p&gt;먼저 DefineUpgradeItem을 입력한다.&lt;/p&gt;
@@ -958,7 +1729,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;section-18&quot;&gt;정의된 아이템 수정&lt;/h3&gt;
+&lt;h3 id=&quot;정의된-아이템-수정&quot;&gt;정의된 아이템 수정&lt;/h3&gt;
 
 &lt;p&gt;DBeaver에서 DefineItem 테이블을 선택하고 ItemID 2001 상품의 &lt;code&gt;ReinforceItemID&lt;/code&gt;와 &lt;code&gt;UpgradeItemID&lt;/code&gt;를 각각 2001로 변경한다.&lt;/p&gt;
 
@@ -978,7 +1749,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-19&quot;&gt;보유한 아이템 추가&lt;/h3&gt;
+&lt;h3 id=&quot;보유한-아이템-추가&quot;&gt;보유한 아이템 추가&lt;/h3&gt;
 
 &lt;p&gt;1번 유저에게 2001번 아이템을 지급하자.&lt;/p&gt;
 
@@ -1009,7 +1780,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;postman-&quot;&gt;postman으로 테스트&lt;/h3&gt;
+&lt;h3 id=&quot;postman으로-테스트&quot;&gt;postman으로 테스트&lt;/h3&gt;
 
 &lt;p&gt;postman을 실행하고 토큰을 획득한 다음 아래처럼 요청을 해보자.&lt;/p&gt;
 
@@ -1017,7 +1788,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;p&gt;데이터를 로딩하는 4개 API는 테스트하지 않는다. 여기서는 강화와 승급만 다루겠다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;section-20&quot;&gt;강화 요청 테스트&lt;/h4&gt;
+&lt;h4 id=&quot;강화-요청-테스트&quot;&gt;강화 요청 테스트&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;패스 : POST&lt;/li&gt;
@@ -1058,7 +1829,7 @@ class NoLongerUpgrade extends CustomError {
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy05_02.png&quot; alt=&quot;Dbeaver새로고침&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;section-21&quot;&gt;승급 요청 테스트&lt;/h4&gt;
+&lt;h4 id=&quot;승급-요청-테스트&quot;&gt;승급 요청 테스트&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;패스 : POST&lt;/li&gt;
@@ -1097,7 +1868,7 @@ class NoLongerUpgrade extends CustomError {
 
 &lt;p&gt;DBeaver에서 &lt;code&gt;OwnItem&lt;/code&gt; 테이블의 Data탭에서 &lt;code&gt;새로고침&lt;/code&gt;버튼을 클릭하면 Tier이 2로 반영된 것을 확인할 수 있다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-22&quot;&gt;맺음말&lt;/h2&gt;
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
 
 &lt;p&gt;아이템까지 어찌어찌 왔으니 자원에 영향을 주는 기능을 만들 때 필요한 기반이 되었다.&lt;/p&gt;
 
@@ -1107,9 +1878,11 @@ class NoLongerUpgrade extends CustomError {
 
 &lt;p&gt;다음 강좌에서 지급 기능을 만들고 차차 진행해보도록 하자.&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2017/02/21/azureandunity-06/&quot;&gt;6강 바로가기&lt;/a&gt;&lt;/p&gt;
+
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;section-23&quot;&gt;참고자료&lt;/h2&gt;
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
 &lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.4.zip&quot;&gt;Wendy 5강 완료 버전&lt;/a&gt;&lt;/p&gt;
@@ -1134,21 +1907,21 @@ class NoLongerUpgrade extends CustomError {
         <item>
             <title>Wendy 프로젝트 진행사항 2</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;기능 목록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#프로젝트-진행-사항&quot; id=&quot;markdown-toc-프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기능-목록&quot; id=&quot;markdown-toc-기능-목록&quot;&gt;기능 목록&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-사항&quot; id=&quot;markdown-toc-튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#완성된-튜토리얼-목록&quot; id=&quot;markdown-toc-완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-진행사항&quot; id=&quot;markdown-toc-튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;웬디 근황&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#웬디-근황&quot; id=&quot;markdown-toc-웬디-근황&quot;&gt;웬디 근황&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 
 &lt;p&gt;Wendy를 시작하고 좋은 경험을 2가지 했다.&lt;/p&gt;
 
@@ -1162,14 +1935,14 @@ class NoLongerUpgrade extends CustomError {
   &lt;p&gt;세상은 넓고 능력자는 많다!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
+&lt;h2 id=&quot;프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
 &lt;p&gt;아이템 관리까지 작업이 되었다. 관련하여 작성한 글은 2월에 게시한 예정이다.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;기능 목록&lt;/h3&gt;
+&lt;h3 id=&quot;기능-목록&quot;&gt;기능 목록&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;기기 관리&lt;/li&gt;
   &lt;li&gt;사용자 관리&lt;/li&gt;
@@ -1177,7 +1950,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;li&gt;아이템 관리&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
+&lt;h2 id=&quot;튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
 &lt;p&gt;2개 강좌가 더 제작되었다.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1185,7 +1958,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;li&gt;4강 - 통화 관리&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
+&lt;h3 id=&quot;완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;1강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;2강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
@@ -1193,13 +1966,13 @@ class NoLongerUpgrade extends CustomError {
   &lt;li&gt;4강 - &lt;a href=&quot;http://totuworld.github.io/2017/01/26/azureandunity-04/&quot;&gt;통화관리&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
+&lt;h3 id=&quot;튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;5강 : 글 작성 완료, 동영상 녹화 예정&lt;/li&gt;
   &lt;li&gt;6강 : 소스 코드와 글 작성 중&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-6&quot;&gt;웬디 근황&lt;/h2&gt;
+&lt;h2 id=&quot;웬디-근황&quot;&gt;웬디 근황&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;tvN &lt;code&gt;편의점을 털어라&lt;/code&gt; MC로 활약중이다(프로그램이 핵노… 읍읍).&lt;/li&gt;
@@ -1212,7 +1985,7 @@ class NoLongerUpgrade extends CustomError {
   &lt;p&gt;와 이제 대놓고 덕질할 수 있구나!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;맺음말&lt;/h2&gt;
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
 
 &lt;p&gt;동영상 튜토리얼을 만들면서 확실히 알게된 사실이 있다.&lt;/p&gt;
 
@@ -1252,54 +2025,54 @@ class NoLongerUpgrade extends CustomError {
         <item>
             <title>이세계에 진입한 서버 개발 - 4</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/a&gt;        &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#통화-정의-통화-보유-모델-추가&quot; id=&quot;markdown-toc-통화-정의-통화-보유-모델-추가&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#definecurrencyjs&quot; id=&quot;markdown-toc-definecurrencyjs&quot;&gt;DefineCurrency.js&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#owncurrencyjs&quot; id=&quot;markdown-toc-owncurrencyjs&quot;&gt;OwnCurrency.js&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;라우터 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;로직 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;정의된 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;보유한 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;라우터 등록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#로직-추가&quot; id=&quot;markdown-toc-로직-추가&quot;&gt;로직 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#정의된-통화-목록-요청&quot; id=&quot;markdown-toc-정의된-통화-목록-요청&quot;&gt;정의된 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#보유한-통화-목록-요청&quot; id=&quot;markdown-toc-보유한-통화-목록-요청&quot;&gt;보유한 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#라우터-등록&quot; id=&quot;markdown-toc-라우터-등록&quot;&gt;라우터 등록&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;기능 정의&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#definerechargecurrency--&quot; id=&quot;markdown-toc-definerechargecurrency--&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#modelsdefinecurrencyjs-&quot; id=&quot;markdown-toc-modelsdefinecurrencyjs-&quot;&gt;models/DefineCurrency.js 수정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;재충전 로직 작성&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#later--&quot; id=&quot;markdown-toc-later--&quot;&gt;later 모듈 추가&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;환경 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#일정-시간마다-충전되는-통화는&quot; id=&quot;markdown-toc-일정-시간마다-충전되는-통화는&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기능-정의&quot; id=&quot;markdown-toc-기능-정의&quot;&gt;기능 정의&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#definerechargecurrency-모델-추가&quot; id=&quot;markdown-toc-definerechargecurrency-모델-추가&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#modelsdefinecurrencyjs-수정&quot; id=&quot;markdown-toc-modelsdefinecurrencyjs-수정&quot;&gt;models/DefineCurrency.js 수정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#재충전-로직-작성&quot; id=&quot;markdown-toc-재충전-로직-작성&quot;&gt;재충전 로직 작성&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#later-모듈-추가&quot; id=&quot;markdown-toc-later-모듈-추가&quot;&gt;later 모듈 추가&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#환경-설정&quot; id=&quot;markdown-toc-환경-설정&quot;&gt;환경 설정&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#routescurrencyjs-&quot; id=&quot;markdown-toc-routescurrencyjs-&quot;&gt;routes/currency.js 수정&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#currencydefine-api-&quot; id=&quot;markdown-toc-currencydefine-api-&quot;&gt;currency/define api 수정&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#currencyown-api-&quot; id=&quot;markdown-toc-currencyown-api-&quot;&gt;currency/own api 수정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#routescurrencyjs-수정&quot; id=&quot;markdown-toc-routescurrencyjs-수정&quot;&gt;routes/currency.js 수정&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#currencydefine-api-수정&quot; id=&quot;markdown-toc-currencydefine-api-수정&quot;&gt;currency/define api 수정&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#currencyown-api-수정&quot; id=&quot;markdown-toc-currencyown-api-수정&quot;&gt;currency/own api 수정&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dbeaver-&quot; id=&quot;markdown-toc-dbeaver-&quot;&gt;DBeaver 설치&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#connection-&quot; id=&quot;markdown-toc-connection-&quot;&gt;Connection 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;재충전 통화 정보 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;정의된 통화 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;보유한 통화 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#postman-&quot; id=&quot;markdown-toc-postman-&quot;&gt;postman으로 테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#dbeaver-설치&quot; id=&quot;markdown-toc-dbeaver-설치&quot;&gt;DBeaver 설치&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#connection-추가&quot; id=&quot;markdown-toc-connection-추가&quot;&gt;Connection 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#재충전-통화-정보-추가&quot; id=&quot;markdown-toc-재충전-통화-정보-추가&quot;&gt;재충전 통화 정보 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#정의된-통화-추가&quot; id=&quot;markdown-toc-정의된-통화-추가&quot;&gt;정의된 통화 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#보유한-통화-추가&quot; id=&quot;markdown-toc-보유한-통화-추가&quot;&gt;보유한 통화 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#postman으로-테스트&quot; id=&quot;markdown-toc-postman으로-테스트&quot;&gt;postman으로 테스트&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Zrem0cNKWiM&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;통화는 위키피디아에 의하면 아래와 같이 정의된다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1334,12 +2107,12 @@ class NoLongerUpgrade extends CustomError {
   &lt;p&gt;지급 관리에서 지급과 관계된 내용을 다루므로 이번 내용에서는 빠진다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;모델 추가&lt;/h2&gt;
+&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
 &lt;p&gt;크게 2가지 모델이 필요하다. 하나는 게임 안에서 통용되는 통화를 정의하는 모델이다. 큰 변화는 없다.&lt;/p&gt;
 
 &lt;p&gt;남은 하나는 통화 보유 모델이다. 어떤 것을 얼마나 가지고 있는지 기록해야하기 때문이다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/h3&gt;
+&lt;h3 id=&quot;통화-정의-통화-보유-모델-추가&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/h3&gt;
 &lt;p&gt;아래 2개 파일을 &lt;code&gt;models&lt;/code&gt;폴더에 &lt;code&gt;DefineCurrency.js&lt;/code&gt;, &lt;code&gt;OwnCurrency.js&lt;/code&gt;파일을 추가한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;definecurrencyjs&quot;&gt;DefineCurrency.js&lt;/h4&gt;
@@ -1376,7 +2149,7 @@ module.exports = function(sequelize, DataTypes) {
 
 &lt;p&gt;또한 보유 수량(CurrentQNTY)을 기록할 수 있으며 특정 조건에 의해 최대 보유 수량을 늘릴 수 있는 AddMaxQNTY 컬럼도 있다. 실제 컬럼으로 존재하지 않지만 getterMethods로 &lt;code&gt;TotalQNTY&lt;/code&gt;를 등록해서 실제 최대보유수량을 계산한다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;라우터 추가&lt;/h2&gt;
+&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
 
 &lt;p&gt;통화에 사용된 라우터를 추가하겠다.&lt;/p&gt;
 
@@ -1405,7 +2178,7 @@ module.exports = router;
 
 &lt;p&gt;앞으로 라우터를 추가하는 것은 자주 할 것이므로 금방 익숙해질 것이다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;로직 추가&lt;/h2&gt;
+&lt;h2 id=&quot;로직-추가&quot;&gt;로직 추가&lt;/h2&gt;
 &lt;p&gt;2가지 로직을 추가할 것이다.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1415,7 +2188,7 @@ module.exports = router;
 
 &lt;p&gt;2가지로 로직은 거의 차이가 없을 것이다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;정의된 통화 목록 요청&lt;/h3&gt;
+&lt;h3 id=&quot;정의된-통화-목록-요청&quot;&gt;정의된 통화 목록 요청&lt;/h3&gt;
 &lt;p&gt;아래 코드를 &lt;code&gt;routes/currency.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
@@ -1438,7 +2211,7 @@ router.get(&#39;/define&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;li&gt;9번 줄 : 찾아진 모든 내용을 &lt;code&gt;list&lt;/code&gt;노드에 담아서 리턴한다. 이때 &lt;code&gt;list&lt;/code&gt;노드는 별뜻이 없다(fxxk이라고 해도 된다). 클라이언트가 헷갈리지 않고 구분할 수 있으면 된다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;보유한 통화 목록 요청&lt;/h3&gt;
+&lt;h3 id=&quot;보유한-통화-목록-요청&quot;&gt;보유한 통화 목록 요청&lt;/h3&gt;
 &lt;p&gt;앞서 제작한 &lt;code&gt;정의된 통화 목록 요청&lt;/code&gt;과 다른 것은 조회해야할 테이블 다르다는 것과 findAll메서드에 조건을 추가한 정도다.&lt;/p&gt;
 
 &lt;p&gt;아래 코드를 &lt;code&gt;routes/currency.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
@@ -1464,7 +2237,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;모든 것이 이렇게 간단하면 좋으련만.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;라우터 등록&lt;/h3&gt;
+&lt;h3 id=&quot;라우터-등록&quot;&gt;라우터 등록&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 currency 라우터를 추가해보자.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1506,7 +2279,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-8&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/h2&gt;
+&lt;h2 id=&quot;일정-시간마다-충전되는-통화는&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;애니x&lt;/code&gt;이나 &lt;code&gt;드래곤플x이트&lt;/code&gt;가 공전의 히트를 칠 때 하트 구하려고 대포친구(?)를 구했던 기억이 있다.&lt;/p&gt;
 
@@ -1526,7 +2299,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;어떤 &lt;code&gt;열쇠&lt;/code&gt;는 기준시각(예를들어 새벽 4시)이 지나면 재충전 시간 계산없이 보유할 수 있는 최대 수량으로 채워지는 형태도 있을 수 있다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;기능 정의&lt;/h3&gt;
+&lt;h3 id=&quot;기능-정의&quot;&gt;기능 정의&lt;/h3&gt;
 
 &lt;p&gt;얘기된 몇가지 특징을 뽑아보면 대략 아래와 같다.&lt;/p&gt;
 
@@ -1570,7 +2343,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;definerechargecurrency--&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/h3&gt;
+&lt;h3 id=&quot;definerechargecurrency-모델-추가&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -1593,7 +2366,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;code&gt;SetMaxPattern&lt;/code&gt;이 Cron 표현식을 사용하므로 잘못된 입력을 막기 위해 검증코드를 넣은 것이다.&lt;/p&gt;
 
-&lt;h3 id=&quot;modelsdefinecurrencyjs-&quot;&gt;models/DefineCurrency.js 수정&lt;/h3&gt;
+&lt;h3 id=&quot;modelsdefinecurrencyjs-수정&quot;&gt;models/DefineCurrency.js 수정&lt;/h3&gt;
 &lt;p&gt;통화 중에서 재충전이 필요한 경우 &lt;code&gt;DefineRechargeCurrency&lt;/code&gt; 모델을 참조해야하므로 &lt;code&gt;RechargeCurrencyID&lt;/code&gt;를 외래키로 등록한다.&lt;/p&gt;
 
 &lt;p&gt;models/&lt;code&gt;DefineCurrency.js&lt;/code&gt; 파일에서 아래 내용을 찾는다.&lt;/p&gt;
@@ -1632,7 +2405,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;외래키를 등록할 때 &lt;code&gt;as&lt;/code&gt; 노드는 별명(alias)으로 &lt;code&gt;DefineRechargeCurrency&lt;/code&gt; 이름이 너무 길어서 짧게 줄이려고 추가한 것이다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;재충전 로직 작성&lt;/h3&gt;
+&lt;h3 id=&quot;재충전-로직-작성&quot;&gt;재충전 로직 작성&lt;/h3&gt;
 &lt;p&gt;vs code에서 &lt;code&gt;logics&lt;/code&gt; 폴더를 새로 생성하고 &lt;code&gt;currency.js&lt;/code&gt; 파일을 추가한다.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1657,7 +2430,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;li&gt;43~65번 줄 : 재충전 주기를 기준으로 시간경과를 고려하여 충전량을 계산한다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;later--&quot;&gt;later 모듈 추가&lt;/h4&gt;
+&lt;h4 id=&quot;later-모듈-추가&quot;&gt;later 모듈 추가&lt;/h4&gt;
 &lt;p&gt;logics/currency.js에서 later 모듈로 cron 표현식을 해석한다.&lt;/p&gt;
 
 &lt;p&gt;모듈을 추가해보자.&lt;/p&gt;
@@ -1678,7 +2451,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;section-11&quot;&gt;환경 설정&lt;/h4&gt;
+&lt;h4 id=&quot;환경-설정&quot;&gt;환경 설정&lt;/h4&gt;
 &lt;p&gt;Azure 웹앱은 기본 타임존이 UTC(GMT+0)로 설정되어있다. 하지만 우리의 로컬환경은 다르기때문에 이를 맞춰야 시간과 관련된 계산이 편리하다.&lt;/p&gt;
 
 &lt;p&gt;vs code의 환경 설정을 수정하여 이를 동일하게 맞추도록 한다.&lt;/p&gt;
@@ -1695,10 +2468,10 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;routescurrencyjs-&quot;&gt;routes/currency.js 수정&lt;/h3&gt;
+&lt;h3 id=&quot;routescurrencyjs-수정&quot;&gt;routes/currency.js 수정&lt;/h3&gt;
 &lt;p&gt;2개의 api를 모두 수정할 것이다.&lt;/p&gt;
 
-&lt;h4 id=&quot;currencydefine-api-&quot;&gt;currency/define api 수정&lt;/h4&gt;
+&lt;h4 id=&quot;currencydefine-api-수정&quot;&gt;currency/define api 수정&lt;/h4&gt;
 &lt;p&gt;정의된 통화목록을 로딩할 때 재충전 관련 데이터도 함께 엮어서 내려질 수 있도록 변경한다.&lt;/p&gt;
 
 &lt;p&gt;아래 내용을 찾아서 변경한다.&lt;/p&gt;
@@ -1725,7 +2498,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;findAll()할 때 include로 DefineRechargeCurrency 모델의 데이터를 포함하여 내려지게 된다.&lt;/p&gt;
 
-&lt;h4 id=&quot;currencyown-api-&quot;&gt;currency/own api 수정&lt;/h4&gt;
+&lt;h4 id=&quot;currencyown-api-수정&quot;&gt;currency/own api 수정&lt;/h4&gt;
 &lt;p&gt;앞서 만든 logics/currency.js를 routes/currency.js에서 활용하도록 해보자.&lt;/p&gt;
 
 &lt;p&gt;아래 코드를 찾아서 코드를 추가한다.&lt;/p&gt;
@@ -1856,12 +2629,12 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;p&gt;단 성능에 큰 문제를 야기할 수 있다면 순차적으로 처리하는 것을 권한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-12&quot;&gt;테스트&lt;/h2&gt;
+&lt;h2 id=&quot;테스트&quot;&gt;테스트&lt;/h2&gt;
 &lt;p&gt;필요한 데이터를 넣고 테스트를 진행할 것이다.&lt;/p&gt;
 
 &lt;p&gt;하지만 아직 Wendy가 데이터를 넣는 어떤 로직도 제공하지 않기때문에 DB에 직접 데이터를 넣어야한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;dbeaver-&quot;&gt;DBeaver 설치&lt;/h3&gt;
+&lt;h3 id=&quot;dbeaver-설치&quot;&gt;DBeaver 설치&lt;/h3&gt;
 &lt;p&gt;DB에 접속해서 필요한 일을 처리해줄 GUI 툴로 &lt;code&gt;DBeaver&lt;/code&gt;를 사용하겠다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1870,7 +2643,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;p&gt;다음 링크로 이동해서 &lt;a href=&quot;http://dbeaver.jkiss.org/&quot;&gt;DBeaver&lt;/a&gt;를 설치한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;connection-&quot;&gt;Connection 추가&lt;/h3&gt;
+&lt;h3 id=&quot;connection-추가&quot;&gt;Connection 추가&lt;/h3&gt;
 &lt;p&gt;DB에 접속하기 위해 Connection을 등록해보자.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1895,7 +2668,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-13&quot;&gt;재충전 통화 정보 추가&lt;/h3&gt;
+&lt;h3 id=&quot;재충전-통화-정보-추가&quot;&gt;재충전 통화 정보 추가&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Connection 전에 로컬 서버를 실행한다.&lt;/p&gt;
@@ -1952,7 +2725,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-14&quot;&gt;정의된 통화 추가&lt;/h3&gt;
+&lt;h3 id=&quot;정의된-통화-추가&quot;&gt;정의된 통화 추가&lt;/h3&gt;
 
 &lt;p&gt;위의 과정처럼 &lt;code&gt;DefineCurrency&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
 
@@ -1989,7 +2762,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;p&gt;위 테이블처러 2가지 상품을 등록한다. 그 중 101 상품은 재충전 가능한 상품이 된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-15&quot;&gt;보유한 통화 추가&lt;/h3&gt;
+&lt;h3 id=&quot;보유한-통화-추가&quot;&gt;보유한 통화 추가&lt;/h3&gt;
 &lt;p&gt;지난 강좌에서 사용자를 등록했다는 가정하에 진행한다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -2041,7 +2814,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;p&gt;&lt;code&gt;OwnCurrencyUID&lt;/code&gt;는 자동으로 증가되므로 NULL을 넣어도 알아서 값을 가지게 된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;postman-&quot;&gt;postman으로 테스트&lt;/h3&gt;
+&lt;h3 id=&quot;postman으로-테스트&quot;&gt;postman으로 테스트&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;패스 : GET&lt;/li&gt;
@@ -2080,7 +2853,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;p&gt;보는 바와 같이 101 상품은 재충전이 일어나서 CurrentQNTY가 5가 되었고 UpdateTimeStamp도 변경이 있다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-16&quot;&gt;맺음말&lt;/h2&gt;
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
 &lt;p&gt;이번에 다룬 것은 통화였다. 그중에서 재충전에 관한 것이 많은 부분을 차지했다.&lt;/p&gt;
 
 &lt;p&gt;실제로 통화 관리는 이보다 더 복잡하게 이뤄질 수 있다.&lt;/p&gt;
@@ -2091,7 +2864,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;section-17&quot;&gt;참고자료&lt;/h2&gt;
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
 &lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.3.zip&quot;&gt;Wendy 4강 완료 버전&lt;/a&gt;&lt;/p&gt;
@@ -2116,53 +2889,53 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
         <item>
             <title>이세계에 진입한 서버 개발 - 3</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#utils--&quot; id=&quot;markdown-toc-utils--&quot;&gt;utils 파일 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;테이블 정의&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;기기 테이블&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;사용자 테이블&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#utils-파일-추가&quot; id=&quot;markdown-toc-utils-파일-추가&quot;&gt;utils 파일 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#테이블-정의&quot; id=&quot;markdown-toc-테이블-정의&quot;&gt;테이블 정의&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기기-테이블&quot; id=&quot;markdown-toc-기기-테이블&quot;&gt;기기 테이블&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#사용자-테이블&quot; id=&quot;markdown-toc-사용자-테이블&quot;&gt;사용자 테이블&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;기기 모델 정의&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;사용자 모델 정의&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기기-모델-정의&quot; id=&quot;markdown-toc-기기-모델-정의&quot;&gt;기기 모델 정의&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#사용자-모델-정의&quot; id=&quot;markdown-toc-사용자-모델-정의&quot;&gt;사용자 모델 정의&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;라우터 작성&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;기기 라우터 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;사용자 라우터 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;라우터 등록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#라우터-작성&quot; id=&quot;markdown-toc-라우터-작성&quot;&gt;라우터 작성&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기기-라우터-추가&quot; id=&quot;markdown-toc-기기-라우터-추가&quot;&gt;기기 라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#사용자-라우터-추가&quot; id=&quot;markdown-toc-사용자-라우터-추가&quot;&gt;사용자 라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#라우터-등록&quot; id=&quot;markdown-toc-라우터-등록&quot;&gt;라우터 등록&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;로직 등록&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;기기 등록 로직&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#orm---&quot; id=&quot;markdown-toc-orm---&quot;&gt;ORM 활용 코드 읽기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#로직-등록&quot; id=&quot;markdown-toc-로직-등록&quot;&gt;로직 등록&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기기-등록-로직&quot; id=&quot;markdown-toc-기기-등록-로직&quot;&gt;기기 등록 로직&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#orm-활용-코드-읽기&quot; id=&quot;markdown-toc-orm-활용-코드-읽기&quot;&gt;ORM 활용 코드 읽기&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;토큰 요청 로직&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;사용자 정보 조회 로직&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;사용자 등록 로직&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#토큰-요청-로직&quot; id=&quot;markdown-toc-토큰-요청-로직&quot;&gt;토큰 요청 로직&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#사용자-정보-조회-로직&quot; id=&quot;markdown-toc-사용자-정보-조회-로직&quot;&gt;사용자 정보 조회 로직&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#사용자-등록-로직&quot; id=&quot;markdown-toc-사용자-등록-로직&quot;&gt;사용자 등록 로직&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs-&quot; id=&quot;markdown-toc-appjs-&quot;&gt;app.js 수정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#postman-&quot; id=&quot;markdown-toc-postman-&quot;&gt;Postman 설치&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;테스트 코드&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;토큰 요청&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;기기 등록&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;사용자 등록&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;사용자 정보 조회&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs-수정&quot; id=&quot;markdown-toc-appjs-수정&quot;&gt;app.js 수정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#postman-설치&quot; id=&quot;markdown-toc-postman-설치&quot;&gt;Postman 설치&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#테스트-코드&quot; id=&quot;markdown-toc-테스트-코드&quot;&gt;테스트 코드&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#토큰-요청&quot; id=&quot;markdown-toc-토큰-요청&quot;&gt;토큰 요청&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#기기-등록&quot; id=&quot;markdown-toc-기기-등록&quot;&gt;기기 등록&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#사용자-등록&quot; id=&quot;markdown-toc-사용자-등록&quot;&gt;사용자 등록&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#사용자-정보-조회&quot; id=&quot;markdown-toc-사용자-정보-조회&quot;&gt;사용자 정보 조회&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;맺는말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺는말&quot; id=&quot;markdown-toc-맺는말&quot;&gt;맺는말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/q8reG_gVcUQ&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;게임에서 사용자는 아이디(혹은 닉네임)을 가지고 있으나 그것외에 서로를 구별할 수 있는 정보가 부족하다.&lt;/p&gt;
 
 &lt;p&gt;설상 가상으로 사용자는 스마트폰뿐 아니라 테블릿이나 가상 기기 등 여러 기기로 게임을 즐긴다.&lt;/p&gt;
@@ -2175,7 +2948,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;p&gt;이번에 다룰 내용에서는 복수의 기기를 한 사용자에게 연결하는 부분은 제외한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;utils--&quot;&gt;utils 파일 추가&lt;/h2&gt;
+&lt;h2 id=&quot;utils-파일-추가&quot;&gt;utils 파일 추가&lt;/h2&gt;
 &lt;p&gt;프로그래밍에 필요한 파일 3개를 &lt;code&gt;utils&lt;/code&gt;폴더에 추가해야한다.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -2190,7 +2963,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;p&gt;vs code에서 파일을 생성한 뒤 내용을 복사 붙여넣기해도 무방하다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;테이블 정의&lt;/h2&gt;
+&lt;h2 id=&quot;테이블-정의&quot;&gt;테이블 정의&lt;/h2&gt;
 
 &lt;p&gt;친한 친구 중에 &lt;code&gt;John&lt;/code&gt;이 3명 있다고 해보자. 이름이 같지만 각자가 가진 특징이 달라서 구분할 수 있다.&lt;/p&gt;
 
@@ -2206,7 +2979,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;p&gt;각각의 테이블은 하나의 스프레드 시트로 생각하면 된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;기기 테이블&lt;/h3&gt;
+&lt;h3 id=&quot;기기-테이블&quot;&gt;기기 테이블&lt;/h3&gt;
 &lt;p&gt;기기 정보를 기록하려면 기록지(혹은 대장)가 필요한 것처럼 관계형 데이터베이스에서도 어떻게 기록할지 정할 필요가 있다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -2300,7 +3073,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;사용자 테이블&lt;/h3&gt;
+&lt;h3 id=&quot;사용자-테이블&quot;&gt;사용자 테이블&lt;/h3&gt;
 &lt;p&gt;사용자 테이블은 닉네임, 로케일, 사용시간대 등을 기록한다.&lt;/p&gt;
 
 &lt;table&gt;
@@ -2374,7 +3147,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;모델 추가&lt;/h2&gt;
+&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
 
 &lt;p&gt;테이블 정의에 따라 모델을 정의해보자.&lt;/p&gt;
 
@@ -2391,7 +3164,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;li&gt;옵션 : 필요에 따라 추가하면 된다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;기기 모델 정의&lt;/h3&gt;
+&lt;h3 id=&quot;기기-모델-정의&quot;&gt;기기 모델 정의&lt;/h3&gt;
 
 &lt;p&gt;앞서 살펴본 테이블에 따라 기기 모델을 정의해보겠다.&lt;/p&gt;
 
@@ -2418,7 +3191,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;사용자 모델 정의&lt;/h3&gt;
+&lt;h3 id=&quot;사용자-모델-정의&quot;&gt;사용자 모델 정의&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -2433,7 +3206,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;라우터 작성&lt;/h2&gt;
+&lt;h2 id=&quot;라우터-작성&quot;&gt;라우터 작성&lt;/h2&gt;
 &lt;p&gt;express의 라우터는 패스와 콜백 메서드로 이뤄진다.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;    router.METHOD( /* 패스(path) */ , /* 콜백 메서드(callback method) */ );
@@ -2441,7 +3214,7 @@ router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
 
 &lt;p&gt;앞의 METHOD는 HTTP 메서드(get, post, put 등)를 제공한다. 패스는 URL의 패스를 입력하면 된다. 콜백 메서드가 실제로 모든 일을 처리하게 된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;기기 라우터 추가&lt;/h3&gt;
+&lt;h3 id=&quot;기기-라우터-추가&quot;&gt;기기 라우터 추가&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;code&gt;routes&lt;/code&gt; 폴더에 &lt;code&gt;device.js&lt;/code&gt;파일을 생성한다.&lt;/p&gt;
@@ -2473,7 +3246,7 @@ module.exports = router;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;사용자 라우터 추가&lt;/h3&gt;
+&lt;h3 id=&quot;사용자-라우터-추가&quot;&gt;사용자 라우터 추가&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -2498,7 +3271,7 @@ const router = express.Router();
 module.exports = router;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;라우터 등록&lt;/h3&gt;
+&lt;h3 id=&quot;라우터-등록&quot;&gt;라우터 등록&lt;/h3&gt;
 &lt;p&gt;이렇게 라우터를 추가해도 express.js가 바로 인식할 수 있지 않다. &lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 2가지 라우터를 추가해보자.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -2546,7 +3319,7 @@ app.use(&#39;/device&#39;, device);
 
 &lt;p&gt;예를 들어 &lt;code&gt;hostname/device&lt;/code&gt; 로 시작되는 모든 패스는 &lt;code&gt;routes/device.js&lt;/code&gt;가 관리하게 되는 것이다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-11&quot;&gt;로직 등록&lt;/h2&gt;
+&lt;h2 id=&quot;로직-등록&quot;&gt;로직 등록&lt;/h2&gt;
 &lt;p&gt;기기의 UUID를 통해서 게임 입장 시 이뤄지는 기본 동작은 다음과 같은 순서로 진행된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/mks_v03.png&quot; alt=&quot;사용자등록&quot; /&gt;&lt;/p&gt;
@@ -2562,7 +3335,7 @@ app.use(&#39;/device&#39;, device);
 
 &lt;p&gt;4가지 로직을 프로그래밍해보자.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;기기 등록 로직&lt;/h3&gt;
+&lt;h3 id=&quot;기기-등록-로직&quot;&gt;기기 등록 로직&lt;/h3&gt;
 &lt;p&gt;기기에 필요한 로직은 크게 2가지이다. 등록된 UUID를 통해서 토큰을 얻는 것과 기기 등록 요청을 하는 것이다.&lt;/p&gt;
 
 &lt;p&gt;아래 코드를 &lt;code&gt;routes/device.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
@@ -2626,7 +3399,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;우리가 클라이언트에 보내는 응답은 { result : 결과 코드 } 형태로 보낼 것이다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;orm---&quot;&gt;ORM 활용 코드 읽기&lt;/h4&gt;
+&lt;h4 id=&quot;orm-활용-코드-읽기&quot;&gt;ORM 활용 코드 읽기&lt;/h4&gt;
 &lt;p&gt;잠깐 설명하고 넘어가자면 앞서 본 코드의 16번 줄은 ORM을 이용해서 데이터베이스를 조회한 것이다.&lt;/p&gt;
 
 &lt;p&gt;대략 다음과 같은 형태의 코드가 모두 ORM을 이용하는 것이다.&lt;/p&gt;
@@ -2656,7 +3429,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;자주 보게되면 금방 익숙해지니 외우려고하지 말고 넘어가자.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-13&quot;&gt;토큰 요청 로직&lt;/h3&gt;
+&lt;h3 id=&quot;토큰-요청-로직&quot;&gt;토큰 요청 로직&lt;/h3&gt;
 &lt;p&gt;주민등록번호는 편리하다. 번호만으로 그 사람이 누구인지 확인해니 관공서 업무에 많이 활용된다.&lt;/p&gt;
 
 &lt;p&gt;거꾸로 말하면 유출 시 손쉽게 다른 사람이 될 수 있다.&lt;/p&gt;
@@ -2729,7 +3502,7 @@ router.get(&#39;/token/:UUID&#39;, (req, res, next)=&amp;gt;{
   &lt;li&gt;21~24번 줄 : 주 사용기기인지 체크한다. 이는 1명의 사용자가 다수의 기기를 돌릴 경우를 대비한 것으로 지금은 무의미하다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-14&quot;&gt;사용자 정보 조회 로직&lt;/h3&gt;
+&lt;h3 id=&quot;사용자-정보-조회-로직&quot;&gt;사용자 정보 조회 로직&lt;/h3&gt;
 &lt;p&gt;사용자 관련 로직도 복잡도가 낮은 정보 조회부터 제작해보자.&lt;/p&gt;
 
 &lt;p&gt;아래 코드를 &lt;code&gt;routes/user.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
@@ -2768,7 +3541,7 @@ router.get(&#39;/&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
   &lt;p&gt;앞으로 이런 코드를 자주 보게 될 것이다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-15&quot;&gt;사용자 등록 로직&lt;/h3&gt;
+&lt;h3 id=&quot;사용자-등록-로직&quot;&gt;사용자 등록 로직&lt;/h3&gt;
 &lt;p&gt;예외처리가 이곳저곳에 있어서 복잡해보이지만 로직을 묶어서보면 간단한 편이다.&lt;/p&gt;
 
 &lt;p&gt;아래 코드를 &lt;code&gt;routes/user.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
@@ -2904,12 +3677,12 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;li&gt;87~111번 줄 : GameUser 정보를 등록하고 GameDevice와 연결한다. 그리고 결과를 전송한다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-16&quot;&gt;테스트&lt;/h2&gt;
+&lt;h2 id=&quot;테스트&quot;&gt;테스트&lt;/h2&gt;
 &lt;p&gt;작성한 코드가 올바로 작동하는지 확인해보자.&lt;/p&gt;
 
 &lt;p&gt;API를 테스트하려면 &lt;code&gt;cURL&lt;/code&gt;이나 &lt;code&gt;HTTPie&lt;/code&gt;같은 CLI용 클라이언트를 사용해도 되지만 GUI로 가능한 &lt;code&gt;Postman&lt;/code&gt;을 사용하겠다.&lt;/p&gt;
 
-&lt;h3 id=&quot;appjs-&quot;&gt;app.js 수정&lt;/h3&gt;
+&lt;h3 id=&quot;appjs-수정&quot;&gt;app.js 수정&lt;/h3&gt;
 &lt;p&gt;우리가 만드는 게임 서버는 에러가 발생하면 HTML 형식으로 리턴한다.&lt;/p&gt;
 
 &lt;p&gt;왜냐하면 express.js의 기본이 그렇게 설정되어있기때문이다.&lt;/p&gt;
@@ -2933,7 +3706,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;postman-&quot;&gt;Postman 설치&lt;/h3&gt;
+&lt;h3 id=&quot;postman-설치&quot;&gt;Postman 설치&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -2944,14 +3717,14 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-17&quot;&gt;테스트 코드&lt;/h3&gt;
+&lt;h3 id=&quot;테스트-코드&quot;&gt;테스트 코드&lt;/h3&gt;
 &lt;p&gt;Postman을 실행하여 &lt;code&gt;토큰 요청&lt;/code&gt;, &lt;code&gt;기기 등록&lt;/code&gt;, &lt;code&gt;사용자 등록&lt;/code&gt;, &lt;code&gt;사용자 정보 조회&lt;/code&gt; 순으로 실행해보겠다.&lt;/p&gt;
 
 &lt;p&gt;우선 테스트를 위해서 vs code에서 &lt;code&gt;F5&lt;/code&gt;를 누르거나 &lt;code&gt;Debug&lt;/code&gt; 메뉴로 이동해서 &lt;code&gt;Start Debugging&lt;/code&gt;버튼을 클릭하여 게임 서버를 동작하도록 한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_01.png&quot; alt=&quot;debug&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;section-18&quot;&gt;토큰 요청&lt;/h4&gt;
+&lt;h4 id=&quot;토큰-요청&quot;&gt;토큰 요청&lt;/h4&gt;
 &lt;p&gt;Postman의 &lt;code&gt;Request Editor&lt;/code&gt;를 다음과 같이 입력한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://www.getpostman.com/img/v1/docs/thumbs/2.png&quot; alt=&quot;Request Editor&quot; /&gt;&lt;/p&gt;
@@ -2975,7 +3748,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;정상이다. 기기등록을 해보자.&lt;/p&gt;
 
-&lt;h4 id=&quot;section-19&quot;&gt;기기 등록&lt;/h4&gt;
+&lt;h4 id=&quot;기기-등록&quot;&gt;기기 등록&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;패스 : POST&lt;/li&gt;
@@ -2998,7 +3771,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;section-20&quot;&gt;사용자 등록&lt;/h4&gt;
+&lt;h4 id=&quot;사용자-등록&quot;&gt;사용자 등록&lt;/h4&gt;
 &lt;p&gt;닉네임을 입력하여 사용자 등록을 진행한다.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3027,7 +3800,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;section-21&quot;&gt;사용자 정보 조회&lt;/h4&gt;
+&lt;h4 id=&quot;사용자-정보-조회&quot;&gt;사용자 정보 조회&lt;/h4&gt;
 &lt;p&gt;위에서 받은 토큰을 활용해서 사용자 정보 조회를 해보자.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3052,7 +3825,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;section-22&quot;&gt;맺는말&lt;/h2&gt;
+&lt;h2 id=&quot;맺는말&quot;&gt;맺는말&lt;/h2&gt;
 &lt;p&gt;처음 프로그래밍을 진행하는 것이고 익숙치않은 javascript와 Promise 패턴 덕분에 뭐가 뭔지 하나도 모르겠다고 느낄 수 있다.&lt;/p&gt;
 
 &lt;p&gt;처음 Unity로 게임을 시작할 때도 비슷했을 것이라고 본다. 자주 접하다보면 점점 익숙해진다.&lt;/p&gt;
@@ -3063,7 +3836,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;section-23&quot;&gt;참고자료&lt;/h2&gt;
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
 &lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.2.zip&quot;&gt;Wendy 3강 완료 버전&lt;/a&gt;&lt;/p&gt;
@@ -3088,26 +3861,26 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
         <item>
             <title>Wendy 프로젝트 진행사항 1</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;기능 추가 목록&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#프로젝트-진행-사항&quot; id=&quot;markdown-toc-프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#기능-추가-목록&quot; id=&quot;markdown-toc-기능-추가-목록&quot;&gt;기능 추가 목록&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-사항&quot; id=&quot;markdown-toc-튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#완성된-튜토리얼-목록&quot; id=&quot;markdown-toc-완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-진행사항&quot; id=&quot;markdown-toc-튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;작명 및 로고&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#작명-및-로고&quot; id=&quot;markdown-toc-작명-및-로고&quot;&gt;작명 및 로고&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;이상한모임 연말정산에서 반드시 올해는 프로젝트 진행 사항을 블로그 등으로 공지할 것을 천명한 바 있다.&lt;/p&gt;
 
 &lt;p&gt;12월부터 프로젝트가 작동 중이라서 첫 달의 진행 사항을 남긴다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
+&lt;h2 id=&quot;프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
 &lt;p&gt;가장 기본에 해당하는 기기 관리와 사용자 관리가 추가되었다.&lt;/p&gt;
 
 &lt;p&gt;그리고 통화 관리에 기능도 완료되었다.&lt;/p&gt;
@@ -3116,33 +3889,33 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;기능 추가 목록&lt;/h3&gt;
+&lt;h3 id=&quot;기능-추가-목록&quot;&gt;기능 추가 목록&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;기기 관리&lt;/li&gt;
   &lt;li&gt;사용자 관리&lt;/li&gt;
   &lt;li&gt;통화 관리&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
+&lt;h2 id=&quot;튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;이세계에 진입한 서버 개발&lt;/code&gt;이란 이름으로 2개의 강좌가 제작되었다.&lt;/p&gt;
 
 &lt;p&gt;기초에 해당하는 부분이라서 1주마다 총 2개가 공유되었다.&lt;/p&gt;
 
 &lt;p&gt;하지만 소스코드 제작과 글 작성, 동영상 제작을 생각하면 격주 목요일 1개 강좌 공유를 목표로 한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
+&lt;h3 id=&quot;완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;1강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;2강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
+&lt;h3 id=&quot;튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;3강 : 글 작성 완료, 동영상 녹화 예정&lt;/li&gt;
   &lt;li&gt;4강 : 글 작성 완료&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-6&quot;&gt;작명 및 로고&lt;/h2&gt;
+&lt;h2 id=&quot;작명-및-로고&quot;&gt;작명 및 로고&lt;/h2&gt;
 &lt;p&gt;MagmaKick을 진행할 때 설치용 버전으로 MagMaKick CE를 공개할 예정이었다.&lt;/p&gt;
 
 &lt;p&gt;하지만 내 뒷심과 능력 부족으로 MagmaKick이 대차게 실패했다.&lt;/p&gt;
@@ -3165,7 +3938,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;img src=&quot;/images/Wanlaf.png&quot; alt=&quot;WendyLogo&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;맺음말&lt;/h2&gt;
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
 
 &lt;p&gt;글만 쓰는게 아니라 동영상 녹화를 하고 후시 녹음으로 마무리하려니까 손이 좀 많이 가는게 아니다.&lt;/p&gt;
 
@@ -3199,41 +3972,41 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
         <item>
             <title>이세계에 진입한 서버 개발 - 2</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;프로그램 설치&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;모듈 설치&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;패키지 매니저 설치&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;진짜! 모듈 설치&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#프로그램-설치&quot; id=&quot;markdown-toc-프로그램-설치&quot;&gt;프로그램 설치&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#모듈-설치&quot; id=&quot;markdown-toc-모듈-설치&quot;&gt;모듈 설치&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#패키지-매니저-설치&quot; id=&quot;markdown-toc-패키지-매니저-설치&quot;&gt;패키지 매니저 설치&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#진짜-모듈-설치&quot; id=&quot;markdown-toc-진짜-모듈-설치&quot;&gt;진짜! 모듈 설치&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;데이터베이스&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;관계형 데이터베이스&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#데이터베이스&quot; id=&quot;markdown-toc-데이터베이스&quot;&gt;데이터베이스&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#관계형-데이터베이스&quot; id=&quot;markdown-toc-관계형-데이터베이스&quot;&gt;관계형 데이터베이스&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;데이터 베이스 활용하기&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql--&quot; id=&quot;markdown-toc-sql--&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql---1&quot; id=&quot;markdown-toc-sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql---&quot; id=&quot;markdown-toc-sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#데이터-베이스-활용하기&quot; id=&quot;markdown-toc-데이터-베이스-활용하기&quot;&gt;데이터 베이스 활용하기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-생성&quot; id=&quot;markdown-toc-sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-구조&quot; id=&quot;markdown-toc-sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-방화벽-설정&quot; id=&quot;markdown-toc-sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;잠깐 정리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;폴더 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#orm-&quot; id=&quot;markdown-toc-orm-&quot;&gt;ORM 설정&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;데이터베이스 접속 환경 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#modelsindexjs--&quot; id=&quot;markdown-toc-modelsindexjs--&quot;&gt;models/index.js 파일 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#serverjs--&quot; id=&quot;markdown-toc-serverjs--&quot;&gt;server.js 파일 수정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#잠깐-정리&quot; id=&quot;markdown-toc-잠깐-정리&quot;&gt;잠깐 정리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#폴더-추가&quot; id=&quot;markdown-toc-폴더-추가&quot;&gt;폴더 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#orm-설정&quot; id=&quot;markdown-toc-orm-설정&quot;&gt;ORM 설정&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#데이터베이스-접속-환경-추가&quot; id=&quot;markdown-toc-데이터베이스-접속-환경-추가&quot;&gt;데이터베이스 접속 환경 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#modelsindexjs-파일-추가&quot; id=&quot;markdown-toc-modelsindexjs-파일-추가&quot;&gt;models/index.js 파일 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#serverjs-파일-수정&quot; id=&quot;markdown-toc-serverjs-파일-수정&quot;&gt;server.js 파일 수정&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vs-code---&quot; id=&quot;markdown-toc-vs-code---&quot;&gt;vs code 개발 환경 설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#azure----&quot; id=&quot;markdown-toc-azure----&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vs-code-개발-환경-설정&quot; id=&quot;markdown-toc-vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure-웹앱-환경-변수-추가&quot; id=&quot;markdown-toc-azure-웹앱-환경-변수-추가&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺는-말&quot; id=&quot;markdown-toc-맺는-말&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/w8OZhTZy3d8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;첫 시간에 맛보기로 Azure 웹앱을 생성하고 배포까지 했다.
 오늘은 소스코드를 작성하기 앞서 필요한 각종 설치, 설정을 한다.&lt;/p&gt;
 
@@ -3243,7 +4016,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;노잼 시간은 계속된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;프로그램 설치&lt;/h2&gt;
+&lt;h2 id=&quot;프로그램-설치&quot;&gt;프로그램 설치&lt;/h2&gt;
 &lt;p&gt;본격적인 프로그래밍에 앞서 사용할 프로그램과 에디터를 설치해야한다.&lt;/p&gt;
 
 &lt;p&gt;아래 링크에서 각각 필요한 프로그램을 다운받아서 설치한다.&lt;/p&gt;
@@ -3257,14 +4030,14 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;VisualStudio Code는 이하에서 vs code로 표현한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;모듈 설치&lt;/h3&gt;
+&lt;h3 id=&quot;모듈-설치&quot;&gt;모듈 설치&lt;/h3&gt;
 &lt;p&gt;지난 시간에 소스코드를 배포할 때 많은 모듈이 Azure 웹앱에 추가되는 것이 기억나는가?&lt;/p&gt;
 
 &lt;p&gt;이는 로컬 개발 환경에서도 반드시 필요한 단계이나 지난 시간에는 체험을 위주로 진행했기때문에 건너뛰었다.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;yarn&lt;/code&gt;이란 패키지 매니저를 통해 설치를 진행한다.&lt;/p&gt;
 
-&lt;h4 id=&quot;section-3&quot;&gt;패키지 매니저 설치&lt;/h4&gt;
+&lt;h4 id=&quot;패키지-매니저-설치&quot;&gt;패키지 매니저 설치&lt;/h4&gt;
 &lt;p&gt;필요한 모듈을 설치하기 앞서 패키지 매니저를 설치해야한다.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3287,7 +4060,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;section-4&quot;&gt;진짜! 모듈 설치&lt;/h4&gt;
+&lt;h4 id=&quot;진짜-모듈-설치&quot;&gt;진짜! 모듈 설치&lt;/h4&gt;
 &lt;p&gt;yarn이 설치되었으니 프로젝트에 필요한 모듈을 설치해보자.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3306,7 +4079,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;데이터베이스&lt;/h2&gt;
+&lt;h2 id=&quot;데이터베이스&quot;&gt;데이터베이스&lt;/h2&gt;
 &lt;p&gt;인터넷 상에서 해당 서비스가 어떤 정보를 기반으로 브라우저에 결과를 출력할 때 정보는 어디에 어떻게 저장될까?
 예전에 웹 페이지를 만들어봤다면 정보도 직접 기재하는 경우가 있었지만 같은 형식의 페이지를 데이터 변경만 변경해서 적용하기에는 맞지 않다.&lt;/p&gt;
 
@@ -3314,7 +4087,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;이제부터 어떻게 정보를 저장하고 사용하는지 알아보자.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;관계형 데이터베이스&lt;/h3&gt;
+&lt;h3 id=&quot;관계형-데이터베이스&quot;&gt;관계형 데이터베이스&lt;/h3&gt;
 &lt;p&gt;데이터베이스는 데이터를 모아놓는 것이다.
 어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 &lt;code&gt;관계형 데이터베이스&lt;/code&gt;를 사용할 것이다.&lt;/p&gt;
 
@@ -3326,10 +4099,10 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;code&gt;행&lt;/code&gt;과 &lt;code&gt;열&lt;/code&gt;로 구분된다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;데이터 베이스 활용하기&lt;/h2&gt;
+&lt;h2 id=&quot;데이터-베이스-활용하기&quot;&gt;데이터 베이스 활용하기&lt;/h2&gt;
 &lt;p&gt;Azure에서 활용가능한 관계형 데이터베이스는 다양하지만 우리는 SQL Database를 활용하도록한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql--&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -3362,9 +4135,10 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
     &lt;p&gt;&lt;img src=&quot;/images/webapp_c04.png&quot; alt=&quot;서버&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;서버 이름&lt;/code&gt;, &lt;code&gt;서버 관리자 로그인&lt;/code&gt;, &lt;code&gt;암호&lt;/code&gt;를 입력하고 &lt;code&gt;선택&lt;/code&gt;을 클릭한다.
- &amp;gt; 관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.&lt;/p&gt;
+  &lt;li&gt;&lt;code&gt;서버 이름&lt;/code&gt;, &lt;code&gt;서버 관리자 로그인&lt;/code&gt;, &lt;code&gt;암호&lt;/code&gt;를 입력하고 &lt;code&gt;선택&lt;/code&gt;을 클릭한다.
+    &lt;blockquote&gt;
+      &lt;p&gt;관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
 
     &lt;p&gt;&lt;img src=&quot;/images/webapp_c05.png&quot; alt=&quot;새서버&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
@@ -3377,7 +4151,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
 
 &lt;p&gt;SQL 데이터베이스 생성과정을 보면 &lt;code&gt;서버&lt;/code&gt;를 만들고 &lt;code&gt;데이터베이스 이름&lt;/code&gt;을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.&lt;/p&gt;
 
@@ -3389,7 +4163,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
 
 &lt;p&gt;Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어 외부 접근을 차단한다.&lt;/p&gt;
 
@@ -3408,7 +4182,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-8&quot;&gt;잠깐 정리&lt;/h2&gt;
+&lt;h2 id=&quot;잠깐-정리&quot;&gt;잠깐 정리&lt;/h2&gt;
 &lt;p&gt;지금까지 무엇을 했는지 간단히 정리해보자.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_d01.png&quot; alt=&quot;웹앱과 SQL데이터베이스&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
@@ -3417,7 +4191,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;이제는 웹앱과 SQL데이터베이스를 연결한 뒤 사용자의 요청을 처리하면 된다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-9&quot;&gt;폴더 추가&lt;/h2&gt;
+&lt;h2 id=&quot;폴더-추가&quot;&gt;폴더 추가&lt;/h2&gt;
 &lt;p&gt;프로그래밍을 시작하기 전에 필요한 폴더를 몇개 생성하도록 하겠다. 지난 시간에 압축을 해제한 소스코드를 vs code로 열어보자.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -3425,23 +4199,22 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 &lt;/blockquote&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;View Bar&lt;/code&gt;에서 &lt;code&gt;Explorer&lt;/code&gt;를 선택한다.
- &amp;gt; 기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.&lt;/p&gt;
+  &lt;li&gt;&lt;code&gt;View Bar&lt;/code&gt;에서 &lt;code&gt;Explorer&lt;/code&gt;를 선택한다.
+    &lt;blockquote&gt;
+      &lt;p&gt;기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.&lt;/p&gt;
+    &lt;/blockquote&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;빈 공간을 클릭한 뒤 &lt;code&gt;New Folder&lt;/code&gt;버튼을 클릭하여 폴더를 생성한다.&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;config&lt;/code&gt;라고 입력한다.&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;config&lt;/code&gt;라고 입력한다.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_05.jpg&quot; alt=&quot;폴더생성&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 과정을 반복해서 &lt;code&gt;models&lt;/code&gt;, &lt;code&gt;utils&lt;/code&gt; 폴더를 추가한다.&lt;/p&gt;
 
-&lt;h2 id=&quot;orm-&quot;&gt;ORM 설정&lt;/h2&gt;
+&lt;h2 id=&quot;orm-설정&quot;&gt;ORM 설정&lt;/h2&gt;
 &lt;p&gt;관계형 데이터베이스는 SQL로 데이터를 관리할 수 있다. 그런데 이게 또 새로운 문법을 배우는 셈이 되고 데이터를 가공해서 프로그래밍할 때 불편하다.&lt;/p&gt;
 
 &lt;p&gt;이런 단점을 극복하기 위해 ORM(Object-relational mapping)을 사용한다.&lt;/p&gt;
@@ -3452,7 +4225,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;굿 보이&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;데이터베이스 접속 환경 추가&lt;/h3&gt;
+&lt;h3 id=&quot;데이터베이스-접속-환경-추가&quot;&gt;데이터베이스 접속 환경 추가&lt;/h3&gt;
 &lt;p&gt;서버가 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -3485,7 +4258,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;li&gt;10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 &lt;code&gt;데이터베이스 명&lt;/code&gt;을 입력해야한다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;modelsindexjs--&quot;&gt;models/index.js 파일 추가&lt;/h3&gt;
+&lt;h3 id=&quot;modelsindexjs-파일-추가&quot;&gt;models/index.js 파일 추가&lt;/h3&gt;
 
 &lt;p&gt;우리가 사용하는 ORM은 &lt;code&gt;sequelize.js&lt;/code&gt;이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 &lt;code&gt;models&lt;/code&gt;폴더에 &lt;code&gt;index.js&lt;/code&gt;파일을 추가하도록 하겠다.&lt;/p&gt;
 
@@ -3514,7 +4287,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;코드가 매우 길지만 가볍게 설명하자면 &lt;code&gt;models&lt;/code&gt;폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.&lt;/p&gt;
 
-&lt;h3 id=&quot;serverjs--&quot;&gt;server.js 파일 수정&lt;/h3&gt;
+&lt;h3 id=&quot;serverjs-파일-수정&quot;&gt;server.js 파일 수정&lt;/h3&gt;
 &lt;p&gt;우리가 만드는 소스코드는 &lt;code&gt;server.js&lt;/code&gt;파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3557,7 +4330,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;앞서 설명한 것처럼 서버가 실행되면 데이터베이스와 연결을 시도하고 완료 메시지를 출력하게 된다.&lt;/p&gt;
 
-&lt;h2 id=&quot;vs-code---&quot;&gt;vs code 개발 환경 설정&lt;/h2&gt;
+&lt;h2 id=&quot;vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/h2&gt;
 &lt;p&gt;지난 시간에 Azure 웹앱으로 소스코드를 배포해봤으니 알겠지만 배포 시간이 결코 짧지 않다. 기능 하나 만들고 테스트하려고 매번 배포하며 너무 불편하다.&lt;/p&gt;
 
 &lt;p&gt;그러니 개발 중에 바로 기능을 테스트해볼 수 있도록 vs code 개발 환경을 설정해보자.&lt;/p&gt;
@@ -3601,7 +4374,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;azure----&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/h2&gt;
+&lt;h2 id=&quot;azure-웹앱-환경-변수-추가&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/h2&gt;
 &lt;p&gt;앞서 알아본 과정은 로컬 개발 환경에서 데이터베이스에 접속하기 위해 환경 변수를 추가하는 과정이었다.&lt;/p&gt;
 
 &lt;p&gt;실제로 서버가 동작할 Azure 웹앱에서는 이런 처리를 어떻게 해야할까?&lt;/p&gt;
@@ -3633,7 +4406,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-11&quot;&gt;맺는 말&lt;/h2&gt;
+&lt;h2 id=&quot;맺는-말&quot;&gt;맺는 말&lt;/h2&gt;
 
 &lt;p&gt;지난 시간에 이어서 생성하고 설치하고 환경 설정하다가 한 강좌가 끝났다.&lt;/p&gt;
 
@@ -3665,30 +4438,30 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
         <item>
             <title>이세계에 진입한 서버 개발 - 1</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#azure-&quot; id=&quot;markdown-toc-azure-&quot;&gt;왜 Azure 웹앱인가?&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#azure---&quot; id=&quot;markdown-toc-azure---&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#왜-azure-웹앱인가&quot; id=&quot;markdown-toc-왜-azure-웹앱인가&quot;&gt;왜 Azure 웹앱인가?&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#처음-요리할-때-요리가-힘든이유&quot; id=&quot;markdown-toc-처음-요리할-때-요리가-힘든이유&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot; id=&quot;markdown-toc-쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#azure-웹앱은-준비된-쉐프&quot; id=&quot;markdown-toc-azure-웹앱은-준비된-쉐프&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#azure--&quot; id=&quot;markdown-toc-azure--&quot;&gt;Azure 웹앱 만들기&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;사전 준비&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#azure---1&quot; id=&quot;markdown-toc-azure---1&quot;&gt;진짜 Azure 웹앱 만들기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#azure-웹앱-만들기&quot; id=&quot;markdown-toc-azure-웹앱-만들기&quot;&gt;Azure 웹앱 만들기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#사전-준비&quot; id=&quot;markdown-toc-사전-준비&quot;&gt;사전 준비&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#진짜-azure-웹앱-만들기&quot; id=&quot;markdown-toc-진짜-azure-웹앱-만들기&quot;&gt;진짜 Azure 웹앱 만들기&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;소스코드 배포&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;배포 옵션 설정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#feat-sourcetree&quot; id=&quot;markdown-toc-feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#소스코드-배포&quot; id=&quot;markdown-toc-소스코드-배포&quot;&gt;소스코드 배포&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#배포-옵션-설정&quot; id=&quot;markdown-toc-배포-옵션-설정&quot;&gt;배포 옵션 설정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#테스트-어플리케이션-배포하기feat-sourcetree&quot; id=&quot;markdown-toc-테스트-어플리케이션-배포하기feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;결과 확인&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#결과-확인&quot; id=&quot;markdown-toc-결과-확인&quot;&gt;결과 확인&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺는-말&quot; id=&quot;markdown-toc-맺는-말&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Evwb2jwat6M&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 &lt;p&gt;레벨제로 카페에 올라오는 신규 게임 소식만 접해도 소규모로 모바일 게임을 만드는 사람이 얼마나 많은지 알 수 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/lvzerogames.png&quot; alt=&quot;소규모게임&quot; /&gt;&lt;/p&gt;
@@ -3705,14 +4478,16 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;길잡이라도 할 수 있게 소규모 게임 개발자들을 위한 &lt;code&gt;Azure 웹앱으로 만드는 게임 서버&lt;/code&gt; 강좌를 시작하고자 한다.&lt;/p&gt;
 
-&lt;h2 id=&quot;azure-&quot;&gt;왜 Azure 웹앱인가?&lt;/h2&gt;
+&lt;h2 id=&quot;왜-azure-웹앱인가&quot;&gt;왜 Azure 웹앱인가?&lt;/h2&gt;
 &lt;p&gt;요리가 왜 어려운지 고민해봤는가? 결혼 전 계란후라이와 라면밖에 끓이지 못하던 사람이었다.
 아내따라서 뭔가 만들다보니 이제는 가끔 주말 아침 식사를 만들 수 있는 초보가 되었다.
 배우면서 느낀 어려운 점은 이렇다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/h3&gt;
-&lt;p&gt;갖추어야할 장비, 재료가 많다.
-&amp;gt; 아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!&lt;/p&gt;
+&lt;h3 id=&quot;처음-요리할-때-요리가-힘든이유&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/h3&gt;
+&lt;p&gt;갖추어야할 장비, 재료가 많다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;레시피가 있어도 그대로 따라하기가 어렵다. 해본적이 없으니 &lt;code&gt;데치세요&lt;/code&gt; 라고 써있는걸 &lt;code&gt;풀죽&lt;/code&gt;으로 만든다.&lt;/p&gt;
 
@@ -3722,25 +4497,25 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;p&gt;설령 c나 c++ 수업을 들었다고 원하는걸 뚝딱뚝딱 만들 수 있는 수준일리 없다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/h3&gt;
+&lt;h3 id=&quot;쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/h3&gt;
 &lt;p&gt;그런데 쉐프에게 레시피만 전달하면 요리를 받을 수 있게 된다면 어떨까? 안정적인 요리를 늘 먹을 수 있게된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;azure---&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/h3&gt;
+&lt;h3 id=&quot;azure-웹앱은-준비된-쉐프&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/h3&gt;
 &lt;p&gt;Azure 웹앱은 준비된 쉐프다. 레시피만 전달하면 무쇠 냄비나 스텐리스 프라이팬을 관리해주고 재료도 척척 준비한다.
 해야할 일이 레시피 작성에서 끝나게 된다.&lt;/p&gt;
 
 &lt;p&gt;즉, 인프라 관리는 모두 Azure가 담당하니 소스코드만 만들어서 보내면 되는 것이다.&lt;/p&gt;
 
-&lt;h2 id=&quot;azure--&quot;&gt;Azure 웹앱 만들기&lt;/h2&gt;
+&lt;h2 id=&quot;azure-웹앱-만들기&quot;&gt;Azure 웹앱 만들기&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;사전 준비&lt;/h3&gt;
+&lt;h3 id=&quot;사전-준비&quot;&gt;사전 준비&lt;/h3&gt;
 &lt;p&gt;바로 Azure를 활용하고 싶지만 가입은 해야한다. 아래 동영상을 참고해도 좋고 인터넷에 자료를 검색해도 좋다.&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/q380IeIsmPc&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
 &lt;p&gt;꼭 살아서 다음 단계에서 만나자!&lt;/p&gt;
 
-&lt;h3 id=&quot;azure---1&quot;&gt;진짜 Azure 웹앱 만들기&lt;/h3&gt;
+&lt;h3 id=&quot;진짜-azure-웹앱-만들기&quot;&gt;진짜 Azure 웹앱 만들기&lt;/h3&gt;
 &lt;p&gt;처음으로 우리가 할 일은 쉐프를 섭외하는 일이다.&lt;/p&gt;
 
 &lt;p&gt;멋진 전문가처럼 커맨드 라인 인터페이스(CLI)를 켜서 작업하고 싶겠지만 우리는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.&lt;/p&gt;
@@ -3775,10 +4550,12 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_02.jpg&quot; alt=&quot;웹앱확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;웹앱&lt;/code&gt;이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.
-&amp;gt; 그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;웹앱&lt;/code&gt;이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;소스코드 배포&lt;/h2&gt;
+&lt;h2 id=&quot;소스코드-배포&quot;&gt;소스코드 배포&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;와 생성이 뭐이렇게 쉽나? 라고 생각하면 천만다행이지만 쉬운것도 어렵게 보이도록 만드는 것이 장기인만큼 걱정이 살짝된다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3788,10 +4565,10 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 &lt;p&gt;다양한 방법으로 소스코드를 배포할 수 있지만 여기서는 &lt;code&gt;로컬 Git 레포지토리&lt;/code&gt;를 설정하여 배포하는 방법을 설명할 것이다.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;git을 사용하면 ~~상상속에서~~ 핫하고 섹시해보이까 배워두자.&lt;/p&gt;
+  &lt;p&gt;git을 사용하면 &lt;del&gt;상상속에서&lt;/del&gt; 핫하고 섹시해보이까 배워두자.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;배포 옵션 설정&lt;/h3&gt;
+&lt;h3 id=&quot;배포-옵션-설정&quot;&gt;배포 옵션 설정&lt;/h3&gt;
 
 &lt;p&gt;말이 조금 이상하게 들리지만 배포 옵션은 영문 사이트에서 Deploment Source라는 메뉴이다.&lt;/p&gt;
 
@@ -3831,7 +4608,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_08.jpg&quot; alt=&quot;Git복제URL확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/h3&gt;
+&lt;h3 id=&quot;테스트-어플리케이션-배포하기feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/h3&gt;
 
 &lt;p&gt;git을 다룰 때 CLI로 하면 멋지지만 멋을 조금 포기하면 굉장히 편한 방법이 있다. 클릭클릭으로 git을 다룰 수 있는 SourceTree라는 프로그램으로 말이다.&lt;/p&gt;
 
@@ -3899,7 +4676,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;section-6&quot;&gt;결과 확인&lt;/h2&gt;
+&lt;h2 id=&quot;결과-확인&quot;&gt;결과 확인&lt;/h2&gt;
 
 &lt;p&gt;꽤 오래 걸렸지만 배포가 되었다. 이제 확인해볼 차례다.&lt;/p&gt;
 
@@ -3911,7 +4688,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_16.png&quot; alt=&quot;WebApp결과&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;맺는 말&lt;/h2&gt;
+&lt;h2 id=&quot;맺는-말&quot;&gt;맺는 말&lt;/h2&gt;
 
 &lt;p&gt;지금 무슨 일이 일어났는지 어리둥절 할 수 있다. Azure도 생소한데 git에다가 SourceTree 프로그램까지 설치하고 난리난리했으니 그럴 수 있다.&lt;/p&gt;
 
@@ -3945,28 +4722,28 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
         <item>
             <title>Azure 웹앱에서 SQL DB사용하기</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;데이터베이스 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql--&quot; id=&quot;markdown-toc-sql--&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql---1&quot; id=&quot;markdown-toc-sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql---&quot; id=&quot;markdown-toc-sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#데이터베이스-추가&quot; id=&quot;markdown-toc-데이터베이스-추가&quot;&gt;데이터베이스 추가&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-생성&quot; id=&quot;markdown-toc-sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-구조&quot; id=&quot;markdown-toc-sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-방화벽-설정&quot; id=&quot;markdown-toc-sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mysql-&quot; id=&quot;markdown-toc-mysql-&quot;&gt;MySQL 생성&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;데이터베이스 사용&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;업데이트된 소스코드 적용하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;설정 변경&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;접속 테스트&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#development--&quot; id=&quot;markdown-toc-development--&quot;&gt;development 환경 테스트&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#devmysql--&quot; id=&quot;markdown-toc-devmysql--&quot;&gt;devMySQL 환경 테스트&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mysql-생성&quot; id=&quot;markdown-toc-mysql-생성&quot;&gt;MySQL 생성&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#데이터베이스-사용&quot; id=&quot;markdown-toc-데이터베이스-사용&quot;&gt;데이터베이스 사용&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#업데이트된-소스코드-적용하기&quot; id=&quot;markdown-toc-업데이트된-소스코드-적용하기&quot;&gt;업데이트된 소스코드 적용하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#설정-변경&quot; id=&quot;markdown-toc-설정-변경&quot;&gt;설정 변경&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#접속-테스트&quot; id=&quot;markdown-toc-접속-테스트&quot;&gt;접속 테스트&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#development-환경-테스트&quot; id=&quot;markdown-toc-development-환경-테스트&quot;&gt;development 환경 테스트&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#devmysql-환경-테스트&quot; id=&quot;markdown-toc-devmysql-환경-테스트&quot;&gt;devMySQL 환경 테스트&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 
 &lt;p&gt;웹 서비스를 만들면 데이터베이스를 다루게된다.&lt;/p&gt;
 
@@ -3982,7 +4759,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;데이터베이스 추가&lt;/h2&gt;
+&lt;h2 id=&quot;데이터베이스-추가&quot;&gt;데이터베이스 추가&lt;/h2&gt;
 
 &lt;p&gt;Azure는 SQL 데이터베이스, MySQL, MariaDB, PostgreSQL 등 다양한 데이터베이스를 활용할 수 있다.&lt;/p&gt;
 
@@ -3992,7 +4769,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;그 중 SQL 데이터베이스와 MySQL을 활용하는 방법을 다루도록 하겠다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql--&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -4039,7 +4816,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql---1&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
 
 &lt;p&gt;SQL 데이터베이스 생성과정을 보면 &lt;code&gt;서버&lt;/code&gt;를 만들고 &lt;code&gt;데이터베이스 이름&lt;/code&gt;을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.&lt;/p&gt;
 
@@ -4051,7 +4828,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.&lt;/p&gt;
 
-&lt;h3 id=&quot;sql---&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
+&lt;h3 id=&quot;sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
 
 &lt;p&gt;Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어서 외부에서 접근을 차단한다.&lt;/p&gt;
 
@@ -4070,7 +4847,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;mysql-&quot;&gt;MySQL 생성&lt;/h2&gt;
+&lt;h2 id=&quot;mysql-생성&quot;&gt;MySQL 생성&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -4106,7 +4883,7 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
 
 &lt;p&gt;&lt;img src=&quot;/images/webapp_c08.png&quot; alt=&quot;정보확인&quot; width=&quot;150px&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;데이터베이스 사용&lt;/h2&gt;
+&lt;h2 id=&quot;데이터베이스-사용&quot;&gt;데이터베이스 사용&lt;/h2&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;여기서부터는 지난 시간에 다룬 웹앱을 변경하여 설명한다(Node.js + Express.js).&lt;/p&gt;
@@ -4141,7 +4918,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;&lt;img src=&quot;/images/webapp_c09_1.png&quot; alt=&quot;ORM&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;업데이트된 소스코드 적용하기&lt;/h3&gt;
+&lt;h3 id=&quot;업데이트된-소스코드-적용하기&quot;&gt;업데이트된 소스코드 적용하기&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -4162,7 +4939,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;위 명령으로 package.json 내용중 dependencies에 해당하는 모듈이 모두 설치된다.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;설정 변경&lt;/h3&gt;
+&lt;h3 id=&quot;설정-변경&quot;&gt;설정 변경&lt;/h3&gt;
 
 &lt;p&gt;이제 설정을 변경해야한다. &lt;code&gt;config/config.json&lt;/code&gt; 파일을 열어보면 크게 3가지 object가 보인다.&lt;/p&gt;
 
@@ -4231,13 +5008,13 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
   &lt;p&gt;서비스활 때 이렇게 차이를 두는 이유는 로컬 환경, 배포 전 stage 환경, 배포 환경이 모두 다를때 대응하기 위함이다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;접속 테스트&lt;/h3&gt;
+&lt;h3 id=&quot;접속-테스트&quot;&gt;접속 테스트&lt;/h3&gt;
 
 &lt;p&gt;자 이제 설정은 모두 끝났다.&lt;/p&gt;
 
 &lt;p&gt;소스코드를 웹앱에 적용하기 전에 잘 작동하는지 확인해보자.&lt;/p&gt;
 
-&lt;h4 id=&quot;development--&quot;&gt;development 환경 테스트&lt;/h4&gt;
+&lt;h4 id=&quot;development-환경-테스트&quot;&gt;development 환경 테스트&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;NODE_ENV&lt;/code&gt;로 &lt;code&gt;development&lt;/code&gt; 환경임을 지시하고 server.js 파일을 실행시키면 된다.&lt;/p&gt;
 
@@ -4251,13 +5028,13 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;&lt;code&gt;SQL 데이터베이스 방화벽 설정&lt;/code&gt; 부분을 보고 설정했는지 체크하도록 한다.&lt;/p&gt;
 
-&lt;h4 id=&quot;devmysql--&quot;&gt;devMySQL 환경 테스트&lt;/h4&gt;
+&lt;h4 id=&quot;devmysql-환경-테스트&quot;&gt;devMySQL 환경 테스트&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;devMySQL&lt;/code&gt;도 거의 비슷하다. 환경변수만 변경하면 된다.&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com//aea92ba28d3d2562817d76816da5021b.js?file=runmysql&quot;&gt; &lt;/script&gt;
 
-&lt;h2 id=&quot;section-6&quot;&gt;맺음말&lt;/h2&gt;
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
 
 &lt;p&gt;위 과정을 크게 압축하면 &lt;code&gt;DB 설정&lt;/code&gt;, &lt;code&gt;접속설정&lt;/code&gt;에 불과하다.&lt;/p&gt;
 
@@ -4281,13 +5058,13 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
         <item>
             <title>디지털 기록의 허망함</title>
             <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;정말 지키고 싶었던 추억&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;돌에 음각 »»넘사벽»» 종이 »&amp;gt; 하드디스크&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#찌질함-삭제하거나-삭제당하거나&quot; id=&quot;markdown-toc-찌질함-삭제하거나-삭제당하거나&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#정말-지키고-싶었던-추억&quot; id=&quot;markdown-toc-정말-지키고-싶었던-추억&quot;&gt;정말 지키고 싶었던 추억&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#돌에-음각--넘사벽--종이--하드디스크&quot; id=&quot;markdown-toc-돌에-음각--넘사벽--종이--하드디스크&quot;&gt;돌에 음각 &amp;gt; 넘사벽&amp;gt;  종이 &amp;gt; 하드디스크&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
 
 &lt;p&gt;아이를 키우느라 정신없었을 아내가 메시지로 사진 하나를 보내왔다.&lt;/p&gt;
 
@@ -4313,7 +5090,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;앱은 생소하 모습으로 변했고 모든 기록이 사라졌다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/h2&gt;
+&lt;h2 id=&quot;찌질함-삭제하거나-삭제당하거나&quot;&gt;찌질함, 삭제하거나 삭제당하거나&lt;/h2&gt;
 
 &lt;p&gt;20대 초 내 찌질함은 모두 &lt;code&gt;싸이월드&lt;/code&gt;에 남아있었다. 그리고 DSLR 사진기를 가지던 시점에 블로그가 유행을 타서 그 시절 이후부터 연애가 시작될 무렵까지의 찌질함은 &lt;code&gt;Paran 블로그&lt;/code&gt;에 있었다.&lt;/p&gt;
 
@@ -4333,7 +5110,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;이로써 공개된 찌질감의 크기가 줄어 다행이고 젊은 날 무슨 미친짓을 했는지 알 수 없어 가끔 아쉽고 그렇다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;정말 지키고 싶었던 추억&lt;/h2&gt;
+&lt;h2 id=&quot;정말-지키고-싶었던-추억&quot;&gt;정말 지키고 싶었던 추억&lt;/h2&gt;
 
 &lt;p&gt;후련함과 아쉬움을 극도로 상쇄시켜주는 것이 마침 시작된 연애였다.&lt;/p&gt;
 
@@ -4351,7 +5128,7 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
 
 &lt;p&gt;결혼 뒤에는 미래의 아이가 이 내용을 발견했을 때 세침한 눈을 뜨고 구토하는 모습을 흉내내며 힘들어할 것을 상상하곤 했었다.&lt;/p&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;돌에 음각 »»넘사벽»» 종이 »&amp;gt; 하드디스크&lt;/h2&gt;
+&lt;h2 id=&quot;돌에-음각--넘사벽--종이--하드디스크&quot;&gt;돌에 음각 &amp;gt; 넘사벽&amp;gt;  종이 &amp;gt; 하드디스크&lt;/h2&gt;
 
 &lt;p&gt;기술이 발전했지만 인류가 멸망하면 단 몇년만에 완전 못쓰게되는 것이 디지털 기기라는 얘기를 들었던 기억이 있다.&lt;/p&gt;
 
@@ -4389,360 +5166,6 @@ SELECT * FROM CUSTOMERS WHERE SALARY &amp;gt; 150;
             
             
             <category>note</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>Azure 웹앱 로그 살펴보기</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;진단 로그 설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;로그 다운받기&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ftp--&quot; id=&quot;markdown-toc-ftp--&quot;&gt;FTP로 로그 다운받기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#azure-cli-&quot; id=&quot;markdown-toc-azure-cli-&quot;&gt;Azure CLI 로그인&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#azure-cli--&quot; id=&quot;markdown-toc-azure-cli--&quot;&gt;Azure CLI로 로그 다운받기&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;실시간 로그 조회하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#kudu&quot; id=&quot;markdown-toc-kudu&quot;&gt;기승전 Kudu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;들어가는 말&lt;/h2&gt;
-
-&lt;p&gt;테스트코드를 돌리고 나온 모든 버그를 잡았다.&lt;/p&gt;
-
-&lt;p&gt;하지만 배포 후 버그가 튀어나온다.&lt;/p&gt;
-
-&lt;p&gt;로그가 보고 싶다 :(&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/bug.png&quot; alt=&quot;버그놈&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이때 도움이 되는 기능이 뭐 없을까?&lt;/p&gt;
-
-&lt;p&gt;Azure 웹앱은 디버그에 도움되는 기본 기능을 제공한다. 그 중 이번에는 로그를 조회하는 방법을 알아보겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;진단 로그 설정&lt;/h2&gt;
-
-&lt;p&gt;웹앱에서 로그를 조회하려면 먼저 로그가 기록되도록 해야한다.&lt;/p&gt;
-
-&lt;p&gt;웹앱을 생성하고 소스코드를 배포했다고 로그가 어딘가에 기록되는 것이 아니다.&lt;/p&gt;
-
-&lt;p&gt;어떤 방식으로 어느 수준의 로그를 축적할지 설정이 필요하다.&lt;/p&gt;
-
-&lt;p&gt;Azure에서 이를 설정하는 메뉴를 &lt;code&gt;진단 로그&lt;/code&gt;(Diagnostics logs)로 부른다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이름만 들어서는 이게 뭔가 싶을 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;설정법은 간단하다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;웹앱을 선택하여 &lt;code&gt;설정&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a06.png&quot; alt=&quot;웹앱설정&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;기능 아래에 &lt;code&gt;진단 로그&lt;/code&gt;를 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b01.png&quot; alt=&quot;진단로그&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;여기까지 진행하면 아래와 같은 &lt;code&gt;진단 로그&lt;/code&gt; 메뉴가 나타난다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/webapp_b02.png&quot; alt=&quot;로그&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;크게 2가지 구역으로 나뉘는데 a 구역은 웹 응용 프로그램(즉 자신의 코드)가 만들어낸(혹은 수행중) 정보를 캡처한다. 이를 파일 시스템으로 저장할지 blob으로 저장할지 결정한다.&lt;/p&gt;
-
-&lt;p&gt;그 중 응용 프로그램 로깅(파일 시스템)은 설정 후 12시간 뒤에 해제된다. 로그를 오래도록 저장하고자하면 blob을 이용하자.&lt;/p&gt;
-
-&lt;p&gt;b 구역은 웹 서버의 로그를 제공하는 옵션이다. 이를테면 &lt;code&gt;자세한 오류 로깅&lt;/code&gt;은 오류 상태를 나타내는 HTTP 상태 코드(400 이상)의 자세한 오류 정보를 기록한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;각 기능별 세부 사항은 &lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/&quot;&gt;Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정&lt;/a&gt;의 설명을 참고바란다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;여기서는 코드에 대한 로그를 살펴볼 예정이므로 아래와 같이 &lt;code&gt;응용 프로그램 로깅(파일 시스템)&lt;/code&gt;만 설정하고 &lt;code&gt;수준&lt;/code&gt;(Level)을 정보로 선택한 뒤 저장한다.&lt;/p&gt;
-
-&lt;p&gt;수준은 총 4가지 분류(오류, 경고, 정보, 세부 정보 표시)로 나뉜다. 수준별로 필터링하여 로그를 저장한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/webapp_b03.png&quot; alt=&quot;로그설정&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이로써 진단 로그 설정이 완료되었다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 &lt;code&gt;하!고!싶!다!&lt;/code&gt;고 생각하시면 &lt;a href=&quot;#kudu&quot;&gt;기승전 Kudu&lt;/a&gt;로 넘어가면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;로그 다운받기&lt;/h2&gt;
-
-&lt;p&gt;위 설정을 통해 웹앱이 작동하면서 로그를 쌓고있다. 이를 조회하려면 로그를 다운받거나 실시간으로 스트리밍하면 된다.&lt;/p&gt;
-
-&lt;p&gt;2가지 방법 중 먼저 다운로드 받는 방법을 알아보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;다운로드는 FTP, Azure CLI, PowerShell로 가능하지만 여기서는 FTP, Azure CLI만 커버한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;ftp--&quot;&gt;FTP로 로그 다운받기&lt;/h3&gt;
-
-&lt;p&gt;Azure 웹앱은 생성과 함께 ftp로 접근가능하다. 다들 ftp 사용법을 알겠지만 혹시나 하는 마음으로 다뤄본다.&lt;/p&gt;
-
-&lt;ol width=&quot;540px&quot;&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://filezilla-project.org/&quot;&gt;FileZilla&lt;/a&gt;같은 ftp 프로그램을 다운받아 설치한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;여기서는 FileZilla로 설명하겠지만 다들 비슷할 것이다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;웹앱을 선택하여 &lt;code&gt;게시 프로필 가져오기&lt;/code&gt;를 클릭하여 게시 프로필(파일 확장자가 .PublishSettings 인 파일)을 다운받는다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b04.png&quot; alt=&quot;게시 프로필&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;다운받은 게시 프로필을 &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;같은 텍스트 에디터로 확인해보면 XML 형식으로 작성된 파일 내용을 열람할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;그중에서 아래 그림처럼 publishMethod가 ftp인 부분을 살펴보면 ftp 접속 시 사용할 URL, username, password를 확인할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;한가지 유의해야할 점은 URL에서 뒤쪽의 상세경로는 제거하고 입력하는 것이다. 전체경로를 입력하면 소소크드가 동작중인 폴더로 이동하기 때문이다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b05.png&quot; alt=&quot;게시 프로필확인&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;FileZilla를 실행하고 아래 표와 그림을 참조하여 URL, username, password를 입력하고 &lt;code&gt;Quickconnect&lt;/code&gt;클릭하여 접속한다.&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;FileZilla 입력창&lt;/th&gt;
-          &lt;th&gt;게시 프로필의 명칭&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Host&lt;/td&gt;
-          &lt;td&gt;publishUrl&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Username&lt;/td&gt;
-          &lt;td&gt;userName&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Password&lt;/td&gt;
-          &lt;td&gt;userPWD&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b06.png&quot; alt=&quot;FileZilla 접속&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;FileZilla 우측 Remote site에 폴더 목록이 나타난다. 이 중에서 &lt;code&gt;LogFiles&lt;/code&gt;에 들어가본다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b07.png&quot; alt=&quot;remotesite&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;LogFiles 안에는 여러 폴더가 있을 수 잇다. 그중에서 앞서 진단 로그에서 설정한 응용 프로그램 로깅은 &lt;code&gt;Application&lt;/code&gt;폴더에 저장된다. txt 형식의 파일을 다운받는다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;FileZilla에서 좌측 Local site로 드래그하거나 우클릭하여 Download를 실행하면 파일을 다운받을 수 있다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b08.png&quot; alt=&quot;Application폴더&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;다운 받은 파일을 확인해보면 아래와 비슷한 형식의 내용을 볼 수 있다.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=filelog&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 로그 파일의 크기가 점점 커지는 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;azure-cli-&quot;&gt;Azure CLI 로그인&lt;/h3&gt;
-
-&lt;p&gt;Azure CLI는 개발, 배포, 관리를 목적으로 제작된 크로스 플랫폼(Windows, Mac, Linux) CLI이다.&lt;/p&gt;
-
-&lt;p&gt;커맨드 라인 인터페이스에 익숙하다면 이 내용이 훨씬 간단할 것이다.&lt;/p&gt;
-
-&lt;p&gt;Azure CLI를 사용하기 앞서 내가 누구인지 증명해야하니 로그인을 시작해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/&quot;&gt;Azure CLI 설치&lt;/a&gt; 문서를 참고해서 Azure CLI를 설치한다.&lt;/p&gt;
-
-    &lt;p&gt;node.js를 활용하고 있지 않다면 설치 관리자를 사용해서 직접 다운받으면 된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;자신이 익숙한 터미널을 열고 다음 명령을 입력하여 Azure CLI에 권한을 획득하도록 한다.&lt;/p&gt;
-
-    &lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=login&quot;&gt; &lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;위 내용처럼 나왔다면 브라우저를 열어 &lt;a href=&quot;https://aka.ms/devicelogin&quot;&gt;https://aka.ms/devicelogin&lt;/a&gt;에 접속한 뒤 &lt;code&gt;code&lt;/code&gt; 뒤에 9자리 code를 입력하고 &lt;code&gt;계속&lt;/code&gt; 버튼이 나타나면 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b09.png&quot; alt=&quot;AzureCLI로그인&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;로그인 창이 나오면 자신의 아이디로 로그인한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b10.png&quot; alt=&quot;AzureCLI로그인&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;과정이 완료되면 아래와 같은 메시지가 나온다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/webapp_b11.png&quot; alt=&quot;AzureCLI로그인완료&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;브라우저 창을 닫으면 터미널에도 완료메시지가 나타난다&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logindone&quot;&gt; &lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;기능 하나를 사용할 때마다 로그인을 해야하는 것은 아니지만 컴퓨터를 재부팅한 후 Azure CLI를 사용할 일이 발생하면 로그인이 필요하다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;azure-cli--&quot;&gt;Azure CLI로 로그 다운받기&lt;/h3&gt;
-
-&lt;p&gt;로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;$ 부분이 명령어 이다. 그리고 &lt;code&gt;[웹앱이름]&lt;/code&gt;이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야 결과가 나온다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=logdownload&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;결과를 보면 알겠지만 바로 diagnostics.zip 파일이 다운로드 된다. 압축을 해제하면 LogFiles란 폴더가 존재한다. 이 폴더의 구조는 FTP에서 살펴본것과 동일하다.&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;실시간 로그 조회하기&lt;/h2&gt;
-
-&lt;p&gt;앞서 로그를 다운 받는 방법을 알아봤다. 내 경우는 개인 프로젝트라서 그런지 다운받아 로그를 살펴보기보단 어떤 로그가 남는지 실시간으로 출력되는 로그를 살펴보고 문제를 해결하는 경우가 많다.&lt;/p&gt;
-
-&lt;p&gt;웹앱도 스트림 로그를 지원하므로 실시간으로 로그를 조회할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;Visual Studio Application Insights, PowerShell 등으로 가능하지만 여기서는 Azure CLI 내용만 커버하도록 한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;어디까지나 내가 OSX 사용자이며 Visual Studio는 Unity용 MonoDevelop이 만족스럽지 않아 Visual Studio를 사용해본게 전부여서 그런것이다(앱등앱등).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이미 Azure CLI 로그인이 완료되었다면 아래 명령을 입력해보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;[웹앱이름]&lt;/code&gt;이라고 적힌 부분은 반드시 자신의 웹앱 이름으로 대치해야한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=streamlog&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 터미털에 로그가 계속 들어오는 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;kudu&quot;&gt;기승전 Kudu&lt;/h2&gt;
-
-&lt;p&gt;지금까지 FTP나 Azure CLI를 이용해서 로그를 다운받고 실시간으로 조회도 했다.&lt;/p&gt;
-
-&lt;p&gt;하지만 이런 모든 과정이 귀찮고 브라우저에서 이런것을 처리해도 하등 문제가 없다고 생각한다면 Azure 포털에서 이 모두를 처리할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;그 비밀의 이름은 Kudu이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/webapp_b13.png&quot; alt=&quot;Kudu&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;난~ Azure CLI 성애자니깐~~ ㅋㅋㅋ&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;웹앱에서 &lt;code&gt;도구&lt;/code&gt;를 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b12.png&quot; alt=&quot;도구&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;도구 메뉴에서 &lt;code&gt;Kudu&lt;/code&gt;를 클릭하고 &lt;code&gt;이동&lt;/code&gt;을 클릭하면 브라우저에 탭이 새로 생성되면서 Kudu를 영접할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b14.png&quot; alt=&quot;Kudu열기&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Kudu 메인 화면에서 &lt;code&gt;Debug Console&lt;/code&gt;을 클릭하여 하위 메뉴에서 &lt;code&gt;CMD&lt;/code&gt;를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b15.png&quot; alt=&quot;DebugConsole&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_b16.png&quot; alt=&quot;CMD&quot; width=&quot;200px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;자 이제 아래 화면이 나타난다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/webapp_b17.png&quot; alt=&quot;LogFiles폴더&quot; width=&quot;540px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;화면만 봐도 느낌이 온다. 그렇다. LogFiles 폴더로 진입하면 FTP에서 봤던 폴더 구조가 펼쳐지고 그 안에 로그 파일을 다운받을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;심지어 폴더를 이동하면 하단의 console 창이 알아서 폴더를 이동한다.&lt;/p&gt;
-
-&lt;p&gt;실시간 로그를 보고 싶다면 어떻게 해야할까?&lt;/p&gt;
-
-&lt;p&gt;아래 처럼 리눅스의 tail 명령을 사용하면 된다(파일명은 반드시 자신의 로그 파일로 수정해야한다).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;파일명은 모두 타이핑하지 말고 앞쪽 몇글자를 타이핑하고 tab 버튼을 누르면 자동완성된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com//1de28ccc11ecc2017b5912467aacdc8f.js?file=kudutail&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;뭔가 허무한가? 아니다. Azure CLI를 따라해봤다면 적어도 Azure CLI를 설치하지 않았는가!!&lt;/p&gt;
-
-&lt;p&gt;그거면 됐다(왠지 도망가야할 듯한 느낌인데).&lt;/p&gt;
-
-&lt;h2 id=&quot;section-4&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;다루면 다룰수록 Azure는 사용자가 뭔소리인지 알지못하게 기능을 잘 감춰두었다. 찾아서 쓰면 편리한 것이 많다.&lt;/p&gt;
-
-&lt;p&gt;옛말에 &lt;code&gt;필요는 발명의 어머니&lt;/code&gt;라고 했다. Azure에 적용하면 &lt;code&gt;필요는 삽질의 어머니&lt;/code&gt;쯤 될듯하다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;그래도 너 이 Azure 사..사…좋아한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음에는 웹앱 튜토리얼 글감의 어머니(?) chiyodad님이 필요로하는 웹앱에서 SQL 데이터베이스 사용하는 방법을 다루도록 하겠다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;참고자료&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/&quot;&gt;Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/ko-kr/documentation/articles/xplat-cli-install/&quot;&gt;Azure CLI 설치&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-            <pubDate>Wed, 01 Jun 2016 09:01:00 +0900</pubDate>
-            <link>http://totuworld.github.io/2016/06/01/azurewebapp-log/</link>
-            <guid isPermaLink="true">http://totuworld.github.io/2016/06/01/azurewebapp-log/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
             
         </item>
       

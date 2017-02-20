@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,20 +159,20 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">웹 서비스 제작</a>    <ul>
-      <li><a href="#express--" id="markdown-toc-express--">Express 프로젝트 생성</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#웹-서비스-제작" id="markdown-toc-웹-서비스-제작">웹 서비스 제작</a>    <ul>
+      <li><a href="#express-프로젝트-생성" id="markdown-toc-express-프로젝트-생성">Express 프로젝트 생성</a></li>
     </ul>
   </li>
-  <li><a href="#section-2" id="markdown-toc-section-2">결제 영수증 검증 제작</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">사용방법</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">주의 사항</a></li>
+  <li><a href="#결제-영수증-검증-제작" id="markdown-toc-결제-영수증-검증-제작">결제 영수증 검증 제작</a>    <ul>
+      <li><a href="#사용방법" id="markdown-toc-사용방법">사용방법</a></li>
+      <li><a href="#주의-사항" id="markdown-toc-주의-사항">주의 사항</a></li>
     </ul>
   </li>
-  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>아이폰 사용자는 안드로이드보다 탈옥 과정이 복잡하고 업데이트때마다 난리를 쳐야한다. 탈옥이 어려우니 탈옥후에 진행되는 결제 크랙도 적을 줄 알았다.</p>
 
@@ -180,11 +182,11 @@
 
 <hr />
 
-<h2 id="section-1">웹 서비스 제작</h2>
+<h2 id="웹-서비스-제작">웹 서비스 제작</h2>
 
 <p>애플의 인앱결제 검증은 간단하다. 결제 후 얻은 영수증을 애플이 제공하는 REST API로 송신하여 결과를 받아보면 끝이다.</p>
 
-<h3 id="express--">Express 프로젝트 생성</h3>
+<h3 id="express-프로젝트-생성">Express 프로젝트 생성</h3>
 
 <p>초기 작업을 또 진행하지 않는다. 대략의 과정은 <a href="/2016/02/10/google-oauth">구글 인앱 결제 검증 웹 서비스 만들기</a>에서 이미 설명했다.</p>
 
@@ -203,7 +205,7 @@
 
 <hr />
 
-<h2 id="section-2">결제 영수증 검증 제작</h2>
+<h2 id="결제-영수증-검증-제작">결제 영수증 검증 제작</h2>
 
 <p>이제 본격적으로 검증 서비스를 제작하겠다.</p>
 
@@ -225,7 +227,7 @@
 
 <p><img src="https://i.ytimg.com/vi/CaAZ6TCMiTY/hqdefault.jpg" alt="방법이 없다" /></p>
 
-<h3 id="section-3">사용방법</h3>
+<h3 id="사용방법">사용방법</h3>
 
 <p>사용도 간단하다.</p>
 
@@ -235,7 +237,7 @@
 
 <p>그럼 boolean 값을 얻게된다.</p>
 
-<h3 id="section-4">주의 사항</h3>
+<h3 id="주의-사항">주의 사항</h3>
 
 <p>한가지 주의 사항이라면 <code>RawReceipt</code>의 형식이다.</p>
 
@@ -253,7 +255,7 @@
 
 <hr />
 
-<h2 id="section-5">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>Apple 인앱결제 확인은 허가 과정이 없다는 이유만으로 매우 간단하다. 그러니 꼭 검증 서버를 마련해서 결제 검증을 진행하기 바란다.</p>
 
