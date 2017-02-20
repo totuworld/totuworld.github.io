@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,18 +159,18 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#jq-" id="markdown-toc-jq-">jq 설치</a></li>
-  <li><a href="#jq--1" id="markdown-toc-jq--1">jq 활용</a>    <ul>
-      <li><a href="#examplejson-" id="markdown-toc-examplejson-">example.json 예시</a></li>
-      <li><a href="#jq-json----" id="markdown-toc-jq-json----">jq로 json 파일의 특정 내용 조회</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#jq-설치" id="markdown-toc-jq-설치">jq 설치</a></li>
+  <li><a href="#jq-활용" id="markdown-toc-jq-활용">jq 활용</a>    <ul>
+      <li><a href="#examplejson-예시" id="markdown-toc-examplejson-예시">example.json 예시</a></li>
+      <li><a href="#jq로-json-파일의-특정-내용-조회" id="markdown-toc-jq로-json-파일의-특정-내용-조회">jq로 json 파일의 특정 내용 조회</a></li>
     </ul>
   </li>
-  <li><a href="#shell--" id="markdown-toc-shell--">Shell에서 변수로 저장하기</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">맺음말</a></li>
+  <li><a href="#shell에서-변수로-저장하기" id="markdown-toc-shell에서-변수로-저장하기">Shell에서 변수로 저장하기</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>jenkins 등으로 CI를 구성했을 때 변수를 프로젝트 내부의 json 파일에서 변수를 읽어서 shell로 전달해야할 경우가 있다.</p>
 
@@ -176,7 +178,7 @@
 
 <hr />
 
-<h2 id="jq-">jq 설치</h2>
+<h2 id="jq-설치">jq 설치</h2>
 
 <p><a href="https://stedolan.github.io/jq/">jq</a>는 command line으로 JSON을 다룰 수 있도록 해준다.</p>
 
@@ -194,9 +196,9 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
 
 <hr />
 
-<h2 id="jq--1">jq 활용</h2>
+<h2 id="jq-활용">jq 활용</h2>
 
-<h3 id="examplejson-">example.json 예시</h3>
+<h3 id="examplejson-예시">example.json 예시</h3>
 
 <p>example.json 파일이 있다고 해보자.</p>
 
@@ -211,7 +213,7 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
     }
 }</code></pre></figure>
 
-<h3 id="jq-json----">jq로 json 파일의 특정 내용 조회</h3>
+<h3 id="jq로-json-파일의-특정-내용-조회">jq로 json 파일의 특정 내용 조회</h3>
 
 <p><code>production</code>의 <code>version</code>을 읽기 위해서는 다음과 같이 커맨드라인에서 입력하면 된다.</p>
 
@@ -232,7 +234,7 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
 
 <hr />
 
-<h2 id="shell--">Shell에서 변수로 저장하기</h2>
+<h2 id="shell에서-변수로-저장하기">Shell에서 변수로 저장하기</h2>
 
 <p>생성된 결과를 Shell에 변수로 등록하는 것은 간단하다.</p>
 
@@ -248,7 +250,7 @@ $ wget http://stedolan.github.io/jq/download/linux64/jq
 
 <hr />
 
-<h2 id="section-1">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>jq는 <a href="https://stedolan.github.io/jq/tutorial/">튜토리얼</a>이나 <a href="https://stedolan.github.io/jq/manual/">메뉴얼</a>도 잘 되어있고 <a href="https://jqplay.org/">온라인에서 테스트할 수 있는 페이지</a>도 있으니 확인해보기 바란다.</p>
 

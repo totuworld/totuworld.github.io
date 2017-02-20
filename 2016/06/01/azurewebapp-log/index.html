@@ -143,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -162,21 +164,21 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">진단 로그 설정</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">로그 다운받기</a>    <ul>
-      <li><a href="#ftp--" id="markdown-toc-ftp--">FTP로 로그 다운받기</a></li>
-      <li><a href="#azure-cli-" id="markdown-toc-azure-cli-">Azure CLI 로그인</a></li>
-      <li><a href="#azure-cli--" id="markdown-toc-azure-cli--">Azure CLI로 로그 다운받기</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#진단-로그-설정" id="markdown-toc-진단-로그-설정">진단 로그 설정</a></li>
+  <li><a href="#로그-다운받기" id="markdown-toc-로그-다운받기">로그 다운받기</a>    <ul>
+      <li><a href="#ftp로-로그-다운받기" id="markdown-toc-ftp로-로그-다운받기">FTP로 로그 다운받기</a></li>
+      <li><a href="#azure-cli-로그인" id="markdown-toc-azure-cli-로그인">Azure CLI 로그인</a></li>
+      <li><a href="#azure-cli로-로그-다운받기" id="markdown-toc-azure-cli로-로그-다운받기">Azure CLI로 로그 다운받기</a></li>
     </ul>
   </li>
-  <li><a href="#section-3" id="markdown-toc-section-3">실시간 로그 조회하기</a></li>
-  <li><a href="#kudu" id="markdown-toc-kudu">기승전 Kudu</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">맺음말</a></li>
-  <li><a href="#section-5" id="markdown-toc-section-5">참고자료</a></li>
+  <li><a href="#실시간-로그-조회하기" id="markdown-toc-실시간-로그-조회하기">실시간 로그 조회하기</a></li>
+  <li><a href="#기승전-kudu" id="markdown-toc-기승전-kudu">기승전 Kudu</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>테스트코드를 돌리고 나온 모든 버그를 잡았다.</p>
 
@@ -190,7 +192,7 @@
 
 <p>Azure 웹앱은 디버그에 도움되는 기본 기능을 제공한다. 그 중 이번에는 로그를 조회하는 방법을 알아보겠다.</p>
 
-<h2 id="section-1">진단 로그 설정</h2>
+<h2 id="진단-로그-설정">진단 로그 설정</h2>
 
 <p>웹앱에서 로그를 조회하려면 먼저 로그가 기록되도록 해야한다.</p>
 
@@ -248,7 +250,7 @@
   <p>아래 내용을 보기 전에 FTP나 CLI가 싫고 그냥 Azure 포털에서 <code>하!고!싶!다!</code>고 생각하시면 <a href="#kudu">기승전 Kudu</a>로 넘어가면 된다.</p>
 </blockquote>
 
-<h2 id="section-2">로그 다운받기</h2>
+<h2 id="로그-다운받기">로그 다운받기</h2>
 
 <p>위 설정을 통해 웹앱이 작동하면서 로그를 쌓고있다. 이를 조회하려면 로그를 다운받거나 실시간으로 스트리밍하면 된다.</p>
 
@@ -258,7 +260,7 @@
   <p>다운로드는 FTP, Azure CLI, PowerShell로 가능하지만 여기서는 FTP, Azure CLI만 커버한다.</p>
 </blockquote>
 
-<h3 id="ftp--">FTP로 로그 다운받기</h3>
+<h3 id="ftp로-로그-다운받기">FTP로 로그 다운받기</h3>
 
 <p>Azure 웹앱은 생성과 함께 ftp로 접근가능하다. 다들 ftp 사용법을 알겠지만 혹시나 하는 마음으로 다뤄본다.</p>
 
@@ -340,7 +342,7 @@
 
 <p>Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 로그 파일의 크기가 점점 커지는 것을 확인할 수 있다.</p>
 
-<h3 id="azure-cli-">Azure CLI 로그인</h3>
+<h3 id="azure-cli-로그인">Azure CLI 로그인</h3>
 
 <p>Azure CLI는 개발, 배포, 관리를 목적으로 제작된 크로스 플랫폼(Windows, Mac, Linux) CLI이다.</p>
 
@@ -383,7 +385,7 @@
   <p>기능 하나를 사용할 때마다 로그인을 해야하는 것은 아니지만 컴퓨터를 재부팅한 후 Azure CLI를 사용할 일이 발생하면 로그인이 필요하다.</p>
 </blockquote>
 
-<h3 id="azure-cli--">Azure CLI로 로그 다운받기</h3>
+<h3 id="azure-cli로-로그-다운받기">Azure CLI로 로그 다운받기</h3>
 
 <p>로그인 되었으니 asm(Azure Service Management) 모드로 변경하고 다운받으면 된다.</p>
 
@@ -395,7 +397,7 @@
 
 <p>결과를 보면 알겠지만 바로 diagnostics.zip 파일이 다운로드 된다. 압축을 해제하면 LogFiles란 폴더가 존재한다. 이 폴더의 구조는 FTP에서 살펴본것과 동일하다.</p>
 
-<h2 id="section-3">실시간 로그 조회하기</h2>
+<h2 id="실시간-로그-조회하기">실시간 로그 조회하기</h2>
 
 <p>앞서 로그를 다운 받는 방법을 알아봤다. 내 경우는 개인 프로젝트라서 그런지 다운받아 로그를 살펴보기보단 어떤 로그가 남는지 실시간으로 출력되는 로그를 살펴보고 문제를 해결하는 경우가 많다.</p>
 
@@ -417,7 +419,7 @@
 
 <p>Azure 포털에서 웹앱의 URL을 여러번 클릭하거나 혹은 브라우저를 여러번 갱신하면 터미털에 로그가 계속 들어오는 것을 확인할 수 있다.</p>
 
-<h2 id="kudu">기승전 Kudu</h2>
+<h2 id="기승전-kudu">기승전 Kudu</h2>
 
 <p>지금까지 FTP나 Azure CLI를 이용해서 로그를 다운받고 실시간으로 조회도 했다.</p>
 
@@ -476,7 +478,7 @@
 
 <p>그거면 됐다(왠지 도망가야할 듯한 느낌인데).</p>
 
-<h2 id="section-4">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>다루면 다룰수록 Azure는 사용자가 뭔소리인지 알지못하게 기능을 잘 감춰두었다. 찾아서 쓰면 편리한 것이 많다.</p>
 
@@ -490,7 +492,7 @@
 
 <hr />
 
-<h2 id="section-5">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 
 <ul>
   <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/web-sites-enable-diagnostic-log/">Azure 앱 서비스에서 웹 앱에 대한 진단 로깅 설정</a></li>

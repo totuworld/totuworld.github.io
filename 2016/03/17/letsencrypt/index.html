@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,29 +159,29 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
   <li><a href="#web-apps" id="markdown-toc-web-apps">Web Apps</a>    <ul>
-      <li><a href="#web-apps-" id="markdown-toc-web-apps-">Web Apps 생성</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">배포 설정</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">커스텀도메인 설정</a></li>
+      <li><a href="#web-apps-생성" id="markdown-toc-web-apps-생성">Web Apps 생성</a></li>
+      <li><a href="#배포-설정" id="markdown-toc-배포-설정">배포 설정</a></li>
+      <li><a href="#커스텀도메인-설정" id="markdown-toc-커스텀도메인-설정">커스텀도메인 설정</a></li>
     </ul>
   </li>
-  <li><a href="#ssl--" id="markdown-toc-ssl--">SSL 인증서 얻기</a>    <ul>
-      <li><a href="#ssl---1" id="markdown-toc-ssl---1">SSL 인증서 발급</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">인증서 발급 마무리</a></li>
+  <li><a href="#ssl-인증서-얻기" id="markdown-toc-ssl-인증서-얻기">SSL 인증서 얻기</a>    <ul>
+      <li><a href="#ssl-인증서-발급" id="markdown-toc-ssl-인증서-발급">SSL 인증서 발급</a></li>
+      <li><a href="#인증서-발급-마무리" id="markdown-toc-인증서-발급-마무리">인증서 발급 마무리</a></li>
     </ul>
   </li>
-  <li><a href="#ssl---2" id="markdown-toc-ssl---2">SSL 인증서 사용</a>    <ul>
-      <li><a href="#pfx---" id="markdown-toc-pfx---">PFX 확장자 인증서 만들기</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">인증서 적용하기</a></li>
+  <li><a href="#ssl-인증서-사용" id="markdown-toc-ssl-인증서-사용">SSL 인증서 사용</a>    <ul>
+      <li><a href="#pfx-확장자-인증서-만들기" id="markdown-toc-pfx-확장자-인증서-만들기">PFX 확장자 인증서 만들기</a></li>
+      <li><a href="#인증서-적용하기" id="markdown-toc-인증서-적용하기">인증서 적용하기</a></li>
     </ul>
   </li>
-  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
 <p><img src="/images/castles-616573_960_720.jpg" alt="titeimage" width="400px" /></p>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>Azure에서 Web Apps(웹앱)을 사용해서 Node.js로 만든 웹 서비스를 등록했다. 이를 도메인과 연결하고 HTTPS를 사용해보고 싶었다.</p>
 
@@ -189,7 +191,7 @@
 
 <h2 id="web-apps">Web Apps</h2>
 
-<h3 id="web-apps-">Web Apps 생성</h3>
+<h3 id="web-apps-생성">Web Apps 생성</h3>
 
 <p><a href="https://portal.azure.com">Azure portal로 접속</a>해서 Azure 서비스에서 웹앱을 생성할 때 혹은 생성 후 Custom domains(커스텀도메인)과 SSL을 설정할 수 있는 tier로 설정한다.</p>
 
@@ -198,7 +200,7 @@
 <pre><code>이하 웹앱은 `yotest`로 명명하겠다.
 </code></pre>
 
-<h3 id="section-1">배포 설정</h3>
+<h3 id="배포-설정">배포 설정</h3>
 
 <p>배포는 여러방법으로 가능하지만 여기서는 Local Git Repository로 설정한다.</p>
 
@@ -224,7 +226,7 @@
   </li>
 </ol>
 
-<h3 id="section-2">커스텀도메인 설정</h3>
+<h3 id="커스텀도메인-설정">커스텀도메인 설정</h3>
 
 <ol>
   <li>
@@ -283,13 +285,13 @@
   </li>
 </ol>
 
-<h2 id="ssl--">SSL 인증서 얻기</h2>
+<h2 id="ssl-인증서-얻기">SSL 인증서 얻기</h2>
 
 <p>yotest 웹앱의 설정이 모두 마쳐진것은 아니다. 실제로 사용할 인증서가 없기 때문이다.</p>
 
 <p>SSL을 구매해서 사용해도 되지만 여기서는 <a href="https://letsencrypt.org">Let’s Encrypt</a>를 사용해서 무료로 SSL을 얻도록 하겠다.</p>
 
-<h3 id="ssl---1">SSL 인증서 발급</h3>
+<h3 id="ssl-인증서-발급">SSL 인증서 발급</h3>
 
 <p>mac에서 진행행하다가 어려움을 겪어서 vagrant로 ubuntu 14.04 lts하나 띄우고 진행했음을 밝힌다.</p>
 
@@ -360,7 +362,7 @@
   </li>
 </ol>
 
-<h3 id="section-3">인증서 발급 마무리</h3>
+<h3 id="인증서-발급-마무리">인증서 발급 마무리</h3>
 
 <p>위에서 살펴본 것처럼 특정 주소지로 접속했을 때 값을 반환하기 위해서 다음 과정을 진행한다.</p>
 
@@ -418,11 +420,11 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
   </li>
 </ol>
 
-<h2 id="ssl---2">SSL 인증서 사용</h2>
+<h2 id="ssl-인증서-사용">SSL 인증서 사용</h2>
 
 <p>인증서를 바로 사용할 수 있으면 좋으련만 Azure 웹앱은 PFX 파일 형태로 인증서를 업로드할 수 있어서 인증서 변경을 해야한다.</p>
 
-<h3 id="pfx---">PFX 확장자 인증서 만들기</h3>
+<h3 id="pfx-확장자-인증서-만들기">PFX 확장자 인증서 만들기</h3>
 
 <ol>
   <li>
@@ -453,7 +455,7 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
 
 <p>PFX 확장자의 인증서를 얻었으니 이제 Azure 포털에서 등록하면 된다.</p>
 
-<h3 id="section-4">인증서 적용하기</h3>
+<h3 id="인증서-적용하기">인증서 적용하기</h3>
 
 <p>Azure 포털에서 웹앱에 SSL 인증서를 등록하고 커스텀도메인과 연결하는 방법을 알아보자.</p>
 
@@ -491,7 +493,7 @@ hjcbhLr2TTcbTywrWesONhOoiNbKi3GpyUYksHDFRjA.IBkQXVLbjkDk12yEvZSRNwSrUgZx3j23HgqT
 
 <p><img src="/images/httpsconfirm.png" alt="인증서확인" width="400px" /></p>
 
-<h2 id="section-5">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>이 시간에는 Azure 웹앱에 커스텀도메인과 SSL을 적용하는 방법을 알아봤다.</p>
 

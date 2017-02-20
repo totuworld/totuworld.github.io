@@ -23,6 +23,7 @@
 <meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_tutorial_05.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-02-09T04:00:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2017/02/21/azureandunity-06/" title="이세계에 진입한 서버 개발 - 6" />
 <link rel="prev" href="http://totuworld.github.io/2017/01/30/wendynotification/" title="Wendy 프로젝트 진행사항 2" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@totuworld" />
@@ -142,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -161,49 +164,49 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">모델 추가</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">관계 설명</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#모델-추가" id="markdown-toc-모델-추가">모델 추가</a>    <ul>
+      <li><a href="#관계-설명" id="markdown-toc-관계-설명">관계 설명</a></li>
     </ul>
   </li>
-  <li><a href="#section-3" id="markdown-toc-section-3">라우터 추가</a>    <ul>
-      <li><a href="#appjs-" id="markdown-toc-appjs-">app.js에 등록</a></li>
+  <li><a href="#라우터-추가" id="markdown-toc-라우터-추가">라우터 추가</a>    <ul>
+      <li><a href="#appjs에-등록" id="markdown-toc-appjs에-등록">app.js에 등록</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">로직 작성</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">보유 아이템 목록 요청</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">아이템 정보 목록 요청</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">강화 관련 데이터 요청</a></li>
-      <li><a href="#section-8" id="markdown-toc-section-8">승급 관련 데이터 요청</a></li>
-      <li><a href="#section-9" id="markdown-toc-section-9">강화 요청</a>        <ul>
-          <li><a href="#section-10" id="markdown-toc-section-10">공통 사용 로직 추가</a></li>
-          <li><a href="#section-11" id="markdown-toc-section-11">강화 요청 등록</a></li>
+  <li><a href="#로직-작성" id="markdown-toc-로직-작성">로직 작성</a>    <ul>
+      <li><a href="#보유-아이템-목록-요청" id="markdown-toc-보유-아이템-목록-요청">보유 아이템 목록 요청</a></li>
+      <li><a href="#아이템-정보-목록-요청" id="markdown-toc-아이템-정보-목록-요청">아이템 정보 목록 요청</a></li>
+      <li><a href="#강화-관련-데이터-요청" id="markdown-toc-강화-관련-데이터-요청">강화 관련 데이터 요청</a></li>
+      <li><a href="#승급-관련-데이터-요청" id="markdown-toc-승급-관련-데이터-요청">승급 관련 데이터 요청</a></li>
+      <li><a href="#강화-요청" id="markdown-toc-강화-요청">강화 요청</a>        <ul>
+          <li><a href="#공통-사용-로직-추가" id="markdown-toc-공통-사용-로직-추가">공통 사용 로직 추가</a></li>
+          <li><a href="#강화-요청-등록" id="markdown-toc-강화-요청-등록">강화 요청 등록</a></li>
         </ul>
       </li>
-      <li><a href="#section-12" id="markdown-toc-section-12">승급 요청</a></li>
+      <li><a href="#승급-요청" id="markdown-toc-승급-요청">승급 요청</a></li>
     </ul>
   </li>
-  <li><a href="#section-13" id="markdown-toc-section-13">에러코드 추가</a></li>
-  <li><a href="#section-14" id="markdown-toc-section-14">테스트</a>    <ul>
-      <li><a href="#section-15" id="markdown-toc-section-15">정의된 아이템 추가</a></li>
-      <li><a href="#section-16" id="markdown-toc-section-16">강화 관련 데이터 입력</a></li>
-      <li><a href="#section-17" id="markdown-toc-section-17">승급 관련 데이터 입력</a></li>
-      <li><a href="#section-18" id="markdown-toc-section-18">정의된 아이템 수정</a></li>
-      <li><a href="#section-19" id="markdown-toc-section-19">보유한 아이템 추가</a></li>
-      <li><a href="#postman-" id="markdown-toc-postman-">postman으로 테스트</a>        <ul>
-          <li><a href="#section-20" id="markdown-toc-section-20">강화 요청 테스트</a></li>
-          <li><a href="#section-21" id="markdown-toc-section-21">승급 요청 테스트</a></li>
+  <li><a href="#에러코드-추가" id="markdown-toc-에러코드-추가">에러코드 추가</a></li>
+  <li><a href="#테스트" id="markdown-toc-테스트">테스트</a>    <ul>
+      <li><a href="#정의된-아이템-추가" id="markdown-toc-정의된-아이템-추가">정의된 아이템 추가</a></li>
+      <li><a href="#강화-관련-데이터-입력" id="markdown-toc-강화-관련-데이터-입력">강화 관련 데이터 입력</a></li>
+      <li><a href="#승급-관련-데이터-입력" id="markdown-toc-승급-관련-데이터-입력">승급 관련 데이터 입력</a></li>
+      <li><a href="#정의된-아이템-수정" id="markdown-toc-정의된-아이템-수정">정의된 아이템 수정</a></li>
+      <li><a href="#보유한-아이템-추가" id="markdown-toc-보유한-아이템-추가">보유한 아이템 추가</a></li>
+      <li><a href="#postman으로-테스트" id="markdown-toc-postman으로-테스트">postman으로 테스트</a>        <ul>
+          <li><a href="#강화-요청-테스트" id="markdown-toc-강화-요청-테스트">강화 요청 테스트</a></li>
+          <li><a href="#승급-요청-테스트" id="markdown-toc-승급-요청-테스트">승급 요청 테스트</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#section-22" id="markdown-toc-section-22">맺음말</a></li>
-  <li><a href="#section-23" id="markdown-toc-section-23">참고자료</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KVK4JgeWe6c" frameborder="0" allowfullscreen=""></iframe>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 <p>퍼즐 게임이 아니라면 게임 내에서 아이템은 그 종류가 정말 다양하다.</p>
 
 <blockquote>
@@ -220,7 +223,7 @@
 
 <p>이번 강좌에서는 아이템 보유와 강화, 승급 기능을 제작해도보도록 하겠다.</p>
 
-<h2 id="section-1">모델 추가</h2>
+<h2 id="모델-추가">모델 추가</h2>
 <p>기본이 되는 것은 아래 2개이다. 아이템 정의와 아이템 보유 모델.</p>
 
 <p><code>models</code> 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.</p>
@@ -245,7 +248,7 @@
 
 <p>각각 클릭해서 models 폴더에 추가한다.</p>
 
-<h3 id="section-2">관계 설명</h3>
+<h3 id="관계-설명">관계 설명</h3>
 
 <blockquote>
   <p>와 이렇게 뭐 없이 설명하니까 되게 좋네!!</p>
@@ -273,14 +276,14 @@
   <p>좋은 고민거리죠?!</p>
 </blockquote>
 
-<h2 id="section-3">라우터 추가</h2>
+<h2 id="라우터-추가">라우터 추가</h2>
 <p><code>routes</code>폴더에 <code>item.js</code>파일을 추가하고 아래 내용을 적용한다.</p>
 
 <ul>
   <li><a href="https://raw.githubusercontent.com/totuworld/Wendy/tuto5.1/routes/item.js">item.js</a></li>
 </ul>
 
-<h3 id="appjs-">app.js에 등록</h3>
+<h3 id="appjs에-등록">app.js에 등록</h3>
 <p><code>app.js</code> 파일을 수정하여 item 라우터를 추가해보자.</p>
 
 <ol>
@@ -326,7 +329,7 @@
   <p>몇번 해본 작업이라서 손이 알아서 처리하고 있을것이다.</p>
 </blockquote>
 
-<h2 id="section-4">로직 작성</h2>
+<h2 id="로직-작성">로직 작성</h2>
 <p>로직은 총 6개를 추가할 것인데 그중 4개는 정보를 요청하는 것이고 2개는 강화, 승급을 각각 처리하는 것이다.</p>
 
 <p>통화를 기억해보면 단순히 정보를 요청하는 코드는 단순하다</p>
@@ -337,7 +340,7 @@
   <p>자주 해봐서 알겠지만 modules.export = router; 위쪽에 추가하면 된다.</p>
 </blockquote>
 
-<h3 id="section-5">보유 아이템 목록 요청</h3>
+<h3 id="보유-아이템-목록-요청">보유 아이템 목록 요청</h3>
 
 <pre><code class="language-javascript">/**
  * @api {GET} /item/own
@@ -359,7 +362,7 @@ router.get('/own', auth.isAuthenticated, (req, res, next) =&gt; {
 
 </code></pre>
 
-<h3 id="section-6">아이템 정보 목록 요청</h3>
+<h3 id="아이템-정보-목록-요청">아이템 정보 목록 요청</h3>
 
 <pre><code class="language-javascript">/**
  * @api {GET} /item/define
@@ -379,7 +382,7 @@ router.get('/define', auth.isAuthenticated, (req, res, next)=&gt;{
 
 </code></pre>
 
-<h3 id="section-7">강화 관련 데이터 요청</h3>
+<h3 id="강화-관련-데이터-요청">강화 관련 데이터 요청</h3>
 
 <pre><code class="language-javascript">
 /**
@@ -402,7 +405,7 @@ router.get('/define/reinforce', auth.isAuthenticated, (req, res, next)=&gt;{
 
 </code></pre>
 
-<h3 id="section-8">승급 관련 데이터 요청</h3>
+<h3 id="승급-관련-데이터-요청">승급 관련 데이터 요청</h3>
 
 <pre><code class="language-javascript">/**
  * @api {GET} /item/define/upgrade
@@ -425,12 +428,12 @@ router.get('/define/upgrade', auth.isAuthenticated, (req, res, next)=&gt;{
 
 <p>정의된 데이터를 요청하는 것은 이처럼 간단하다.</p>
 
-<h3 id="section-9">강화 요청</h3>
+<h3 id="강화-요청">강화 요청</h3>
 <p>강화와 승급의 로직은 기본은 같다.</p>
 
 <p><code>Define__RequireItem</code>에 등록된 <code>ItemID</code>가 <code>RequireQNTY</code>만큼 보유했으면 아이템을 소모시키고 해당 레벨이나 등급을 올리면 된다.</p>
 
-<h4 id="section-10">공통 사용 로직 추가</h4>
+<h4 id="공통-사용-로직-추가">공통 사용 로직 추가</h4>
 
 <p>자원 - 아이템, 통화를 통합하여 지칭 - 이 충분하지 체크하거나 소모시키는 일은 자주 일어날 수 있다.</p>
 
@@ -457,7 +460,7 @@ router.get('/define/upgrade', auth.isAuthenticated, (req, res, next)=&gt;{
   </li>
 </ul>
 
-<h4 id="section-11">강화 요청 등록</h4>
+<h4 id="강화-요청-등록">강화 요청 등록</h4>
 
 <p>앞서 말한 로직을 바탕으로 내용을 추가해보자.</p>
 
@@ -669,7 +672,7 @@ router.post('/reinforce/:OwnItemUID', auth.isAuthenticated, (req, res, next)=&gt
   <li>103~110 줄 : 레벨을 증가시켜 기록한다.</li>
 </ul>
 
-<h3 id="section-12">승급 요청</h3>
+<h3 id="승급-요청">승급 요청</h3>
 <p>앞서 살펴본 강화 요청과 승급은 거의 비슷하다.</p>
 
 <p>다른점이라면 불러야하는 테이블이 다르고 에러 코드가 다르다는 것 정도다.</p>
@@ -797,7 +800,7 @@ router.post('/upgrade/:OwnItemUID', auth.isAuthenticated, (req, res, next)=&gt;{
 
 </code></pre>
 
-<h2 id="section-13">에러코드 추가</h2>
+<h2 id="에러코드-추가">에러코드 추가</h2>
 
 <p>아이템과 관련한 공통 에러가 3개, 강화와 승급에 각각 3개의 에러코드가 추가된다.</p>
 
@@ -935,10 +938,10 @@ class NoLongerUpgrade extends CustomError {
 
 </code></pre>
 
-<h2 id="section-14">테스트</h2>
+<h2 id="테스트">테스트</h2>
 <p>아이템을 몇개 등록하고 강화와 승급도 진행해보자.</p>
 
-<h3 id="section-15">정의된 아이템 추가</h3>
+<h3 id="정의된-아이템-추가">정의된 아이템 추가</h3>
 
 <p><code>DefineItem</code> 테이블에 데이터를 입력한다.</p>
 
@@ -1008,7 +1011,7 @@ class NoLongerUpgrade extends CustomError {
 
 <p>2001번 아이템은 현재는 강화와 승급이 불가능하다. 강화 승급에 관련한 데이터를 추가로 등록하자.</p>
 
-<h3 id="section-16">강화 관련 데이터 입력</h3>
+<h3 id="강화-관련-데이터-입력">강화 관련 데이터 입력</h3>
 <p>아이템 강화와 관련된 테이블은 2개다.</p>
 
 <p><code>DefineReinforceItem</code>과 <code>DefineReinforceRequireItem</code>.</p>
@@ -1060,7 +1063,7 @@ class NoLongerUpgrade extends CustomError {
   </tbody>
 </table>
 
-<h3 id="section-17">승급 관련 데이터 입력</h3>
+<h3 id="승급-관련-데이터-입력">승급 관련 데이터 입력</h3>
 <p>승급도 강화와 마찬가지로 2개 테이블에 입력해야한다.</p>
 
 <p>먼저 DefineUpgradeItem을 입력한다.</p>
@@ -1106,7 +1109,7 @@ class NoLongerUpgrade extends CustomError {
   </tbody>
 </table>
 
-<h3 id="section-18">정의된 아이템 수정</h3>
+<h3 id="정의된-아이템-수정">정의된 아이템 수정</h3>
 
 <p>DBeaver에서 DefineItem 테이블을 선택하고 ItemID 2001 상품의 <code>ReinforceItemID</code>와 <code>UpgradeItemID</code>를 각각 2001로 변경한다.</p>
 
@@ -1126,7 +1129,7 @@ class NoLongerUpgrade extends CustomError {
   </li>
 </ol>
 
-<h3 id="section-19">보유한 아이템 추가</h3>
+<h3 id="보유한-아이템-추가">보유한 아이템 추가</h3>
 
 <p>1번 유저에게 2001번 아이템을 지급하자.</p>
 
@@ -1157,7 +1160,7 @@ class NoLongerUpgrade extends CustomError {
   </tbody>
 </table>
 
-<h3 id="postman-">postman으로 테스트</h3>
+<h3 id="postman으로-테스트">postman으로 테스트</h3>
 
 <p>postman을 실행하고 토큰을 획득한 다음 아래처럼 요청을 해보자.</p>
 
@@ -1165,7 +1168,7 @@ class NoLongerUpgrade extends CustomError {
   <p>데이터를 로딩하는 4개 API는 테스트하지 않는다. 여기서는 강화와 승급만 다루겠다.</p>
 </blockquote>
 
-<h4 id="section-20">강화 요청 테스트</h4>
+<h4 id="강화-요청-테스트">강화 요청 테스트</h4>
 
 <ul>
   <li>패스 : POST</li>
@@ -1206,7 +1209,7 @@ class NoLongerUpgrade extends CustomError {
 
 <p><img src="/images/rvwendy05_02.png" alt="Dbeaver새로고침" width="500px" /></p>
 
-<h4 id="section-21">승급 요청 테스트</h4>
+<h4 id="승급-요청-테스트">승급 요청 테스트</h4>
 
 <ul>
   <li>패스 : POST</li>
@@ -1245,7 +1248,7 @@ class NoLongerUpgrade extends CustomError {
 
 <p>DBeaver에서 <code>OwnItem</code> 테이블의 Data탭에서 <code>새로고침</code>버튼을 클릭하면 Tier이 2로 반영된 것을 확인할 수 있다.</p>
 
-<h2 id="section-22">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>아이템까지 어찌어찌 왔으니 자원에 영향을 주는 기능을 만들 때 필요한 기반이 되었다.</p>
 
@@ -1255,9 +1258,11 @@ class NoLongerUpgrade extends CustomError {
 
 <p>다음 강좌에서 지급 기능을 만들고 차차 진행해보도록 하자.</p>
 
+<p><a href="http://totuworld.github.io/2017/02/21/azureandunity-06/">6강 바로가기</a></p>
+
 <hr />
 
-<h2 id="section-23">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 <p>완성된 소스코드는 아래 링크에서 다운로드받으면 된다.</p>
 
 <p><a href="https://github.com/totuworld/Wendy/archive/0.0.4.zip">Wendy 5강 완료 버전</a></p>

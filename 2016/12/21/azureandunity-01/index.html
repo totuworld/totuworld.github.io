@@ -143,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -162,30 +164,30 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#azure-" id="markdown-toc-azure-">왜 Azure 웹앱인가?</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">처음 요리할 때 요리가 힘든이유?</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</a></li>
-      <li><a href="#azure---" id="markdown-toc-azure---">Azure 웹앱은 준비된 쉐프</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#왜-azure-웹앱인가" id="markdown-toc-왜-azure-웹앱인가">왜 Azure 웹앱인가?</a>    <ul>
+      <li><a href="#처음-요리할-때-요리가-힘든이유" id="markdown-toc-처음-요리할-때-요리가-힘든이유">처음 요리할 때 요리가 힘든이유?</a></li>
+      <li><a href="#쉐프에게-레시피만-전달하면-요리를-받을-수-있다면" id="markdown-toc-쉐프에게-레시피만-전달하면-요리를-받을-수-있다면">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</a></li>
+      <li><a href="#azure-웹앱은-준비된-쉐프" id="markdown-toc-azure-웹앱은-준비된-쉐프">Azure 웹앱은 준비된 쉐프</a></li>
     </ul>
   </li>
-  <li><a href="#azure--" id="markdown-toc-azure--">Azure 웹앱 만들기</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">사전 준비</a></li>
-      <li><a href="#azure---1" id="markdown-toc-azure---1">진짜 Azure 웹앱 만들기</a></li>
+  <li><a href="#azure-웹앱-만들기" id="markdown-toc-azure-웹앱-만들기">Azure 웹앱 만들기</a>    <ul>
+      <li><a href="#사전-준비" id="markdown-toc-사전-준비">사전 준비</a></li>
+      <li><a href="#진짜-azure-웹앱-만들기" id="markdown-toc-진짜-azure-웹앱-만들기">진짜 Azure 웹앱 만들기</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">소스코드 배포</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">배포 옵션 설정</a></li>
-      <li><a href="#feat-sourcetree" id="markdown-toc-feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
+  <li><a href="#소스코드-배포" id="markdown-toc-소스코드-배포">소스코드 배포</a>    <ul>
+      <li><a href="#배포-옵션-설정" id="markdown-toc-배포-옵션-설정">배포 옵션 설정</a></li>
+      <li><a href="#테스트-어플리케이션-배포하기feat-sourcetree" id="markdown-toc-테스트-어플리케이션-배포하기feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
     </ul>
   </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">결과 확인</a></li>
-  <li><a href="#section-7" id="markdown-toc-section-7">맺는 말</a></li>
+  <li><a href="#결과-확인" id="markdown-toc-결과-확인">결과 확인</a></li>
+  <li><a href="#맺는-말" id="markdown-toc-맺는-말">맺는 말</a></li>
 </ul>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Evwb2jwat6M" frameborder="0" allowfullscreen=""></iframe>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 <p>레벨제로 카페에 올라오는 신규 게임 소식만 접해도 소규모로 모바일 게임을 만드는 사람이 얼마나 많은지 알 수 있다.</p>
 
 <p><img src="/images/lvzerogames.png" alt="소규모게임" /></p>
@@ -202,14 +204,16 @@
 
 <p>길잡이라도 할 수 있게 소규모 게임 개발자들을 위한 <code>Azure 웹앱으로 만드는 게임 서버</code> 강좌를 시작하고자 한다.</p>
 
-<h2 id="azure-">왜 Azure 웹앱인가?</h2>
+<h2 id="왜-azure-웹앱인가">왜 Azure 웹앱인가?</h2>
 <p>요리가 왜 어려운지 고민해봤는가? 결혼 전 계란후라이와 라면밖에 끓이지 못하던 사람이었다.
 아내따라서 뭔가 만들다보니 이제는 가끔 주말 아침 식사를 만들 수 있는 초보가 되었다.
 배우면서 느낀 어려운 점은 이렇다.</p>
 
-<h3 id="section-1">처음 요리할 때 요리가 힘든이유?</h3>
-<p>갖추어야할 장비, 재료가 많다.
-&gt; 아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!</p>
+<h3 id="처음-요리할-때-요리가-힘든이유">처음 요리할 때 요리가 힘든이유?</h3>
+<p>갖추어야할 장비, 재료가 많다.</p>
+<blockquote>
+  <p>아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!</p>
+</blockquote>
 
 <p>레시피가 있어도 그대로 따라하기가 어렵다. 해본적이 없으니 <code>데치세요</code> 라고 써있는걸 <code>풀죽</code>으로 만든다.</p>
 
@@ -219,25 +223,25 @@
   <p>설령 c나 c++ 수업을 들었다고 원하는걸 뚝딱뚝딱 만들 수 있는 수준일리 없다.</p>
 </blockquote>
 
-<h3 id="section-2">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</h3>
+<h3 id="쉐프에게-레시피만-전달하면-요리를-받을-수-있다면">쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?</h3>
 <p>그런데 쉐프에게 레시피만 전달하면 요리를 받을 수 있게 된다면 어떨까? 안정적인 요리를 늘 먹을 수 있게된다.</p>
 
-<h3 id="azure---">Azure 웹앱은 준비된 쉐프</h3>
+<h3 id="azure-웹앱은-준비된-쉐프">Azure 웹앱은 준비된 쉐프</h3>
 <p>Azure 웹앱은 준비된 쉐프다. 레시피만 전달하면 무쇠 냄비나 스텐리스 프라이팬을 관리해주고 재료도 척척 준비한다.
 해야할 일이 레시피 작성에서 끝나게 된다.</p>
 
 <p>즉, 인프라 관리는 모두 Azure가 담당하니 소스코드만 만들어서 보내면 되는 것이다.</p>
 
-<h2 id="azure--">Azure 웹앱 만들기</h2>
+<h2 id="azure-웹앱-만들기">Azure 웹앱 만들기</h2>
 
-<h3 id="section-3">사전 준비</h3>
+<h3 id="사전-준비">사전 준비</h3>
 <p>바로 Azure를 활용하고 싶지만 가입은 해야한다. 아래 동영상을 참고해도 좋고 인터넷에 자료를 검색해도 좋다.</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/q380IeIsmPc" frameborder="0" allowfullscreen=""></iframe>
 
 <p>꼭 살아서 다음 단계에서 만나자!</p>
 
-<h3 id="azure---1">진짜 Azure 웹앱 만들기</h3>
+<h3 id="진짜-azure-웹앱-만들기">진짜 Azure 웹앱 만들기</h3>
 <p>처음으로 우리가 할 일은 쉐프를 섭외하는 일이다.</p>
 
 <p>멋진 전문가처럼 커맨드 라인 인터페이스(CLI)를 켜서 작업하고 싶겠지만 우리는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.</p>
@@ -272,10 +276,12 @@
 
 <p><img src="/images/rvwendy01_02.jpg" alt="웹앱확인" width="500px" /></p>
 
-<p><code>웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.
-&gt; 그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.</p>
+<p><code>웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.</p>
+<blockquote>
+  <p>그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.</p>
+</blockquote>
 
-<h2 id="section-4">소스코드 배포</h2>
+<h2 id="소스코드-배포">소스코드 배포</h2>
 <blockquote>
   <p>와 생성이 뭐이렇게 쉽나? 라고 생각하면 천만다행이지만 쉬운것도 어렵게 보이도록 만드는 것이 장기인만큼 걱정이 살짝된다.</p>
 </blockquote>
@@ -285,10 +291,10 @@
 <p>다양한 방법으로 소스코드를 배포할 수 있지만 여기서는 <code>로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
 
 <blockquote>
-  <p>git을 사용하면 ~~상상속에서~~ 핫하고 섹시해보이까 배워두자.</p>
+  <p>git을 사용하면 <del>상상속에서</del> 핫하고 섹시해보이까 배워두자.</p>
 </blockquote>
 
-<h3 id="section-5">배포 옵션 설정</h3>
+<h3 id="배포-옵션-설정">배포 옵션 설정</h3>
 
 <p>말이 조금 이상하게 들리지만 배포 옵션은 영문 사이트에서 Deploment Source라는 메뉴이다.</p>
 
@@ -328,7 +334,7 @@
 
 <p><img src="/images/rvwendy01_08.jpg" alt="Git복제URL확인" width="500px" /></p>
 
-<h3 id="feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
+<h3 id="테스트-어플리케이션-배포하기feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
 
 <p>git을 다룰 때 CLI로 하면 멋지지만 멋을 조금 포기하면 굉장히 편한 방법이 있다. 클릭클릭으로 git을 다룰 수 있는 SourceTree라는 프로그램으로 말이다.</p>
 
@@ -396,7 +402,7 @@
   </li>
 </ol>
 
-<h2 id="section-6">결과 확인</h2>
+<h2 id="결과-확인">결과 확인</h2>
 
 <p>꽤 오래 걸렸지만 배포가 되었다. 이제 확인해볼 차례다.</p>
 
@@ -408,7 +414,7 @@
 
 <p><img src="/images/rvwendy01_16.png" alt="WebApp결과" /></p>
 
-<h2 id="section-7">맺는 말</h2>
+<h2 id="맺는-말">맺는 말</h2>
 
 <p>지금 무슨 일이 일어났는지 어리둥절 할 수 있다. Azure도 생소한데 git에다가 SourceTree 프로그램까지 설치하고 난리난리했으니 그럴 수 있다.</p>
 

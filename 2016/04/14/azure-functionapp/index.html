@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,19 +159,19 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#slash-command-" id="markdown-toc-slash-command-">슬래시 명령(Slash Command) 만들기</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">슬랙 봇 호스팅하기</a>    <ul>
-      <li><a href="#azure-functions-" id="markdown-toc-azure-functions-">Azure Functions 추가</a></li>
-      <li><a href="#url-" id="markdown-toc-url-">슬랫 슬래시 명령 URL 입력</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#슬래시-명령slash-command-만들기" id="markdown-toc-슬래시-명령slash-command-만들기">슬래시 명령(Slash Command) 만들기</a></li>
+  <li><a href="#슬랙-봇-호스팅하기" id="markdown-toc-슬랙-봇-호스팅하기">슬랙 봇 호스팅하기</a>    <ul>
+      <li><a href="#azure-functions-추가" id="markdown-toc-azure-functions-추가">Azure Functions 추가</a></li>
+      <li><a href="#슬랫-슬래시-명령-url-입력" id="markdown-toc-슬랫-슬래시-명령-url-입력">슬랫 슬래시 명령 URL 입력</a></li>
     </ul>
   </li>
-  <li><a href="#hello--" id="markdown-toc-hello--">Hello, 슬랙 봇!</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">맺음말</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">참고자료</a></li>
+  <li><a href="#hello-슬랙-봇" id="markdown-toc-hello-슬랙-봇">Hello, 슬랙 봇!</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>빌드 2016(Build 2016) 키노트에서 <a href="https://channel9.msdn.com/Events/Build/2016/KEY02#time=44m34s">Azure Functions</a>이 소개되었다.</p>
 
@@ -186,7 +188,7 @@
 
 <p>그리고 글을 읽던 중 <a href="http://www.usefulparadigm.com/2016/04/06/creating-a-slack-bot-with-aws-lambda-and-api-gateway/">AWS Lambda와 API Gateway로 Slack Bot 만들기</a>를 발견했다. 이 내용을 Azure Functions으로 진행 하겠다.</p>
 
-<h2 id="slash-command-">슬래시 명령(Slash Command) 만들기</h2>
+<h2 id="슬래시-명령slash-command-만들기">슬래시 명령(Slash Command) 만들기</h2>
 
 <p>자세한 설명은 <a href="http://www.usefulparadigm.com/2016/04/06/creating-a-slack-bot-with-aws-lambda-and-api-gateway/#slash-command-">AWS Lambda와 API Gateway로 Slack Bot 만들기#슬래시 명령(Slash Command) 만들기</a>를 참고하면 된다.</p>
 
@@ -208,7 +210,7 @@
   </li>
 </ol>
 
-<h2 id="section-1">슬랙 봇 호스팅하기</h2>
+<h2 id="슬랙-봇-호스팅하기">슬랙 봇 호스팅하기</h2>
 
 <blockquote>
   <p>이제 앞서 비워둔 URL 칸을 채워 보자. 이를 위해서는 어딘가에 웹서버를 하나 만들어 두고 슬랙에서 넘어오는 슬래시 명령을 받아서 슬랙 메시지 형태로 반환하는 코드를 작성해야 한다.</p>
@@ -216,7 +218,7 @@
 
 <p>이제 Azure Functions을 발동시킬 때다!</p>
 
-<h3 id="azure-functions-">Azure Functions 추가</h3>
+<h3 id="azure-functions-추가">Azure Functions 추가</h3>
 
 <ol>
   <li>
@@ -241,7 +243,7 @@
 
 <script src="https://gist.github.com/totuworld/9b7c39cc78d70df9cea28a1217c875e6.js?file=index.js"> </script>
 
-<h3 id="url-">슬랫 슬래시 명령 URL 입력</h3>
+<h3 id="슬랫-슬래시-명령-url-입력">슬랫 슬래시 명령 URL 입력</h3>
 
 <p>Azure Functions에서 HttpTrigger는 생성하면 <code>Function Url</code>을 제공한다.</p>
 
@@ -251,7 +253,7 @@
 
 <p><img src="/images/azurefunctions5.png" alt="addFunctionURL" /></p>
 
-<h2 id="hello--">Hello, 슬랙 봇!</h2>
+<h2 id="hello-슬랙-봇">Hello, 슬랙 봇!</h2>
 
 <blockquote>
   <p>이제 이 모든 작업이 끝났으면 Slack으로 돌아오자. 슬랙의 대화창에서 다음과 같이 방금 우리가 만든 슬래시 명령을 입력하면 Slack 봇이 반갑게 우리를 맞아 줄 것이다.</p>
@@ -259,7 +261,7 @@
 
 <p><img src="/images/slackbot.png" alt="SlackBot결과" /></p>
 
-<h2 id="section-2">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>사용해본 결과 Azure Functions는 AWS Lambda + API gateway를 하는 것보다 간단히 사용할 수 있는 장점이 있었다.</p>
 
@@ -271,7 +273,7 @@
 
 <p>바로 해석해서 설치하는 것까진 좋은데 폴더 내부에 <code>package.json</code> 을 넣어서 폴더별로 설치되진 않았다. 이를 위해서 굳이 console에 들어가야하는 불편함이 존재했다.</p>
 
-<p>~~(이에 관해서는 MS에 문의했으나 아직 답변을 받진 못했다.)~~</p>
+<p><del>(이에 관해서는 MS에 문의했으나 아직 답변을 받진 못했다.)</del></p>
 
 <blockquote>
   <p>MS에서 다음과 같이 답변이 왔습니다(2016. 4. 15)</p>
@@ -283,7 +285,7 @@
 
 <p>하지만 아직 preview 단계이니 앞으로 발전 사항을 지켜볼만하다. 정말 간단한 로직을 위해서 Web App이나 VM을 올리는 수고를 덜 수 있으니 한번 사용해보길 바란다.</p>
 
-<h2 id="section-3">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 
 <ul>
   <li><a href="http://www.usefulparadigm.com/2016/04/06/creating-a-slack-bot-with-aws-lambda-and-api-gateway/">AWS Lambda와 API Gateway로 Slack Bot 만들기</a></li>

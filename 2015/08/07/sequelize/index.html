@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,24 +159,24 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#orm--" id="markdown-toc-orm--">ORM을 왜 사용하는가?</a></li>
-  <li><a href="#sequelizejs-" id="markdown-toc-sequelizejs-">Sequelize.js 설치</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">준비 작업</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">테이블 정의</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">모델 정의</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">웹 어플리케이션 시작 시 자동 실행</a></li>
-  <li><a href="#section-5" id="markdown-toc-section-5">실행 확인</a></li>
-  <li><a href="#section-6" id="markdown-toc-section-6">맺음말</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#orm을-왜-사용하는가" id="markdown-toc-orm을-왜-사용하는가">ORM을 왜 사용하는가?</a></li>
+  <li><a href="#sequelizejs-설치" id="markdown-toc-sequelizejs-설치">Sequelize.js 설치</a></li>
+  <li><a href="#준비-작업" id="markdown-toc-준비-작업">준비 작업</a></li>
+  <li><a href="#테이블-정의" id="markdown-toc-테이블-정의">테이블 정의</a></li>
+  <li><a href="#모델-정의" id="markdown-toc-모델-정의">모델 정의</a></li>
+  <li><a href="#웹-어플리케이션-시작-시-자동-실행" id="markdown-toc-웹-어플리케이션-시작-시-자동-실행">웹 어플리케이션 시작 시 자동 실행</a></li>
+  <li><a href="#실행-확인" id="markdown-toc-실행-확인">실행 확인</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p>앞서 VM에 MariaDB를 설치했고 Express 프로젝트를 생성했다. 이번에는 사용자 정보나 상점, 친구, 결제 등 주요한 정보를 저장하게되는 MariaDB에 Node.js에서 어떻게 접근하여 다루는지 살펴보자.</p>
 
 <hr />
 
-<h2 id="orm--">ORM을 왜 사용하는가?</h2>
+<h2 id="orm을-왜-사용하는가">ORM을 왜 사용하는가?</h2>
 
 <p>관계형 데이터베이스(Relational Database, RDB)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>를  사용하면 데이터베이스의 데이터를 조회 및 조작하기 위해서 SQL <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> 를 작성한다. 간단한 SQL 문장을 작성하는 것이야 어렵지 않지만 사용하는 언어와 사용되는 데이터베이스에 따라서 특성이 있어서 불편한 점이 많다.</p>
 
@@ -184,7 +186,7 @@
 
 <hr />
 
-<h2 id="sequelizejs-">Sequelize.js 설치</h2>
+<h2 id="sequelizejs-설치">Sequelize.js 설치</h2>
 
 <p>커맨드라인 툴로 <code>myapp</code> 프로젝트가 위치한 폴더에서 아래와 같이 입력한다.</p>
 
@@ -198,7 +200,7 @@ npm install --save mysql
 
 <hr />
 
-<h2 id="section-1">준비 작업</h2>
+<h2 id="준비-작업">준비 작업</h2>
 
 <ul>
   <li>MariaDB에 사용할 데이터베이스를 생성한다.</li>
@@ -256,7 +258,7 @@ npm install --save mysql
 
 <hr />
 
-<h2 id="section-2">테이블 정의</h2>
+<h2 id="테이블-정의">테이블 정의</h2>
 
 <p>앞에서 데이터베이스를 활용하기 위한 모든 준비가 마쳐졌다. 이제 사용할 테이블을 정의해보도록 하자.</p>
 
@@ -337,7 +339,7 @@ npm install --save mysql
 
 <hr />
 
-<h2 id="section-3">모델 정의</h2>
+<h2 id="모델-정의">모델 정의</h2>
 
 <p>위 표와 같이 정의된 테이블을 Sequelize를 사용해서 model과 맵핑해보자. 기본 구조는 간단하다.</p>
 
@@ -399,7 +401,7 @@ npm install --save mysql
 
 <hr />
 
-<h2 id="section-4">웹 어플리케이션 시작 시 자동 실행</h2>
+<h2 id="웹-어플리케이션-시작-시-자동-실행">웹 어플리케이션 시작 시 자동 실행</h2>
 
 <p>마지막 단계로 웹 어플리케이션이 시작할 때 <code>models</code>를 작동하도록 해야한다. 처음에 한번 연결해두면 작동하는 동안에는 추가적인 연결이 없기때문에 편리하다.</p>
 
@@ -411,7 +413,7 @@ npm install --save mysql
 
 <hr />
 
-<h2 id="section-5">실행 확인</h2>
+<h2 id="실행-확인">실행 확인</h2>
 
 <p>이제 잘 작동하는지 확인해보자. 커맨드라인 툴에서 아래와 같이 입력한 후 브라우저에서 <code>http://localhost:3000/phpmyadmin</code>으로 접속한다.</p>
 
@@ -431,7 +433,7 @@ Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
 
 <hr />
 
-<h2 id="section-6">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>긴 설명을 통해 Sequelize.js를 <code>myapp</code> 웹 어플리케이션에 적용했다. 다음 시간부터는 기능을 구현하도록 하겠다.</p>
 
@@ -442,16 +444,16 @@ Executing (default): SHOW INDEX FROM `usercore` FROM `myapp`
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>관계형 데이터베이스는 <a href="http://www.terms.co.kr/RDB.htm">일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체</a>로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>관계형 데이터베이스는 <a href="http://www.terms.co.kr/RDB.htm">일련의 정형화된 테이블로 구성된 데이터 항목들의 집합체</a>로 MSSQL, MariaDB, MySQL, PostgreSQL, CUBRID 등이 이에 속한다. EXCEL 시트를 떠올리면 된다.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>SQL은 <a href="http://www.terms.co.kr/SQL.htm">데이터베이스에서 정보를 얻거나 갱신하기 위한 표준화된 언어</a>이다. 데이터를 다루는 SQL문장을 DML(Data Manipulation Language)이라고 한다. DML은 SELECT, INSERT, UPDATE, DELETE로 이뤄진다. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>SQL은 <a href="http://www.terms.co.kr/SQL.htm">데이터베이스에서 정보를 얻거나 갱신하기 위한 표준화된 언어</a>이다. 데이터를 다루는 SQL문장을 DML(Data Manipulation Language)이라고 한다. DML은 SELECT, INSERT, UPDATE, DELETE로 이뤄진다.&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>다른 파일에서 모듈을 불러다 쓸 수 있는 일종의 라이브러리 개념이다. c#의 using같다고 생각하면 된다.&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p><code>bin/www</code>파일 내용 전체를 보고 싶다면 <a href="https://github.com/totuworld/FarmDefence_NodeServer/blob/master/bin/www">github의 www</a>를 참고하기 바란다. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p><code>bin/www</code>파일 내용 전체를 보고 싶다면 <a href="https://github.com/totuworld/FarmDefence_NodeServer/blob/master/bin/www">github의 www</a>를 참고하기 바란다.&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

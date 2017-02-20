@@ -138,6 +138,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -157,12 +159,12 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">사용자의 기본 데이터 로딩</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">하트 계산</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#사용자의-기본-데이터-로딩" id="markdown-toc-사용자의-기본-데이터-로딩">사용자의 기본 데이터 로딩</a></li>
+  <li><a href="#하트-계산" id="markdown-toc-하트-계산">하트 계산</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p><code>usercore</code>테이블에 userID를 통해 신규 사용자 정보를 추가하는 방법에 대해서 다뤄봤다.</p>
 
@@ -170,7 +172,7 @@
 
 <hr />
 
-<h2 id="section-1">사용자의 기본 데이터 로딩</h2>
+<h2 id="사용자의-기본-데이터-로딩">사용자의 기본 데이터 로딩</h2>
 
 <p>사용자가 게임에 접속하면 가입 시 얻은 <code>usercore</code>테이블의 <code>no</code>값을 이용해서 기본 데이터를 데이터베이스에서 읽어와야한다.</p>
 
@@ -232,7 +234,7 @@ router.get(&#39;/get/:no&#39;, function(req, res) {
 
 <hr />
 
-<h2 id="section-2">하트 계산</h2>
+<h2 id="하트-계산">하트 계산</h2>
 
 <p><code>usercore</code>의 hearts는 일정 시간(10분)이 지나면 1개씩 추가되어야한다. 하지만 최대수량 이상으로 보유중이라면 추가될 필요는 없다.</p>
 

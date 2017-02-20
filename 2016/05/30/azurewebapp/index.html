@@ -143,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -162,20 +164,20 @@
       <hr>
       <article>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">들어가는 말</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">웹앱 만들기</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">어플리케이션 배포하기</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">배포 원본 설정</a></li>
-      <li><a href="#feat-cli" id="markdown-toc-feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</a></li>
-      <li><a href="#feat-sourcetree" id="markdown-toc-feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">배포 결과 확인</a></li>
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#웹앱-만들기" id="markdown-toc-웹앱-만들기">웹앱 만들기</a></li>
+  <li><a href="#어플리케이션-배포하기" id="markdown-toc-어플리케이션-배포하기">어플리케이션 배포하기</a>    <ul>
+      <li><a href="#배포-원본-설정" id="markdown-toc-배포-원본-설정">배포 원본 설정</a></li>
+      <li><a href="#테스트-어플리케이션-배포하기feat-cli" id="markdown-toc-테스트-어플리케이션-배포하기feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</a></li>
+      <li><a href="#테스트-어플리케이션-배포하기feat-sourcetree" id="markdown-toc-테스트-어플리케이션-배포하기feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</a></li>
+      <li><a href="#배포-결과-확인" id="markdown-toc-배포-결과-확인">배포 결과 확인</a></li>
     </ul>
   </li>
-  <li><a href="#section-5" id="markdown-toc-section-5">맺음말</a></li>
-  <li><a href="#section-6" id="markdown-toc-section-6">참고자료</a></li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+  <li><a href="#참고자료" id="markdown-toc-참고자료">참고자료</a></li>
 </ul>
 
-<h2 id="section">들어가는 말</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
 
 <p><a href="http://blog.weirdx.io">이상한모임</a>에서 얘기를 하던 중 Azure 앱 서비스 중 하나인 웹앱이 사용하기 편한데 기본 내용이 부족하단 말을 들었다.</p>
 
@@ -197,7 +199,7 @@
 
 <p>이번에는 이 두가지를 집중하여 익혀보자.</p>
 
-<h2 id="section-1">웹앱 만들기</h2>
+<h2 id="웹앱-만들기">웹앱 만들기</h2>
 
 <p>웹앱을 생성하는 것은 Azure 포털을 통한 방법과 Azure CLI를 통한 방법이 있으나 여기서는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.</p>
 
@@ -243,7 +245,7 @@
 
 <p><code>웹앱</code>이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.</p>
 
-<h2 id="section-2">어플리케이션 배포하기</h2>
+<h2 id="어플리케이션-배포하기">어플리케이션 배포하기</h2>
 
 <p>웹앱이 생성되었으면 이제 소스코드를 배포하여 자신이 원하는 형태로 가공해야한다.</p>
 
@@ -253,7 +255,7 @@
 
 <p>이번에는 git을 활용할 수 있는 <code>로컬 Git 레포지토리</code>를 설정하여 배포하는 방법을 설명할 것이다.</p>
 
-<h3 id="section-3">배포 원본 설정</h3>
+<h3 id="배포-원본-설정">배포 원본 설정</h3>
 
 <p>말이 조금 이상하게 들리지만 배포 원본은 영문 사이트에서 Deploment Source라는 메뉴이다.</p>
 
@@ -291,7 +293,7 @@
 
 <p><img src="/images/webapp_a11.png" alt="Git복제URL확인" /></p>
 
-<h3 id="feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</h3>
+<h3 id="테스트-어플리케이션-배포하기feat-cli">테스트 어플리케이션 배포하기(feat. CLI)</h3>
 
 <p>Azure 웹앱을 생성했고 배포하는 방식도 결정했다. 이제 Git을 통한 배포를 확인해보자.</p>
 
@@ -335,7 +337,7 @@
   <p>CLI로 위 과정을 마쳤다면 다음 단계는 건너뛴다.</p>
 </blockquote>
 
-<h3 id="feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
+<h3 id="테스트-어플리케이션-배포하기feat-sourcetree">테스트 어플리케이션 배포하기(feat. SourceTree)</h3>
 
 <p>CLI가 익숙치않다면 웹 브라우저와 <a href="https://www.sourcetreeapp.com/">SourceTree</a>나 <a href="https://www.git-tower.com/">Tower</a>등의 프로그램을 활용해서 처리하는 방법도 있다.</p>
 
@@ -405,7 +407,7 @@
   </li>
 </ol>
 
-<h3 id="section-4">배포 결과 확인</h3>
+<h3 id="배포-결과-확인">배포 결과 확인</h3>
 
 <p>배포가 완료되었으니 정상 동작하는지 결과를 확인해보자.</p>
 
@@ -417,7 +419,7 @@
 
 <p><img src="/images/webapp_a20.png" alt="WebApp결과" /></p>
 
-<h2 id="section-5">맺음말</h2>
+<h2 id="맺음말">맺음말</h2>
 
 <p>보는 바와 같이 Azure 웹앱을 사용하는데는 배포 설정이 주요하다.</p>
 
@@ -427,7 +429,7 @@
 
 <hr />
 
-<h2 id="section-6">참고자료</h2>
+<h2 id="참고자료">참고자료</h2>
 
 <ul>
   <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/app-service-web-nodejs-get-started/">Azure 앱 서비스에서 Node.js 웹앱 시작</a></li>
