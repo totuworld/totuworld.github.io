@@ -15,6 +15,8 @@ publish : true
 * content
 {:toc}
 
+{% include youtubePlayer.html id="ZSloWdCq4LY" %}
+
 ## 들어가는 말
 
 지난 시간에 아이템 관리까지 다루면서 게임 내 자원을 지급할 수 있는 기반이 마련되었다.
