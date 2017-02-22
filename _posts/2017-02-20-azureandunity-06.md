@@ -109,7 +109,7 @@ RewardSetGroup과 RewardGoodsGroup을 바탕으로 `logics/materialCtrl.js`의 �
 
 `logics/reward.js` 파일을 추가한 뒤 아래 내용을 적용한다.
 
-* [logics/reward.js](https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/logics/reward.js)
+* [logics/reward.js](https://raw.githubusercontent.com/totuworld/Wendy/tuto6.3/logics/reward.js)
 
 위 코드가 문제 없이 작동하려면 2가지를 더 추가해야한다.
 
@@ -137,6 +137,9 @@ RewardSetGroup과 RewardGoodsGroup을 바탕으로 `logics/materialCtrl.js`의 �
 지급 가능하도록 테이블에 데이터를 입력하고 실제 지급이 이뤄지는 테스트해보자.
 
 ### 간단 테스트용 라우터 추가
+
+> 이 내용은 앞서 routes/reward.js 를 추가할 때 이미 들어가있으므로 추가 하지 않는다.
+
 `routes/reward.js` 하단에 아래 코드를 추가한다.
 
 ```javascript
