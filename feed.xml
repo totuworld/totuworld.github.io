@@ -5,8 +5,8 @@
     <description>Game Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 21 Feb 2017 12:57:04 +0900</pubDate>
-    <lastBuildDate>Tue, 21 Feb 2017 12:57:04 +0900</lastBuildDate>
+    <pubDate>Wed, 22 Feb 2017 10:18:36 +0900</pubDate>
+    <lastBuildDate>Wed, 22 Feb 2017 10:18:36 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -305,7 +305,7 @@ let incrementMaterialForItem = (GameUserID, defineItem, ItemID, Amount)=&amp;gt;
 &lt;p&gt;&lt;code&gt;logics/reward.js&lt;/code&gt; 파일을 추가한 뒤 아래 내용을 적용한다.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/logics/reward.js&quot;&gt;logics/reward.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.3/logics/reward.js&quot;&gt;logics/reward.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;위 코드가 문제 없이 작동하려면 2가지를 더 추가해야한다.&lt;/p&gt;
@@ -400,6 +400,11 @@ class DidntRegisterRewardGoods extends CustomError {
 &lt;p&gt;지급 가능하도록 테이블에 데이터를 입력하고 실제 지급이 이뤄지는 테스트해보자.&lt;/p&gt;
 
 &lt;h3 id=&quot;간단-테스트용-라우터-추가&quot;&gt;간단 테스트용 라우터 추가&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이 내용은 앞서 routes/reward.js 를 추가할 때 이미 들어가있으므로 추가 하지 않는다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;&lt;code&gt;routes/reward.js&lt;/code&gt; 하단에 아래 코드를 추가한다.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const env       = process.env.NODE_ENV || &quot;development&quot;;
