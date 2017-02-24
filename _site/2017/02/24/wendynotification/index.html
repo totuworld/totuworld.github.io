@@ -5,25 +5,25 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Setting up a local dev environment for Azure Functions</title>
+	<title>Wendy 프로젝트 진행사항 2</title>
 	
 	
-	<meta content="2016-04-26T09:02:00+09:00" property="article:published_time">
+	<meta content="2017-02-24T21:00:00+09:00" property="article:published_time">
 	
 	
 	<!-- Begin Jekyll SEO tag v1.4.0 -->
-<title>Setting up a local dev environment for Azure Functions - totuworld’s tech blog</title>
-<meta property="og:title" content="Setting up a local dev environment for Azure Functions" />
-<meta name="description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
-<meta property="og:description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
-<link rel="canonical" href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
-<meta property="og:url" content="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
+<title>Wendy 프로젝트 진행사항 2 - totuworld’s tech blog</title>
+<meta property="og:title" content="Wendy 프로젝트 진행사항 2" />
+<meta name="description" content="Wendy 프로젝트 진행사항 공유" />
+<meta property="og:description" content="Wendy 프로젝트 진행사항 공유" />
+<link rel="canonical" href="http://totuworld.github.io/2017/02/24/wendynotification/" />
+<meta property="og:url" content="http://totuworld.github.io/2017/02/24/wendynotification/" />
 <meta property="og:site_name" content="totuworld’s tech blog" />
-<meta property="og:image" content="http://totuworld.github.ioazure-deployment-slots.png" />
+<meta property="og:image" content="http://totuworld.github.io/images/rvwendy_noti_03.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_noti_03.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-04-26T09:02:00+09:00" />
-<link rel="next" href="http://totuworld.github.io/2016/04/26/webapp-stage/" title="Azure 웹 앱 staging 환경 설정하기" />
-<link rel="prev" href="http://totuworld.github.io/2016/04/25/acs/" title="Azure 컨테이너 서비스로 Node.js 앱 배포하기" />
+<meta property="article:published_time" content="2017-02-24T21:00:00+09:00" />
+<link rel="prev" href="http://totuworld.github.io/2017/02/21/azureandunity-06/" title="이세계에 진입한 서버 개발 - 6" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@totuworld" />
 <meta name="twitter:creator" content="@totuworld" />
@@ -31,19 +31,21 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Setting up a local dev environment for Azure Functions",
-    "image": "http://totuworld.github.ioazure-deployment-slots.png",
-    "datePublished": "2016-04-26T09:02:00+09:00",
-    "description": "로컬에 Azure Functions 개발 환경을 구성한다.",
-    "url": "http://totuworld.github.io/2016/04/26/azurefunctions-local/"
+    "headline": "Wendy 프로젝트 진행사항 2",
+    "image": "http://totuworld.github.io/images/rvwendy_noti_03.png",
+    "datePublished": "2017-02-24T21:00:00+09:00",
+    "description": "Wendy 프로젝트 진행사항 공유",
+    "url": "http://totuworld.github.io/2017/02/24/wendynotification/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
 	
 	
 	<meta property="fb:app_id" content="129561850715980">
-	<meta name="twitter:description" content="로컬에 Azure Functions 개발 환경을 구성한다.">
+	<meta name="twitter:description" content="Wendy 프로젝트 진행사항 공유">
 	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/rvwendy_noti_03.png">
 	
 	
 	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
@@ -155,8 +157,8 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Setting up a local dev environment for Azure Functions</h1>
-        <p>Apr 26, 2016 • nodejs azure webapps</p>
+        <h1>Wendy 프로젝트 진행사항 2</h1>
+        <p>Feb 24, 2017 • wendy</p>
       </header>
       <hr>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -169,15 +171,122 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       <article>
-        <p>트위터에서 보고 https://twitter.com/haleyjason/status/724716213339840512
-<a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a> 자료를 기반으로 작업</p>
+        <ul id="markdown-toc">
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#프로젝트-진행-사항" id="markdown-toc-프로젝트-진행-사항">프로젝트 진행 사항</a>    <ul>
+      <li><a href="#기능-목록" id="markdown-toc-기능-목록">기능 목록</a></li>
+    </ul>
+  </li>
+  <li><a href="#튜토리얼-제작-사항" id="markdown-toc-튜토리얼-제작-사항">튜토리얼 제작 사항</a>    <ul>
+      <li><a href="#완성된-튜토리얼-목록" id="markdown-toc-완성된-튜토리얼-목록">완성된 튜토리얼 목록</a></li>
+      <li><a href="#튜토리얼-제작-진행사항" id="markdown-toc-튜토리얼-제작-진행사항">튜토리얼 제작 진행사항</a></li>
+    </ul>
+  </li>
+  <li><a href="#소식들" id="markdown-toc-소식들">소식들</a>    <ul>
+      <li><a href="#웬디-근황" id="markdown-toc-웬디-근황">웬디 근황</a></li>
+      <li><a href="#좋은-소식" id="markdown-toc-좋은-소식">좋은 소식</a></li>
+      <li><a href="#우울한-소식" id="markdown-toc-우울한-소식">우울한 소식</a></li>
+    </ul>
+  </li>
+  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
+</ul>
 
-<h2 id="참고자료">참고자료</h2>
+<h2 id="들어가는-말">들어가는 말</h2>
+
+<p>2017년 2월은 레드벨벳 웬디와 Wendy가 있어 행복하고 재미나다.</p>
+
+<h2 id="프로젝트-진행-사항">프로젝트 진행 사항</h2>
+<p>자원(통화, 아이템)을 관리할 수 있게 되고 지급 관리까지 제작되었다.</p>
+
+<p>서비스로 쿠폰도 제작!</p>
+
+<blockquote>
+  <p><a href="https://github.com/totuworld/Wendy">Wendy 프로젝트 레파지토리</a></p>
+</blockquote>
+
+<h3 id="기능-목록">기능 목록</h3>
+<ul>
+  <li>기기 관리</li>
+  <li>사용자 관리</li>
+  <li>통화 관리</li>
+  <li>아이템 관리</li>
+  <li>자원(통화, 아이템) 지급 관리</li>
+  <li>쿠폰</li>
+</ul>
+
+<h2 id="튜토리얼-제작-사항">튜토리얼 제작 사항</h2>
+<p>2월에도 2개 강좌가 더 제작되었다.</p>
 
 <ul>
-  <li><a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a></li>
-  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/functions-run-local/">How to code and test Azure functions in Visual Studio</a></li>
+  <li>5강 - 아이템 관리</li>
+  <li>6강 - 자원 지급 관리</li>
 </ul>
+
+<h3 id="완성된-튜토리얼-목록">완성된 튜토리얼 목록</h3>
+<ul>
+  <li>1강 - <a href="http://totuworld.github.io/2016/12/21/azureandunity-01/">Hello, world!</a></li>
+  <li>2강 - <a href="http://totuworld.github.io/2016/12/29/azureandunity-02/">SQL데이터베이스스와 환경설정</a></li>
+  <li>3강 - <a href="http://totuworld.github.io/2017/01/12/azureandunity-03/">기기와 사용자 관리</a></li>
+  <li>4강 - <a href="http://totuworld.github.io/2017/01/26/azureandunity-04/">통화관리</a></li>
+  <li>5강 - <a href="http://totuworld.github.io/2017/02/09/azureandunity-05/">아이템 관리</a></li>
+  <li>6강 - <a href="http://totuworld.github.io/2017/02/21/azureandunity-06/">자원 지급 관리</a></li>
+</ul>
+
+<h3 id="튜토리얼-제작-진행사항">튜토리얼 제작 진행사항</h3>
+<ul>
+  <li>7강 : … 시작도 못했는데 어쩌죠?</li>
+</ul>
+
+<h2 id="소식들">소식들</h2>
+<h3 id="웬디-근황">웬디 근황</h3>
+
+<p>2월 21일. 웬디는 생일이었다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/87OYm-cKeA8" frameborder="0" allowfullscreen=""></iframe>
+
+<blockquote>
+  <p>이렇게 좋고 행복한 일상만 보내라 웬디야!!</p>
+</blockquote>
+
+<h3 id="좋은-소식">좋은 소식</h3>
+
+<p><a href="https://www.microsoft.com/korea/msdn/flash/archive/msdn_newsletter_1701.html">MSDN 뉴스레터 2017년 1월</a>에 강좌 소식이 소개되었다.</p>
+
+<p><img src="/images/msdn_newsletter_201701.png" alt="뉴스레터인증샷" width="300px" /></p>
+
+<blockquote>
+  <p>요리왕 류ㅎㅇ과장님 감사합니다.</p>
+</blockquote>
+
+<p>그리고 <code>나는 프로그래머다</code> 페이스북 페이지에도 소개되었다.</p>
+
+<p><img src="/images/iamprogrammer_0224.png" alt="나프다인증샷" width="460px" /></p>
+
+<p>6강은 화요일(2월 21일 웬디 생일)에 <a href="http://www.youtube.com/user/totuworld7/live">유튜브 스트리밍</a>으로 방송했다.</p>
+
+<p>4명이 소중한 분들이 있어서 힘이났다. 편집이 1시간 밖에 걸리지 않아서 너무 좋았다.</p>
+
+<blockquote>
+  <p>그래서 3월 7일 화요일 7강도 라이브로 진행하고 편집할 생각이다!!</p>
+</blockquote>
+
+<h3 id="우울한-소식">우울한 소식</h3>
+
+<p>유튜브 스트리밍에 앞서 대기중일 때 레드벨벳 신곡을 틀었다. 저작권을 침해한 내 잘못이다.</p>
+
+<p>그래서 <code>SM Ent</code>로부터 경고를 득하게 되었다.</p>
+
+<p>다음 방송에서는 조심하고 또 조심해야겠다.</p>
+
+<h2 id="맺음말">맺음말</h2>
+
+<p>새로운 회사로 옮기는 시점이 2월 초였다. 진행이 어렵게되서 약속을 지키지 못하면 어쩌나 걱정했다.</p>
+
+<p>다행히 5, 6강 강을 약속한 날짜에 발행했다(나와의 약속?).</p>
+
+<p>1차 목표로 했던 7강까지 잘 마무리하길 바란다.</p>
+
+<p>그 이후는 어떤 기능을 필요로하는지 의견을 듣고 정리해서 진행해야겠다.</p>
 
       </article>
       <hr>
@@ -198,7 +307,7 @@
       </form>
 
       <div class="fb-foot-area" style="width:104px;height:24px">
-        <div class="fb-like" data-href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="http://totuworld.github.io/2017/02/24/wendynotification/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
     <div id="fb-root"></div>
