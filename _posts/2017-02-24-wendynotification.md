@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Wendy 프로젝트 진행사항 2"
+title:  "Wendy 프로젝트 진행사항 3"
 date:   2017-02-24 12:00:00
 categories: wendy
 comments: true
