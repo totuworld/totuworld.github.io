@@ -289,7 +289,7 @@ NULL | 2 | 20 | 2001 | 103
 
 그리고 DefineUpgradeRequireItem에 아래 내용을 입력한다.
 
-id | Tier | RequireQNTY | ReinforceItemID | ItemID
+id | Tier | RequireQNTY | UpgradeItemID | ItemID
 NULL | 1 | 100 | 2001 | 103
 NULL | 2 | 200 | 2001 | 103
 
