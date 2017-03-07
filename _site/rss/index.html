@@ -5,9 +5,659 @@
     <description>Game Developer</description>
     <link />http://totuworld.github.io/&lt;/link&gt;
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Feb 2017 21:51:09 +0900</pubDate>
-    <lastBuildDate>Sun, 26 Feb 2017 21:51:09 +0900</lastBuildDate>
+    <pubDate>Tue, 07 Mar 2017 21:34:36 +0900</pubDate>
+    <lastBuildDate>Tue, 07 Mar 2017 21:34:36 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>이세계에 진입한 서버 개발 - 7</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#인앱-결제-영수증-검증&quot; id=&quot;markdown-toc-인앱-결제-영수증-검증&quot;&gt;인앱 결제 영수증 검증&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs에-등록&quot; id=&quot;markdown-toc-appjs에-등록&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#로직-추가&quot; id=&quot;markdown-toc-로직-추가&quot;&gt;로직 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#에러-추가&quot; id=&quot;markdown-toc-에러-추가&quot;&gt;에러 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#utilscommonfuncjs에-메서드-추가&quot; id=&quot;markdown-toc-utilscommonfuncjs에-메서드-추가&quot;&gt;utils/commonFunc.js에 메서드 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#데이터-입력&quot; id=&quot;markdown-toc-데이터-입력&quot;&gt;데이터 입력&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#영수증-검증-테스트&quot; id=&quot;markdown-toc-영수증-검증-테스트&quot;&gt;영수증 검증 테스트&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#구글-권한-처리&quot; id=&quot;markdown-toc-구글-권한-처리&quot;&gt;구글 권한 처리&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#필요사항-준비&quot; id=&quot;markdown-toc-필요사항-준비&quot;&gt;필요사항 준비&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#모델-추가-1&quot; id=&quot;markdown-toc-모델-추가-1&quot;&gt;모델 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#라우터-추가-1&quot; id=&quot;markdown-toc-라우터-추가-1&quot;&gt;라우터 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs에-등록-1&quot; id=&quot;markdown-toc-appjs에-등록-1&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#utilsauthjs-내용-추가&quot; id=&quot;markdown-toc-utilsauthjs-내용-추가&quot;&gt;utils/auth.js 내용 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#에러-추가-1&quot; id=&quot;markdown-toc-에러-추가-1&quot;&gt;에러 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#redirect_uri-추가&quot; id=&quot;markdown-toc-redirect_uri-추가&quot;&gt;REDIRECT_URI 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#테스트-관리자-계정-추가&quot; id=&quot;markdown-toc-테스트-관리자-계정-추가&quot;&gt;테스트 관리자 계정 추가&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#vs-code-개발-환경-설정&quot; id=&quot;markdown-toc-vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#브라우저로-권한-요청&quot; id=&quot;markdown-toc-브라우저로-권한-요청&quot;&gt;브라우저로 권한 요청&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#웹-작업webjob-등록&quot; id=&quot;markdown-toc-웹-작업webjob-등록&quot;&gt;웹 작업(WebJob) 등록&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#소스코드-편집&quot; id=&quot;markdown-toc-소스코드-편집&quot;&gt;소스코드 편집&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#웹-작업-추가&quot; id=&quot;markdown-toc-웹-작업-추가&quot;&gt;웹 작업 추가&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ZSloWdCq4LY&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;--&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;내가 쓴 글 중 &lt;code&gt;구글 인앱 결제 검증 웹 서비스 만들기&lt;/code&gt;가 가장 인기 있다. 꾸준히 찾는 사람이 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;이세계에 진입한 서버 개발&lt;/code&gt; 연재가 시작된 후로도 최고 조회수 3위 안에 든다.&lt;/p&gt;
+
+&lt;p&gt;그런데 해당 글에는 자원을 다루는 내용과 연계되지 못해 반쪽짜리였다.&lt;/p&gt;
+
+&lt;p&gt;인앱 결제 영수증 검증을 했어도 자원을 클라이언트에서 관리하게되면 메모리 조작 등으로 방지해도 방지한게 아닌 상태가 된다.&lt;/p&gt;
+
+&lt;p&gt;이 시간에는 인앱 결제 영수증 검증과 자원 지급을 묶어서 처리하도록 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;인앱-결제-영수증-검증&quot;&gt;인앱 결제 영수증 검증&lt;/h2&gt;
+
+&lt;p&gt;인앱 결제 후 영수증 검증 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy07_07.png&quot; alt=&quot;인앱영수증검증&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;서버 사이드에서 처리하는 일은 인앱 영수증 검증을 요청하고, 자원을 지급하는 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.1/models/LogReceipt.js&quot;&gt;LogReceipt.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.1/models/DefineShop.js&quot;&gt;DefineShop.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;LogReceipt&lt;/code&gt;는 검증 요청한 영수증을 저장한다. &lt;code&gt;DefineShop&lt;/code&gt;은 상점을 관리할 때 사용한다. 여기서는 인앱 결제로 사용되는 상품을 나타내도록 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;receipt.js&lt;/code&gt; 파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.5/routes/receipt.js&quot;&gt;routes/receipt.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;appjs에-등록&quot;&gt;app.js에 등록&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 receipt 라우터를 추가해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const receipt = require(&#39;./routes/receipt&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/receipt&#39;, receipt);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;로직-추가&quot;&gt;로직 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;logics&lt;/code&gt; 폴더에 &lt;code&gt;validationReceipt.js&lt;/code&gt; 파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.5/logics/validationReceipt.js&quot;&gt;logics/validationReceipt.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;애플, 구글, 원스토어의 영수증을 검정할 때 사용하는 로직을 모아두었다.&lt;/p&gt;
+
+&lt;p&gt;각 로직은 마켓 서버에 HTTP로 검증 요청을 보내게되므로 request 모듈을 새로 추가해야한다.&lt;/p&gt;
+
+&lt;p&gt;프로젝트 폴더에서 아래 명령을 입력한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn add request
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;에러-추가&quot;&gt;에러 추가&lt;/h3&gt;
+&lt;p&gt;에러코드를 추가한다. &lt;code&gt;utils/error.js&lt;/code&gt;에 아래 클래스를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/** 80701 */
+class UnsupportedReceiptType extends CustomError {
+    constructor() {
+        let message = &#39;지원하지 않거나 존재하지 않는 영수증타입(ReceipType)&#39;;
+        let code = 80701;
+        super(message, code);
+    }
+}
+
+/** 80702 */
+class InitializationFirst extends CustomError {
+    constructor() {
+        let message = &#39;초기화를 먼저 진행해야한다.&#39;;
+        let code = 80702;
+        super(message, code);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;utils/error.js&lt;/code&gt;의 &lt;code&gt;errorMap&lt;/code&gt; 오브젝트에 추가할 클래스를 등록한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;추가할 때 이전의 마지막 부분 - 여기서는 NoLongerUpgrade - 에 콤마(,)를 추가하여야 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;UnsupportedReceiptType&quot;:UnsupportedReceiptType,
+&quot;InitializationFirst&quot;:InitializationFirst
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;utilscommonfuncjs에-메서드-추가&quot;&gt;utils/commonFunc.js에 메서드 추가&lt;/h3&gt;
+
+&lt;p&gt;오브젝트에 원하는 프로퍼티가 하나라도 있는지 체크하는 메서드를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * object에 key가 적어도 하나라도 포함되어있는지 체크.
+ */
+exports.ObjectIncludeOneKey = (obj, keyArr)=&amp;gt;{
+    for(let argValue of keyArr) {
+        if(obj.hasOwnProperty(argValue) === true)
+            return true;
+    }
+    return false;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;데이터-입력&quot;&gt;데이터 입력&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;DefineShop&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ShopID&lt;/th&gt;
+      &lt;th&gt;ProductName&lt;/th&gt;
+      &lt;th&gt;PriceType&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
+      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+      &lt;td&gt;test&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+      &lt;td&gt;6001&lt;/td&gt;
+      &lt;td&gt;NULL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;영수증-검증-테스트&quot;&gt;영수증 검증 테스트&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;패스 : POST&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL : localhost:3000/receipt/validation/apple&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;body : 아래 내용을 넣는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/develope/test/samplereceipt.json&quot;&gt;samplereceipt.json&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;정상적으로 요청되면 아래와 같은 형식의 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;result&quot;: 0,
+  &quot;reward&quot;: {
+    &quot;item&quot;: [],
+    &quot;currency&quot;: [
+      {
+        &quot;TotalQNTY&quot;: 900000,
+        &quot;OwnCurrencyUID&quot;: 7,
+        &quot;CurrencyID&quot;: 103,
+        &quot;CurrentQNTY&quot;: 1217,
+        &quot;NowMaxQNTY&quot;: 900000,
+        &quot;AddMaxQNTY&quot;: 0,
+        &quot;UpdateTimeStamp&quot;: &quot;2017-02-21T00:00:00.000Z&quot;,
+        &quot;GameUserID&quot;: 1
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;구글-권한-처리&quot;&gt;구글 권한 처리&lt;/h2&gt;
+
+&lt;p&gt;검증과 관련된 부분은 완료되었다. 그러나 문제가 하나 있다.&lt;/p&gt;
+
+&lt;p&gt;애플과 원스토어는 별도의 권한없이 영수증 확인이 가능하다. 구글은 권한이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2016/02/10/google-oauth/#필요사항-준비&quot;&gt;구글 인앱 결제 검증 웹 서비스 만들기&lt;/a&gt;에서도 많은 부분이 이 내용이었다.&lt;/p&gt;
+
+&lt;p&gt;길고 지루하겠지만 다음 과정을 진행해보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;필요사항-준비&quot;&gt;필요사항 준비&lt;/h3&gt;
+&lt;p&gt;구글 개발자 콘솔에서 &lt;code&gt;OAuth&lt;/code&gt;로 사용자를 인증하는 아이디를 등록해서 &lt;code&gt;CLIENT_ID&lt;/code&gt;, &lt;code&gt;CLIENT_SECRET&lt;/code&gt;를 얻는 과정을 알아보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://play.google.com/apps/publish/#ApiAccessPlace&quot;&gt;구글 플레이 개발자 콘솔&lt;/a&gt;에 접속한 후 &lt;code&gt;API 액세스&lt;/code&gt; 페이지로 이동한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;처음 사용 시 신규 프로젝트를 생성하거나 기존에 등록된 것이 있다면 원하는 것을 선택하고 링크를 클릭한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;2번 과정을 통해 &lt;a href=&quot;https://console.developers.google.com/apis&quot;&gt;구글 개발자 콘솔&lt;/a&gt;에 접속한 후 &lt;code&gt;API 관리자&lt;/code&gt;에 도달했다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;사용자 인증 정보 - 새 사용자 인증 정보&lt;/code&gt; 버튼을 클릭하고 &lt;code&gt;OAuth 클라이언트 ID&lt;/code&gt;를 선택한다.&lt;br /&gt;
+ &lt;img src=&quot;/images/OAuth_clientid.png&quot; alt=&quot;OAuth 클라이언트 ID 생성&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;웹 어플리케이션&lt;/code&gt;을 선택하고 &lt;code&gt;이름&lt;/code&gt;을 입력한 후 &lt;code&gt;생성&lt;/code&gt;버튼을 클릭한다.
+ &lt;img src=&quot;/images/OAuth_clientid1.png&quot; alt=&quot;클라이언트 ID 만들기&quot; width=&quot;340px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;생성이 완료되면 &lt;code&gt;클라이언트 ID&lt;/code&gt;와 &lt;code&gt;클라이언트 보안 비밀&lt;/code&gt;이 출력된다.
+ &lt;img src=&quot;/images/OAuth_clientid2.png&quot; alt=&quot;클라이언트 ID 확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이로써 &lt;code&gt;CLIENT_ID&lt;/code&gt;, &lt;code&gt;CLIENT_SECRET&lt;/code&gt;는 확보되었다. &lt;code&gt;REDIRECT_URL&lt;/code&gt;은 이후 과정에서 추가하기로 하고 넘어가자.&lt;/p&gt;
+
+&lt;h3 id=&quot;모델-추가-1&quot;&gt;모델 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.2/models/AdminUser.js&quot;&gt;AdminUser.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.2/models/AuthGoogle.js&quot;&gt;AuthGoogle.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;관리자 계정을 등록할 수 있도록 &lt;code&gt;AdminUser&lt;/code&gt;를 추가했다. 구글 권한 획득 내용을 기록할 수 있도록 &lt;code&gt;AuthGoogle&lt;/code&gt;을 추가했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;라우터-추가-1&quot;&gt;라우터 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;auth.js&lt;/code&gt; 파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto7.2/routes/auth.js&quot;&gt;routes/auth.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;appjs에-등록-1&quot;&gt;app.js에 등록&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 auth 라우터를 추가해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  const auth = require(&#39;./routes/auth&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;추가할 코드&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/auth&#39;, auth);
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;utilsauthjs-내용-추가&quot;&gt;utils/auth.js 내용 추가&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;utils/auth.js&lt;/code&gt;에 다음 내용을 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const crypto = require(&#39;crypto&#39;);
+const cryptoPassword = 
+    process.env.cryptoPassword || &#39;wendy&#39;;
+
+exports.encryptPassword = (password)=&amp;gt;{
+    let hash = crypto.createHash(&#39;sha256&#39;)
+        .update(cryptoPassword).digest(&#39;base64&#39;);
+    return hash;
+}
+
+exports.isAdminAuthenticated = (req, res, next)=&amp;gt;{
+    jwt.verify(req.headers.authorization, SECRET, (err, decoded)=&amp;gt;{
+        if(err || decoded.grade &amp;lt; 10) {
+            let error = wendyError(&#39;CredentialFailure&#39;);
+            res.status(401).send({result:error.code, message:error.message});
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;에러-추가-1&quot;&gt;에러 추가&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;utils/error.js&lt;/code&gt;에 아래 클래스를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/** 99201 */
+class WrongEmailOrPassword extends CustomError {
+    constructor() {
+        let message = &#39;email 이나 password가 없거나 틀렸다.&#39;;
+        let code = 99201;
+        super(message, code);
+    }
+}
+
+/** 99202 */
+class UsedEmail extends CustomError {
+    constructor() {
+        let message = &#39;이미 사용중인 email&#39;;
+        let code = 99202;
+        super(message, code);
+    }
+}
+
+/** 99203 */
+class WrongEmail extends CustomError {
+    constructor() {
+        let message = &#39;email 형식이 아니다&#39;;
+        let code = 99203;
+        super(message, code);
+    }
+}
+
+/** 99204 */
+class WrongPassword extends CustomError {
+    constructor() {
+        let message = &#39;password는 최소 1개의 숫자 혹은 특수문자를 포함한 8~16자리여야 한다&#39;;
+        let code = 99204;
+        super(message, code);
+    }
+}
+
+/** 99205 */
+class LockdownUserAccess extends CustomError {
+    constructor() {
+        let message = &#39;password 입력 실패 5회로 권한 박탈, 관리자에게 문의!&#39;;
+        let code = 99205;
+        super(message, code);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;utils/error.js&lt;/code&gt;의 &lt;code&gt;errorMap&lt;/code&gt; 오브젝트에 추가할 클래스를 등록한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;추가할 때 이전의 마지막 부분 - 여기서는 NoLongerUpgrade - 에 콤마(,)를 추가하여야 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;WrongEmailOrPassword&quot;:WrongEmailOrPassword,
+&quot;UsedEmail&quot;:UsedEmail,
+&quot;WrongEmail&quot;:WrongEmail,
+&quot;WrongPassword&quot;:WrongPassword,
+&quot;LockdownUserAccess&quot;:LockdownUserAccess,
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;redirect_uri-추가&quot;&gt;REDIRECT_URI 추가&lt;/h3&gt;
+
+&lt;p&gt;필요사항을 준비할 때 빼놓은 &lt;code&gt;REDIRECT_URI&lt;/code&gt;을 등록해보자.&lt;/p&gt;
+
+&lt;p&gt;Azure 웹앱의 hostname을 기억한다면 &lt;code&gt;/auth/google/return&lt;/code&gt; 패스를 더해 아래와 같은 형태가 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;hostname/auth/google/return&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;로컬 개발 환경에서는 ngrok을 활용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;ngrok은 외부에서 내 컴퓨터에 접근할 수 있도록 터널을 뚫어준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ngrok.com/static/img/demo.png&quot; alt=&quot;ngrok 개념&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://blog.outsider.ne.kr/1159&quot;&gt;ngrok으로 로컬 네트워크의 터널 열기&lt;/a&gt;에 자세히 설명되어있음.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ngrok.com/download&quot;&gt;ngrok을 설치&lt;/a&gt;한 후 포트를 열도록 한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ ./ngrok http 3000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;osx나 linux 환경에서는 path에 등록되지 않았을 때 ngrok이 위치한 폴더에서 위와 같이 입력한다. path에 등록되어있다면 &lt;code&gt;./&lt;/code&gt;는 제거한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;포트가 열리면 아래처럼 주소가 나온다. 해당 주소를 hostname으로 사용하면 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code&gt;Azure 웹앱&lt;/code&gt;에서 사용할 때는 hostname이 웹앱의 URL로 대치되어야한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy07_02.png&quot; alt=&quot;ngrok 포트 개방 예시&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;redirect_uri&lt;/code&gt;에 입력한 주소를 &lt;a href=&quot;https://console.developers.google.com/apis&quot;&gt;구글 개발자 콘솔 API 관리자&lt;/a&gt;에 접속하여 등록해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy07_01.png&quot; alt=&quot;redirect uri 업데이트&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;테스트&quot;&gt;테스트&lt;/h3&gt;
+&lt;h4 id=&quot;테스트-관리자-계정-추가&quot;&gt;테스트 관리자 계정 추가&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;패스 : POST&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL : localhost:3000/auth/add&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;body : 아래 내용을 넣는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+	&quot;email&quot;:&quot;totuworld@gmail.com&quot;,
+	&quot;password&quot;:&quot;test1234&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;테스트용으로 추가한 것이다. 운영할 때 복잡한 패스워드를 사용하고 절대 공개하면 안된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;별도의 관리툴이 없으므로 DBeaver로 &lt;code&gt;AdminUser&lt;/code&gt;테이블로 접근한 뒤 &lt;code&gt;grade&lt;/code&gt;를 10으로 조정한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;.vscode/launch.json&lt;/code&gt;에서 &lt;code&gt;env&lt;/code&gt;노드를 찾아서 아래 3가지 환경변수를 추가한다.&lt;/p&gt;
+
+&lt;p&gt;여기서 &lt;code&gt;hostname&lt;/code&gt;은 ngrok을 통해 얻은 hostname을 입력해야한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;                &quot;authAOSClientID&quot;:&quot;{클라이언트 id}&quot;,
+                &quot;authAOSClientSecret&quot;:&quot;{클라이언트 secret}&quot;,
+                &quot;authAOSRedirectURI&quot;:&quot;{hostname}/auth/google/return&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;콤마(,)추가를 잊지 말자!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;눈치가 빠른 사람이라면 알겠지만 &lt;code&gt;Azure 웹앱&lt;/code&gt;에도 환경 변수 등록을 해야한다. 단 hostname은 웹앱의 URL를 넣어야한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;브라우저로-권한-요청&quot;&gt;브라우저로 권한 요청&lt;/h4&gt;
+
+&lt;p&gt;vs code에서 실행한 뒤 브라우저로 아래 주소로 접속한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://localhost:3000/auth/google/start&quot;&gt;localhost:3000/auth/google/start&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rvwendy07_03.png&quot; alt=&quot;오프라인액세스권한&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;허용&lt;/code&gt; 버튼을 클릭하면 아래처럼 토큰을 얻을 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+    &quot;access_token&quot;: &quot;ya29.Glhaha&quot;,
+    &quot;expires_in&quot;: 3600,
+    &quot;refresh_token&quot;: &quot;1/o8-U9haha&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;웹-작업webjob-등록&quot;&gt;웹 작업(WebJob) 등록&lt;/h2&gt;
+&lt;p&gt;Google 권한 요청으로 얻은 토큰은 1시간 동안만 유효하다. 실제로 서비스가 이뤄지고 있다면 지속적인 갱신이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;Azure 웹앱은 이러한 작업을 &lt;code&gt;웹 작업&lt;/code&gt;(WebJob)으로 해결하도록 도와준다.&lt;/p&gt;
+
+&lt;h3 id=&quot;소스코드-편집&quot;&gt;소스코드 편집&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;아래 링크로 웹 작업용 소스코드를 다운받는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy-webjob/archive/0.0.1.zip&quot;&gt;Wendy-webjob&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;소스코드에서 server.js 파일의 3가지 변수를 수정한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let email = &#39;&#39;;
+let password = &#39;&#39;;
+let hostname = &#39;&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;앞선 예시를 반영하면 아래와 같이 변경한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let email = &#39;totuworld@gmail.com&#39;;
+let password = &#39;test1234&#39;;
+let hostname = &#39;Azure 웹앱 URL&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모듈을 설치한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ yarn install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전체 폴더를 압축한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;웹-작업-추가&quot;&gt;웹 작업 추가&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털(https://portal.azure.com)로 접속&lt;/a&gt;한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이전에 생성한 웹앱을 선택한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;왼쪽 설정 메뉴 하단에 &lt;code&gt;웹 작업&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy07_04.png&quot; alt=&quot;웹작업&quot; width=&quot;200px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;상단의 &lt;code&gt;추가&lt;/code&gt; 버튼을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy07_05.png&quot; alt=&quot;웹작업추가&quot; width=&quot;120px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;이름&lt;/code&gt;을 입력하고 앞서 생성한 압축 파일을 선택한다. &lt;code&gt;형식&lt;/code&gt;을 &lt;code&gt;트리거됨&lt;/code&gt;으로 선택하고 20분마다 실행될 수 있도록 CRON 식을 아래 처럼 입력한다. &lt;code&gt;확인&lt;/code&gt; 버튼을 클릭하여 등록을 마친다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/rvwendy07_06.png&quot; alt=&quot;웹작업&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; 0 0/20 * * * *
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이렇게 등록된 웹 작업은 20분마다 Google 권한을 갱신 요청을 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
+
+&lt;p&gt;인앱 영수증을 검증하는 방법에 대해 알아봤다. Google은 다소 복잡한 권한 획득 과정이 필요하다. 실제 운영을 고려한다면 결제 전에 웹 서버로부터 develperPayload를 발급받아 결제를 진행해서 영수증에 함께 나오도록하여 검증 단계를 강화하는 것도 고려해야한다.&lt;/p&gt;
+
+&lt;p&gt;인앱 결제를 크랙하려는 시도는 다양하므로 자물쇠를 더 단단히 걸어둘 필요가 있다.&lt;/p&gt;
+
+&lt;p&gt;1차 - 혹은 1기 - 완료 목표였던 7강이 완료되었다.&lt;/p&gt;
+
+&lt;p&gt;2016년 12월 말부터 2017년 3월 초까지 약 2달 조금 넘는 시간 동안 새벽을 허락해준 아내, &lt;code&gt;좋아요&lt;/code&gt;와 &lt;code&gt;공유&lt;/code&gt;, &lt;code&gt;댓글&lt;/code&gt;로 응원해준 모든 분에게 감사의 인사를 전한다.&lt;/p&gt;
+
+&lt;p&gt;2차 - 혹은 2기 - 는 도적같이 찾아오도록 하겠다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+&lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.6.zip&quot;&gt;Wendy 7강 완료 버전&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Tue, 07 Mar 2017 04:01:00 +0900</pubDate>
+            <link />http://totuworld.github.io/2017/03/07/azureunity-07/&lt;/link&gt;
+            <guid isPermaLink="true">http://totuworld.github.io/2017/03/07/azureunity-07/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>azure</category>
+            
+            <category>webapps</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
     
       
         <item>
@@ -1014,6 +1664,8 @@ if(env === &#39;development&#39;) {
 &lt;/blockquote&gt;
 
 &lt;p&gt;다음 강좌는 인앱 영수증 검증부분이다. 영수증을 검증하는 부분을 제외하면 자원 지급을 그대로 사용하므로 비교적 간단하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2017/03/07/azureandunity-07/&quot;&gt;7강 바로가기&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -4679,290 +5331,6 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
             <pubDate>Thu, 29 Dec 2016 09:00:01 +0900</pubDate>
             <link />http://totuworld.github.io/2016/12/29/azureandunity-02/&lt;/link&gt;
             <guid isPermaLink="true">http://totuworld.github.io/2016/12/29/azureandunity-02/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
-            
-            <category>unity</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>이세계에 진입한 서버 개발 - 1</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#왜-azure-웹앱인가&quot; id=&quot;markdown-toc-왜-azure-웹앱인가&quot;&gt;왜 Azure 웹앱인가?&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#처음-요리할-때-요리가-힘든이유&quot; id=&quot;markdown-toc-처음-요리할-때-요리가-힘든이유&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot; id=&quot;markdown-toc-쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#azure-웹앱은-준비된-쉐프&quot; id=&quot;markdown-toc-azure-웹앱은-준비된-쉐프&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#azure-웹앱-만들기&quot; id=&quot;markdown-toc-azure-웹앱-만들기&quot;&gt;Azure 웹앱 만들기&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#사전-준비&quot; id=&quot;markdown-toc-사전-준비&quot;&gt;사전 준비&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#진짜-azure-웹앱-만들기&quot; id=&quot;markdown-toc-진짜-azure-웹앱-만들기&quot;&gt;진짜 Azure 웹앱 만들기&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#소스코드-배포&quot; id=&quot;markdown-toc-소스코드-배포&quot;&gt;소스코드 배포&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#배포-옵션-설정&quot; id=&quot;markdown-toc-배포-옵션-설정&quot;&gt;배포 옵션 설정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#테스트-어플리케이션-배포하기feat-sourcetree&quot; id=&quot;markdown-toc-테스트-어플리케이션-배포하기feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#결과-확인&quot; id=&quot;markdown-toc-결과-확인&quot;&gt;결과 확인&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺는-말&quot; id=&quot;markdown-toc-맺는-말&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Evwb2jwat6M&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-&lt;p&gt;레벨제로 카페에 올라오는 신규 게임 소식만 접해도 소규모로 모바일 게임을 만드는 사람이 얼마나 많은지 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/lvzerogames.png&quot; alt=&quot;소규모게임&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그런데 많은 경우 클라이언트만 제작하고 출시해서 운영에 어려움이 있다. 특히 문제가 되는 것은 크랙된 게임이 유통되어 그나마 있던 수익마저 다른 누군가가 가져가는 것이다.&lt;/p&gt;
-
-&lt;p&gt;이런 문제를 해결하려면 출시단계부터 게임 서버를 운영하는 것이다. 하지만 게임 클라이언트 만들기도 바쁜데 언제 할 수 있을까?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;소잃기 전에 한번 배우시길 추천한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;막상 배우려고 해도 어디서부터 해야할지 막막할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;길잡이라도 할 수 있게 소규모 게임 개발자들을 위한 &lt;code&gt;Azure 웹앱으로 만드는 게임 서버&lt;/code&gt; 강좌를 시작하고자 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;왜-azure-웹앱인가&quot;&gt;왜 Azure 웹앱인가?&lt;/h2&gt;
-&lt;p&gt;요리가 왜 어려운지 고민해봤는가? 결혼 전 계란후라이와 라면밖에 끓이지 못하던 사람이었다.
-아내따라서 뭔가 만들다보니 이제는 가끔 주말 아침 식사를 만들 수 있는 초보가 되었다.
-배우면서 느낀 어려운 점은 이렇다.&lt;/p&gt;
-
-&lt;h3 id=&quot;처음-요리할-때-요리가-힘든이유&quot;&gt;처음 요리할 때 요리가 힘든이유?&lt;/h3&gt;
-&lt;p&gt;갖추어야할 장비, 재료가 많다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;아니 집에 두반장이 있을리가 있나! 레몬 과즙을 숟가락짜면 너무 힘들다!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;레시피가 있어도 그대로 따라하기가 어렵다. 해본적이 없으니 &lt;code&gt;데치세요&lt;/code&gt; 라고 써있는걸 &lt;code&gt;풀죽&lt;/code&gt;으로 만든다.&lt;/p&gt;
-
-&lt;p&gt;이런 점은 프로그래밍도 비슷하다. 알아야할 것이 많고 누군가 방법을 알려줘도 그것을 해석하기 위한 노력이 필요하다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;설령 c나 c++ 수업을 들었다고 원하는걸 뚝딱뚝딱 만들 수 있는 수준일리 없다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;쉐프에게-레시피만-전달하면-요리를-받을-수-있다면&quot;&gt;쉐프에게 레시피만 전달하면 요리를 받을 수 있다면?&lt;/h3&gt;
-&lt;p&gt;그런데 쉐프에게 레시피만 전달하면 요리를 받을 수 있게 된다면 어떨까? 안정적인 요리를 늘 먹을 수 있게된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;azure-웹앱은-준비된-쉐프&quot;&gt;Azure 웹앱은 준비된 쉐프&lt;/h3&gt;
-&lt;p&gt;Azure 웹앱은 준비된 쉐프다. 레시피만 전달하면 무쇠 냄비나 스텐리스 프라이팬을 관리해주고 재료도 척척 준비한다.
-해야할 일이 레시피 작성에서 끝나게 된다.&lt;/p&gt;
-
-&lt;p&gt;즉, 인프라 관리는 모두 Azure가 담당하니 소스코드만 만들어서 보내면 되는 것이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;azure-웹앱-만들기&quot;&gt;Azure 웹앱 만들기&lt;/h2&gt;
-
-&lt;h3 id=&quot;사전-준비&quot;&gt;사전 준비&lt;/h3&gt;
-&lt;p&gt;바로 Azure를 활용하고 싶지만 가입은 해야한다. 아래 동영상을 참고해도 좋고 인터넷에 자료를 검색해도 좋다.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/q380IeIsmPc&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;꼭 살아서 다음 단계에서 만나자!&lt;/p&gt;
-
-&lt;h3 id=&quot;진짜-azure-웹앱-만들기&quot;&gt;진짜 Azure 웹앱 만들기&lt;/h3&gt;
-&lt;p&gt;처음으로 우리가 할 일은 쉐프를 섭외하는 일이다.&lt;/p&gt;
-
-&lt;p&gt;멋진 전문가처럼 커맨드 라인 인터페이스(CLI)를 켜서 작업하고 싶겠지만 우리는 쉽게 이해할 수 있는 Azure 포털을 이용하겠다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털(https://portal.azure.com)로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Web App&lt;/code&gt;으로 검색하거나 &lt;code&gt;웹 + 모바일&lt;/code&gt;을 선택한 뒤&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a02.png&quot; alt=&quot;웹+모바일&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;웹앱&lt;/code&gt;을 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a03.png&quot; alt=&quot;웹앱&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;앱이름&lt;/code&gt;을 입력하고 &lt;code&gt;리소스 그룹&lt;/code&gt;을 생성한다. 입력완료 후 &lt;code&gt;만들기&lt;/code&gt;를 클릭하여 생성한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_01.jpg&quot; alt=&quot;웹앱입력&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;위 과정이 끝나면 웹앱을 확인할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_02.jpg&quot; alt=&quot;웹앱확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;웹앱&lt;/code&gt;이 편리한 것은 생성만으로 접근가능한 URL이 생성되고 ftp를 통해 소스코드를 배포하고 로그를 확인할 수 있도록 설정된다는 점이다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;그냥 만들기만하면 친구나 연인(A.K.A. 희귀생명체)에게 링크를 쏴줄 수 있다는 얘기다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;소스코드-배포&quot;&gt;소스코드 배포&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;와 생성이 뭐이렇게 쉽나? 라고 생각하면 천만다행이지만 쉬운것도 어렵게 보이도록 만드는 것이 장기인만큼 걱정이 살짝된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;웹앱이 생성되었으면 이제 소스코드 - 앞서 예를 든 레시피 - 를 배포하여 자신이 원하는 형태로 가공해야한다.&lt;/p&gt;
-
-&lt;p&gt;다양한 방법으로 소스코드를 배포할 수 있지만 여기서는 &lt;code&gt;로컬 Git 레포지토리&lt;/code&gt;를 설정하여 배포하는 방법을 설명할 것이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;git을 사용하면 &lt;del&gt;상상속에서&lt;/del&gt; 핫하고 섹시해보이까 배워두자.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;배포-옵션-설정&quot;&gt;배포 옵션 설정&lt;/h3&gt;
-
-&lt;p&gt;말이 조금 이상하게 들리지만 배포 옵션은 영문 사이트에서 Deploment Source라는 메뉴이다.&lt;/p&gt;
-
-&lt;p&gt;배포 시 소스코드를 어떤 방식으로 관리할지 정하는 것이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;메뉴 중 &lt;code&gt;배포 옵션&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_03.jpg&quot; alt=&quot;배포옵션&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;배포 옵션 메뉴에서 &lt;code&gt;소스 선택&lt;/code&gt;클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_04.jpg&quot; alt=&quot;소스선택&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;원본 선택 메뉴에서 &lt;code&gt;로컬 Git 레포지토리&lt;/code&gt;를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_05.jpg&quot; alt=&quot;로컬Git레포지토리&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;기본 인증 설정&lt;/code&gt;을 클릭한 뒤 배포시 사용할 아이디와 패스워드를 입력한 뒤 &lt;code&gt;확인&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_06_1.jpg&quot; alt=&quot;기본 인증 설정1&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_06_2.jpg&quot; alt=&quot;기본 인증 설정1&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;입력이 완료되면 &lt;code&gt;확인&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_07.jpg&quot; alt=&quot;확인&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;설정이 끝나면 아래처럼 웹앱 개요 화면에서 &lt;code&gt;Git 복제 URL&lt;/code&gt;을 확인할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_08.jpg&quot; alt=&quot;Git복제URL확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;테스트-어플리케이션-배포하기feat-sourcetree&quot;&gt;테스트 어플리케이션 배포하기(feat. SourceTree)&lt;/h3&gt;
-
-&lt;p&gt;git을 다룰 때 CLI로 하면 멋지지만 멋을 조금 포기하면 굉장히 편한 방법이 있다. 클릭클릭으로 git을 다룰 수 있는 SourceTree라는 프로그램으로 말이다.&lt;/p&gt;
-
-&lt;p&gt;SourceTree를 설치하고 소스코드를 배포하는 방법을 알아보겠다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.sourcetreeapp.com/&quot;&gt;SourceTree&lt;/a&gt;를 설치한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 링크를 클릭하여 소스코드를 다운받는다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.1.zip&quot;&gt;Wendy-0.0.1 링크&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;압축을 해제한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;SourceTree를 실행하여 &lt;code&gt;New Repository&lt;/code&gt;클릭한 뒤 &lt;code&gt;Add exist local repository&lt;/code&gt; 메뉴를 선택하낟.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;Windows에서는 File - Clone / New 선택 후 나오는 창에서 &lt;code&gt;Add Working Copy&lt;/code&gt;탭으로 이동한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a12.png&quot; alt=&quot;NewRepository&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Destination Path&lt;/code&gt;에 압축해제한 어플리케이션 폴더를 선택한 후 &lt;code&gt;Create&lt;/code&gt;를 클릭한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;Windows에서는 Working Copy Path가 같은 역할을 한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_09.jpg&quot; alt=&quot;로컬레포지토리추가&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;추가된 레포지토리를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_10.jpg&quot; alt=&quot;레포지토리열기&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Settings&lt;/code&gt;를 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_11.jpg&quot; alt=&quot;설정&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Azure 포털에서 웹앱을 선택하고 &lt;code&gt;Git 복제 URL&lt;/code&gt;를 클릭하여 복사한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_08.jpg&quot; alt=&quot;Git복제URL확인&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;SourceTree로 돌아와 &lt;code&gt;Remote Name&lt;/code&gt;을 azure로 입력하고 &lt;code&gt;URL&lt;/code&gt;에 복사한 주소를 붙여넣고 &lt;code&gt;OK&lt;/code&gt;를 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_12.jpg&quot; alt=&quot;AddAzureRemote&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;File Status&lt;/code&gt;탭에서 &lt;code&gt;Staged files&lt;/code&gt;를 클릭한 뒤 commit 메시지를 &lt;code&gt;init&lt;/code&gt;으로 입력하고 &lt;code&gt;Push changes immdiatly to azure/master&lt;/code&gt;옵션을 켜고 &lt;code&gt;Commit&lt;/code&gt;한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_13.jpg&quot; alt=&quot;Commit&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Push 메시지에 아래와 같은 로그가 출력되는 것을 확인할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy01_14.jpg&quot; alt=&quot;CommitLog&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;결과-확인&quot;&gt;결과 확인&lt;/h2&gt;
-
-&lt;p&gt;꽤 오래 걸렸지만 배포가 되었다. 이제 확인해볼 차례다.&lt;/p&gt;
-
-&lt;p&gt;아래 그림처럼 Azure 포털에서 웹앱의 URL을 클릭한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_15.jpg&quot; alt=&quot;ClickURL&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;웹 브라우저에 아래와 같은 결과가 표시된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy01_16.png&quot; alt=&quot;WebApp결과&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;맺는-말&quot;&gt;맺는 말&lt;/h2&gt;
-
-&lt;p&gt;지금 무슨 일이 일어났는지 어리둥절 할 수 있다. Azure도 생소한데 git에다가 SourceTree 프로그램까지 설치하고 난리난리했으니 그럴 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이것도 계속하면 익숙해진다.&lt;/p&gt;
-
-&lt;p&gt;꼭 성공해서 다음 강좌를 만나도록하자!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;첫 걸음을 걸었으니 이제 반을 지났다 :)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;2강 바로가기&lt;/a&gt;&lt;/p&gt;
-</description>
-            <pubDate>Wed, 21 Dec 2016 09:01:00 +0900</pubDate>
-            <link />http://totuworld.github.io/2016/12/21/azureandunity-01/&lt;/link&gt;
-            <guid isPermaLink="true">http://totuworld.github.io/2016/12/21/azureandunity-01/</guid>
             
             
             <category>nodejs</category>

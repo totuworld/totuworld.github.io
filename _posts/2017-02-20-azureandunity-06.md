@@ -320,6 +320,8 @@ CouponID | CouponName | ExpiredDate | CouponQNTYID | RewardSetGroupID | RewardGo
 
 다음 강좌는 인앱 영수증 검증부분이다. 영수증을 검증하는 부분을 제외하면 자원 지급을 그대로 사용하므로 비교적 간단하다.
 
+[7강 바로가기](http://totuworld.github.io/2017/03/07/azureandunity-07/)
+
 ---
 
 ## 참고자료
