@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3분 게임 서버(Firebase) - 소개</title>
+	
+	
+	<meta content="2017-12-27T09:00:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>3분 게임 서버(Firebase) - 소개 - totuworld’s tech blog</title>
+<meta property="og:title" content="3분 게임 서버(Firebase) - 소개" />
+<meta name="description" content="Firebase와 Unity 간단 설정" />
+<meta property="og:description" content="Firebase와 Unity 간단 설정" />
+<link rel="canonical" href="http://totuworld.github.io/2017/12/27/firebaseandunity-01/" />
+<meta property="og:url" content="http://totuworld.github.io/2017/12/27/firebaseandunity-01/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="http://totuworld.github.io/images/fb_cover_01.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/fb_cover_01.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-27T09:00:00+09:00" />
+<link rel="next" href="http://totuworld.github.io/2018/01/15/firebaseandunity-02/" title="3분 게임 서버(Firebase) - Auth 익명 로그인" />
+<link rel="prev" href="http://totuworld.github.io/2017/03/07/azureunity-07/" title="이세계에 진입한 서버 개발 - 7" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "3분 게임 서버(Firebase) - 소개",
+    "image": "http://totuworld.github.io/images/fb_cover_01.png",
+    "datePublished": "2017-12-27T09:00:00+09:00",
+    "description": "Firebase와 Unity 간단 설정",
+    "url": "http://totuworld.github.io/2017/12/27/firebaseandunity-01/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="Firebase와 Unity 간단 설정">
+	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/fb_cover_01.png">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Game Developer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>3분 게임 서버(Firebase) - 소개</h1>
+        <p>Dec 27, 2017 • nodejs firebase unity</p>
+      </header>
+      <hr>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- 블로그_글노출 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-4157849351218840"
+            data-ad-slot="7392519815"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a>    <ul>
+      <li><a href="#고백" id="markdown-toc-고백">고백</a></li>
+      <li><a href="#firebase의-약팔이-새로운-기능" id="markdown-toc-firebase의-약팔이-새로운-기능">Firebase의 <del>약팔이</del> 새로운 기능</a></li>
+    </ul>
+  </li>
+  <li><a href="#firebase-맛보기" id="markdown-toc-firebase-맛보기">Firebase 맛보기</a>    <ul>
+      <li><a href="#프로젝트-추가" id="markdown-toc-프로젝트-추가">프로젝트 추가</a></li>
+      <li><a href="#프로젝트-설정" id="markdown-toc-프로젝트-설정">프로젝트 설정</a></li>
+      <li><a href="#firebase-unity-sdk-설치" id="markdown-toc-firebase-unity-sdk-설치">Firebase Unity SDK 설치</a></li>
+      <li><a href="#데이터-추가" id="markdown-toc-데이터-추가">데이터 추가</a></li>
+      <li><a href="#text-추가" id="markdown-toc-text-추가">Text 추가</a></li>
+      <li><a href="#간단한-프로그래밍" id="markdown-toc-간단한-프로그래밍">간단한 프로그래밍</a></li>
+      <li><a href="#스크립트-적용" id="markdown-toc-스크립트-적용">스크립트 적용</a></li>
+      <li><a href="#프로젝트-실행" id="markdown-toc-프로젝트-실행">프로젝트 실행</a></li>
+    </ul>
+  </li>
+  <li><a href="#정리" id="markdown-toc-정리">정리</a></li>
+</ul>
+
+<h2 id="들어가는-말">들어가는 말</h2>
+
+<h3 id="고백">고백</h3>
+
+<p><a href="http://totuworld.github.io/2016/12/21/azureandunity-01/">이세계에 진입한 서버 개발</a>을 시작하고 1년이 지났다. 그 동안 이직을 했고 바쁜 시간을 보냈다는 핑계로 업데이트 없는 9개월을 보냈다.</p>
+
+<p>놀기만 했으면 좋으련만 6월부터 <code>이세계에 진입한 서버 개발</code>을 책으로 출판할 생각으로 작업중이었는데 최근 절필했다. 2가지 이유가 있다. 하나는 오래된 코드라서 봐줄 수 없었다(이건 내 실력이…). 다른 하나는 게임 클라이언트 프로그래머만 있는 소규모 게임 개발팀에서 node.js와 관계형 데이터베이스를 공부해서 게임용 웹 서버를 만들 수 있을까하는 의문이다.</p>
+
+<blockquote>
+  <p>게임 개발할 시간도 없는데 서버는 젠장!</p>
+</blockquote>
+
+<p>Wendy를 활용하는 게임 클라이언트 프로그래머가 인프라 공부에 시간 보낼까봐 PaaS(Platform as a Service)를 사용하도록 유도했지만 충분한 대답이 아니었다. 이보다 더 낮은 진입이 가능해야 순수 클라이언트 프로그래머가 공부할 수 있을 듯 했다. 그렇다면 좋은 서비스는 Parse나 Firebase같은 BaaS(Backend as a Service)다.</p>
+
+<blockquote>
+  <p>Facebook이 인수하여 서비스하던 Parse는 서비스가 종료되었다.</p>
+</blockquote>
+
+<h3 id="firebase의-약팔이-새로운-기능">Firebase의 <del>약팔이</del> 새로운 기능</h3>
+
+<p>과거의 Firebase는 모바일 게임용 백엔드로 활용하기에 문제가 있었다. 게임 클라이언트에 Firebase SDK를 활용해 비지니스 로직을 넣게된다. 운영중에 비지니스 로직에 문제가 발생하면 모바일 게임은 플랫폼 심사 시간이 있어 빠른 대처가 어렵다. 출시 후 운영중에 대처가 늦으면 사용자 감소와 함께 매출이 감소한다. 이런 부담은 QA로 해소될 수 있으나 소규모 게임 제작팀은 비용때문에 불가능하다.</p>
+
+<p>2017년 3월 Firebase에 node.js 환경으로 프로그래밍이 가능한 <code>Cloud Functions</code>이 추가되었다. 이 기능을 활용하면 비지니스 로직을 게임 클라이언트 외부로 옮길 수 있다. 또 Firebase에 <code>Realtime Database</code>외에도 <code>Cloud Firestore</code>란 데이터베이스가 추가되었다. 이제 거대한 파일 하나에 모든 데이터를 넣지 않아도 된다. 단, 아직까지 Firebase Unity SDK에서는 사용할 수 없다.</p>
+
+<blockquote>
+  <p>TODO: 큰 파일 하나와 파일철 이미지를 넣는다.</p>
+</blockquote>
+
+<h2 id="firebase-맛보기">Firebase 맛보기</h2>
+
+<p>앞서 소개한 기능을 다루기전에 Unity에서 Firebase를 얼마나 쉽게 사용할 수 있는지 체험해보자.</p>
+
+<h3 id="프로젝트-추가">프로젝트 추가</h3>
+
+<p>Firebase 프로젝트 추가에 앞서 Firebase를 사용하려면 google 계정이 필요하다.</p>
+
+<ul>
+  <li>google 계정으로 로그인 한다.</li>
+  <li><a href="https://console.firebase.google.com/">Firebase console</a>로 이동한다.</li>
+  <li>
+    <p><code>프로젝트 추가</code>를 클릭한다.</p>
+
+    <p><img src="/images/fb_01_01.png" alt="프로젝트 추가" width="30%" /></p>
+  </li>
+  <li>
+    <p><code>프로젝트 이름</code>을 입력하고 <code>국가/지역</code>을 선택한 뒤 <code>프로젝트 만들기</code>를 클릭한다.</p>
+
+    <p><img src="/images/fb_01_02.png" alt="프로젝트 추가" width="50%" /></p>
+  </li>
+</ul>
+
+<h3 id="프로젝트-설정">프로젝트 설정</h3>
+<p>Firebase를 클라이언트(Android, iOS, Web)에서 사용하려면 설정을 추가하면 된다.</p>
+
+<blockquote>
+  <p>여기서는 iOS로 설명하지만 Android라고 크게 다를건 없다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p><code>Project Overview</code> 메뉴 옆에 기어 모양 설정 버튼을 클릭하고 프로젝트 설정을 클릭한다.
+  <img src="/images/fb_01_03_1.png" alt="프로젝트 설정" width="50%" /></p>
+  </li>
+  <li>
+    <p>일반 탭에서 하단의 <code>iOS 앱에 Firebase 추가</code> 클릭한다.</p>
+
+    <p><img src="/images/fb_01_03_2.png" alt="iOS 추가" width="20%" /></p>
+  </li>
+  <li>
+    <p><code>iOS 번들 ID</code>를 입력하고 나머지 선택사항도 필요에 따라 입력한다.</p>
+
+    <p><img src="/images/fb_01_03_3.png" alt="입력" width="30%" /></p>
+  </li>
+  <li>
+    <p><code>GoogleService-Info.plist</code> 파일을 다운받고 계속 버튼을 눌러 등록 과정을 마친다.</p>
+  </li>
+</ul>
+
+<h3 id="firebase-unity-sdk-설치">Firebase Unity SDK 설치</h3>
+
+<ul>
+  <li><a href="https://firebase.google.com/docs/unity/setup?hl=ko">Firebase Unity SDK</a> 페이지로 이동 후 <code>SDK 다운로드</code> 클릭</li>
+  <li>
+    <p>Unity 클라이언트 실행 후 Assets - Import Package - Custom Package를 클릭</p>
+
+    <p><img src="/images/fb_01_04.png" alt="custom package 추가" width="30%" /></p>
+  </li>
+  <li>FirebaseDatabase.unitypackage를 선택하여 추가.</li>
+</ul>
+
+<blockquote>
+  <p>필요에 따라 다른 package도 추가하면 된다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Unity 프로젝트에 <code>GoogleService-Info.plist</code> 파일을 추가한다(어느 폴더여도 상관없다).</p>
+
+    <p><img src="/images/fb_01_05_1.png" alt="plist 파일 추가" width="30%" /></p>
+  </li>
+  <li>
+    <p><code>GoogleService-Info.plist</code>을 추가하면 팝업 메뉴가 나온다. Apply 버튼을 클릭하여 Bundle ID가 적용되도록 한다.</p>
+
+    <p><img src="/images/fb_01_05_2.png" alt="apply bundle id" width="30%" /></p>
+  </li>
+</ul>
+
+<h3 id="데이터-추가">데이터 추가</h3>
+
+<p>Firebase의 실시간 데이터베이스에 <code>users</code>란 노드를 생성하고 <code>nick_name</code>과 <code>locale</code>을 가진 데이터를 2개 추가하겠다.</p>
+
+<ul>
+  <li>
+    <p><code>Database</code>를 선택한 뒤 <code>Realtime Database</code> 혹은 실시간 데이터베이스를 선택한다.</p>
+
+    <p><img src="/images/fb_01_06_1.png" alt="database 선택" width="50%" /></p>
+  </li>
+  <li>
+    <p>root node에 마우스 오버하면 <code>+</code>와 <code>x</code> 버튼이 나온다. <code>+</code> 버튼을 클릭해서 아래처럼 데이터를 입력한다.</p>
+
+    <p><img src="/images/fb_01_06_2.png" alt="데이터 입력" width="50%" /></p>
+  </li>
+</ul>
+
+<h3 id="text-추가">Text 추가</h3>
+
+<p>Unity 클라이언트가 실행되면 users의 fox 데이터를 읽어서 nick_name을 화면에 출력할 것이다.</p>
+
+<p>그러려면 Text를 하나 추가해야하니 이제 Unity로 돌아가서 <code>test</code>란 Scene을 생성한다.</p>
+
+<blockquote>
+  <p>프로젝트 생성하면 기본 제공하는 Scene을 그대로 사용해도 무방하다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>GameObject - UI - Text를 선택하여 Text를 추가한다.</p>
+
+    <p><img src="/images/fb_01_07_1.png" alt="text 추가" width="50%" /></p>
+  </li>
+  <li>
+    <p>추가된 Text를 선택(Canvas 게임 오브젝트의 자식 게임 오브젝트로 생성됨)하고 Inspector에서 Pos X, Pos Y를 조절하여 화면 중앙에 위치시킨다.</p>
+
+    <p><img src="/images/fb_01_07_2.png" alt="중앙에 배치" width="50%" /></p>
+  </li>
+</ul>
+
+<h3 id="간단한-프로그래밍">간단한 프로그래밍</h3>
+
+<p>2개의 스크립트 파일을 추가할 것이다. 하나는 users의 데이터와 동일한 필드를 보유한 데이터 클래스. 나머지 하나는 실시간 데이터베이스의 데이터를 수신해서 Text에 출력하는 클래스이다.</p>
+
+<ul>
+  <li>
+    <p>Project에서 Assets를 선택한 뒤 마우스 오른쪽 버튼을 클릭하여 Create - C# Script 선택한 뒤 <code>gfb_test</code>로 입력한다.</p>
+
+    <p><img src="/images/fb_01_08_1.png" alt="script 추가" width="50%" /></p>
+  </li>
+  <li>
+    <p>같은 방법으로 <code>User</code>도 추가한다.</p>
+  </li>
+</ul>
+
+<p>추가된 <code>User</code> 스크립트를 더블 클릭하면 코드 에디터가 실행되어 프로그래밍할 수 있다.</p>
+
+<blockquote>
+  <p>강좌에서는 VS Code를 사용하도록 설정했다.</p>
+</blockquote>
+
+<p>코드 에디터에 User 내용이 나타나면 아래처럼 변경한다.</p>
+
+<pre><code class="language-c#">public class User {
+  public string nick_name;
+  public string locale;
+
+  public User() {
+  }
+
+  public User(string nickName, string locale) {
+    this.nick_name = nickName;
+    this.locale = locale;
+  }
+}
+</code></pre>
+
+<p>nick_name과 locale을 필드로 가지는 데이터 클래스이다.</p>
+
+<p>이제 User 클래스를 활용해서 데이터가 변경되면 변경된 데이터의 nick_name을 출력하도록 해보자.</p>
+
+<p>gfb_test 스크립트를 아래처럼 변경하자.</p>
+
+<pre><code class="language-c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Firebase;
+using Firebase.Database;
+using Firebase.Unity.Editor;
+
+public class gfb_test : MonoBehaviour
+{
+  public Text m_MyText;
+
+  void Start()
+  {
+    // Set this before calling into the realtime database.
+    FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://YOUR-FIREBASE-APP.firebaseio.com/");
+
+    // 사용자 로딩.
+    DatabaseReference userReference = FirebaseDatabase.DefaultInstance.GetReference("users");
+
+    // 하위 노드 변경 이벤트 처리하도록 등록.
+    userReference.ChildChanged += HandleChildChanged;
+  }
+
+  /** snapshot 데이터에서 닉네임을 추출하여 text로 출력한다. */
+  void PrintNickName(DataSnapshot snapshot) {
+    User convertUser = JsonUtility.FromJson&lt;User&gt;(snapshot.GetRawJsonValue());
+    m_MyText.text = string.Format("nick_name: {0}", convertUser.nick_name);
+  }
+
+  /** users의 하위 노드가 수정된 이벤트를 수신하여 처리 */
+  void HandleChildChanged(object sender, ChildChangedEventArgs args) {
+    if (args.DatabaseError != null) {
+      Debug.LogError(args.DatabaseError.Message);
+      return;
+    }
+    Debug.Log(string.Format("ChildChanged:{0} \n {1}", args.Snapshot, args.Snapshot.GetRawJsonValue()));
+    PrintNickName(args.Snapshot);
+  }
+}
+</code></pre>
+
+<p><code>Start</code> 메서드에서 users 노드를 참고하도록 설정한 뒤 하위 노드 변경이 발생하는 이벤트를 처리할 수 있도록 <code>HandleChildChanged</code>와 연결했다.</p>
+
+<p><code>HandleChildChanged</code> 메서드는 변경점이 발생하면 log 메시지를 출력하고 m_MyText에 <code>nick_name</code>을 출력한다.</p>
+
+<blockquote>
+  <p><code>YOUR-FIREBASE-APP</code> 부분은 자신의 Firebase 프로젝트 url을 넣어야한다.</p>
+</blockquote>
+
+<h3 id="스크립트-적용">스크립트 적용</h3>
+
+<p>Unity 프로젝트로 돌아가서 Main Camera 게임 오브젝트에 <code>gfb_test</code> 스크립트를 추가하고 text를 연결해보자.</p>
+
+<ul>
+  <li>
+    <p>Main Camera 게임 오브젝트를 선택하고 Proejct 탭에서 gfb_test를 선택하여 Main Camera 게임 오브젝트에 끌어다 놓는다.</p>
+  </li>
+  <li>
+    <p>My Text에 Text를 끌어다 놓는다.</p>
+
+    <p><img src="/images/fb_01_09_1.png" alt="스크립트 배치" width="50%" /></p>
+  </li>
+</ul>
+
+<h3 id="프로젝트-실행">프로젝트 실행</h3>
+
+<p>프로그래밍된 결과를 확인해보자.</p>
+
+<ul>
+  <li>
+    <p>Unity에서 <code>Play</code> 버튼을 클릭한다.</p>
+  </li>
+  <li>
+    <p>최초에는 <code>New Text</code>란 글자가 Game 탭에 출력된다.</p>
+  </li>
+  <li>
+    <p>Firebase 실시간 데이터베이스에서 <code>tororo</code>나 <code>fox</code>의 nick_name을 변경한다.</p>
+
+    <p><img src="/images/fb_01_10_1.png" alt="데이터 수정" width="50%" /></p>
+  </li>
+  <li>
+    <p>Unity의 Game 탭에 변경한 데이터가 출력된다.</p>
+
+    <p><img src="/images/fb_01_10_2.png" alt="데이터 수정 확인" width="30%" /></p>
+  </li>
+</ul>
+
+<h2 id="정리">정리</h2>
+
+<p>SDK를 추가하고, 짧은 메서드를 작성하여 데이터베이스의 저장된 정보를 읽어왔다. 이를 통해서 firebase가 간편한 서비스임을 느낄 수 있길 바란다.</p>
+
+      </article>
+      <hr>
+      <!-- 블로그_글노출 -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:728px;height:90px"
+          data-ad-client="ca-pub-4157849351218840"
+          data-ad-slot="7392519815"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+      ">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="http://totuworld.github.io/2017/12/27/firebaseandunity-01/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
+    $(document).ready(function() {
+
+      addLineNumber();
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Game Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHPwYJKoZIhvcNAQcEoIIHMDCCBywCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYA7mMGGIfnuJzwd1mNrRjL8COgRs1Wp1C+k3E7/FT/wb3qmQzBdnJShFmFjMqymqlmtbUBw5M5v/T5FR5wkxL4kxcCvWOhvgo1++e7RsUrDGWq2bsG3aOboMVNxJ6pBkABkhjI+CNQ1LCYb8SdpWwb3biVz1FYA3d033EtDofV/azELMAkGBSsOAwIaBQAwgbwGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIz9d3lH1wALWAgZgiOVVhCBYlzmQAze2GzchKRI6dfGh+QeF0ELQzTMg8xNLmgx6st19Un0vJA0jEbxraZu5fvScMx8GWFDZ/SzWRVaXs0elrfJvlVEjVctUpIb7uzHxmxs1mDLubMbJv7txBaCUxTFdaquGUqyzmbswFwM0Mmmld6WxpAdsDP5oMav42/jTy0FN6CTrx55rly9ZLze8hiEPjBKCCA4cwggODMIIC7KADAgECAgEAMA0GCSqGSIb3DQEBBQUAMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTAeFw0wNDAyMTMxMDEzMTVaFw0zNTAyMTMxMDEzMTVaMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwUdO3fxEzEtcnI7ZKZL412XvZPugoni7i7D7prCe0AtaHTc97CYgm7NsAtJyxNLixmhLV8pyIEaiHXWAh8fPKW+R017+EmXrr9EaquPmsVvTywAAE1PMNOKqo2kl4Gxiz9zZqIajOm1fZGWcGS0f5JQ2kBqNbvbg2/Za+GJ/qwUCAwEAAaOB7jCB6zAdBgNVHQ4EFgQUlp98u8ZvF71ZP1LXChvsENZklGswgbsGA1UdIwSBszCBsIAUlp98u8ZvF71ZP1LXChvsENZklGuhgZSkgZEwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAgV86VpqAWuXvX6Oro4qJ1tYVIT5DgWpE692Ag422H7yRIr/9j/iKG4Thia/Oflx4TdL+IFJBAyPK9v6zZNZtBgPBynXb048hsP16l2vi0k5Q2JKiPDsEfBhGI+HnxLXEaUWAcVfCsQFvd2A1sxRr67ip5y2wwBelUecP3AjJ+YcxggGaMIIBlgIBATCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE3MDIyMDIxMjkxMVowIwYJKoZIhvcNAQkEMRYEFBblKHO11Brzb3LSZgN1Zdtb4fqcMA0GCSqGSIb3DQEBAQUABIGAQ67QBmEwgOYzcZl49cEDLoGjQ3Kqt0UvW7Tli1i0vQfHWk5MEsQHjX+v+m9qyDvCWLZ/yX5qt7lzhaeNQdzdbAk4DaZupBmxDrD9LjCqw8jV8z7J/JkTmwAoL7B8JJzDcOwUhL9EM15dh5KlOrjRJs0G128oVGN3FJTLW6eUa5I=-----END PKCS7-----
+          ">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
