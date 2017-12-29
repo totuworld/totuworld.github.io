@@ -5,9 +5,245 @@
     <description>Game Developer</description>
     <link />http://totuworld.github.io/&lt;/link&gt;
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Mar 2017 07:18:56 +0900</pubDate>
-    <lastBuildDate>Thu, 09 Mar 2017 07:18:56 +0900</lastBuildDate>
+    <pubDate>Fri, 23 Mar 2018 07:01:07 +0900</pubDate>
+    <lastBuildDate>Fri, 23 Mar 2018 07:01:07 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>3분 게임 서버(Firebase) - Auth 익명 로그인</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#고백&quot; id=&quot;markdown-toc-고백&quot;&gt;고백&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#firebase의-약팔이-새로운-기능&quot; id=&quot;markdown-toc-firebase의-약팔이-새로운-기능&quot;&gt;Firebase의 &lt;del&gt;약팔이&lt;/del&gt; 새로운 기능&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#사용자-로그인-흐름&quot; id=&quot;markdown-toc-사용자-로그인-흐름&quot;&gt;사용자 로그인 흐름&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#준비-과정&quot; id=&quot;markdown-toc-준비-과정&quot;&gt;준비 과정&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#프로젝트-추가&quot; id=&quot;markdown-toc-프로젝트-추가&quot;&gt;프로젝트 추가&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#프로젝트-설정&quot; id=&quot;markdown-toc-프로젝트-설정&quot;&gt;프로젝트 설정&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#익명-로그인&quot; id=&quot;markdown-toc-익명-로그인&quot;&gt;익명 로그인&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#프로그래밍-준비&quot; id=&quot;markdown-toc-프로그래밍-준비&quot;&gt;프로그래밍 준비&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#익명-로그인-구현&quot; id=&quot;markdown-toc-익명-로그인-구현&quot;&gt;익명 로그인 구현&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#디버깅&quot; id=&quot;markdown-toc-디버깅&quot;&gt;디버깅&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#마무리&quot; id=&quot;markdown-toc-마무리&quot;&gt;마무리&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;h3 id=&quot;고백&quot;&gt;고백&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;이세계에 진입한 서버 개발&lt;/a&gt;을 시작하고 1년이 지났다. 그 동안 이직을 했고 바쁜 시간을 보냈다는 핑계로 업데이트 없는 9개월을 보냈다.&lt;/p&gt;
+
+&lt;p&gt;놀기만 했으면 좋으련만 6월부터 &lt;code&gt;이세계에 진입한 서버 개발&lt;/code&gt;을 책으로 출판할 생각으로 작업중이었는데 최근 절필했다. 2가지 이유가 있다. 하나는 오래된 코드라서 봐줄 수 없었다(이건 내 실력이…). 다른 하나는 게임 클라이언트 프로그래머만 있는 소규모 게임 개발팀에서 node.js와 관계형 데이터베이스를 공부해서 게임용 웹 서버를 만들 수 있을까하는 의문이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;게임 개발할 시간도 없는데 서버는 젠장!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Wendy를 활용하는 게임 클라이언트 프로그래머가 인프라 공부에 시간 보낼까봐 PaaS(Platform as a Service)를 사용하도록 유도했지만 충분한 대답이 아니었다. 이보다 더 낮은 진입이 가능해야 순수 클라이언트 프로그래머가 공부할 수 있을 듯 했다. 그렇다면 좋은 서비스는 Parse나 Firebase같은 BaaS(Backend as a Service)다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Facebook이 인수하여 서비스하던 Parse는 서비스가 종료되었다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;firebase의-약팔이-새로운-기능&quot;&gt;Firebase의 &lt;del&gt;약팔이&lt;/del&gt; 새로운 기능&lt;/h3&gt;
+
+&lt;p&gt;과거의 Firebase는 모바일 게임용 백엔드로 활용하기에 문제가 있었다. 게임 클라이언트에 Firebase SDK를 활용해 비지니스 로직을 넣게된다. 운영중에 비지니스 로직에 문제가 발생하면 모바일 게임은 플랫폼 심사 시간이 있어 빠른 대처가 어렵다. 출시 후 운영중에 대처가 늦으면 사용자 감소와 함께 매출이 감소한다. 이런 부담은 QA로 해소될 수 있으나 소규모 게임 제작팀은 비용때문에 불가능하다.&lt;/p&gt;
+
+&lt;p&gt;2017년 3월 Firebase에 node.js 환경으로 프로그래밍이 가능한 &lt;code&gt;Cloud Functions&lt;/code&gt;이 추가되었다. 이 기능을 활용하면 비지니스 로직을 게임 클라이언트 외부로 옮길 수 있다. 또 Firebase에 &lt;code&gt;Realtime Database&lt;/code&gt;외에도 &lt;code&gt;Cloud Firestore&lt;/code&gt;란 데이터베이스가 추가되었다. 이제 거대한 파일 하나에 모든 데이터를 넣지 않아도 된다. 단, 아직까지 Firebase Unity SDK에서는 사용할 수 없다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MS에서도 &lt;a href=&quot;http://Playfab.com&quot;&gt;Playfab&lt;/a&gt;을 인수하여 Google의 Firebase같은 서비스를 제공할 예정이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;새롭게 연재하는 글에서는 Firebase를 이용해서 게임 서버를 사용하도록 권장한다. 특히 클라이언트 프로그래머가 보유한 팀이라면 더더욱 이 방법을 추천한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;처음부터 c++로 서버 프로그래밍하는 책 사지 마시라. 어느정도 필요가 차올랐을 때 아주 간단한 것부터 시작하길 권한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;사용자-로그인-흐름&quot;&gt;사용자 로그인 흐름&lt;/h2&gt;
+&lt;p&gt;서론이 길었다. 이번에 진행할 것은 익명 로그인이다. 먼저 사용자가 게임을 시작했을 때 어떤 단계를 걸치는지 상상해보자.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;타이틀 화면
+    &lt;ul&gt;
+      &lt;li&gt;게스트/페북 로그인 클릭(1회면 진행됨)&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_01.png&quot; alt=&quot;타이틀 화면&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;로그인 절차&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_02.png&quot; alt=&quot;로그인&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;게임 플레이&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_03.png&quot; alt=&quot;게임 플레이&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 과정을 거치는 이유는 제작자 혹은 운영자가 통제하는 시스템에 등록된 사용자인지 확인하기 위해서이다. 그럼 가장 간편한 로그인 방식인 익명 로그인 - 혹은 게스트 로그인 - 을 Firebase 인증(Authentication)을 활용해서 제작해보자.&lt;/p&gt;
+
+&lt;p&gt;가장 간편한 로그인 방식인 익명 로그인을 알아보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;준비-과정&quot;&gt;준비 과정&lt;/h2&gt;
+&lt;p&gt;Unity 클라이언트에서 Firebase 인증을 활용해서 익명 로그인을 구현하려면 몇가지 선행 과정이 필요하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;프로젝트-추가&quot;&gt;프로젝트 추가&lt;/h3&gt;
+
+&lt;p&gt;Firebase 프로젝트 추가에 앞서 Firebase를 사용하려면 google 계정이 필요하다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;google 계정으로 로그인 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://console.firebase.google.com/&quot;&gt;Firebase console&lt;/a&gt;로 이동한다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;프로젝트 추가&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_01_01.png&quot; alt=&quot;프로젝트 추가&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;프로젝트 이름&lt;/code&gt;을 입력하고 &lt;code&gt;국가/지역&lt;/code&gt;을 선택한 뒤 &lt;code&gt;프로젝트 만들기&lt;/code&gt;를 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_01_02.png&quot; alt=&quot;프로젝트 추가&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프로젝트-설정&quot;&gt;프로젝트 설정&lt;/h3&gt;
+&lt;p&gt;Firebase를 클라이언트(Android, iOS, Web)에서 사용하려면 설정을 추가하면 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;여기서는 iOS로 설명하지만 Android라고 크게 다를건 없다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;Project Overview&lt;/code&gt; 메뉴 옆에 기어 모양 설정 버튼을 클릭하고 프로젝트 설정을 클릭한다.
+  &lt;img src=&quot;/images/fb_01_03_1.png&quot; alt=&quot;프로젝트 설정&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;일반 탭에서 하단의 &lt;code&gt;iOS 앱에 Firebase 추가&lt;/code&gt; 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_01_03_2.png&quot; alt=&quot;iOS 추가&quot; width=&quot;20%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;iOS 번들 ID&lt;/code&gt;를 입력하고 나머지 선택사항도 필요에 따라 입력한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_01_03_3.png&quot; alt=&quot;입력&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;GoogleService-Info.plist&lt;/code&gt; 파일을 다운받고 계속 버튼을 눌러 등록 과정을 마친다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;익명-로그인&quot;&gt;익명 로그인&lt;/h2&gt;
+&lt;p&gt;익명 로그인이 요구하는 사항은 간단하다. 여러가지 정보를 취합해서 게임 내에서 사용자를 고유하게 인식할 수 있으면 된다. 다음 절차로 진행된다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;사용자) 익명 로그인 버튼 클릭&lt;/li&gt;
+  &lt;li&gt;게임 클라이언트) Firebase 인증 SDK에 익명 로그인 요청&lt;/li&gt;
+  &lt;li&gt;Firebase) 여러가지 정보 확인 후 고유한 사용자 ID 반환&lt;/li&gt;
+  &lt;li&gt;게임 클라이언트) 고유한 사용자 ID 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프로그래밍-준비&quot;&gt;프로그래밍 준비&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;먼저 간단한 UI를 추가해놓은 아래 Unity Project를 다운 받는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/firebase_toturial/archive/base.zip&quot;&gt;샘플 프로젝트&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Firebase SDK를 다운받아서 Firebase Auth SDK를 설치한다. 그리고 앞서 Firebase 프로젝트에서 다운받은 &lt;code&gt;GoogleService-Info.plist&lt;/code&gt;나 &lt;code&gt;google-services.json&lt;/code&gt;을 추가한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Firebase의 Authentication 메뉴에서 &lt;code&gt;로그인 방법&lt;/code&gt; 탭을 클릭한 뒤 &lt;code&gt;익명&lt;/code&gt; 사용 설정한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_02_01.png&quot; alt=&quot;Authentication&quot; width=&quot;30%&quot; /&gt;
+  &lt;img src=&quot;/images/fb_02_02_02.png&quot; alt=&quot;익명 사용 설정&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;익명-로그인-구현&quot;&gt;익명 로그인 구현&lt;/h3&gt;
+&lt;p&gt;Firebase 인증을 활용할 때 초기화 후 익명 로그인 요청을 해야한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;unity 프로젝트의 프로젝트 탭에서 scripts 폴더를 만들고 &lt;code&gt;gfb_auth_test&lt;/code&gt;란 이름의 새로운 c# script 파일을 생성한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이름은 달라도 무방하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;추가한 스크립트를 편집할 수 있게 더블 클릭한 후 아래 코드를 복사하여 붙여넣는다.
+    &lt;ul&gt;
+      &lt;li&gt;4~7번: using으로 필요한 네임스페이스 형식 사용 허용&lt;/li&gt;
+      &lt;li&gt;11~18번: 필요한 필드 추가&lt;/li&gt;
+      &lt;li&gt;23~49번: &lt;code&gt;auth&lt;/code&gt;필드를 추가하고 상태변화 시 로그가 남도록 AuthStateChanged 메서드 연결.&lt;/li&gt;
+      &lt;li&gt;52~69번: 익명 로그인을 요청하는 메서드&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com//785a451847aebd36a548061a47cf261a.js?file=gfb_auth_test.cs&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;unity 프로젝트로 돌아가서 &lt;code&gt;test&lt;/code&gt;씬의 &lt;code&gt;Main Camera&lt;/code&gt; 게임 오브젝트에 &lt;code&gt;gfb_auth_test&lt;/code&gt; 스크립트를 추가한다. Canvas - Scroll View - ViewPort - Content 게임 오브젝트를 &lt;code&gt;gfb_auth_test&lt;/code&gt;의 Txt Print에 연결한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_03.png&quot; alt=&quot;게임 오브젝트 연결&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;guest login 버튼을 클릭했을 때 gfb_auth_test의 &lt;code&gt;anoymousLogin&lt;/code&gt; 메서드가 실행되어야 익명 로그인을 시도할 수 있다.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Canvas - Button 게임 오브젝트의 Button 컴포넌트를 찾는다.&lt;/li&gt;
+      &lt;li&gt;On Click의 + 버튼을 클릭한 뒤 Main Camera 게임 오브젝트를 연결한다.&lt;/li&gt;
+      &lt;li&gt;gfb_auth_test 스크립트의 anoymousLogin을 선택한다.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_04.png&quot; alt=&quot;버튼 연결&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;디버깅&quot;&gt;디버깅&lt;/h3&gt;
+
+&lt;p&gt;unity 프로젝트에서 &lt;code&gt;play&lt;/code&gt; 버튼을 클릭하여 작동 시킨 뒤 화면 중앙에 나타나는 &lt;code&gt;guest login&lt;/code&gt; 버튼을 클릭한다. 아래 스크롤뷰에 즉시 &lt;code&gt;Sign in...&lt;/code&gt; 메시지가 출력된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;모바일 앱으로 빌드해서 확인하려면 앞서 다운받은 &lt;code&gt;GoogleService-Info.plist&lt;/code&gt;나 &lt;code&gt;google-services.json&lt;/code&gt; 파일을 반드시 프로젝트에 추가해야한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;모바일 앱으로 빌드해서 해당 과정을 진행하면 Firebase console에 아래처럼 익명 사용자가 등록되는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fb_02_05.png&quot; alt=&quot;익명 사용자 확인&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;마무리&quot;&gt;마무리&lt;/h2&gt;
+
+&lt;p&gt;Firebase 인증을 활용하여 익명 로그인을 만들어봤다. 이를 바탕으로 다음에는 소셜 로그인 기능을 추가해보자.&lt;/p&gt;
+</description>
+            <pubDate>Thu, 22 Mar 2018 09:00:00 +0900</pubDate>
+            <link />http://totuworld.github.io/2018/03/22/firebaseandunity-01/&lt;/link&gt;
+            <guid isPermaLink="true">http://totuworld.github.io/2018/03/22/firebaseandunity-01/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>firebase</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
     
       
         <item>
@@ -4909,472 +5145,6 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
             
             
             <category>wendy</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>이세계에 진입한 서버 개발 - 2</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#프로그램-설치&quot; id=&quot;markdown-toc-프로그램-설치&quot;&gt;프로그램 설치&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#모듈-설치&quot; id=&quot;markdown-toc-모듈-설치&quot;&gt;모듈 설치&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#패키지-매니저-설치&quot; id=&quot;markdown-toc-패키지-매니저-설치&quot;&gt;패키지 매니저 설치&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#진짜-모듈-설치&quot; id=&quot;markdown-toc-진짜-모듈-설치&quot;&gt;진짜! 모듈 설치&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#데이터베이스&quot; id=&quot;markdown-toc-데이터베이스&quot;&gt;데이터베이스&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#관계형-데이터베이스&quot; id=&quot;markdown-toc-관계형-데이터베이스&quot;&gt;관계형 데이터베이스&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#데이터-베이스-활용하기&quot; id=&quot;markdown-toc-데이터-베이스-활용하기&quot;&gt;데이터 베이스 활용하기&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-생성&quot; id=&quot;markdown-toc-sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-구조&quot; id=&quot;markdown-toc-sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sql-데이터베이스-방화벽-설정&quot; id=&quot;markdown-toc-sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#잠깐-정리&quot; id=&quot;markdown-toc-잠깐-정리&quot;&gt;잠깐 정리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#폴더-추가&quot; id=&quot;markdown-toc-폴더-추가&quot;&gt;폴더 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#orm-설정&quot; id=&quot;markdown-toc-orm-설정&quot;&gt;ORM 설정&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#데이터베이스-접속-환경-추가&quot; id=&quot;markdown-toc-데이터베이스-접속-환경-추가&quot;&gt;데이터베이스 접속 환경 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#modelsindexjs-파일-추가&quot; id=&quot;markdown-toc-modelsindexjs-파일-추가&quot;&gt;models/index.js 파일 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#serverjs-파일-수정&quot; id=&quot;markdown-toc-serverjs-파일-수정&quot;&gt;server.js 파일 수정&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vs-code-개발-환경-설정&quot; id=&quot;markdown-toc-vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#azure-웹앱-환경-변수-추가&quot; id=&quot;markdown-toc-azure-웹앱-환경-변수-추가&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺는-말&quot; id=&quot;markdown-toc-맺는-말&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/w8OZhTZy3d8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-&lt;p&gt;첫 시간에 맛보기로 Azure 웹앱을 생성하고 배포까지 했다.
-오늘은 소스코드를 작성하기 앞서 필요한 각종 설치, 설정을 한다.&lt;/p&gt;
-
-&lt;p&gt;다음 시간부터 필요한 SQL 데이터베이스를 생성하고 서버와 연결하는 작업까지 모두 진행한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;노잼 시간은 계속된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;프로그램-설치&quot;&gt;프로그램 설치&lt;/h2&gt;
-&lt;p&gt;본격적인 프로그래밍에 앞서 사용할 프로그램과 에디터를 설치해야한다.&lt;/p&gt;
-
-&lt;p&gt;아래 링크에서 각각 필요한 프로그램을 다운받아서 설치한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://nodejs.org/ko/download/&quot;&gt;Node.js v6.x&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com&quot;&gt;VisualStudio Code&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;VisualStudio Code는 이하에서 vs code로 표현한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;모듈-설치&quot;&gt;모듈 설치&lt;/h3&gt;
-&lt;p&gt;지난 시간에 소스코드를 배포할 때 많은 모듈이 Azure 웹앱에 추가되는 것이 기억나는가?&lt;/p&gt;
-
-&lt;p&gt;이는 로컬 개발 환경에서도 반드시 필요한 단계이나 지난 시간에는 체험을 위주로 진행했기때문에 건너뛰었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;yarn&lt;/code&gt;이란 패키지 매니저를 통해 설치를 진행한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;패키지-매니저-설치&quot;&gt;패키지 매니저 설치&lt;/h4&gt;
-&lt;p&gt;필요한 모듈을 설치하기 앞서 패키지 매니저를 설치해야한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;터미널을 실행한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;windows는 &lt;code&gt;cmd&lt;/code&gt; 혹은 &lt;code&gt;명령 프롬프터&lt;/code&gt;를 실행하면 된다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 명령으로 yarn을 설치한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;터미널과 관련된 명령을 나타날 때 &lt;code&gt;$&lt;/code&gt; 표시는 터미널에서 입력한다는 뜻이다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;pre&gt;&lt;code&gt; $ npm install yarn -g
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;진짜-모듈-설치&quot;&gt;진짜! 모듈 설치&lt;/h4&gt;
-&lt;p&gt;yarn이 설치되었으니 프로젝트에 필요한 모듈을 설치해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;터미널을 통해 지난 시간에 다운받은 소스코드가 있는 폴더로 이동한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;windows는 파일 탐색기로 해당 폴더를 선택한 뒤 &lt;code&gt;shift + 마우스 우클릭&lt;/code&gt;하여 &lt;code&gt;여기서 명령창 열기&lt;/code&gt;를 실행하면 편리하다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 명령을 입력하여 모듈을 설치한다.&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt; $ yarn install
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;데이터베이스&quot;&gt;데이터베이스&lt;/h2&gt;
-&lt;p&gt;인터넷 상에서 해당 서비스가 어떤 정보를 기반으로 브라우저에 결과를 출력할 때 정보는 어디에 어떻게 저장될까?
-예전에 웹 페이지를 만들어봤다면 정보도 직접 기재하는 경우가 있었지만 같은 형식의 페이지를 데이터 변경만 변경해서 적용하기에는 맞지 않다.&lt;/p&gt;
-
-&lt;p&gt;이런 문제를 해결할 때 데이터베이스에 정보를 저장하여 사용하는 것이 개발에 용이하다.&lt;/p&gt;
-
-&lt;p&gt;이제부터 어떻게 정보를 저장하고 사용하는지 알아보자.&lt;/p&gt;
-
-&lt;h3 id=&quot;관계형-데이터베이스&quot;&gt;관계형 데이터베이스&lt;/h3&gt;
-&lt;p&gt;데이터베이스는 데이터를 모아놓는 것이다.
-어떤 형식으로 데이터를 모을지 구상한 것 중 우리는 &lt;code&gt;관계형 데이터베이스&lt;/code&gt;를 사용할 것이다.&lt;/p&gt;
-
-&lt;p&gt;그럼 관계형 데이터베이스는 무엇일까?&lt;/p&gt;
-
-&lt;p&gt;간단히 설명하면 관계형 데이터베이스는 &lt;code&gt;엑셀&lt;/code&gt; 화면을 떠올리면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_01.png&quot; alt=&quot;관계형데이터베이스&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;행&lt;/code&gt;과 &lt;code&gt;열&lt;/code&gt;로 구분된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;데이터-베이스-활용하기&quot;&gt;데이터 베이스 활용하기&lt;/h2&gt;
-&lt;p&gt;Azure에서 활용가능한 관계형 데이터베이스는 다양하지만 우리는 SQL Database를 활용하도록한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;sql-데이터베이스-생성&quot;&gt;SQL 데이터베이스 생성&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;새로 만들기&lt;/code&gt; 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_a01.png&quot; alt=&quot;새로만들기&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;SQL Database&lt;/code&gt;를 검색한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_c01.png&quot; alt=&quot;검색&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;SQL Database&lt;/code&gt;를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_c02.png&quot; alt=&quot;선택&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;데이터베이스 이름&lt;/code&gt;을 입력한다. 리소스그룹은 웹앱과 같은 것을 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_02.jpg&quot; alt=&quot;DB명입력&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;SQL 데이터베이스 서버를 생성 한 경우가 아니라면 전 단계 메뉴에서 &lt;code&gt;서버&lt;/code&gt;를 클릭하여 &lt;code&gt;새 서버 만들기&lt;/code&gt;를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;이미 서버를 생성했다면 선택하고 8번 단계를 진행한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_c04.png&quot; alt=&quot;서버&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;서버 이름&lt;/code&gt;, &lt;code&gt;서버 관리자 로그인&lt;/code&gt;, &lt;code&gt;암호&lt;/code&gt;를 입력하고 &lt;code&gt;선택&lt;/code&gt;을 클릭한다.
-    &lt;blockquote&gt;
-      &lt;p&gt;관리자 로그인 아이디와 암호는 잘 기억하자. 곧 사용한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_c05.png&quot; alt=&quot;새서버&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;생성된 서버를 선택하고 &lt;code&gt;만들기&lt;/code&gt;를 클릭하여 SQL 데이터베이스를 생성한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_03.jpg&quot; alt=&quot;DB명입력&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;배포가 완료되면 SQL 데이터베이스를 활용할 수 있게 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;sql-데이터베이스-구조&quot;&gt;SQL 데이터베이스 구조&lt;/h3&gt;
-
-&lt;p&gt;SQL 데이터베이스 생성과정을 보면 &lt;code&gt;서버&lt;/code&gt;를 만들고 &lt;code&gt;데이터베이스 이름&lt;/code&gt;을 입력하는 것을 볼 수 있다. 1개의 서버에 복수의 데이터베이스가 존재할 수 있기때문에 이런 과정을 거치는 것이다. 다시 말해 1개 서버에 각 서비스별로 데이터베이스를 등록하여 사용할 수 도 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;쉽게 설명하면 1개의 서류함에 다수의 서류철이 존재할 수 있는 것과 같다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/document_ cabinet.png&quot; alt=&quot;서류함서류철&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 확장하여 설명하면 데이터베이스가 서류철이라면 하나의 문서는 테이블로 볼 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;sql-데이터베이스-방화벽-설정&quot;&gt;SQL 데이터베이스 방화벽 설정&lt;/h3&gt;
-
-&lt;p&gt;Azure SQL 데이터베이스는 방화벽이 기본 설정되어있어 외부 접근을 차단한다.&lt;/p&gt;
-
-&lt;p&gt;로컬 개발 환경(A.K.A. 내 컴퓨터)에서 테스트하기 위해 반드시 이 과정을 진행해야한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털로 접속&lt;/a&gt;로 접속해서 생성한 SQL 데이터베이스를 클릭하면 상단에 &lt;code&gt;서버 방화벽 설정&lt;/code&gt;이란 메뉴가 보인다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/webapp_c10.png&quot; alt=&quot;서버방화벽&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;접속한 환경의 IP를 확인한 뒤 IP를 등록하고 &lt;code&gt;저장&lt;/code&gt; 클릭하여 완료한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_04.jpg&quot; alt=&quot;IP등록&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;잠깐-정리&quot;&gt;잠깐 정리&lt;/h2&gt;
-&lt;p&gt;지금까지 무엇을 했는지 간단히 정리해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_d01.png&quot; alt=&quot;웹앱과 SQL데이터베이스&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;서버 로직을 수행하는 웹앱을 지난 시간에 생성했다. 그리고 이번 시간에 데이터를 저장할 SQL데이터베이스를 생성했다.&lt;/p&gt;
-
-&lt;p&gt;이제는 웹앱과 SQL데이터베이스를 연결한 뒤 사용자의 요청을 처리하면 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;폴더-추가&quot;&gt;폴더 추가&lt;/h2&gt;
-&lt;p&gt;프로그래밍을 시작하기 전에 필요한 폴더를 몇개 생성하도록 하겠다. 지난 시간에 압축을 해제한 소스코드를 vs code로 열어보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;vs code 실행하고 &lt;code&gt;file&lt;/code&gt; - &lt;code&gt;open&lt;/code&gt; 선택해서 압축 해제한 폴더를 선택하면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;View Bar&lt;/code&gt;에서 &lt;code&gt;Explorer&lt;/code&gt;를 선택한다.
-    &lt;blockquote&gt;
-      &lt;p&gt;기본으로 선택되어있으니 아래 그림과 같으면 별도의 클릭은 필요없다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;빈 공간을 클릭한 뒤 &lt;code&gt;New Folder&lt;/code&gt;버튼을 클릭하여 폴더를 생성한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;config&lt;/code&gt;라고 입력한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy02_05.jpg&quot; alt=&quot;폴더생성&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 과정을 반복해서 &lt;code&gt;models&lt;/code&gt;, &lt;code&gt;utils&lt;/code&gt; 폴더를 추가한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;orm-설정&quot;&gt;ORM 설정&lt;/h2&gt;
-&lt;p&gt;관계형 데이터베이스는 SQL로 데이터를 관리할 수 있다. 그런데 이게 또 새로운 문법을 배우는 셈이 되고 데이터를 가공해서 프로그래밍할 때 불편하다.&lt;/p&gt;
-
-&lt;p&gt;이런 단점을 극복하기 위해 ORM(Object-relational mapping)을 사용한다.&lt;/p&gt;
-
-&lt;p&gt;ORM에게 데이터 가공을 부탁하면 SQL로 번역해서 우리가 지시한 일을 처리해준다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;굿 보이&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;데이터베이스-접속-환경-추가&quot;&gt;데이터베이스 접속 환경 추가&lt;/h3&gt;
-&lt;p&gt;서버가 데이터베이스에게 무슨 일을 시키려면 데이터베이스가 어디에 있고 어떻게 접근할지 알려줘야한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이를테면 구글 지메일에 접속하려면 gmail.com을 알아야하고 &lt;code&gt;아이디&lt;/code&gt;와 &lt;code&gt;비밀번호&lt;/code&gt;를 입력하는 것과 같은 절차다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code에서 &lt;code&gt;config&lt;/code&gt;폴더를 선택하고 &lt;code&gt;New File&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;config.json&lt;/code&gt;이라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_06.jpg&quot; alt=&quot;config.json생성&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 소스코드를 입력한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=config.json&quot;&gt; &lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2, 13번 줄 : production과 development로 개발 환경을 분리했다. Azure 웹앱은 기본이 &lt;code&gt;production&lt;/code&gt;환경이다.&lt;/li&gt;
-  &lt;li&gt;3 번 줄 : 데이터베이스 서버 주소지를 입력하면 된다. 앞서 생성한 SQL 데이터베이스 주소가 여기에 입력된다.&lt;/li&gt;
-  &lt;li&gt;4 번 줄 : 데이터베이스 서버 주소지에 접속할 때 사용되는 포트번호이다.&lt;/li&gt;
-  &lt;li&gt;5 번 줄 : ORM이 접속할 서버가 어떤 형태(MS SQL, MySQL, MariaDB 등)인지 인식시킨다.&lt;/li&gt;
-  &lt;li&gt;6, 7 번 줄 : 데이터베이스에 로그인할 때 사용되는 아이디와 비밀번호. 아래에서도 설명하겠지만 &lt;code&gt;절대&lt;/code&gt;로 공개된 레포지토리에 이게 입력된 상태로 배포하면 안된다.&lt;/li&gt;
-  &lt;li&gt;8 번 줄 : ORM 설정에 해당하는 부분.&lt;/li&gt;
-  &lt;li&gt;10 번 줄 : 접속할 데이터베이스를 명시하는 부분이다. 반드시 앞서 생성한 &lt;code&gt;데이터베이스 명&lt;/code&gt;을 입력해야한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;modelsindexjs-파일-추가&quot;&gt;models/index.js 파일 추가&lt;/h3&gt;
-
-&lt;p&gt;우리가 사용하는 ORM은 &lt;code&gt;sequelize.js&lt;/code&gt;이다. 이 ORM이 데이터베이스에 각 테이블을 한번에 로딩할 수 있도록 &lt;code&gt;models&lt;/code&gt;폴더에 &lt;code&gt;index.js&lt;/code&gt;파일을 추가하도록 하겠다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code에서 &lt;code&gt;models&lt;/code&gt;폴더를 선택하고 &lt;code&gt;New File&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;파일을 생성할 때 어느 폴더를 선택하고 있는지에 따라 파일 위치가 변경되니 주의하자.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;index.js&lt;/code&gt;라고 파일명을 입력한 뒤 엔터 입력하면 파일이 생성된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 소스코드를 입력한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=index.js&quot;&gt; &lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;8, 9번 줄 : &lt;code&gt;NODE_ENV&lt;/code&gt;란 환경변수로 어떤 환경에서 실행하는지 읽어서 필요한 설정을 로드한다.&lt;/li&gt;
-  &lt;li&gt;13, 14번 줄 : 노출되면 보안에 민감한 username, password를 환경변수로 빼내서 소스코드에 담지 않아도 되도록 조치한 것이다. 이 조치를 통해 아래에서 &lt;code&gt;dbUsername&lt;/code&gt;, &lt;code&gt;dbPassword&lt;/code&gt; 환경변수 설정하는 것을 볼 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;코드가 매우 길지만 가볍게 설명하자면 &lt;code&gt;models&lt;/code&gt;폴더 안의 모든 파일을 읽어서 등록한다고 할 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;serverjs-파일-수정&quot;&gt;server.js 파일 수정&lt;/h3&gt;
-&lt;p&gt;우리가 만드는 소스코드는 &lt;code&gt;server.js&lt;/code&gt;파일을 통해서 실행된다. 최초 동작 시 바로 데이터베이스에 연결되도록 코드를 수정해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code에서 &lt;code&gt;server.js&lt;/code&gt;파일을 선택한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;server.js에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;     var http = require(&#39;http&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;추가할 코드&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server1.js&quot;&gt; &lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;server.js에서 아래 내용을 찾아서 아래 코드로 대체한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;     server.listen(port);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;대체할 코드&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;script src=&quot;https://gist.github.com//4a5414012ac7a4d39e4ca911fa9d052f.js?file=server2.js&quot;&gt; &lt;/script&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;앞서 설명한 것처럼 서버가 실행되면 데이터베이스와 연결을 시도하고 완료 메시지를 출력하게 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;vs-code-개발-환경-설정&quot;&gt;vs code 개발 환경 설정&lt;/h2&gt;
-&lt;p&gt;지난 시간에 Azure 웹앱으로 소스코드를 배포해봤으니 알겠지만 배포 시간이 결코 짧지 않다. 기능 하나 만들고 테스트하려고 매번 배포하며 너무 불편하다.&lt;/p&gt;
-
-&lt;p&gt;그러니 개발 중에 바로 기능을 테스트해볼 수 있도록 vs code 개발 환경을 설정해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code의 &lt;code&gt;View Bar&lt;/code&gt;에서 &lt;code&gt;Debug&lt;/code&gt;를 선택한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Open launch.json&lt;/code&gt;버튼을 클릭 한 뒤 &lt;code&gt;Node.js&lt;/code&gt; 환경을 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_07.jpg&quot; alt=&quot;Node.js설정&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래처럼 &lt;code&gt;configurations&lt;/code&gt; 노드 부분에 &lt;code&gt;cwd&lt;/code&gt;노드 아래에 환경 변수를 추가한다. 반드시 &lt;code&gt;cwd&lt;/code&gt; 부분에 쉼표(,)를 추가해야한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;찾아야하는 내용&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code&gt;     &quot;cwd&quot;: &quot;${workspaceRoot}&quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;변경할 코드&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;&lt;code&gt;dbUsername&lt;/code&gt;과 &lt;code&gt;dbPassword&lt;/code&gt;는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;pre&gt;&lt;code&gt;    &quot;env&quot;: {
-        &quot;NODE_ENV&quot;: &quot;development&quot;,
-        &quot;DEBUG&quot;:&quot;Wendy:server:*&quot;,
-        &quot;dbUsername&quot;:&quot;username&quot;,
-        &quot;dbPassword&quot;:&quot;password&quot;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;p&gt;위 변경할 코드 중에서 &lt;code&gt;NODE_ENV&lt;/code&gt;는 &lt;code&gt;development&lt;/code&gt;환경이란 것을 알려주기 위한 것이고 &lt;code&gt;DEBUG&lt;/code&gt;는 실행 중에 나오는 로그를 확인하기 위해 추가한 것이다(필수는 아니다).&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;azure-웹앱-환경-변수-추가&quot;&gt;Azure 웹앱 환경 변수 추가&lt;/h2&gt;
-&lt;p&gt;앞서 알아본 과정은 로컬 개발 환경에서 데이터베이스에 접속하기 위해 환경 변수를 추가하는 과정이었다.&lt;/p&gt;
-
-&lt;p&gt;실제로 서버가 동작할 Azure 웹앱에서는 이런 처리를 어떻게 해야할까?&lt;/p&gt;
-
-&lt;p&gt;여기서는 데이터베이스와 관계된 환경 변수 2개 - dbUsername, dbPassword - 를 추가하는 과정을 살펴보겠다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure 포털(https://portal.azure.com)로 접속&lt;/a&gt;한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;생성한 웹앱을 선택한 뒤 &lt;code&gt;응용 프로그램 설정&lt;/code&gt; 메뉴를 선택한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_08.jpg&quot; alt=&quot;응용 프로그램 설정&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;앱 설정&lt;/code&gt; 부분을 찾아서 &lt;code&gt;dbUsername&lt;/code&gt;과 &lt;code&gt;dbPassword&lt;/code&gt; 환경 변수를 등록하고 username과 password를 각각 입력한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;&lt;code&gt;dbUsername&lt;/code&gt;과 &lt;code&gt;dbPassword&lt;/code&gt;는 SQL 데이터베이스 접속에 사용하는 username, password를 사용해야한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_09.jpg&quot; alt=&quot;앱 설정&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;모두 입력했으면 &lt;code&gt;저장&lt;/code&gt; 버튼을 클릭하여 설정을 저장한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy02_10.jpg&quot; alt=&quot;앱 설정 저장&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;맺는-말&quot;&gt;맺는 말&lt;/h2&gt;
-
-&lt;p&gt;지난 시간에 이어서 생성하고 설치하고 환경 설정하다가 한 강좌가 끝났다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이게 뭔가하고 자괴감이 들지 않길 바란다 ㅠㅠ&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음 시간부터는 드디어 프로그래밍을 할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2017/01/12/azureandunity-03/&quot;&gt;3강 바로가기&lt;/a&gt;&lt;/p&gt;
-</description>
-            <pubDate>Thu, 29 Dec 2016 09:00:01 +0900</pubDate>
-            <link />http://totuworld.github.io/2016/12/29/azureandunity-02/&lt;/link&gt;
-            <guid isPermaLink="true">http://totuworld.github.io/2016/12/29/azureandunity-02/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
-            
-            <category>unity</category>
             
         </item>
       
