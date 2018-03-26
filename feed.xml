@@ -5,9 +5,204 @@
     <description>Game Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Mar 2018 07:01:07 +0900</pubDate>
-    <lastBuildDate>Fri, 23 Mar 2018 07:01:07 +0900</lastBuildDate>
+    <pubDate>Mon, 26 Mar 2018 12:27:00 +0900</pubDate>
+    <lastBuildDate>Mon, 26 Mar 2018 12:27:00 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>3분 게임 서버(Firebase) - Auth 소셜 로그인</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#준비-과정&quot; id=&quot;markdown-toc-준비-과정&quot;&gt;준비 과정&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#facebook-로그인&quot; id=&quot;markdown-toc-facebook-로그인&quot;&gt;Facebook 로그인&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#프로그래밍-준비&quot; id=&quot;markdown-toc-프로그래밍-준비&quot;&gt;프로그래밍 준비&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#facebook-로그인-구현&quot; id=&quot;markdown-toc-facebook-로그인-구현&quot;&gt;Facebook 로그인 구현&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#디버깅&quot; id=&quot;markdown-toc-디버깅&quot;&gt;디버깅&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#마무리&quot; id=&quot;markdown-toc-마무리&quot;&gt;마무리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;지난 시간에 다룬 &lt;a href=&quot;http://totuworld.github.io/2018/03/22/firebaseandunity-01/&quot;&gt;익명 로그인&lt;/a&gt;은 기본이다. 익명 로그인은 Apple의 앱스토어 검수 조건에도 해당한다.&lt;/p&gt;
+
+&lt;p&gt;사용자가 선택할 수 있는 그 다음 선택지는 소셜 로그인이다. 비밀번호와 같은 자산이 Facebook이나 Google 등 대형 회사가 관리되니 안심되고 설령 게임을 지워도 다시 데이터를 복원을 기준을 제공해주기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;Firebase 인증은 Google, Play 게임(구글 플레이), Facebook, Twitter, Github 등의 로그인이 가능하다. 그 중 여기서는 페이스북 로그인을 다뤄보겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;준비-과정&quot;&gt;준비 과정&lt;/h2&gt;
+&lt;p&gt;Firebase 인증의 &lt;code&gt;로그인 방법&lt;/code&gt;에 Facebook을 등록해야한다. 그러기위해서는 Facebook에 앱을 생성해야한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/apps/&quot;&gt;facebook for developers의 앱 대시보드&lt;/a&gt;에 접속 한 뒤 &lt;code&gt;새 앱 추가&lt;/code&gt; 버튼을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_01.png&quot; alt=&quot;새 앱 추가&quot; width=&quot;10%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;표시할 이름과 연락처 이메일을 등록한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_02.png&quot; alt=&quot;새 앱 ID만들기 입력&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;페이스북 앱의 대시보드 중 &lt;code&gt;Facebook 로그인&lt;/code&gt;의 &lt;code&gt;설정&lt;/code&gt; 버튼을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_03.png&quot; alt=&quot;Facebook 로그인 설정&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이제 &lt;code&gt;빠른 시작&lt;/code&gt; 절차가 시작된다. 이를 무시하고 좌측 메뉴에서 &lt;code&gt;설정&lt;/code&gt; - &lt;code&gt;기본 설정&lt;/code&gt;을 클릭하여 &lt;code&gt;앱 ID&lt;/code&gt;와 &lt;code&gt;앱 시크릿 코드&lt;/code&gt;를 확인한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_05.png&quot; alt=&quot;설정 - 기본 설정&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_06.png&quot; alt=&quot;앱 ID와 앱 시크릿 코드 확인&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;하단의 &lt;code&gt;+ 플랫폼 추가&lt;/code&gt; 버튼을 클릭하고 iOS나 Android 등의 플랫폼을 선택한다(여기서는 iOS를 기준으로 설명한다). &lt;code&gt;번들 ID&lt;/code&gt;를 입력한다. 다 입력하면 하단의 &lt;code&gt;변경 내용 저장&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_07.png&quot; alt=&quot;iOS 번들 ID 입력&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이제 아대시보드로 접속하여 &lt;code&gt;로그인 방법&lt;/code&gt;탭을 선택한 뒤 &lt;code&gt;Facebook&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;사용 설정&lt;/code&gt;을 클릭하고 앞서 확인한 &lt;code&gt;앱 ID&lt;/code&gt;와 &lt;code&gt;앱 시크릿 코드&lt;/code&gt;를 입력한다. &lt;code&gt;OAuth 리디렉션 URI&lt;/code&gt;를 복사한다(복사 아이콘 클릭)하고 &lt;code&gt;저장&lt;/code&gt; 버튼을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_08.png&quot; alt=&quot;앱 ID, 앱 시크릿 코드 입력&quot; width=&quot;60%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;facebook for developers 대시보드로 돌아가서 복사한 &lt;code&gt;OAuth 리디렉션 URI&lt;/code&gt;를 &lt;code&gt;Facebook 로그인&lt;/code&gt; - &lt;code&gt;설정&lt;/code&gt;에서 &lt;code&gt;유효한 OAuth 리디렉션 URI&lt;/code&gt;에 붙여넣고 &lt;code&gt;변경 내용 저장&lt;/code&gt;을 클릭한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_09.png&quot; alt=&quot;좌측 메뉴의 Facebook 로그인 - 설정&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_01_10.png&quot; alt=&quot;유효한 OAuth 리디렉션 URI 입력&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;facebook-로그인&quot;&gt;Facebook 로그인&lt;/h2&gt;
+
+&lt;p&gt;Facebook 로그인도 익명 로그인과 비슷한 절차로 진행된다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;사용자) Facebook 로그인 버튼 클릭&lt;/li&gt;
+  &lt;li&gt;게임 클라이언트) Facebook SDK를 활용해서 로그인 화면 표시&lt;/li&gt;
+  &lt;li&gt;사용자) 로그인 진행&lt;/li&gt;
+  &lt;li&gt;Facebook) access token 반환&lt;/li&gt;
+  &lt;li&gt;게임 클라이언트) access token을 Firebase 인증 SDK를 통해 등록&lt;/li&gt;
+  &lt;li&gt;Firebase) 사용자 등록 과정 진행&lt;/li&gt;
+  &lt;li&gt;게임 클라이언트) 고유한 사용자 ID를 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프로그래밍-준비&quot;&gt;프로그래밍 준비&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2018/03/22/firebaseandunity-01/&quot;&gt;익명 로그인&lt;/a&gt;을 진행했다면 그 프로젝트를 이어서 사용해도 무방하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;아래 프로젝트 파일을 다운받는다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/firebase_toturial/archive/auth_guest.zip&quot;&gt;샘플 프로젝트&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developers.facebook.com/docs/unity&quot;&gt;Facebook SDK for Unity&lt;/a&gt;로 접속해서 Facebook Unity SDK를 다운로드한다(작성일 기준 v7.11.1).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unity 2017.3를 실행한 뒤 샘플 프로젝트를 열고 &lt;a href=&quot;http://totuworld.github.io/2018/03/22/firebaseandunity-01/#프로젝트-설정&quot;&gt;익명 로그인&lt;/a&gt;의 &lt;code&gt;프로젝트 설정&lt;/code&gt; 부분을 참고하여 &lt;code&gt;GoogleService-Info.plist&lt;/code&gt; 파일을 생성하여 샘플 프로젝트에 추가한다. 다운로드한 Facebook Unity SDK도 추가한다.&lt;/p&gt;
+
+    &lt;p&gt;Facebook Unity SDK를 추가하면 Firebase Auth SDK와 충돌하는 파일이 4개 있다. 프로젝트에 사용된 Firebase Unity SDK는 4.3이고 Facebook Unity SDK는 7.11.1이다. 충돌이나는 파일은 &lt;code&gt;PlayServicesResolver의&lt;/code&gt; 폴더에 있는 4개 파일인데 1.2.59 버전 파일을 모두 삭제한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_02_01.png&quot; alt=&quot;PlayServicesResolver 내 파일 삭제&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Android 빌드는 확인해보지 않아서 어떤 문제가 발생할지 모릅니다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unity에서 &lt;code&gt;Facebook&lt;/code&gt; - &lt;code&gt;Edit Settings&lt;/code&gt; 메뉴 선택한 뒤 facebook for developers에서 확인한 &lt;code&gt;앱 ID&lt;/code&gt;를 입력한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_02_02.png&quot; alt=&quot;Facebook - Edit Settings 메뉴 선택&quot; width=&quot;20%&quot; /&gt;
+  &lt;img src=&quot;/images/fb_03_02_03.png&quot; alt=&quot;Facebook 앱 ID 입력&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;facebook-로그인-구현&quot;&gt;Facebook 로그인 구현&lt;/h3&gt;
+
+&lt;p&gt;Facebook 로그인은 2 단계로 진행된다. Facebook Unity SDK로 로그인을 진행하고, Facebook에서 반환한 access token으로 Firebase Auth SDK로 등록을 진행한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;gfb_auth_test.cs&lt;/code&gt; 스크립트를 열고 아래처럼 변경한다.
+    &lt;ul&gt;
+      &lt;li&gt;8번 줄: using으로 필요한 네임스페이스 형식 사용 허용(Facebook.Unity)&lt;/li&gt;
+      &lt;li&gt;29~32번 줄(&lt;code&gt;Start&lt;/code&gt; 메서드 내): Facebook SDK를 초기화 추가&lt;/li&gt;
+      &lt;li&gt;40~45번 줄: Firebase 인증 SDK로 signin이 된 상태인지 확인하는 프로퍼티 추가&lt;/li&gt;
+      &lt;li&gt;90~184번 줄(페이스북 로그인 관련 메서드 region): 페이스북 로그인을 시도하고 firebase에 등록하는 메서드가 모여있다. 아래 흐름도를 살펴보고 코드를 보면 조금 더 이해하기 수월하다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fb_03_03_01.png&quot; alt=&quot;페이스북 흐름도&quot; /&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com//785a451847aebd36a548061a47cf261a.js?file=gfb_auth_test_for_fb.cs&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;gfb_auth_test의 &lt;code&gt;facebookLogin&lt;/code&gt; 메서드가 실행되어야 페이스북 로그인을 시도할 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;Canvas - Button 게임 오브젝트의 Button 컴포넌트를 찾아서 복사한 뒤 적당히 위치 시키고 &lt;code&gt;Facebook Login&lt;/code&gt;으로 텍스트를 변&lt;/li&gt;
+      &lt;li&gt;gfb_auth_test 스크립트의 &lt;code&gt;facebookLogin&lt;/code&gt;을 선택한다.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/fb_03_03_02.png&quot; alt=&quot;버큰 복사 후 텍스트 변경&quot; width=&quot;30%&quot; /&gt;
+  &lt;img src=&quot;/images/fb_03_03_03.png&quot; alt=&quot;버튼 연결&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;디버깅&quot;&gt;디버깅&lt;/h3&gt;
+
+&lt;p&gt;Firebase 인증 SDK로 Facebook 로그인을 시도하면 Unity Editor에서는 디버깅이 불가능하다. 빌드 후 앱 클라이언트에서 확인해야한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;iOS의 빌드의 경우 Facebook SDK 추가 후 빌드 시 Build Settting에서 Enable Bitcode를 No로 설정해야 linker 에러 없이 진행된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fb_03_04_01.png&quot; alt=&quot;등록 확인&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Facebook 로그인 후 Firebase에 등록을 마치면 위 그림처럼 나타난다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/firebase_toturial/archive/auth_facebook.zip&quot;&gt;완료된소스코드&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;마무리&quot;&gt;마무리&lt;/h2&gt;
+
+&lt;p&gt;간단히 끝날 내용이었는데 linker 에러와 Firebase 내의 Facebook 앱 ID를 잘못 입력해서 많은 빌드 실패가 있었다. 꼭 설정은 2번 3번 확인하길 바란다.&lt;/p&gt;
+
+&lt;p&gt;그리고 이런 다양한 문제를 해결하고 있는 클라이언트 프로그래머 여러분 대단하십니다👍👍👍.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://firebase.google.com/docs/auth/unity/facebook-login&quot;&gt;Authenticate Using Facebook Login and Unity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://firebase.google.com/docs/auth/unity/account-linking&quot;&gt;Link Multiple Auth Providers to an Account in Unity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.facebook.com/docs/unity/examples#login&quot;&gt;Facebook SDK for Unity - Examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/facebook/facebook-sdk-for-unity/issues/135&quot;&gt;Facebook SDK for Unity isssue 135&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Thu, 22 Mar 2018 09:00:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2018/03/22/firebaseandunity-02/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2018/03/22/firebaseandunity-02/</guid>
+            
+            
+            <category>nodejs</category>
+            
+            <category>firebase</category>
+            
+            <category>unity</category>
+            
+        </item>
+      
     
       
         <item>
@@ -5034,117 +5229,6 @@ router.post(&#39;/&#39;, (req, res, next)=&amp;gt;{
             <category>webapps</category>
             
             <category>unity</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>Wendy 프로젝트 진행사항 1</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#프로젝트-진행-사항&quot; id=&quot;markdown-toc-프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#기능-추가-목록&quot; id=&quot;markdown-toc-기능-추가-목록&quot;&gt;기능 추가 목록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-사항&quot; id=&quot;markdown-toc-튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#완성된-튜토리얼-목록&quot; id=&quot;markdown-toc-완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-진행사항&quot; id=&quot;markdown-toc-튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#작명-및-로고&quot; id=&quot;markdown-toc-작명-및-로고&quot;&gt;작명 및 로고&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-&lt;p&gt;이상한모임 연말정산에서 반드시 올해는 프로젝트 진행 사항을 블로그 등으로 공지할 것을 천명한 바 있다.&lt;/p&gt;
-
-&lt;p&gt;12월부터 프로젝트가 작동 중이라서 첫 달의 진행 사항을 남긴다.&lt;/p&gt;
-
-&lt;h2 id=&quot;프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
-&lt;p&gt;가장 기본에 해당하는 기기 관리와 사용자 관리가 추가되었다.&lt;/p&gt;
-
-&lt;p&gt;그리고 통화 관리에 기능도 완료되었다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;기능-추가-목록&quot;&gt;기능 추가 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;기기 관리&lt;/li&gt;
-  &lt;li&gt;사용자 관리&lt;/li&gt;
-  &lt;li&gt;통화 관리&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;이세계에 진입한 서버 개발&lt;/code&gt;이란 이름으로 2개의 강좌가 제작되었다.&lt;/p&gt;
-
-&lt;p&gt;기초에 해당하는 부분이라서 1주마다 총 2개가 공유되었다.&lt;/p&gt;
-
-&lt;p&gt;하지만 소스코드 제작과 글 작성, 동영상 제작을 생각하면 격주 목요일 1개 강좌 공유를 목표로 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;1강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;2강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;3강 : 글 작성 완료, 동영상 녹화 예정&lt;/li&gt;
-  &lt;li&gt;4강 : 글 작성 완료&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;작명-및-로고&quot;&gt;작명 및 로고&lt;/h2&gt;
-&lt;p&gt;MagmaKick을 진행할 때 설치용 버전으로 MagMaKick CE를 공개할 예정이었다.&lt;/p&gt;
-
-&lt;p&gt;하지만 내 뒷심과 능력 부족으로 MagmaKick이 대차게 실패했다.&lt;/p&gt;
-
-&lt;p&gt;그러다가 다시 시작해보려고 했다.&lt;/p&gt;
-
-&lt;p&gt;그런데 MagmaKick CE로 이름을 쓰기 싫었다.&lt;/p&gt;
-
-&lt;p&gt;덕심을 발휘해 볼겸 매력덩어리 이쁜애인 &lt;a href=&quot;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3%20%EC%9B%AC%EB%94%94&quot;&gt;레드벨벳 웬디&lt;/a&gt;의 이름을 따서 프로젝트 명을 &lt;code&gt;Wendy&lt;/code&gt;로 지었다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;놀랍게도 이름을 변경했더니 작업할 맛이 난다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;로고는 웬디 얼굴을 대문짝만하게 걸고 싶었다. 소속사와 초상권을 생각해서 그녀의 별칭 중 하나인 &lt;code&gt;완라프&lt;/code&gt;에서 착안, 눈사람 로고로 정했다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;와 말하고 나니까 되게 좋다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Wanlaf.png&quot; alt=&quot;WendyLogo&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;글만 쓰는게 아니라 동영상 녹화를 하고 후시 녹음으로 마무리하려니까 손이 좀 많이 가는게 아니다.&lt;/p&gt;
-
-&lt;p&gt;그리고 내 맥은 하드디스크가 256GB인데 동영상 작업으로 30GB정도밖에 안남았다.&lt;/p&gt;
-
-&lt;p&gt;무엇보다 편집할 때 스크래치 디스크가 적어서 매우 힘들어한다.&lt;/p&gt;
-
-&lt;p&gt;후시 녹음을 진행하다보니 되도록 새벽 시간에 진행하는데 이렇다보니 목소리가 지 멋대로이고 잠이 덜깨어있다.&lt;/p&gt;
-
-&lt;p&gt;스스로 흑역사를 박제하는 기분이 든다.&lt;/p&gt;
-
-&lt;p&gt;그런데!!! 페이스북에서 &lt;code&gt;좋아요&lt;/code&gt; 하나 볼때마다 힘이나서 다시하게 된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;칭찬이 이렇게 무섭다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;여러분들의 힘으로(?) 2월말까지 계획했던 6개 항목에 대한 기능과 강좌가 모두 발행되길 바란다.&lt;/p&gt;
-</description>
-            <pubDate>Wed, 04 Jan 2017 09:00:01 +0900</pubDate>
-            <link>http://totuworld.github.io/2017/01/04/wendynotification/</link>
-            <guid isPermaLink="true">http://totuworld.github.io/2017/01/04/wendynotification/</guid>
-            
-            
-            <category>wendy</category>
             
         </item>
       
