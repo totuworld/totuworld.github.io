@@ -5,8 +5,8 @@
     <description>Game Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 30 Mar 2018 23:22:55 +0900</pubDate>
-    <lastBuildDate>Fri, 30 Mar 2018 23:22:55 +0900</lastBuildDate>
+    <pubDate>Tue, 10 Apr 2018 09:34:02 +0900</pubDate>
+    <lastBuildDate>Tue, 10 Apr 2018 09:34:02 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -327,17 +327,17 @@
       &lt;li&gt;게스트/페북 로그인 클릭(1회면 진행됨)&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_01.png&quot; alt=&quot;타이틀 화면&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_01n.png&quot; alt=&quot;타이틀 화면&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;로그인 절차&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_02.png&quot; alt=&quot;로그인&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_02n.png&quot; alt=&quot;로그인&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;게임 플레이&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_03.png&quot; alt=&quot;게임 플레이&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;/images/fb_02_01_03n.png&quot; alt=&quot;게임 플레이&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
