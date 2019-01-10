@@ -5,25 +5,25 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Setting up a local dev environment for Azure Functions</title>
+	<title>아빠 왜 집에서 일해요? (feat. aws)</title>
 	
 	
-	<meta content="2016-04-26T09:02:00+09:00" property="article:published_time">
+	<meta content="2019-01-09T09:00:00+09:00" property="article:published_time">
 	
 	
 	<!-- Begin Jekyll SEO tag v1.4.0 -->
-<title>Setting up a local dev environment for Azure Functions - totuworld’s tech blog</title>
-<meta property="og:title" content="Setting up a local dev environment for Azure Functions" />
-<meta name="description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
-<meta property="og:description" content="로컬에 Azure Functions 개발 환경을 구성한다." />
-<link rel="canonical" href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
-<meta property="og:url" content="http://totuworld.github.io/2016/04/26/azurefunctions-local/" />
+<title>아빠 왜 집에서 일해요? (feat. aws) - totuworld’s tech blog</title>
+<meta property="og:title" content="아빠 왜 집에서 일해요? (feat. aws)" />
+<meta name="description" content="AWS Beanstalk으로 node.js 어플리케이션 배포 시 npm이 망하면?" />
+<meta property="og:description" content="AWS Beanstalk으로 node.js 어플리케이션 배포 시 npm이 망하면?" />
+<link rel="canonical" href="http://totuworld.github.io/2019/01/09/aws-beanstalk/" />
+<meta property="og:url" content="http://totuworld.github.io/2019/01/09/aws-beanstalk/" />
 <meta property="og:site_name" content="totuworld’s tech blog" />
-<meta property="og:image" content="http://totuworld.github.ioazure-deployment-slots.png" />
+<meta property="og:image" content="http://totuworld.github.io/images/aws_live_fix.png" />
+<meta name="twitter:image" content="http://totuworld.github.io/images/aws_live_fix.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-04-26T09:02:00+09:00" />
-<link rel="next" href="http://totuworld.github.io/2016/04/26/webapp-stage/" title="Azure 웹 앱 staging 환경 설정하기" />
-<link rel="prev" href="http://totuworld.github.io/2016/04/25/acs/" title="Azure 컨테이너 서비스로 Node.js 앱 배포하기" />
+<meta property="article:published_time" content="2019-01-09T09:00:00+09:00" />
+<link rel="prev" href="http://totuworld.github.io/2018/03/30/report/" title="3분 게임 서버(Firebase) 진행사항 1" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@totuworld" />
 <meta name="twitter:creator" content="@totuworld" />
@@ -31,19 +31,21 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Setting up a local dev environment for Azure Functions",
-    "image": "http://totuworld.github.ioazure-deployment-slots.png",
-    "datePublished": "2016-04-26T09:02:00+09:00",
-    "description": "로컬에 Azure Functions 개발 환경을 구성한다.",
-    "url": "http://totuworld.github.io/2016/04/26/azurefunctions-local/"
+    "headline": "아빠 왜 집에서 일해요? (feat. aws)",
+    "image": "http://totuworld.github.io/images/aws_live_fix.png",
+    "datePublished": "2019-01-09T09:00:00+09:00",
+    "description": "AWS Beanstalk으로 node.js 어플리케이션 배포 시 npm이 망하면?",
+    "url": "http://totuworld.github.io/2019/01/09/aws-beanstalk/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
 	
 	
 	<meta property="fb:app_id" content="129561850715980">
-	<meta name="twitter:description" content="로컬에 Azure Functions 개발 환경을 구성한다.">
+	<meta name="twitter:description" content="AWS Beanstalk으로 node.js 어플리케이션 배포 시 npm이 망하면?">
 	
+	
+	<meta name="twitter:image" content="http://totuworld.github.io/images/aws_live_fix.png">
 	
 	
 	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
@@ -155,8 +157,8 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>Setting up a local dev environment for Azure Functions</h1>
-        <p>Apr 26, 2016 • nodejs azure webapps</p>
+        <h1>아빠 왜 집에서 일해요? (feat. aws)</h1>
+        <p>Jan 9, 2019 • aws beanstalk</p>
       </header>
       <hr>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -169,15 +171,81 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       <article>
-        <p>트위터에서 보고 https://twitter.com/haleyjason/status/724716213339840512
-<a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a> 자료를 기반으로 작업</p>
-
-<h2 id="참고자료">참고자료</h2>
-
-<ul>
-  <li><a href="https://contos.io/setting-up-a-local-dev-environment-for-azure-functions-c80d423c4ece#.p6nv14hvh">Setting up a local dev environment for Azure Functions</a></li>
-  <li><a href="https://azure.microsoft.com/ko-kr/documentation/articles/functions-run-local/">How to code and test Azure functions in Visual Studio</a></li>
+        <ul id="markdown-toc">
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#어플리케이션의-미동작-확인" id="markdown-toc-어플리케이션의-미동작-확인">어플리케이션의 미동작 확인</a>    <ul>
+      <li><a href="#어디가-문제야" id="markdown-toc-어디가-문제야">어디가 문제야?</a></li>
+    </ul>
+  </li>
+  <li><a href="#복구-작업" id="markdown-toc-복구-작업">복구 작업</a>    <ul>
+      <li><a href="#그렇다면-내가-직접-설치해주지" id="markdown-toc-그렇다면-내가-직접-설치해주지">그렇다면 내가 직접 설치해주지!</a></li>
+    </ul>
+  </li>
+  <li><a href="#마무리" id="markdown-toc-마무리">마무리</a></li>
 </ul>
+
+<h2 id="들어가는-말">들어가는 말</h2>
+
+<p>AWS의 PaaS(Platform as a Service)인 Elastic Beanstalk(이하 Beanstalk)로 node.js 어플리케이션을 배포/운영하고 있다. 로컬이나 dev 환경에서 작동을 확인한 배포판이 production 환경으로 배포만 하면 npm install 시 문제를 발생시킨다?!. 이때 어떻게 대처했는지 기록을 남긴다.</p>
+
+<h2 id="어플리케이션의-미동작-확인">어플리케이션의 미동작 확인</h2>
+<p>크론잡(cronjob)처럼 일정 주기로 정해진 일을 처리하는 어플리케이션이 있다. 해당 어플리케이션은 각각의 테스크를 수행하고 슬랙의 특정 채널에 결과를 남긴다. 그런데 production 환경의 메시지가 사라졌다.</p>
+
+<h3 id="어디가-문제야">어디가 문제야?</h3>
+<p>Beanstalk 환경에 접속해서 node.js 로그를 확인해봤다.</p>
+
+<pre><code class="language-bash">## nodejs 로그를 확인
+$ tail /var/log/nodejs/nodejs.log
+</code></pre>
+
+<p>production 배포판이 특정 패키지를 찾을 수 없어서 시작단계에서 실패하고 있었다. 최근 로그 100줄을 다운받아 확인해보니 npm install 시 특정 패키지를 설치하는데 실패한 기록이 있었다. 개발 환경을 배포한 배포판과 같은 commit으로 돌리고 패키지 설치를 진행해보니 실제로 패키지가 없었다. 어떤 과정에서 누가 패키지를 삭제했는지 모르겠지만 일단 production 환경을 살리자!</p>
+
+<h2 id="복구-작업">복구 작업</h2>
+<p>우선 문제가 된 패키지의 상위 버전이 있는지 확인해서 설치했다. 그리고 npm audit 에서 문제로 지적된 몇몇 패지키지도 업데이트했다. 그리고 배포판을 만들어서 dev 환경으로 뿌렸더니 잘 된다. 그런데 production으로 배포해보니 실패를 거듭했다. 역시 패키지 설치단계에서 에러를 반환하고 특정 패키지가 없다는 에러를 내고 있었다.</p>
+
+<h3 id="그렇다면-내가-직접-설치해주지">그렇다면 내가 직접 설치해주지!</h3>
+<p><code>eb cli</code>로 Beanstalk 환경에 접속한 뒤 아래처럼 실행했다.</p>
+
+<pre><code class="language-bash">## sudo 권한 획득
+$ sudo su
+
+## 설치된 nodejs 버전 보기. 10.13 버전이 있는지 확인하는 용도
+$ ls /opt/elasticbeanstalk/node-install
+
+## path 설정
+$ export PATH=$PATH:/opt/elasticbeanstalk/node-install/node-v10.13.0-linux-x64/bin/
+
+## 소스코드 있는 곳
+$ cd /var/app/current
+
+## package 설치!
+$ npm install
+</code></pre>
+
+<p>직접 패키지를 설치했더니 문제없이 잘 설치되었다. 이제 남은건 node 프로세스를 재시작하는 것!</p>
+
+<pre><code class="language-bash">## node 프로세스 kill (sudo 권한 필요)
+$ pkill -f node
+
+## 프로세스 list 확인
+$ initctl list
+
+## nodejs 서비스 시작
+$ initctl start nodejs
+</code></pre>
+
+<p>이제 Beanstalk의 health check을 지켜보거나 node.js 로그를 확인해보자.</p>
+
+<pre><code class="language-bash">## nodejs 로그를 확인
+$ tail /var/log/nodejs/nodejs.log
+</code></pre>
+
+<h2 id="마무리">마무리</h2>
+<p>출근해서 왜 문제가 되었나 살펴봤더니 dev와 production 환경의 node.js 플랫폼 버전이 달랐다. 버전을 맞추니 모든 문제가 사라졌다. 역시 기본이 제일 중요하다.</p>
+
+<blockquote>
+  <p>아빠가 집에와서 일하느라 놀아주지 못해서 미안해~ 😭</p>
+</blockquote>
 
       </article>
       <hr>
@@ -198,7 +266,7 @@
       </form>
 
       <div class="fb-foot-area" style="width:104px;height:24px">
-        <div class="fb-like" data-href="http://totuworld.github.io/2016/04/26/azurefunctions-local/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="http://totuworld.github.io/2019/01/09/aws-beanstalk/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
     <div id="fb-root"></div>
