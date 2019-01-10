@@ -5,9 +5,98 @@
     <description>Game Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 10 Apr 2018 09:34:02 +0900</pubDate>
-    <lastBuildDate>Tue, 10 Apr 2018 09:34:02 +0900</lastBuildDate>
+    <pubDate>Thu, 10 Jan 2019 15:40:29 +0900</pubDate>
+    <lastBuildDate>Thu, 10 Jan 2019 15:40:29 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>아빠 왜 집에서 일해요? (feat. aws)</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#어플리케이션의-미동작-확인&quot; id=&quot;markdown-toc-어플리케이션의-미동작-확인&quot;&gt;어플리케이션의 미동작 확인&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#어디가-문제야&quot; id=&quot;markdown-toc-어디가-문제야&quot;&gt;어디가 문제야?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#복구-작업&quot; id=&quot;markdown-toc-복구-작업&quot;&gt;복구 작업&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#그렇다면-내가-직접-설치해주지&quot; id=&quot;markdown-toc-그렇다면-내가-직접-설치해주지&quot;&gt;그렇다면 내가 직접 설치해주지!&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#마무리&quot; id=&quot;markdown-toc-마무리&quot;&gt;마무리&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;AWS의 PaaS(Platform as a Service)인 Elastic Beanstalk(이하 Beanstalk)로 node.js 어플리케이션을 배포/운영하고 있다. 로컬이나 dev 환경에서 작동을 확인한 배포판이 production 환경으로 배포만 하면 npm install 시 문제를 발생시킨다?!. 이때 어떻게 대처했는지 기록을 남긴다.&lt;/p&gt;
+
+&lt;h2 id=&quot;어플리케이션의-미동작-확인&quot;&gt;어플리케이션의 미동작 확인&lt;/h2&gt;
+&lt;p&gt;크론잡(cronjob)처럼 일정 주기로 정해진 일을 처리하는 어플리케이션이 있다. 해당 어플리케이션은 각각의 테스크를 수행하고 슬랙의 특정 채널에 결과를 남긴다. 그런데 production 환경의 메시지가 사라졌다.&lt;/p&gt;
+
+&lt;h3 id=&quot;어디가-문제야&quot;&gt;어디가 문제야?&lt;/h3&gt;
+&lt;p&gt;Beanstalk 환경에 접속해서 node.js 로그를 확인해봤다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;## nodejs 로그를 확인
+$ tail /var/log/nodejs/nodejs.log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;production 배포판이 특정 패키지를 찾을 수 없어서 시작단계에서 실패하고 있었다. 최근 로그 100줄을 다운받아 확인해보니 npm install 시 특정 패키지를 설치하는데 실패한 기록이 있었다. 개발 환경을 배포한 배포판과 같은 commit으로 돌리고 패키지 설치를 진행해보니 실제로 패키지가 없었다. 어떤 과정에서 누가 패키지를 삭제했는지 모르겠지만 일단 production 환경을 살리자!&lt;/p&gt;
+
+&lt;h2 id=&quot;복구-작업&quot;&gt;복구 작업&lt;/h2&gt;
+&lt;p&gt;우선 문제가 된 패키지의 상위 버전이 있는지 확인해서 설치했다. 그리고 npm audit 에서 문제로 지적된 몇몇 패지키지도 업데이트했다. 그리고 배포판을 만들어서 dev 환경으로 뿌렸더니 잘 된다. 그런데 production으로 배포해보니 실패를 거듭했다. 역시 패키지 설치단계에서 에러를 반환하고 특정 패키지가 없다는 에러를 내고 있었다.&lt;/p&gt;
+
+&lt;h3 id=&quot;그렇다면-내가-직접-설치해주지&quot;&gt;그렇다면 내가 직접 설치해주지!&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;eb cli&lt;/code&gt;로 Beanstalk 환경에 접속한 뒤 아래처럼 실행했다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;## sudo 권한 획득
+$ sudo su
+
+## 설치된 nodejs 버전 보기. 10.13 버전이 있는지 확인하는 용도
+$ ls /opt/elasticbeanstalk/node-install
+
+## path 설정
+$ export PATH=$PATH:/opt/elasticbeanstalk/node-install/node-v10.13.0-linux-x64/bin/
+
+## 소스코드 있는 곳
+$ cd /var/app/current
+
+## package 설치!
+$ npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;직접 패키지를 설치했더니 문제없이 잘 설치되었다. 이제 남은건 node 프로세스를 재시작하는 것!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;## node 프로세스 kill (sudo 권한 필요)
+$ pkill -f node
+
+## 프로세스 list 확인
+$ initctl list
+
+## nodejs 서비스 시작
+$ initctl start nodejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;이제 Beanstalk의 health check을 지켜보거나 node.js 로그를 확인해보자.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;## nodejs 로그를 확인
+$ tail /var/log/nodejs/nodejs.log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;마무리&quot;&gt;마무리&lt;/h2&gt;
+&lt;p&gt;출근해서 왜 문제가 되었나 살펴봤더니 dev와 production 환경의 node.js 플랫폼 버전이 달랐다. 버전을 맞추니 모든 문제가 사라졌다. 역시 기본이 제일 중요하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;아빠가 집에와서 일하느라 놀아주지 못해서 미안해~ 😭&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Wed, 09 Jan 2019 09:00:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2019/01/09/aws-beanstalk/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2019/01/09/aws-beanstalk/</guid>
+            
+            
+            <category>aws</category>
+            
+        </item>
+      
     
       
         <item>
@@ -3449,870 +3538,6 @@ class NoLongerUpgrade extends CustomError {
             
             
             <category>wendy</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>이세계에 진입한 서버 개발 - 4</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#통화-정의-통화-보유-모델-추가&quot; id=&quot;markdown-toc-통화-정의-통화-보유-모델-추가&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#definecurrencyjs&quot; id=&quot;markdown-toc-definecurrencyjs&quot;&gt;DefineCurrency.js&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#owncurrencyjs&quot; id=&quot;markdown-toc-owncurrencyjs&quot;&gt;OwnCurrency.js&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#로직-추가&quot; id=&quot;markdown-toc-로직-추가&quot;&gt;로직 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#정의된-통화-목록-요청&quot; id=&quot;markdown-toc-정의된-통화-목록-요청&quot;&gt;정의된 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#보유한-통화-목록-요청&quot; id=&quot;markdown-toc-보유한-통화-목록-요청&quot;&gt;보유한 통화 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#라우터-등록&quot; id=&quot;markdown-toc-라우터-등록&quot;&gt;라우터 등록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#일정-시간마다-충전되는-통화는&quot; id=&quot;markdown-toc-일정-시간마다-충전되는-통화는&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#기능-정의&quot; id=&quot;markdown-toc-기능-정의&quot;&gt;기능 정의&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#definerechargecurrency-모델-추가&quot; id=&quot;markdown-toc-definerechargecurrency-모델-추가&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#modelsdefinecurrencyjs-수정&quot; id=&quot;markdown-toc-modelsdefinecurrencyjs-수정&quot;&gt;models/DefineCurrency.js 수정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#재충전-로직-작성&quot; id=&quot;markdown-toc-재충전-로직-작성&quot;&gt;재충전 로직 작성&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#later-모듈-추가&quot; id=&quot;markdown-toc-later-모듈-추가&quot;&gt;later 모듈 추가&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#환경-설정&quot; id=&quot;markdown-toc-환경-설정&quot;&gt;환경 설정&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#routescurrencyjs-수정&quot; id=&quot;markdown-toc-routescurrencyjs-수정&quot;&gt;routes/currency.js 수정&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#currencydefine-api-수정&quot; id=&quot;markdown-toc-currencydefine-api-수정&quot;&gt;currency/define api 수정&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#currencyown-api-수정&quot; id=&quot;markdown-toc-currencyown-api-수정&quot;&gt;currency/own api 수정&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dbeaver-설치&quot; id=&quot;markdown-toc-dbeaver-설치&quot;&gt;DBeaver 설치&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#connection-추가&quot; id=&quot;markdown-toc-connection-추가&quot;&gt;Connection 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#재충전-통화-정보-추가&quot; id=&quot;markdown-toc-재충전-통화-정보-추가&quot;&gt;재충전 통화 정보 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#정의된-통화-추가&quot; id=&quot;markdown-toc-정의된-통화-추가&quot;&gt;정의된 통화 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#보유한-통화-추가&quot; id=&quot;markdown-toc-보유한-통화-추가&quot;&gt;보유한 통화 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#postman으로-테스트&quot; id=&quot;markdown-toc-postman으로-테스트&quot;&gt;postman으로 테스트&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Zrem0cNKWiM&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-&lt;p&gt;통화는 위키피디아에 의하면 아래와 같이 정의된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;유통 수단이나 지불 수단으로서 기능하는 교환 수단&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;돈&lt;/code&gt;을 떠올리면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://www.marshu.com/articles/images-website/articles/presidents-on-us-paper-money/one-hundred-100-dollar-bill.jpg&quot; alt=&quot;money&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그럼 게임 안에 3가지 통화가 존재한다고 해보자.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;하트 : 게임 입장에 사용된다. 일정 시간마다 재충전된다.&lt;/li&gt;
-  &lt;li&gt;코인 : 게임 플레이나 업적 등으로 자주 획득할 수 있는 통화.&lt;/li&gt;
-  &lt;li&gt;보석 : 주로 인앱 결제로 획득하며 게임 플레이나 업적으로 가아아아끔 획득하는 통화.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 중 사용자가 가장 소중히 여기는 것은 무엇일까? 당연히 보석이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://file.thisisgame.com/upload/nboard/news/2016/10/31/20161031183400_4668o.jpg&quot; alt=&quot;friendspopcorn&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;게임 내에서 희귀한 통화이고 인앱 결제 상품으로 구입이 가능한 형태로 주로 제공되기 때문이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이거 잘못되면 너와 나, 지옥에서 만나겠지?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이런 통화를 어떻게 관리하는지 알아보도록하자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;지급 관리에서 지급과 관계된 내용을 다루므로 이번 내용에서는 빠진다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
-&lt;p&gt;크게 2가지 모델이 필요하다. 하나는 게임 안에서 통용되는 통화를 정의하는 모델이다. 큰 변화는 없다.&lt;/p&gt;
-
-&lt;p&gt;남은 하나는 통화 보유 모델이다. 어떤 것을 얼마나 가지고 있는지 기록해야하기 때문이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;통화-정의-통화-보유-모델-추가&quot;&gt;통화 정의, 통화 보유 모델 추가&lt;/h3&gt;
-&lt;p&gt;아래 2개 파일을 &lt;code&gt;models&lt;/code&gt;폴더에 &lt;code&gt;DefineCurrency.js&lt;/code&gt;, &lt;code&gt;OwnCurrency.js&lt;/code&gt;파일을 추가한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;definecurrencyjs&quot;&gt;DefineCurrency.js&lt;/h4&gt;
-&lt;p&gt;아래 내용을 입력한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&#39;use strict&#39;;
-
-module.exports = function(sequelize, DataTypes) {
-    let DefineCurrency= sequelize.define(&#39;DefineCurrency&#39;, {
-        CurrencyID : { type : DataTypes.INTEGER, primaryKey: true}, //고유한 번호를 할당해야한다.
-        Name:{type:DataTypes.STRING(10)},
-        MaxQNTY:{type:DataTypes.INTEGER, defaultValue:9000}
-    }, {
-        timestamps: false,
-        tableName: &#39;DefineCurrency&#39;
-    });
-    return DefineCurrency;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;DefineCurrency 모델은 &lt;code&gt;CurrencyID&lt;/code&gt;로 구분된다.&lt;/p&gt;
-
-&lt;p&gt;즉, &lt;code&gt;CurrencyID&lt;/code&gt;절대로 중복된 숫자를 입력하면 안된다. MaxQNTY는 OwnCurrency의 CurrentQNTY가 절대 넘을 수 없는 최대치를 뜻한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;owncurrencyjs&quot;&gt;OwnCurrency.js&lt;/h3&gt;
-
-&lt;p&gt;아래 링크의 내용을 입력한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto4.2/models/OwnCurrency.js&quot;&gt;OwnCurrency.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;OwnCurrency 모델은 GameUser의 &lt;code&gt;GameUserID&lt;/code&gt;와 DefineCurrency의 &lt;code&gt;CurrencyID&lt;/code&gt;를 외래키로 가진다.&lt;/p&gt;
-
-&lt;p&gt;또한 보유 수량(CurrentQNTY)을 기록할 수 있으며 특정 조건에 의해 최대 보유 수량을 늘릴 수 있는 AddMaxQNTY 컬럼도 있다. 실제 컬럼으로 존재하지 않지만 getterMethods로 &lt;code&gt;TotalQNTY&lt;/code&gt;를 등록해서 실제 최대보유수량을 계산한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
-
-&lt;p&gt;통화에 사용된 라우터를 추가하겠다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;routes&lt;/code&gt; 폴더에 &lt;code&gt;currency.js&lt;/code&gt;파일을 생성한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 코드를 입력한다.&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&#39;use strict&#39;
-
-const debug = require(&#39;debug&#39;)(&#39;Wendy:router:currency&#39;);
-const auth = require(&#39;../utils/auth&#39;);
-const commonFunc = require(&#39;../utils/commonFunc&#39;);
-const models = require(&quot;../models&quot;);
-const wendyError = require(&#39;../utils/error&#39;);
-
-const express = require(&#39;express&#39;);
-const router = express.Router();
-
-module.exports = router;
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;앞으로 라우터를 추가하는 것은 자주 할 것이므로 금방 익숙해질 것이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;로직-추가&quot;&gt;로직 추가&lt;/h2&gt;
-&lt;p&gt;2가지 로직을 추가할 것이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;정의된 통화 목록 요청 : 게임 내에서 어떤 통화를 가질 수 있는지 리스트 형태로 리턴한다.&lt;/li&gt;
-  &lt;li&gt;보유한 통화 목록 요청 : 사용자가 실제로 보유한 통화를 리스트 형태로 리턴한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;2가지로 로직은 거의 차이가 없을 것이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;정의된-통화-목록-요청&quot;&gt;정의된 통화 목록 요청&lt;/h3&gt;
-&lt;p&gt;아래 코드를 &lt;code&gt;routes/currency.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /currency/define 통화 목록 요청
- * @apiName 정의된 통화 목록 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/define&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-    models.DefineCurrency.findAll()
-        .then((defineCurrencyList)=&amp;gt;{
-            res.send({result:0, list:defineCurrencyList});
-        })
-});
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;7번 줄 : &lt;code&gt;findAll&lt;/code&gt; 메서드로 &lt;code&gt;DefineCurrency&lt;/code&gt; 테이블에 등록된 모든 내용을 검색한다. 여기서처럼 조건을 넣지 않으면 모든 것이 리턴된다.&lt;/li&gt;
-  &lt;li&gt;9번 줄 : 찾아진 모든 내용을 &lt;code&gt;list&lt;/code&gt;노드에 담아서 리턴한다. 이때 &lt;code&gt;list&lt;/code&gt;노드는 별뜻이 없다(fxxk이라고 해도 된다). 클라이언트가 헷갈리지 않고 구분할 수 있으면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;보유한-통화-목록-요청&quot;&gt;보유한 통화 목록 요청&lt;/h3&gt;
-&lt;p&gt;앞서 제작한 &lt;code&gt;정의된 통화 목록 요청&lt;/code&gt;과 다른 것은 조회해야할 테이블 다르다는 것과 findAll메서드에 조건을 추가한 정도다.&lt;/p&gt;
-
-&lt;p&gt;아래 코드를 &lt;code&gt;routes/currency.js&lt;/code&gt;의 &lt;code&gt;module.exports&lt;/code&gt; 위쪽에 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /currency/own 보유 통화 목록 요청
- * @apiName 보유 통화 목록 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-    models.OwnCurrency.findAll({where:{GameUserID:req.user.GameUserID}})
-        .then((ownCurrencyList)=&amp;gt;{
-            res.send({result:0, list:ownCurrencyList});
-        })
-});
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;7번 줄 : findAll메서드에 사용될 오브젝트를 만들고 where 노드에 조건을 추가했다. 조건은 GameUserID로 특정 사용자를 지칭했다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;모든 것이 이렇게 간단하면 좋으련만.&lt;/p&gt;
-
-&lt;h3 id=&quot;라우터-등록&quot;&gt;라우터 등록&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 currency 라우터를 추가해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const currency = require(&#39;./routes/currency&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/currency&#39;, currency);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;일정-시간마다-충전되는-통화는&quot;&gt;일정 시간마다 충전되는 통화는?&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;애니x&lt;/code&gt;이나 &lt;code&gt;드래곤플x이트&lt;/code&gt;가 공전의 히트를 칠 때 하트 구하려고 대포친구(?)를 구했던 기억이 있다.&lt;/p&gt;
-
-&lt;p&gt;그 이후 많은 게임들이 재충전 시간을 상품으로 팔았다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;돈놓고 시간 사기.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;아마도 소규모 게임 개발팀이 만드는 게임에도 이런 통화 하나쯤은 있을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이런 통화 숫자가 많은 편이 아니라 신나게 config 파일 하나 만들고 설정을 넣은 뒤에 계산하곤 했다.&lt;/p&gt;
-
-&lt;p&gt;그런데 요즘 게임 어떤가?&lt;/p&gt;
-
-&lt;p&gt;특정 레이드 진입 하기위한 &lt;code&gt;열쇠&lt;/code&gt;도 있고 요일 던전용 하루 입장 제한같은 것도 있다.&lt;/p&gt;
-
-&lt;p&gt;어떤 &lt;code&gt;열쇠&lt;/code&gt;는 기준시각(예를들어 새벽 4시)이 지나면 재충전 시간 계산없이 보유할 수 있는 최대 수량으로 채워지는 형태도 있을 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;기능-정의&quot;&gt;기능 정의&lt;/h3&gt;
-
-&lt;p&gt;얘기된 몇가지 특징을 뽑아보면 대략 아래와 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;재충전 주기마다 일정량이 재충전된다.&lt;/li&gt;
-  &lt;li&gt;시간에 의한 재충전으로 최대치를 넘진 못한다.&lt;/li&gt;
-  &lt;li&gt;최대치만큼 보유하면 더이상 재충전되지 않는다.&lt;/li&gt;
-  &lt;li&gt;어떤 상품은 기준시각을 지나면 최대치를 보유한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;위 내용을 바탕으로 &lt;code&gt;DefineRechargeCurrency&lt;/code&gt; 모델에 포함될 내용을 정리하면 아래 표와 같다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;컬럼명&lt;/th&gt;
-      &lt;th&gt;하는 일&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;RechargeCurrencyID&lt;/td&gt;
-      &lt;td&gt;재충전통화 고유 ID&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;IntervalTime&lt;/td&gt;
-      &lt;td&gt;재충전 주기(초단위 숫자)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;IntervalChargeAmount&lt;/td&gt;
-      &lt;td&gt;재충전 주기마다 충전되는량&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SetMaxSwitch&lt;/td&gt;
-      &lt;td&gt;최대치 충전 주기를 가지는지 나타낸다.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SetMaxPattern&lt;/td&gt;
-      &lt;td&gt;최대치 충전 주기(Cron 표현식)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;definerechargecurrency-모델-추가&quot;&gt;DefineRechargeCurrency 모델 추가&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 &lt;code&gt;DefineRechargeCurrency.js&lt;/code&gt;파일을 생성한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 소스코드를 열어서 입력한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;굉장히 긴 정규표현식이 중간에 삽입되어있어 링크형태로 대치한다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto4.2/models/DefineRechargeCurrency.js&quot;&gt;DefineRechargeCurrency.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이전에 추가했던 모델과 다른점은 컬럼에 &lt;code&gt;validate&lt;/code&gt;가 추가된 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;SetMaxPattern&lt;/code&gt;이 Cron 표현식을 사용하므로 잘못된 입력을 막기 위해 검증코드를 넣은 것이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;modelsdefinecurrencyjs-수정&quot;&gt;models/DefineCurrency.js 수정&lt;/h3&gt;
-&lt;p&gt;통화 중에서 재충전이 필요한 경우 &lt;code&gt;DefineRechargeCurrency&lt;/code&gt; 모델을 참조해야하므로 &lt;code&gt;RechargeCurrencyID&lt;/code&gt;를 외래키로 등록한다.&lt;/p&gt;
-
-&lt;p&gt;models/&lt;code&gt;DefineCurrency.js&lt;/code&gt; 파일에서 아래 내용을 찾는다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;찾아야하는 내용&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;        tableName: &#39;DefineCurrency&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;위 내용 뒤에 반드시 쉼표(,)를 더해야 에러나지 않는다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;아래 코드를 추가한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;추가할 코드&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;        classMethods: {
-            associate: function (models) {
-                //재충전되는 통화인 경우 해당 값을 가진다.
-                DefineCurrency.belongsTo(models.DefineRechargeCurrency, {
-                    onDelete: &quot;CASCADE&quot;,
-                    foreignKey: {
-                        name:&#39;RechargeCurrencyID&#39;,
-                        allowNull: true
-                    },
-                    as: &#39;RechargeInfo&#39;
-                });
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;외래키를 등록할 때 &lt;code&gt;as&lt;/code&gt; 노드는 별명(alias)으로 &lt;code&gt;DefineRechargeCurrency&lt;/code&gt; 이름이 너무 길어서 짧게 줄이려고 추가한 것이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;재충전-로직-작성&quot;&gt;재충전 로직 작성&lt;/h3&gt;
-&lt;p&gt;vs code에서 &lt;code&gt;logics&lt;/code&gt; 폴더를 새로 생성하고 &lt;code&gt;currency.js&lt;/code&gt; 파일을 추가한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code에서 &lt;code&gt;logics&lt;/code&gt; 폴더를 추가한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;logics 폴더에 &lt;code&gt;currency.js&lt;/code&gt;파일을 생성한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 소스코드를 열어서 입력한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto4.2/logics/currency.js&quot;&gt;currency.js&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;21~23번 줄 : 메서드를 실행할 필요가 있는지 체크한다.&lt;/li&gt;
-  &lt;li&gt;31~41번 줄 : 최대치 충전 주기에 해당하는지 체크하여 해당한다면 최대치로 설정하도록 한다.&lt;/li&gt;
-  &lt;li&gt;43~65번 줄 : 재충전 주기를 기준으로 시간경과를 고려하여 충전량을 계산한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;later-모듈-추가&quot;&gt;later 모듈 추가&lt;/h4&gt;
-&lt;p&gt;logics/currency.js에서 later 모듈로 cron 표현식을 해석한다.&lt;/p&gt;
-
-&lt;p&gt;모듈을 추가해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;터미널을 통해 지난 시간에 다운받은 소스코드가 있는 폴더로 이동한다.&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;windows는 파일 탐색기로 해당 폴더를 선택한 뒤 &lt;code&gt;shift + 마우스 우클릭&lt;/code&gt;하여 &lt;code&gt;여기서 명령창 열기&lt;/code&gt;를 실행하면 편리하다.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 명령을 입력하여 모듈을 설치한다.&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt; $ yarn add later
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;환경-설정&quot;&gt;환경 설정&lt;/h4&gt;
-&lt;p&gt;Azure 웹앱은 기본 타임존이 UTC(GMT+0)로 설정되어있다. 하지만 우리의 로컬환경은 다르기때문에 이를 맞춰야 시간과 관련된 계산이 편리하다.&lt;/p&gt;
-
-&lt;p&gt;vs code의 환경 설정을 수정하여 이를 동일하게 맞추도록 한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;vs code에서 &lt;code&gt;.vscode&lt;/code&gt;폴더 안에 &lt;code&gt;launch.json&lt;/code&gt;파일을 선택한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;env&lt;/code&gt;노드 안에 다음 내용을 추가한다.&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt; &quot;TZ&quot;:&quot;UTC&quot;
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;routescurrencyjs-수정&quot;&gt;routes/currency.js 수정&lt;/h3&gt;
-&lt;p&gt;2개의 api를 모두 수정할 것이다.&lt;/p&gt;
-
-&lt;h4 id=&quot;currencydefine-api-수정&quot;&gt;currency/define api 수정&lt;/h4&gt;
-&lt;p&gt;정의된 통화목록을 로딩할 때 재충전 관련 데이터도 함께 엮어서 내려질 수 있도록 변경한다.&lt;/p&gt;
-
-&lt;p&gt;아래 내용을 찾아서 변경한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;  models.DefineCurrency.findAll()
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;변경할 코드&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;  models.DefineCurrency.findAll({
-      include: [{
-          model: models.DefineRechargeCurrency,
-          as: &#39;RechargeInfo&#39;
-      }]
-  })
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;findAll()할 때 include로 DefineRechargeCurrency 모델의 데이터를 포함하여 내려지게 된다.&lt;/p&gt;
-
-&lt;h4 id=&quot;currencyown-api-수정&quot;&gt;currency/own api 수정&lt;/h4&gt;
-&lt;p&gt;앞서 만든 logics/currency.js를 routes/currency.js에서 활용하도록 해보자.&lt;/p&gt;
-
-&lt;p&gt;아래 코드를 찾아서 코드를 추가한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;  const wendyError = require(&#39;../utils/error&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;추가할 코드&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;  const currencyLogic = require(&#39;../logics/currency&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그리고 route.get(‘/own’ … ) 부분 전체를 아래 코드로 변경한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /currency/own 보유 통화 목록 요청
- * @apiName 보유 통화 목록 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
-
-    let saveGameUser;
-    let saveOwnCurrencyList;
-
-    //OwnCurrency 목록조회
-    models.OwnCurrency.findAll({
-        where: { GameUserID: req.user.GameUserID },
-        //재충전 계산이 필요할 수 있으니 DefineCurrency도 포함한다.
-        include: [{
-            model: models.DefineCurrency,
-            include: {
-                model: models.DefineRechargeCurrency,
-                as: &#39;RechargeInfo&#39;
-            }
-        }
-        ]
-    })
-        .then((ownCurrencyList) =&amp;gt; {
-            saveOwnCurrencyList = ownCurrencyList;
-            //재충전 주기를 체크해야하는지 확인한다.
-            for (let row of saveOwnCurrencyList) {
-                if (row.DefineCurrency.RechargeCurrencyID !== null)
-                    return Promise.resolve();
-            }
-            return Promise.reject(&#39;pass&#39;);
-        })
-        //재충전 주기 확인 시 사용될 GameUser를 찾는다.
-        .then(() =&amp;gt; {
-            return models.GameUser.findOne({
-                where: { GameUserID: req.user.GameUserID }
-            })
-        })
-        .then((gameUser) =&amp;gt; {
-            saveGameUser = gameUser;
-            return Promise.resolve();
-        })
-        //재충전 주기를 살필 통화가 있는지 확인한다.
-        .then(() =&amp;gt; {
-            let nowDate = new Date();
-            let promises = [];
-            let tempResult;
-            for (let row of saveOwnCurrencyList) {
-                if (row.DefineCurrency.RechargeCurrencyID !== null) {
-                    tempResult = currencyLogic.CheckForRecharge(
-                        row,
-                        saveGameUser,
-                        row.DefineCurrency.RechargeInfo,
-                        nowDate);
-
-                    if (tempResult.code === true) {
-                        promises.push(
-                            models.OwnCurrency.update(
-                                tempResult.update,
-                                { where: { OwnCurrencyUID: row.OwnCurrencyUID } })
-                        );
-                    }
-                }
-            }
-            if (promises.length &amp;gt; 0) return Promise.all(promises);
-            return Promise.resolve();
-        })
-        .catch((err) =&amp;gt; {
-            if (err === &#39;pass&#39;) return Promise.resolve(saveOwnCurrencyList);
-            return Promise.reject(err);
-        })
-        //업데이트된 항목이 있을 수 있으니 OwnCurrency를 다시 로딩한다.
-        .then(() =&amp;gt; {
-            //OwnCurrencyUID를 Array로 뽑아서 쿼리에 사용한다.
-            let OwnCurrencyUIDs = [];
-            for (let row of saveOwnCurrencyList) {
-                OwnCurrencyUIDs.push(row.OwnCurrencyUID);
-            }
-            return models.OwnCurrency.findAll({
-                where: { OwnCurrencyUID: { $in: OwnCurrencyUIDs } }
-            })
-        })
-        .then((ownCurrencyList)=&amp;gt;{
-            res.send({result:0, list:ownCurrencyList});
-        })
-        .catch((err)=&amp;gt;{
-            next(err);
-        })
-});
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;12~23번 줄 : OwnCurrency를 검색할 때 정의된 통화에 관한(재충전 포함) 데이터를 함께 로딩한다.&lt;/li&gt;
-  &lt;li&gt;24~32번 줄 : 재충전 주기를 확인해야하는지 체크한다. 만약 어떤 통화도 재충전이 필요없다면 68번 줄로 이동한다.&lt;/li&gt;
-  &lt;li&gt;44~67번 줄 : 재충전 주기나 최대치 충전 주기를 확인해서 업데이트 사항이 발생하는지 계산한다. 만약 충전량이 존재하면 이를 반영한다.&lt;/li&gt;
-  &lt;li&gt;73~82번 줄 : OwnCurrency를 다시 검색하여 업데이트 사항을 확인한다.&lt;/li&gt;
-  &lt;li&gt;83~85번 줄 : 결과 전송.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;위 코드에서 특이한 곳은 57~61번 줄이다. OwnCurrency 모델에 업데이트를 요청하고 이를 모두 promises 배열에 할당한다. 그리고나서 65번 줄에서 Promise.all 메서드로 이를 처리한다.&lt;/p&gt;
-
-&lt;p&gt;Promise.all 메서드는 지금처럼 반복되는 일을 병렬로 처리해도 상관없을 때 사용하면 된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;단 성능에 큰 문제를 야기할 수 있다면 순차적으로 처리하는 것을 권한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;테스트&quot;&gt;테스트&lt;/h2&gt;
-&lt;p&gt;필요한 데이터를 넣고 테스트를 진행할 것이다.&lt;/p&gt;
-
-&lt;p&gt;하지만 아직 Wendy가 데이터를 넣는 어떤 로직도 제공하지 않기때문에 DB에 직접 데이터를 넣어야한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;dbeaver-설치&quot;&gt;DBeaver 설치&lt;/h3&gt;
-&lt;p&gt;DB에 접속해서 필요한 일을 처리해줄 GUI 툴로 &lt;code&gt;DBeaver&lt;/code&gt;를 사용하겠다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;무료이고 MSSQL을 지원하면서 Mac, Windows를 모두 사용가능하다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음 링크로 이동해서 &lt;a href=&quot;http://dbeaver.jkiss.org/&quot;&gt;DBeaver&lt;/a&gt;를 설치한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;connection-추가&quot;&gt;Connection 추가&lt;/h3&gt;
-&lt;p&gt;DB에 접속하기 위해 Connection을 등록해보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;SQL 데이터베이스의 서버 방화벽 설정으로 등록된 주소지에서 접속 가능하다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;DBeaver를 실행한 뒤 &lt;code&gt;New Connection&lt;/code&gt;을 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_03.png&quot; alt=&quot;NewConnection&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;MS SQL Server - jTDS driver&lt;/code&gt;를 선택하고 Next를 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_04.png&quot; alt=&quot;jTDS_driver&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Host&lt;/code&gt;에 Azure SQL 데이터베이스 호스트를 입력한다. &lt;code&gt;User name&lt;/code&gt;과 &lt;code&gt;Password&lt;/code&gt;도 입력한다. Next 선택하고 모두 입력되면 Finish 클릭한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_05.png&quot; alt=&quot;host&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;재충전-통화-정보-추가&quot;&gt;재충전 통화 정보 추가&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Connection 전에 로컬 서버를 실행한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;등록된 Connection에 접속을 한 뒤 자신의 db를 연다(여기서는 wendydb).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;dbo - tables - DefineRechargeCurrency&lt;/code&gt;를 더블 클릭 한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_06.png&quot; alt=&quot;selecttable&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;Data&lt;/code&gt; 탭을 누른다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_07.png&quot; alt=&quot;Data_tab&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;+&lt;/code&gt; 버튼(Add new row)을 클릭 한 뒤 아래 표처럼 입력한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_08_0.png&quot; alt=&quot;plusbutton&quot; /&gt;&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;RechargeCurrencyID&lt;/th&gt;
-          &lt;th&gt;IntervalTime&lt;/th&gt;
-          &lt;th&gt;IntervalChargeAmount&lt;/th&gt;
-          &lt;th&gt;SetMaxSwitch&lt;/th&gt;
-          &lt;th&gt;SetMaxPattern&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;101&lt;/td&gt;
-          &lt;td&gt;3600&lt;/td&gt;
-          &lt;td&gt;2&lt;/td&gt;
-          &lt;td&gt;1&lt;/td&gt;
-          &lt;td&gt;15 10 * * ? *&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-
-    &lt;p&gt;101은 3600초(1시간)에 2만큼 재충전된다. 그리고 매일 10:15분에 최대치로 충전된다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_08.png&quot; alt=&quot;newrow&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래쪽에 &lt;code&gt;Save&lt;/code&gt;버튼을 클릭해서 추가한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_09.png&quot; alt=&quot;savebutton&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;정의된-통화-추가&quot;&gt;정의된 통화 추가&lt;/h3&gt;
-
-&lt;p&gt;위의 과정처럼 &lt;code&gt;DefineCurrency&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CurrencyID&lt;/th&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;MaxQNTY&lt;/th&gt;
-      &lt;th&gt;RechargeCurrencyID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;101&lt;/td&gt;
-      &lt;td&gt;key&lt;/td&gt;
-      &lt;td&gt;500&lt;/td&gt;
-      &lt;td&gt;101&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;102&lt;/td&gt;
-      &lt;td&gt;gem&lt;/td&gt;
-      &lt;td&gt;900000&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;103&lt;/td&gt;
-      &lt;td&gt;gold&lt;/td&gt;
-      &lt;td&gt;900000&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;위 테이블처러 2가지 상품을 등록한다. 그 중 101 상품은 재충전 가능한 상품이 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;보유한-통화-추가&quot;&gt;보유한 통화 추가&lt;/h3&gt;
-&lt;p&gt;지난 강좌에서 사용자를 등록했다는 가정하에 진행한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;만약 사용자 등록을 하지 않았다면 등록한 뒤 GameUserID란을 자신의 것과 동일하게 넣으면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;OwnCurrencyUID&lt;/th&gt;
-      &lt;th&gt;CurrencyID&lt;/th&gt;
-      &lt;th&gt;CurrentQNTY&lt;/th&gt;
-      &lt;th&gt;NowMaxQNTY&lt;/th&gt;
-      &lt;th&gt;AddMaxQNTY&lt;/th&gt;
-      &lt;th&gt;UpdateTimeStamp&lt;/th&gt;
-      &lt;th&gt;GameUserID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;101&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;2016-12-30&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;102&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;900&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;2016-12-30&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-      &lt;td&gt;1000&lt;/td&gt;
-      &lt;td&gt;90000&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;2016-12-30&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;OwnCurrencyUID&lt;/code&gt;는 자동으로 증가되므로 NULL을 넣어도 알아서 값을 가지게 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;postman으로-테스트&quot;&gt;postman으로 테스트&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;패스 : GET&lt;/li&gt;
-  &lt;li&gt;URL : localhost:3000/currency/own&lt;/li&gt;
-  &lt;li&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;성공하면 다음과 같은 정보를 돌려준다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &quot;result&quot;: 0,
-  &quot;list&quot;: [
-    {
-      &quot;TotalQNTY&quot;: 5,
-      &quot;OwnCurrencyUID&quot;: 7,
-      &quot;CurrencyID&quot;: 101,
-      &quot;CurrentQNTY&quot;: 5,
-      &quot;NowMaxQNTY&quot;: 5,
-      &quot;AddMaxQNTY&quot;: 0,
-      &quot;UpdateTimeStamp&quot;: &quot;2017-01-04T05:46:19.658Z&quot;,
-      &quot;GameUserID&quot;: 1
-    },
-    {
-      &quot;TotalQNTY&quot;: 100,
-      &quot;OwnCurrencyUID&quot;: 8,
-      &quot;CurrencyID&quot;: 102,
-      &quot;CurrentQNTY&quot;: 1,
-      &quot;NowMaxQNTY&quot;: 100,
-      &quot;AddMaxQNTY&quot;: 0,
-      &quot;UpdateTimeStamp&quot;: &quot;2016-12-30T00:00:00.000Z&quot;,
-      &quot;GameUserID&quot;: 1
-    }
-  ]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;보는 바와 같이 101 상품은 재충전이 일어나서 CurrentQNTY가 5가 되었고 UpdateTimeStamp도 변경이 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-&lt;p&gt;이번에 다룬 것은 통화였다. 그중에서 재충전에 관한 것이 많은 부분을 차지했다.&lt;/p&gt;
-
-&lt;p&gt;실제로 통화 관리는 이보다 더 복잡하게 이뤄질 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이 과정을 넘어서 다음 강좌에서 만나자!!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://totuworld.github.io/2017/02/09/azureandunity-05/&quot;&gt;5강 바로가기&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
-&lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.3.zip&quot;&gt;Wendy 4강 완료 버전&lt;/a&gt;&lt;/p&gt;
-</description>
-            <pubDate>Thu, 26 Jan 2017 04:00:00 +0900</pubDate>
-            <link>http://totuworld.github.io/2017/01/26/azureandunity-04/</link>
-            <guid isPermaLink="true">http://totuworld.github.io/2017/01/26/azureandunity-04/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
-            
-            <category>unity</category>
             
         </item>
       

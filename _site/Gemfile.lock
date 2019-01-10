@@ -74,7 +74,7 @@ DEPENDENCIES
   liquid (= 3.0.6)
 
 RUBY VERSION
-   ruby 2.2.0p0
+   ruby 2.6.0p0
 
 BUNDLED WITH
-   1.14.4
+   1.17.3
