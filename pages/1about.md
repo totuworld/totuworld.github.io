@@ -7,7 +7,8 @@ icon: glyphicon-heart
 
 ## 소개
 
-[아라소 판단](https://www.facebook.com/ArasoPandan)의 게임 개발자
+- (현재)[야놀자](https://m.yanolja.com)의 Full 🥩🔥 Developer
+- (전)[아라소 판단](https://www.facebook.com/ArasoPandan)의 게임 개발자
 
 ---
 
