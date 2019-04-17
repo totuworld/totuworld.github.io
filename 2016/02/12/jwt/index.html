@@ -16,13 +16,13 @@
 <meta property="og:title" content="구글 API 허가, JWT로 쉽게 받기" />
 <meta name="description" content="구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다." />
 <meta property="og:description" content="구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다." />
-<link rel="canonical" href="http://totuworld.github.io/2016/02/12/jwt/" />
-<meta property="og:url" content="http://totuworld.github.io/2016/02/12/jwt/" />
+<link rel="canonical" href="https://blog.totu.dev/2016/02/12/jwt/" />
+<meta property="og:url" content="https://blog.totu.dev/2016/02/12/jwt/" />
 <meta property="og:site_name" content="totuworld’s tech blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-02-12T10:00:00+09:00" />
-<link rel="next" href="http://totuworld.github.io/2016/03/17/letsencrypt/" title="Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)" />
-<link rel="prev" href="http://totuworld.github.io/2016/02/10/google-oauth/" title="구글 인앱 결제 검증 웹 서비스 만들기" />
+<link rel="next" href="https://blog.totu.dev/2016/03/17/letsencrypt/" title="Azure Web Apps에 커스텀도메인 설정하기(feat.LetsEncrypt)" />
+<link rel="prev" href="https://blog.totu.dev/2016/02/10/google-oauth/" title="구글 인앱 결제 검증 웹 서비스 만들기" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@totuworld" />
 <meta name="twitter:creator" content="@totuworld" />
@@ -33,7 +33,7 @@
     "headline": "구글 API 허가, JWT로 쉽게 받기",
     "datePublished": "2016-02-12T10:00:00+09:00",
     "description": "구글 결제 검증 시 어려웠던 허가를 JWT로 해결한다.",
-    "url": "http://totuworld.github.io/2016/02/12/jwt/"
+    "url": "https://blog.totu.dev/2016/02/12/jwt/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -44,7 +44,7 @@
 	
 	
 	
-	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="http://totuworld.github.io/feed.xml" />
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="https://blog.totu.dev/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
 
@@ -186,7 +186,7 @@
 <p>아래 글에서 더럽게 어렵게 설명한 구글의 허가(Authorization) 획득.</p>
 
 <blockquote>
-  <p><a href="http://totuworld.github.io/2016/02/10/google-oauth/">구글 인앱 결제 검증 웹 서비스 만들기</a></p>
+  <p><a href="https://blog.totu.dev/2016/02/10/google-oauth/">구글 인앱 결제 검증 웹 서비스 만들기</a></p>
 </blockquote>
 
 <p>글을 다 적을 때쯤 공식 API를 보다가 우연히 <code>서비스 어카운트(service account)</code>를 활용해서 <code>JSON Web Token(이하 JWT)</code>를 생성한 후 로그인 절차없이 <code>access_token</code>을 얻는 방법을 알게되었다.</p>
@@ -241,7 +241,7 @@
   <p>주의 사항 : <code>p12</code>가 아니라 <code>json</code>으로 선택해야 정신건강에 이로우며 완료 후 다운받은 json 파일은 하나뿐이라서 잃어버리면 안된다!!!!</p>
 </blockquote>
 
-<p><a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>과는 별도의 웹 서비스로 제작하기위해 <a href="http://totuworld.github.io/2016/02/10/google-oauth/#express---">Express 프로젝트 기초 작업</a>을 진행한다.</p>
+<p><a href="https://blog.totu.dev/2016/02/10/google-oauth">지난 시간</a>과는 별도의 웹 서비스로 제작하기위해 <a href="https://blog.totu.dev/2016/02/10/google-oauth/#express---">Express 프로젝트 기초 작업</a>을 진행한다.</p>
 
 <h3 id="기능-제작">기능 제작</h3>
 
@@ -255,7 +255,7 @@
 
 <p>27 번째 줄 : 가장 핵심 부분이다. Node.js에서 사용가능한 google api 클라이언트를 활용하여 JWT를 생성한 후 허가를 획득한다.</p>
 
-<p>51 번째 줄 : 영수증을 검증하는 메서드이다. <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 만든 메서드에 파라미터를 추가한것이 전부이다.</p>
+<p>51 번째 줄 : 영수증을 검증하는 메서드이다. <a href="https://blog.totu.dev/2016/02/10/google-oauth">지난 시간</a>에 만든 메서드에 파라미터를 추가한것이 전부이다.</p>
 
 <p>JWT를 활용하여 <code>access_token</code>을 얻는것은 이처럼 단순하다. 다만 <code>refresh_token</code>이 지급되지 않으므로 유효시간(1시간)이 지나면 갱신을 하도록만 하면 된다.</p>
 
@@ -267,7 +267,7 @@
 
 <script src="https://gist.github.com/totuworld/3cff7e34ed3750571650.js?file=index.js"> </script>
 
-<p>13 번째 줄 : <a href="http://totuworld.github.io/2016/02/10/google-oauth">지난 시간</a>에 설명했던 코드이다. 변경된 것은 <code>ValidationIAB</code> 메서드를 활용하기전에 <code>access_token</code>이 유효하지 않으면 획득하게 하는 로직을 추가한 것 뿐이다.</p>
+<p>13 번째 줄 : <a href="https://blog.totu.dev/2016/02/10/google-oauth">지난 시간</a>에 설명했던 코드이다. 변경된 것은 <code>ValidationIAB</code> 메서드를 활용하기전에 <code>access_token</code>이 유효하지 않으면 획득하게 하는 로직을 추가한 것 뿐이다.</p>
 
 <hr />
 
@@ -298,7 +298,7 @@
       </form>
 
       <div class="fb-foot-area" style="width:104px;height:24px">
-        <div class="fb-like" data-href="http://totuworld.github.io/2016/02/12/jwt/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="https://blog.totu.dev/2016/02/12/jwt/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
     <div id="fb-root"></div>
