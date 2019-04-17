@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://totuworld.github.io/2019/04/17/coffeetogether/</loc>
+<lastmod>2019-04-17T09:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://totuworld.github.io/2019/01/09/aws-beanstalk/</loc>
 <lastmod>2019-01-09T09:00:00+09:00</lastmod>
 </url>
@@ -17,7 +21,7 @@
 <lastmod>2018-03-22T09:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2017/03/07/azureunity-07/</loc>
+<loc>http://totuworld.github.io/2017/03/06/azureunity-07/</loc>
 <lastmod>2017-03-07T04:01:00+09:00</lastmod>
 </url>
 <url>
@@ -29,19 +33,19 @@
 <lastmod>2017-02-24T21:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2017/02/21/azureandunity-06/</loc>
+<loc>http://totuworld.github.io/2017/02/20/azureandunity-06/</loc>
 <lastmod>2017-02-21T04:01:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2017/02/09/azureandunity-05/</loc>
+<loc>http://totuworld.github.io/2017/02/08/azureandunity-05/</loc>
 <lastmod>2017-02-09T04:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2017/01/30/wendynotification/</loc>
+<loc>http://totuworld.github.io/2017/01/29/wendynotification/</loc>
 <lastmod>2017-01-30T04:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2017/01/26/azureandunity-04/</loc>
+<loc>http://totuworld.github.io/2017/01/25/azureandunity-04/</loc>
 <lastmod>2017-01-26T04:00:00+09:00</lastmod>
 </url>
 <url>
@@ -61,7 +65,7 @@
 <lastmod>2016-12-21T09:01:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2016/10/26/azurewebbapp-db/</loc>
+<loc>http://totuworld.github.io/2016/10/25/azurewebbapp-db/</loc>
 <lastmod>2016-10-26T06:00:00+09:00</lastmod>
 </url>
 <url>
@@ -113,11 +117,11 @@
 <lastmod>2016-02-10T09:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2016/01/25/daddys-month/</loc>
+<loc>http://totuworld.github.io/2016/01/24/daddys-month/</loc>
 <lastmod>2016-01-25T08:20:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2016/01/20/shell-jq/</loc>
+<loc>http://totuworld.github.io/2016/01/19/shell-jq/</loc>
 <lastmod>2016-01-20T01:00:00+09:00</lastmod>
 </url>
 <url>
@@ -133,7 +137,7 @@
 <lastmod>2015-08-07T16:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://totuworld.github.io/2015/07/28/make-node-project/</loc>
+<loc>http://totuworld.github.io/2015/07/27/make-node-project/</loc>
 <lastmod>2015-07-28T03:00:00+09:00</lastmod>
 </url>
 <url>

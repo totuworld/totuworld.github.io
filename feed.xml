@@ -5,9 +5,158 @@
     <description>Full 🥩🔥 Developer</description>
     <link>http://totuworld.github.io/</link>
     <atom:link href="http://totuworld.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Mar 2019 17:49:14 +0900</pubDate>
-    <lastBuildDate>Mon, 04 Mar 2019 17:49:14 +0900</lastBuildDate>
+    <pubDate>Wed, 17 Apr 2019 14:06:29 +0900</pubDate>
+    <lastBuildDate>Wed, 17 Apr 2019 14:06:29 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>30인 규모팀의 커피 주문하기 - 커피투게더</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#커피-주문의-문제&quot; id=&quot;markdown-toc-커피-주문의-문제&quot;&gt;커피 주문의 문제&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#문제-정리&quot; id=&quot;markdown-toc-문제-정리&quot;&gt;문제 정리&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#신기능-제작&quot; id=&quot;markdown-toc-신기능-제작&quot;&gt;신기능 제작!&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1일-차---api-개발&quot; id=&quot;markdown-toc-1일-차---api-개발&quot;&gt;1일 차 - api 개발&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2일-차---화면-개발&quot; id=&quot;markdown-toc-2일-차---화면-개발&quot;&gt;2일 차 - 화면 개발&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#운영-기록&quot; id=&quot;markdown-toc-운영-기록&quot;&gt;운영 기록&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#리팩토링&quot; id=&quot;markdown-toc-리팩토링&quot;&gt;리팩토링&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#마무리&quot; id=&quot;markdown-toc-마무리&quot;&gt;마무리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;조직 생활을 하다보면 커피(차) 한 잔하며 휴식하는 일이 생긴다. 도란 도란 얘기도 나누고 새로온 사람과 인사도 나눌 수 있는 꼭 필요한 시간이다. 하지만 팀 규모가 10인을 넘으면 주문이 일이다. 야놀자의 범 CX실(CXPO, CXDEV)은 2019년 1/4분기에 30명이 넘어갔다. 와아~&lt;/p&gt;
+
+&lt;h2 id=&quot;커피-주문의-문제&quot;&gt;커피 주문의 문제&lt;/h2&gt;
+&lt;p&gt;커피 주문은 간단하다. 원하는 주문을 말하고 계산하면 된다.  하지만 사람이 많아지면 주문을 모으는 일이 힘들다. 아래 예시를 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/coffeeorder/coffee_order_01.jpg&quot; alt=&quot;주문예시&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;CX실의 규칙은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자신이 주문할 메뉴가 있는지 쓰레드를 살핀다.&lt;/li&gt;
+  &lt;li&gt;주문이 없다면 신규 메뉴를 쓰레드에 남긴다.&lt;/li&gt;
+  &lt;li&gt;혼자만 주문했어도 반드시 ✋ 이모지를 남겨서 카운트하기 쉽도록 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위 예시에서 &lt;code&gt;아이스 아메리카노&lt;/code&gt; 를 살펴보자. 샷을 추가하가한 메뉴와 &lt;code&gt;아이스아메&lt;/code&gt; 라고 따로 등록한 것까지 비슷한 주문이 흩어져있다. 또 아이스아메는 ✋이모지가 없다. 신규 입사자가 늘어나면서 규칙 전파가 잘 안된다고 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;주문 몇 잔인지 체크하기도 어렵다. 또 실제 주문 중인데 주문이 바뀌는 일도 가능하다. 주문에 성공해도 어떤게 내 주문인지 확인하기 어려웠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;문제-정리&quot;&gt;문제 정리&lt;/h3&gt;
+
+&lt;p&gt;위 문제를 해결하는 방법을 정리해보자.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;같은 주문을 누적해서 표시&lt;/li&gt;
+  &lt;li&gt;총 몇 잔인지 합계 표시&lt;/li&gt;
+  &lt;li&gt;특정 시점에서 주문을 종료하여 변경 불가능하도록 설정&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;신기능-제작&quot;&gt;신기능 제작!&lt;/h2&gt;
+
+&lt;p&gt;CX실에는 &lt;a href=&quot;https://yanolja.github.io/2018/09/Work-Log&quot;&gt;워크로그 개발기&lt;/a&gt;가 기 개발된 상태였다. 곧 CX실 인원이 커피 주문을 하는 서비스라면 &lt;code&gt;워크로그&lt;/code&gt;에 새로운 기능을 추가하면 될 터!&lt;/p&gt;
+
+&lt;h3 id=&quot;1일-차---api-개발&quot;&gt;1일 차 - api 개발&lt;/h3&gt;
+
+&lt;p&gt;커피(차) 한 잔 하는 하는 휴식을 &lt;code&gt;이벤트&lt;/code&gt;로 생각했다. 이벤트에 주최자와 참석자를 특정할 수 있다. 그리고 이벤트는 &lt;code&gt;주문&lt;/code&gt;을 가질 수 있다. 주문은 &lt;code&gt;음료&lt;/code&gt; id를 특정하는데 이때 주문자의 - 휘핑 없이같은 - 옵션을 추가할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/coffeeorder/coffee_order_db.png&quot; alt=&quot;주문db&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;개략적인 구조는 저렇다. 이를 바탕으로 &lt;code&gt;이벤트&lt;/code&gt;, &lt;code&gt;주문&lt;/code&gt;, &lt;code&gt;참가자&lt;/code&gt;, &lt;code&gt;음료&lt;/code&gt;에 관한 &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt; api를 제작했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GET /events 이벤트 목록&lt;/li&gt;
+  &lt;li&gt;POST /events 이벤트 등록&lt;/li&gt;
+  &lt;li&gt;GET /events/:event_id 이벤트 정보&lt;/li&gt;
+  &lt;li&gt;PUT /events/:event_id 이벤트 수정&lt;/li&gt;
+  &lt;li&gt;GET /events/:event_id/guests 참가자 목록&lt;/li&gt;
+  &lt;li&gt;POST /events/:event_id/guests 참가자 등록&lt;/li&gt;
+  &lt;li&gt;GET /events/:event_id/orders 주문 목록&lt;/li&gt;
+  &lt;li&gt;POST /events/:event_id/orders 주문 추가 및 갱신&lt;/li&gt;
+  &lt;li&gt;DELETE /events/:event_id/orders/:guest_id 주문 삭제&lt;/li&gt;
+  &lt;li&gt;GET /beverages 음료 목록&lt;/li&gt;
+  &lt;li&gt;POST /beverages 음료 등록&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;추가로 사내 메신저인 &lt;a href=&quot;https://slack.com/&quot;&gt;슬랙&lt;/a&gt; 데이터를 워크로그 DB에 등록한 상태이므로 &lt;code&gt;참가자&lt;/code&gt; 에게 메시지 발송하는 기능도 추가했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2일-차---화면-개발&quot;&gt;2일 차 - 화면 개발&lt;/h3&gt;
+&lt;p&gt;개발한 화면은 총 3개다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전체 &lt;code&gt;이벤트&lt;/code&gt; 목록 출력 페이지&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;이벤트&lt;/code&gt; 등록 페이지&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;이벤트&lt;/code&gt; 상세 페이지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;재사용가능한 컴포넌트가 별로 없어서 새로 만들었지만 구현이 간단한 편이라서 생각보다 빨리 완료했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;워크로그는 razzle + after.js + react.js + mobx 기반&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/coffeeorder/quickquick.png&quot; alt=&quot;뚝딱맨&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;운영-기록&quot;&gt;운영 기록&lt;/h2&gt;
+
+&lt;p&gt;2일 간의 가열찬 개발 후 대망의 서비스 오픈!!&lt;/p&gt;
+
+&lt;figure class=&quot;large&quot;&gt;
+  &lt;div class=&quot;myvideo&quot;&gt;
+     &lt;video style=&quot;width:50%&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+         &lt;source src=&quot;/images/coffeeorder/i_love_coffee.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+     &lt;/video&gt;
+  &lt;/div&gt;
+&lt;figcaption&gt;커피 주문 동작예시&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;CX실 채널에서 크게 환영받았다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/coffeeorder/coffee_order_launch.png&quot; alt=&quot;서비스오픈&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;손쉽게 끝날줄 알았지만 데이터베이스(Database)가 터진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/coffeeorder/coffee_order_error.jpg&quot; alt=&quot;서비스에러&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;돈으로 막을 수 있는건 돈으로 막는게 최고! Firebase를 유료 모델로 올려서 첫날 서비스를 마쳤다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;최소 기능만 가지고 서비스를 강행 오픈했을 때 참사를 경험&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;리팩토링&quot;&gt;리팩토링&lt;/h3&gt;
+
+&lt;p&gt;가만 보니 사용자 전체 목록 조회 부분과 이벤트 내 주문, 음료 목록 전체 로딩을 매번 새롭게 하고 있었다. 변경(Create, Update, Delete)발생할 때만 새롭게 데이터를 읽어서 서버 인메모리에 저장한다. 평소의 읽기는 인메모리 캐시를 먼저 확인하고 비었으면 데이터베이스로부터 데이터를 읽도록 했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;마무리&quot;&gt;마무리&lt;/h2&gt;
+
+&lt;p&gt;이 후 자잘한 업데이트 중이다. 죽었던 다른 기능을 살리고, 불편 사항을 접수해서 개선하기도 한다. &lt;code&gt;토이 프로젝트&lt;/code&gt;는 재미있다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/totuworld/time-recorder-viewer&quot;&gt;워크로그 레포지토리&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Wed, 17 Apr 2019 09:00:00 +0900</pubDate>
+            <link>http://totuworld.github.io/2019/04/17/coffeetogether/</link>
+            <guid isPermaLink="true">http://totuworld.github.io/2019/04/17/coffeetogether/</guid>
+            
+            
+            <category>etc</category>
+            
+        </item>
+      
     
       
         <item>
@@ -3420,124 +3569,6 @@ class NoLongerUpgrade extends CustomError {
             <category>webapps</category>
             
             <category>unity</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>Wendy 프로젝트 진행사항 2</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#프로젝트-진행-사항&quot; id=&quot;markdown-toc-프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#기능-목록&quot; id=&quot;markdown-toc-기능-목록&quot;&gt;기능 목록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-사항&quot; id=&quot;markdown-toc-튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#완성된-튜토리얼-목록&quot; id=&quot;markdown-toc-완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-진행사항&quot; id=&quot;markdown-toc-튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#웬디-근황&quot; id=&quot;markdown-toc-웬디-근황&quot;&gt;웬디 근황&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-
-&lt;p&gt;Wendy를 시작하고 좋은 경험을 2가지 했다.&lt;/p&gt;
-
-&lt;p&gt;첫번째는 내 진심을 알아주시고 &lt;code&gt;이상한모임&lt;/code&gt; 블로그에 웬디 사진이 게시된 것이다.&lt;/p&gt;
-
-&lt;p&gt;두번째는 &lt;code&gt;majorika&lt;/code&gt;님이 Wendy를 테스트하는 Unity 프로젝트를 github에 올려주신 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/majorika/Wendy-Unity&quot;&gt;majorika/Wendy-Unity&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;세상은 넓고 능력자는 많다!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
-&lt;p&gt;아이템 관리까지 작업이 되었다. 관련하여 작성한 글은 2월에 게시한 예정이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;기능-목록&quot;&gt;기능 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;기기 관리&lt;/li&gt;
-  &lt;li&gt;사용자 관리&lt;/li&gt;
-  &lt;li&gt;통화 관리&lt;/li&gt;
-  &lt;li&gt;아이템 관리&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
-&lt;p&gt;2개 강좌가 더 제작되었다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;3강 - 기기와 사용자 관리&lt;/li&gt;
-  &lt;li&gt;4강 - 통화 관리&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;1강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;2강 - &lt;a href=&quot;http://totuworld.github.io/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;3강 - &lt;a href=&quot;http://totuworld.github.io/2017/01/12/azureandunity-03/&quot;&gt;기기와 사용자 관리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;4강 - &lt;a href=&quot;http://totuworld.github.io/2017/01/26/azureandunity-04/&quot;&gt;통화관리&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;5강 : 글 작성 완료, 동영상 녹화 예정&lt;/li&gt;
-  &lt;li&gt;6강 : 소스 코드와 글 작성 중&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;웬디-근황&quot;&gt;웬디 근황&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tvN &lt;code&gt;편의점을 털어라&lt;/code&gt; MC로 활약중이다(프로그램이 핵노… 읍읍).&lt;/li&gt;
-  &lt;li&gt;레드벨벳 4번째 미니앨범 루키(Rookie)가 곧 공개된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rookie_wendy.jpg&quot; alt=&quot;rookie_wendy&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;와 이제 대놓고 덕질할 수 있구나!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;동영상 튜토리얼을 만들면서 확실히 알게된 사실이 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;난 &lt;code&gt;핵노잼&lt;/code&gt;이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이렇게 지루한 동영상을 누가 볼까 싶다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;동영상을 클릭은 해봐주신 200여분께 감사와 사과의 말씀 올립니다. ㅠㅠ&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;그외에 Wendy 프로젝트를 진행하니 좋은 점이 있다.&lt;/p&gt;
-
-&lt;p&gt;바로 블로그 조회수가 늘었다는 점이다.&lt;/p&gt;
-
-&lt;p&gt;그전까지는 블로그 방문자의 30%가 &lt;a href=&quot;http://totuworld.github.io/2016/02/10/google-oauth/&quot;&gt;구글 인앱 결제 검증 웹 서비스 만들기&lt;/a&gt; 글을 보는 사람이었다.&lt;/p&gt;
-
-&lt;p&gt;Wendy 관련 글이 유입 대부분을 소화하고 있을 뿐 아니라 글 올리는날 방문자가 1000명은 된다.&lt;/p&gt;
-
-&lt;p&gt;누군가에게는 매우 작은 수치일 수 있겠지만 나에겐 큰 숫자이다.&lt;/p&gt;
-
-&lt;p&gt;행복하다. 흐흐&lt;/p&gt;
-</description>
-            <pubDate>Mon, 30 Jan 2017 04:00:00 +0900</pubDate>
-            <link>http://totuworld.github.io/2017/01/30/wendynotification/</link>
-            <guid isPermaLink="true">http://totuworld.github.io/2017/01/30/wendynotification/</guid>
-            
-            
-            <category>wendy</category>
             
         </item>
       
