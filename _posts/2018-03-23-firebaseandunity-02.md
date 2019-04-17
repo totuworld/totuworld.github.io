@@ -17,7 +17,7 @@ publish : true
 
 ## 들어가는 말
 
-지난 시간에 다룬 [익명 로그인](http://totuworld.github.io/2018/03/22/firebaseandunity-01/)은 기본이다. 익명 로그인은 Apple의 앱스토어 검수 조건에도 해당한다.
+지난 시간에 다룬 [익명 로그인](https://blog.totu.dev/2018/03/22/firebaseandunity-01/)은 기본이다. 익명 로그인은 Apple의 앱스토어 검수 조건에도 해당한다.
 
 사용자가 선택할 수 있는 그 다음 선택지는 소셜 로그인이다. 비밀번호와 같은 자산이 Facebook이나 Google 등 대형 회사가 관리되니 안심되고 설령 게임을 지워도 다시 데이터를 복원을 기준을 제공해주기 때문이다.
 
@@ -75,7 +75,7 @@ Facebook 로그인도 익명 로그인과 비슷한 절차로 진행된다.
 
 ### 프로그래밍 준비
 
-> [익명 로그인](http://totuworld.github.io/2018/03/22/firebaseandunity-01/)을 진행했다면 그 프로젝트를 이어서 사용해도 무방하다. 
+> [익명 로그인](https://blog.totu.dev/2018/03/22/firebaseandunity-01/)을 진행했다면 그 프로젝트를 이어서 사용해도 무방하다. 
 
 * 아래 프로젝트 파일을 다운받는다.
 
@@ -83,7 +83,7 @@ Facebook 로그인도 익명 로그인과 비슷한 절차로 진행된다.
 
 * [Facebook SDK for Unity](https://developers.facebook.com/docs/unity)로 접속해서 Facebook Unity SDK를 다운로드한다(작성일 기준 v7.11.1).
 
-* Unity 2017.3를 실행한 뒤 샘플 프로젝트를 열고 [익명 로그인](http://totuworld.github.io/2018/03/22/firebaseandunity-01/#프로젝트-설정)의 `프로젝트 설정` 부분을 참고하여 `GoogleService-Info.plist` 파일을 생성하여 샘플 프로젝트에 추가한다. 다운로드한 Facebook Unity SDK도 추가한다.
+* Unity 2017.3를 실행한 뒤 샘플 프로젝트를 열고 [익명 로그인](https://blog.totu.dev/2018/03/22/firebaseandunity-01/#프로젝트-설정)의 `프로젝트 설정` 부분을 참고하여 `GoogleService-Info.plist` 파일을 생성하여 샘플 프로젝트에 추가한다. 다운로드한 Facebook Unity SDK도 추가한다.
 
 
     Facebook Unity SDK를 추가하면 Firebase Auth SDK와 충돌하는 파일이 4개 있다. 프로젝트에 사용된 Firebase Unity SDK는 4.3이고 Facebook Unity SDK는 7.11.1이다. 충돌이나는 파일은 `PlayServicesResolver의` 폴더에 있는 4개 파일인데 1.2.59 버전 파일을 모두 삭제한다.

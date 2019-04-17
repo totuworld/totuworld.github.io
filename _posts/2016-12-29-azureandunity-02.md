@@ -327,4 +327,4 @@ ORM에게 데이터 가공을 부탁하면 SQL로 번역해서 우리가 지시�
 
 다음 시간부터는 드디어 프로그래밍을 할 수 있다.
 
-[3강 바로가기](http://totuworld.github.io/2017/01/12/azureandunity-03/)
+[3강 바로가기](https://blog.totu.dev/2017/01/12/azureandunity-03/)

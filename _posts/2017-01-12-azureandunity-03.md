@@ -475,7 +475,7 @@ Postman의 `Request Editor`를 다음과 같이 입력한다.
 
 다음 시간에는 통화를 관리해보도록 하겠다.
 
-[4강 바로가기](http://totuworld.github.io/2017/01/26/azureandunity-04/)
+[4강 바로가기](https://blog.totu.dev/2017/01/26/azureandunity-04/)
 
 ---
 

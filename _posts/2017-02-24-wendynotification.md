@@ -42,12 +42,12 @@ publish : true
 * 6강 - 자원 지급 관리
 
 ### 완성된 튜토리얼 목록
-* 1강 - [Hello, world!](http://totuworld.github.io/2016/12/21/azureandunity-01/)
-* 2강 - [SQL데이터베이스스와 환경설정](http://totuworld.github.io/2016/12/29/azureandunity-02/)
-* 3강 - [기기와 사용자 관리](http://totuworld.github.io/2017/01/12/azureandunity-03/)
-* 4강 - [통화관리](http://totuworld.github.io/2017/01/26/azureandunity-04/)
-* 5강 - [아이템 관리](http://totuworld.github.io/2017/02/09/azureandunity-05/)
-* 6강 - [자원 지급 관리](http://totuworld.github.io/2017/02/21/azureandunity-06/)
+* 1강 - [Hello, world!](https://blog.totu.dev/2016/12/21/azureandunity-01/)
+* 2강 - [SQL데이터베이스스와 환경설정](https://blog.totu.dev/2016/12/29/azureandunity-02/)
+* 3강 - [기기와 사용자 관리](https://blog.totu.dev/2017/01/12/azureandunity-03/)
+* 4강 - [통화관리](https://blog.totu.dev/2017/01/26/azureandunity-04/)
+* 5강 - [아이템 관리](https://blog.totu.dev/2017/02/09/azureandunity-05/)
+* 6강 - [자원 지급 관리](https://blog.totu.dev/2017/02/21/azureandunity-06/)
 
 ### 튜토리얼 제작 진행사항
 * 7강 : ... 시작도 못했는데 어쩌죠?

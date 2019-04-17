@@ -46,10 +46,10 @@ Wendy를 시작하고 좋은 경험을 2가지 했다.
 * 4강 - 통화 관리
 
 ### 완성된 튜토리얼 목록
-* 1강 - [Hello, world!](http://totuworld.github.io/2016/12/21/azureandunity-01/)
-* 2강 - [SQL데이터베이스스와 환경설정](http://totuworld.github.io/2016/12/29/azureandunity-02/)
-* 3강 - [기기와 사용자 관리](http://totuworld.github.io/2017/01/12/azureandunity-03/)
-* 4강 - [통화관리](http://totuworld.github.io/2017/01/26/azureandunity-04/)
+* 1강 - [Hello, world!](https://blog.totu.dev/2016/12/21/azureandunity-01/)
+* 2강 - [SQL데이터베이스스와 환경설정](https://blog.totu.dev/2016/12/29/azureandunity-02/)
+* 3강 - [기기와 사용자 관리](https://blog.totu.dev/2017/01/12/azureandunity-03/)
+* 4강 - [통화관리](https://blog.totu.dev/2017/01/26/azureandunity-04/)
 
 ### 튜토리얼 제작 진행사항
 * 5강 : 글 작성 완료, 동영상 녹화 예정
@@ -78,7 +78,7 @@ Wendy를 시작하고 좋은 경험을 2가지 했다.
 
 바로 블로그 조회수가 늘었다는 점이다.
 
-그전까지는 블로그 방문자의 30%가 [구글 인앱 결제 검증 웹 서비스 만들기](http://totuworld.github.io/2016/02/10/google-oauth/) 글을 보는 사람이었다.
+그전까지는 블로그 방문자의 30%가 [구글 인앱 결제 검증 웹 서비스 만들기](https://blog.totu.dev/2016/02/10/google-oauth/) 글을 보는 사람이었다.
 
 Wendy 관련 글이 유입 대부분을 소화하고 있을 뿐 아니라 글 올리는날 방문자가 1000명은 된다.
 

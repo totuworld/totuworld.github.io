@@ -473,7 +473,7 @@ NULL | 103 | 1000 | 90000 | 0 | 2016-12-30 | 1
 
 이 과정을 넘어서 다음 강좌에서 만나자!!
 
-[5강 바로가기](http://totuworld.github.io/2017/02/09/azureandunity-05/)
+[5강 바로가기](https://blog.totu.dev/2017/02/09/azureandunity-05/)
 
 ---
 

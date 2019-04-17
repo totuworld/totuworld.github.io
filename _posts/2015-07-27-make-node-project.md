@@ -15,7 +15,7 @@ description : Node.js + express를 활용한 프로젝트를 생성합니다.
 
 ## 들어가는 말
 
-[지난 시간에 VirtualBox와 Vagrant로 컴퓨터에 VM을 생성했다.](http://totuworld.github.io/2015/07/24/lemp/) 이제는 해당 서버에서 작동할 Node.js 프로젝트를 만들 것이다.
+[지난 시간에 VirtualBox와 Vagrant로 컴퓨터에 VM을 생성했다.](https://blog.totu.dev/2015/07/24/lemp/) 이제는 해당 서버에서 작동할 Node.js 프로젝트를 만들 것이다.
 
 [따라하면서 배우는 NGUI 유니티 게임 프로그래밍](http://wikibook.co.kr/unity-ngui/)에서는 php를 활용했지만 여기서 Node.js로 변경한 이유는 예시가 많고 javascript라서 php보다 친숙할 것이라고 생각되서다.[^1]
 

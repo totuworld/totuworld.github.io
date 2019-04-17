@@ -65,7 +65,7 @@ b 슬롯이 production에 사용중이라면 a 슬롯에 v0.0.2a를 배포한다
 
 ## 웹 앱 배포
 
-Azure 웹 앱에 배포할 소스코드가 필요한데 여기서는 [Azure 컨테이너 서비스로 Node.js 앱 배포하기](http://totuworld.github.io/2016/04/25/acs/)에서 사용한 Node.js 웹 어플리케이션을 사용하겠다.
+Azure 웹 앱에 배포할 소스코드가 필요한데 여기서는 [Azure 컨테이너 서비스로 Node.js 앱 배포하기](https://blog.totu.dev/2016/04/25/acs/)에서 사용한 Node.js 웹 어플리케이션을 사용하겠다.
 
 > 자신이 제작한 서비스로 진행해도 무방하다.
 

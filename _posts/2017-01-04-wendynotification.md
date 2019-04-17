@@ -40,8 +40,8 @@ publish : true
 하지만 소스코드 제작과 글 작성, 동영상 제작을 생각하면 격주 목요일 1개 강좌 공유를 목표로 한다.
 
 ### 완성된 튜토리얼 목록
-* 1강 - [Hello, world!](http://totuworld.github.io/2016/12/21/azureandunity-01/)
-* 2강 - [SQL데이터베이스스와 환경설정](http://totuworld.github.io/2016/12/29/azureandunity-02/)
+* 1강 - [Hello, world!](https://blog.totu.dev/2016/12/21/azureandunity-01/)
+* 2강 - [SQL데이터베이스스와 환경설정](https://blog.totu.dev/2016/12/29/azureandunity-02/)
 
 ### 튜토리얼 제작 진행사항
 * 3강 : 글 작성 완료, 동영상 녹화 예정
