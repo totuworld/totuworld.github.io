@@ -5,9 +5,300 @@
     <description>Full 🥩🔥 Developer</description>
     <link>https://blog.totu.dev/</link>
     <atom:link href="https://blog.totu.dev/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Apr 2019 14:13:59 +0900</pubDate>
-    <lastBuildDate>Wed, 17 Apr 2019 14:13:59 +0900</lastBuildDate>
+    <pubDate>Wed, 24 Apr 2019 14:23:28 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Apr 2019 14:23:28 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>슬랙 봇부터 시작하는 프로그래밍 생활 - 01</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#준비하기&quot; id=&quot;markdown-toc-준비하기&quot;&gt;준비하기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#nodejs-설치feat-nvs&quot; id=&quot;markdown-toc-nodejs-설치feat-nvs&quot;&gt;node.js 설치(feat. NVS)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vs-code-설치&quot; id=&quot;markdown-toc-vs-code-설치&quot;&gt;VS Code 설치&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#작업-공간-연성&quot; id=&quot;markdown-toc-작업-공간-연성&quot;&gt;작업 공간 연성&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#슬랙-봇-만들기&quot; id=&quot;markdown-toc-슬랙-봇-만들기&quot;&gt;슬랙 봇 만들기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#안녕하고-인사하는-슬랙-봇-살펴보기&quot; id=&quot;markdown-toc-안녕하고-인사하는-슬랙-봇-살펴보기&quot;&gt;안녕하고 인사하는 슬랙 봇 살펴보기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#typescript-코드로-변경하기&quot; id=&quot;markdown-toc-typescript-코드로-변경하기&quot;&gt;TypeScript 코드로 변경하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#코드-실행해보기&quot; id=&quot;markdown-toc-코드-실행해보기&quot;&gt;코드 실행해보기&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#src-폴더와-serverts-파일-만들기&quot; id=&quot;markdown-toc-src-폴더와-serverts-파일-만들기&quot;&gt;src 폴더와 server.ts 파일 만들기&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#코드-붙여넣고-실행하기&quot; id=&quot;markdown-toc-코드-붙여넣고-실행하기&quot;&gt;코드 붙여넣고 실행하기&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#패키지-설치&quot; id=&quot;markdown-toc-패키지-설치&quot;&gt;패키지 설치&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#slack-토큰-발급받기&quot; id=&quot;markdown-toc-slack-토큰-발급받기&quot;&gt;slack 토큰 발급받기&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#결과-확인&quot; id=&quot;markdown-toc-결과-확인&quot;&gt;결과 확인&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺는-말&quot; id=&quot;markdown-toc-맺는-말&quot;&gt;맺는 말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;프로그래밍은 기초가 중요하다. &lt;del&gt;세상에 기초가 안중요한 것도 있나&lt;/del&gt; 나는 기초가 얼마나 재미없는지 알고 있다. 맨주먹으로 슬랙 봇부터 시도해보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;준비하기&quot;&gt;준비하기&lt;/h2&gt;
+&lt;p&gt;안타깝게도 아무것도 없이 맨주먹으로 시작하려고 해도 node.js와 VS Code는 필요하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Node.js®는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;VS Code는 마이크로 소프트 사가 오픈소스로 배포하는 에디터.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;nodejs-설치feat-nvs&quot;&gt;node.js 설치(feat. NVS)&lt;/h3&gt;
+
+&lt;p&gt;설치 방법은 여러가지가 있지만 NVS(Node Version Switcher)를 활용해서 node.js를 사용하도록 하겠다. 터미널(Terminal)&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;을 열고 아래 명령을 복붙하여 입력하고 실행한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;macOS에서 &lt;code&gt;터미널&lt;/code&gt;로 검색하면 된다. 만약 &lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;를 설치했다면 iTerm을 활용해도 좋다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;export NVS_HOME=&quot;$HOME/.nvs&quot;
+git clone https://github.com/jasongin/nvs &quot;$NVS_HOME&quot;
+. &quot;$NVS_HOME/nvs.sh&quot; install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;뭔지 모르겠지만 이러면 뭔가 설치된다. node.js v10.15를 활용해야하므로 아래 명령을 순서대로 터미널에 입력한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvs add node/10.15
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;v10.15을 nvs로 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvs use node/10.15
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;v10.15를 사용하도록 한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nvs link
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;앞으로 어디서 켜도 nvs가 node.js v10.15를 쓰도록 설정한다.&lt;/p&gt;
+
+&lt;p&gt;어쩌면 앞으로 nvs를 보게될 일이 없을지 모른다. 설치하느 고생했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;vs-code-설치&quot;&gt;VS Code 설치&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt; 사이트에 접속하면 다운로드 가능한 버튼이 보인다. 클릭하여 설치한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;작업-공간-연성&quot;&gt;작업 공간 연성&lt;/h3&gt;
+
+&lt;p&gt;프로그래밍을 시작하려면 어딘가에 코드를 타이핑해야한다. 여러가지 언어가 각각의 방식으로 이를 지원하는데 여기서는 극강 단순한 파일을 하나 다운받아서 시작해보겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/totuworld/slack-bot-class/archive/v0.0.zip&quot;&gt;스타트 패키지&lt;/a&gt;를 다운받아서 압축을 해제한다.&lt;/li&gt;
+  &lt;li&gt;VS Code를 실행하고 압축 해제한 폴더를 불러온다.
+    &lt;ul&gt;
+      &lt;li&gt;VS Code 실행 후&lt;/li&gt;
+      &lt;li&gt;파인더(Finder)에서 압축 해제한 폴더를 선택하여 끌어다놓으면(Drag &amp;amp; Drop) 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;고생했다. 이 지점까지 왔다면 50%는 성공한 것이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;슬랙-봇-만들기&quot;&gt;슬랙 봇 만들기&lt;/h2&gt;
+
+&lt;p&gt;여기서 만들고자하는 슬랙 봇을 설명해보겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;채널&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;에 누군가 들어오면(join)&lt;/li&gt;
+  &lt;li&gt;봇이 정해진 메시지를 보낸다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;간단한 기능이다. 어떻게 만들 수 있을까? &lt;a href=&quot;https://slack.dev/node-slack-sdk/rtm-api#send-a-message&quot;&gt;슬랙 공식 문서&lt;/a&gt;에 잘 설명되어있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;안녕하고-인사하는-슬랙-봇-살펴보기&quot;&gt;안녕하고 인사하는 슬랙 봇 살펴보기&lt;/h3&gt;
+
+&lt;p&gt;공식 문서를 보면 아래와 같은 코드가 나온다. 코드만 복붙하면 바로 작동가능한 수준이다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/totuworld/19591e2cd9fbdaffb55b7370e6611760.js?file=01-00-code.js&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3: &lt;em&gt;RTMClient&lt;/em&gt;를 사용하기 위해서 &lt;code&gt;@slack/rtm-api&lt;/code&gt; 패키지&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;에서 불러낸다.&lt;/li&gt;
+  &lt;li&gt;4: 환경변수&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;를 활용해서 슬랙에서 사용하는 토큰&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;을 &lt;code&gt;token&lt;/code&gt; 이란 변수&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;에 할당한다.&lt;/li&gt;
+  &lt;li&gt;5: new 연산자&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;로 앞서 불러낸 &lt;code&gt;RTMClient&lt;/code&gt; 인스턴스&lt;sup id=&quot;fnref:8&quot;&gt;&lt;a href=&quot;#fn:8&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;를 생성하여 &lt;em&gt;rtm&lt;/em&gt; 변수에 할당한다.&lt;/li&gt;
+  &lt;li&gt;9~21: &lt;code&gt;RTMClient&lt;/code&gt;가 수신할 수 있는 이벤트 중에 &lt;em&gt;member_joined_channel&lt;/em&gt;이 발생할 때 어떤 일을 할지 정의하는 블럭이다.&lt;/li&gt;
+  &lt;li&gt;13: rtm의 sendMessage 메서드&lt;sup id=&quot;fnref:9&quot;&gt;&lt;a href=&quot;#fn:9&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;를 활용해서 &lt;code&gt;Welcome to the channel,&lt;/code&gt; 메시지를 보낸다.&lt;/li&gt;
+  &lt;li&gt;17: console.log 메서드로 실행 결과를 로그 메시지로 출력 한다. 이는 실제로 필요없지만 사람이 인지하기 위한 것이다.&lt;/li&gt;
+  &lt;li&gt;23~25: rtm을 작동시킨다. 이 부분이 없으면 앞서 한 모든 작업이 작동하지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;typescript-코드로-변경하기&quot;&gt;TypeScript 코드로 변경하기&lt;/h3&gt;
+
+&lt;p&gt;위 코드는 node.js에서 바로 실행할 수 있는 JavaScript 코드이다. 여기서는 TypeScript를 활용하므로 그에 맞게 코드로 변경해보자.&lt;/p&gt;
+
+&lt;p&gt;아래 항목을 변경할 것이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;require&lt;/code&gt;를 &lt;code&gt;import&lt;/code&gt;로 변경&lt;/li&gt;
+  &lt;li&gt;console.log를 debug 패키지를 활용해서 변경&lt;/li&gt;
+  &lt;li&gt;환경 변수명 변경&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/totuworld/19591e2cd9fbdaffb55b7370e6611760.js?file=01-01-code.ts&quot;&gt; &lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1~8: node.js에서 패키지를 불러올 때 사용하는 require 대신 &lt;code&gt;import&lt;/code&gt;로 변경했다.&lt;/li&gt;
+  &lt;li&gt;10: console.log를 대체할 수 있는 debug 패키지를 사용할 수 있도록 &lt;code&gt;log&lt;/code&gt; 변수에 할당.&lt;/li&gt;
+  &lt;li&gt;12: 환경 변수명을 &lt;code&gt;SLACK_TOKEN&lt;/code&gt;으로 변경했고 기본값을 ‘token’으로 입력했다.&lt;/li&gt;
+  &lt;li&gt;14: LogLevel을 추가했다.&lt;/li&gt;
+  &lt;li&gt;25~26: TypeScript는 정적 언어처럼 타입을 정의할 수 있다. 하여 반환하는 값을 타입으로 변수뒤에 추가했다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;코드-실행해보기&quot;&gt;코드 실행해보기&lt;/h3&gt;
+
+&lt;p&gt;작업 공간의 최상단에 &lt;code&gt;src&lt;/code&gt; 폴더를 만들어야한다. 후후 이것도 한번도 안해본거니까 그것부터 시작하자.&lt;/p&gt;
+
+&lt;h4 id=&quot;src-폴더와-serverts-파일-만들기&quot;&gt;src 폴더와 server.ts 파일 만들기&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VS Code의 좌측 메뉴 중 가장 위에 것(파일모양)인 Explorer가 클릭된 상태에서&lt;/li&gt;
+  &lt;li&gt;폴더 아이콘을 클릭한 후 &lt;code&gt;src&lt;/code&gt;로 입력한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_11-02-05.png&quot; alt=&quot;src폴더생성&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;src 폴더를 선택한 상태에서 파일 아이콘을 클릭하여 &lt;code&gt;server.ts&lt;/code&gt;로 입력한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_11-02-27.png&quot; alt=&quot;server.ts생성&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;코드-붙여넣고-실행하기&quot;&gt;코드 붙여넣고 실행하기&lt;/h4&gt;
+
+&lt;p&gt;코드를 붙여넣고 실행해보겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VS code에서 &lt;code&gt;server.ts&lt;/code&gt; 파일을 선택하고 더블클릭 하면 파일이 에디터에 나타난다.&lt;/li&gt;
+  &lt;li&gt;여기에 코드를 붙여넣자.&lt;/li&gt;
+  &lt;li&gt;command + shift + &lt;code&gt;\&lt;/code&gt;` 키를 눌러서 VS code내의 터미널을 불러낸다.&lt;/li&gt;
+  &lt;li&gt;아래 명령을 실행해서 작동시켜보자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;npm run start:dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;우리는 2가지를 하지 않았기 때문에 &lt;code&gt;실패&lt;/code&gt;한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;패키지 설치&lt;/li&gt;
+  &lt;li&gt;SLACK_TOKEN 전달&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h4&gt;
+&lt;p&gt;VS code에서 열어둔 터미널에 아래 명령을 입력해서 사용할 패키지를 모두 설치하자.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;npm은 node의 &lt;code&gt;패키지 매니저&lt;/code&gt;다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;slack-토큰-발급받기&quot;&gt;slack 토큰 발급받기&lt;/h4&gt;
+
+&lt;p&gt;슬랙에서 사용할 봇(Bot) 토큰을 얻으려면 슬랙의 워크스페이스가 필요하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이미 있다면 첫 단계는 넘어가도 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://slack.com/create&quot;&gt;슬랙 워크스페이스 생성&lt;/a&gt;에 진입하여 닫계별로 진행해서 슬랙 워크스페이스를 개설한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;https://{워크스페이스}.slack.com/apps&lt;/code&gt; 앞 주소에 워크스페이스 부분을 자신의 워크스페이스로 바꾸고 bot을 검색하고 클릭한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_14-17-05.png&quot; alt=&quot;봇검색&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Add Confiration&lt;/code&gt; 버튼을 클릭하여 단계별로 입력한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_11-57-53.png&quot; alt=&quot;컨피그레이션추가&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;생성된 봇 설정을 클릭하면 아래 화면처럼 토큰이 노출된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_14-18-04.png&quot; alt=&quot;슬랙토큰&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;위 과정이 귀찮다면 &lt;code&gt;playwithcode.slack.com&lt;/code&gt; 에 가입하고 아래 토큰을 사용한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;xoxb-605331370387-618632598583-BDupfLyL6EjsmMbxsn1yTP19&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;결과-확인&quot;&gt;결과 확인&lt;/h4&gt;
+
+&lt;p&gt;자 이제 모든 준비가 끝났다. 아래 명령에서 token만 자신의 토큰을 넣고 실행해보자.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;실행!!
+    &lt;pre&gt;&lt;code&gt;SLACK_TOKEN={token} npm run start:dev
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;성공하면 봇이 slack 에 들어오게된다.&lt;/li&gt;
+  &lt;li&gt;아래처럼 봇이 인사한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/slackbot/01/2019-04-24_14-20-26.png&quot; alt=&quot;tada&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;맺는-말&quot;&gt;맺는 말&lt;/h2&gt;
+&lt;p&gt;별다른 배경 설명 다짜고짜 만들기 시작했는데 어땠는지 모르겠다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;터미널은 CLI(Command Line Interface) 즉, 글자로 컴퓨터와 이야기할 수 있는 프로그램이다. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;슬랙 메신저에서 대화를 나누는 공간이 채널이다. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;패키지는 누군가 만들어 둔 프로그래밍 묶음이다. node.js는 패키지를 활용해서 타인의 코드를 사용할 수 있다. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;환경변수는 컴퓨터가 프로그램을 실행할 때 영향을 미치는 변경가능한 값의 모음이다. 쉽게 말해 작성한 &lt;code&gt;코드&lt;/code&gt; 안에 존재하지 않고 해당 코드를 실행할 때 외부에서 넣어주는 값이다. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;토큰은 일종의 인증키이다. 슬랙은 토큰을 활용해서 토큰을 보유한 봇이나 사람이 다양한 API(Application Programming Interface)를 활용할 수 있도록 한다. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;변수란 수학에서 쓰는 변하는 값을 뜻한다. &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;new 연산자는 사용자 정의 객체 타입 또는 내장 객체 타입의 인스턴스를 생성한다. 쉽게 말해 붕어빵 틀(Class)에 반죽과 앙꼬를 넣어 붕어빵(Instance)로 만들 때 사용한다. &lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:8&quot;&gt;
+      &lt;p&gt;붕어빵 틀(Class)로 만든 붕어빵(Instance)을 생각하면 된다. &lt;a href=&quot;#fnref:8&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:9&quot;&gt;
+      &lt;p&gt;클래스(Class) 안에 정의된 함수. &lt;a href=&quot;#fnref:9&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+            <pubDate>Wed, 24 Apr 2019 09:00:00 +0900</pubDate>
+            <link>https://blog.totu.dev/2019/04/24/slackbot-01/</link>
+            <guid isPermaLink="true">https://blog.totu.dev/2019/04/24/slackbot-01/</guid>
+            
+            
+            <category>nodejs</category>
+            
+        </item>
+      
     
       
         <item>
@@ -2437,1129 +2728,6 @@ if(env === &#39;development&#39;) {
             <pubDate>Tue, 21 Feb 2017 04:01:00 +0900</pubDate>
             <link>https://blog.totu.dev/2017/02/21/azureandunity-06/</link>
             <guid isPermaLink="true">https://blog.totu.dev/2017/02/21/azureandunity-06/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
-            
-            <category>unity</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>이세계에 진입한 서버 개발 - 5</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#관계-설명&quot; id=&quot;markdown-toc-관계-설명&quot;&gt;관계 설명&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs에-등록&quot; id=&quot;markdown-toc-appjs에-등록&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#로직-작성&quot; id=&quot;markdown-toc-로직-작성&quot;&gt;로직 작성&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#보유-아이템-목록-요청&quot; id=&quot;markdown-toc-보유-아이템-목록-요청&quot;&gt;보유 아이템 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#아이템-정보-목록-요청&quot; id=&quot;markdown-toc-아이템-정보-목록-요청&quot;&gt;아이템 정보 목록 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#강화-관련-데이터-요청&quot; id=&quot;markdown-toc-강화-관련-데이터-요청&quot;&gt;강화 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#승급-관련-데이터-요청&quot; id=&quot;markdown-toc-승급-관련-데이터-요청&quot;&gt;승급 관련 데이터 요청&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#강화-요청&quot; id=&quot;markdown-toc-강화-요청&quot;&gt;강화 요청&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#공통-사용-로직-추가&quot; id=&quot;markdown-toc-공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#강화-요청-등록&quot; id=&quot;markdown-toc-강화-요청-등록&quot;&gt;강화 요청 등록&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#승급-요청&quot; id=&quot;markdown-toc-승급-요청&quot;&gt;승급 요청&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#에러코드-추가&quot; id=&quot;markdown-toc-에러코드-추가&quot;&gt;에러코드 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#테스트&quot; id=&quot;markdown-toc-테스트&quot;&gt;테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#정의된-아이템-추가&quot; id=&quot;markdown-toc-정의된-아이템-추가&quot;&gt;정의된 아이템 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#강화-관련-데이터-입력&quot; id=&quot;markdown-toc-강화-관련-데이터-입력&quot;&gt;강화 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#승급-관련-데이터-입력&quot; id=&quot;markdown-toc-승급-관련-데이터-입력&quot;&gt;승급 관련 데이터 입력&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#정의된-아이템-수정&quot; id=&quot;markdown-toc-정의된-아이템-수정&quot;&gt;정의된 아이템 수정&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#보유한-아이템-추가&quot; id=&quot;markdown-toc-보유한-아이템-추가&quot;&gt;보유한 아이템 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#postman으로-테스트&quot; id=&quot;markdown-toc-postman으로-테스트&quot;&gt;postman으로 테스트&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#강화-요청-테스트&quot; id=&quot;markdown-toc-강화-요청-테스트&quot;&gt;강화 요청 테스트&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#승급-요청-테스트&quot; id=&quot;markdown-toc-승급-요청-테스트&quot;&gt;승급 요청 테스트&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/KVK4JgeWe6c&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-&lt;p&gt;퍼즐 게임이 아니라면 게임 내에서 아이템은 그 종류가 정말 다양하다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;요즘은 퍼즐 게임도 특수 아이템을 제공하거나 구매할 수 있는 것도 많다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;게임 클라이언트에서는 특수 능력을 발휘하거나 체력을 채워줄 수도 있고, 9강 검이 될 수도 있다.&lt;/p&gt;
-
-&lt;p&gt;하지만 게임 서버안에서는 보유와 강화 등의 정보만 기록하면 된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;MORPG 게임 서버를 만드는게 아니니까 다른건 모른다(?)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이번 강좌에서는 아이템 보유와 강화, 승급 기능을 제작해도보도록 하겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
-&lt;p&gt;기본이 되는 것은 아래 2개이다. 아이템 정의와 아이템 보유 모델.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/DefineItem.js&quot;&gt;DefineItem.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/OwnItem.js&quot;&gt;OwnItem.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그리고 부수적으로 아래 4개의 모델을 추가한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;강화와 승급을 설명할 때 추가하려고 했으나 미리 추가해놓는게 편해서 일단 모두 등록한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/DefineReinforceItem.js&quot;&gt;DefineReinforceItem.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/DefineReinforceRequireItem.js&quot;&gt;DefineReinforceRequireItem.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/DefineUpgradeItem.js&quot;&gt;DefineUpgradeItem.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.3/models/DefineUpgradeRequireItem.js&quot;&gt;DefineUpgradeRequireItem.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;각각 클릭해서 models 폴더에 추가한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;관계-설명&quot;&gt;관계 설명&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;와 이렇게 뭐 없이 설명하니까 되게 좋네!!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/15940e9cd6ba5ee6.jpg&quot; alt=&quot;오예&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;너무 설명이 없는 듯하니까 각 모델간의 관계를 설명해보겠다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_m01.png&quot; alt=&quot;아이템다이어그램&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가 모델을 제거하면 기본은 &lt;code&gt;OwnItem&lt;/code&gt;과 &lt;code&gt;DefineItem&lt;/code&gt;이다.&lt;/p&gt;
-
-&lt;p&gt;이 중 &lt;code&gt;DefineItem&lt;/code&gt;은 강화와 승급을 위해 &lt;code&gt;ReinforceItemID&lt;/code&gt;과 &lt;code&gt;UpgradeItemID&lt;/code&gt;를 가질 수 있다.&lt;/p&gt;
-
-&lt;p&gt;각각의 외래키는 &lt;code&gt;Define__RequireItem&lt;/code&gt;으로 이어지고 여기서는 1개의 &lt;code&gt;__ItemID&lt;/code&gt;로 다수의 아이템이 필요하다는 정보를 저장하게 된다.&lt;/p&gt;
-
-&lt;p&gt;왜 이런 구조를 가지냐면 어떤 경우는 골드만 사용하고 싶을 수 있지만 어떤 경우는 골드와 특정 아이템을 함께 소모해서 다음으로 넘기기 위한 방법이다.&lt;/p&gt;
-
-&lt;p&gt;다만 이런 처리로는 경험치를 쌓아서 강화하는 형태는 불가능하다.&lt;/p&gt;
-
-&lt;p&gt;이런 구조를 원한다면 별도의 테이블을 구상해야할 것이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;좋은 고민거리죠?!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;item.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.1/routes/item.js&quot;&gt;item.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;appjs에-등록&quot;&gt;app.js에 등록&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 item 라우터를 추가해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const item = require(&#39;./routes/item&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/item&#39;, item);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;몇번 해본 작업이라서 손이 알아서 처리하고 있을것이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;로직-작성&quot;&gt;로직 작성&lt;/h2&gt;
-&lt;p&gt;로직은 총 6개를 추가할 것인데 그중 4개는 정보를 요청하는 것이고 2개는 강화, 승급을 각각 처리하는 것이다.&lt;/p&gt;
-
-&lt;p&gt;통화를 기억해보면 단순히 정보를 요청하는 코드는 단순하다&lt;/p&gt;
-
-&lt;p&gt;routes/item.js에 다음 코드를 추가한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;자주 해봐서 알겠지만 modules.export = router; 위쪽에 추가하면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;보유-아이템-목록-요청&quot;&gt;보유 아이템 목록 요청&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /item/own
- * @apiName 보유 아이템 목록 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/own&#39;, auth.isAuthenticated, (req, res, next) =&amp;gt; {
-    models.OwnItem.findAll({
-        where: { GameUserID: req.user.GameUserID }
-    })
-    .then((ownItemList) =&amp;gt; {
-        res.send({ result: 0, list: ownItemList });
-    })
-    .catch((err) =&amp;gt; {
-        next(err);
-    });
-})
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;아이템-정보-목록-요청&quot;&gt;아이템 정보 목록 요청&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /item/define
- * @apiName 정의된 아이템 정보 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/define&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-    models.DefineItem.findAll()
-    .then((DefineItemList) =&amp;gt; {
-        res.send({ result: 0, list: DefineItemList });
-    })
-    .catch((err) =&amp;gt; {
-        next(err);
-    });
-})
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;강화-관련-데이터-요청&quot;&gt;강화 관련 데이터 요청&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-/**
- * @api {GET} /item/define/reinforce
- * @apiName 강화 관련 아이템 데이터 조회
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/define/reinforce&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-    models.DefineReinforceItem.findAll({
-        include: [{
-            model: models.DefineReinforceRequireItem,
-            as: &#39;LevelInfo&#39;
-        }]
-    })
-    .then((defineReinforceItem)=&amp;gt;{
-        res.send({result:0, list:defineReinforceItem});
-    })
-})
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;승급-관련-데이터-요청&quot;&gt;승급 관련 데이터 요청&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {GET} /item/define/upgrade
- * @apiName 승급 관련 아이템 데이터 조회
- * @apiHeader {String} Authorization JWT토큰을 전송
- */
-router.get(&#39;/define/upgrade&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-    models.DefineUpgradeItem.findAll({
-        include: [{
-            model: models.DefineUpgradeRequireItem,
-            as: &#39;UpgradeInfo&#39;
-        }]
-    })
-    .then((defineUpgradeItem)=&amp;gt;{
-        res.send({result:0, list:defineUpgradeItem});
-    })
-})
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;정의된 데이터를 요청하는 것은 이처럼 간단하다.&lt;/p&gt;
-
-&lt;h3 id=&quot;강화-요청&quot;&gt;강화 요청&lt;/h3&gt;
-&lt;p&gt;강화와 승급의 로직은 기본은 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Define__RequireItem&lt;/code&gt;에 등록된 &lt;code&gt;ItemID&lt;/code&gt;가 &lt;code&gt;RequireQNTY&lt;/code&gt;만큼 보유했으면 아이템을 소모시키고 해당 레벨이나 등급을 올리면 된다.&lt;/p&gt;
-
-&lt;h4 id=&quot;공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/h4&gt;
-
-&lt;p&gt;자원 - 아이템, 통화를 통합하여 지칭 - 이 충분하지 체크하거나 소모시키는 일은 자주 일어날 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이런 내용은 따로 관리하는게 편리하므로 &lt;code&gt;logics&lt;/code&gt;폴더에 &lt;code&gt;materialCtrl.js&lt;/code&gt;파일을 추가하고 아래 링크의 내용을 반영한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto5.2/logics/materialCtrl.js&quot;&gt;materialCtrl.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그리고 &lt;code&gt;routes/item.js&lt;/code&gt; 파일에서 아래 부분을 찾아서 필요한 내용을 추가한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;    const wendyError = require(&#39;../utils/error&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;추가할 내용&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;    const materialCtrl = require(&#39;../logics/materialCtrl&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;강화-요청-등록&quot;&gt;강화 요청 등록&lt;/h4&gt;
-
-&lt;p&gt;앞서 말한 로직을 바탕으로 내용을 추가해보자.&lt;/p&gt;
-
-&lt;p&gt;먼저 사용할 메서드 3개를 등록한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;LoadOwnItem&lt;/li&gt;
-  &lt;li&gt;LoadDefineItem&lt;/li&gt;
-  &lt;li&gt;DecoretorMaterials&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;2개 메서드는 보유 아이템과 아이템 정의 관련 데이터를 로딩할 때 사용된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;DecoretorMaterials&lt;/code&gt;은 소모할 아이템 및 통화를 검증하거나 소모할 때 상용된다. fn 매개변수로 메서드를 전달하면 실행한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function LoadOwnItem(OwnItemUID, GameUserID) {
-    //소유 아이템 조회
-    return models.OwnItem.findOne(
-        {where:
-            {
-                OwnItemUID: OwnItemUID, 
-                GameUserID: GameUserID
-            }
-        })
-    .then((ownItem)=&amp;gt;{
-        //아이템이 존재하는지 체크
-        if(ownItem === null || ownItem === undefined)
-            throw wendyError(&#39;NotInOwnItemList&#39;);
-        return Promise.resolve(ownItem);
-    })
-}
-
-function LoadDefineItem(
-    ItemID, 
-    ColumnName=&#39;ReinforceItemID&#39;, 
-    errType=&#39;CantReinfoceItem&#39;) {
-    //아이템 정보 로딩
-    return models.DefineItem.findOne({
-                where:{
-                    ItemID:ItemID
-                }
-            })
-    .then((itemInfo)=&amp;gt;{
-        if(itemInfo[ColumnName] === null)
-            throw wendyError(errType);
-        return Promise.resolve(itemInfo);
-    })
-}
-
-/**
- * 소모할 아이템 및 통화를 fn에 따라서 검증 및 소모.
- * @param {function} fn 실행할 메서드
- * materialCtrl의 existEnoughMaterial, decrementMaterial을 사용
- */
-function DecoretorMaterials(
-    fn, 
-    LoadInfos, GameUserID, 
-    materialItemUID, materialCurrencyUID) {
-
-    let promises = [];
-    LoadInfos.forEach((value, key)=&amp;gt;{
-        promises.push(
-            fn(
-                GameUserID,
-                value.ItemID,
-                value.RequireQNTY,
-                value.DefineItem.ItemType===10
-                    ?materialItemUID
-                    :materialCurrencyUID)
-        );
-    })
-
-    if(promises.length &amp;gt; 0)
-        return Promise.all(promises);
-    return Promise.resolve();
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;위 메서드를 활용해서 실제 로직을 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {POST} /item/reinforce/:OwnItemUID
- * @apiName 강화 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- * @apiParam {Array} materialItemUID 소모할 ItemUID
- * @apiParam {Array} materialCurrencyUID 소모할 CurrencyUID
- */
-router.post(&#39;/reinforce/:OwnItemUID&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-
-    let checkRequestBody = commonFunc.ObjectExistThatKeys(
-            req.body, 
-            [&#39;materialItemUID&#39;, &#39;materialCurrencyUID&#39;]);
-    if(checkRequestBody === false) {
-        throw wendyError(&#39;DontHaveRequiredParams&#39;);
-    }
-
-    let loadItems = { 
-        targetItem : null,
-        targetItemInfo : null,
-        LoadInfos : new Map()
-    };
-
-    //보유 아이템 로딩
-    LoadOwnItem(
-        req.params.OwnItemUID, 
-        req.user.GameUserID)
-    .then((OwnItem)=&amp;gt;{
-        loadItems.targetItem = OwnItem;
-        return Promise.resolve();
-    })
-    //아이템 정보 로딩
-    .then(()=&amp;gt;{
-        return LoadDefineItem(
-            loadItems.targetItem.ItemID
-        );
-    })
-    .then((itemInfo)=&amp;gt;{
-        loadItems.targetItemInfo = itemInfo;
-        return Promise.resolve();
-    })
-    //강화 데이터 로딩.
-    .then(()=&amp;gt;{
-        return  models.DefineReinforceItem.findOne({
-            where:{
-                ReinforceItemID:
-                    loadItems.targetItemInfo[&#39;ReinforceItemID&#39;]
-            },
-            include: [{
-                model: models[&#39;DefineReinforceRequireItem&#39;],
-                as: &#39;LevelInfo&#39;,
-                include: [{
-                    model: models.DefineItem,
-                    attributes : [&#39;ItemType&#39;, &#39;Multiple&#39;]
-                }]
-            }]
-        })
-    })
-    .then((reinfoceInfos)=&amp;gt;{
-
-        //강화에 사용되는 아이템이 정의되었는가?
-        if(reinfoceInfos.LevelInfo.length === 0) 
-            throw wendyError(&#39;DidntRegisterReinfoceRequireItem&#39;);
-
-        //Level로 정렬.
-        reinfoceInfos.LevelInfo.sort((a,b)=&amp;gt;{
-            return a.Level - b.Level;
-        })
-
-        //다음 레벨로 강화가 가능한지 확인?
-        let possibleLevelUp = false;
-        for(let row of reinfoceInfos.LevelInfo) {
-            if(row[&#39;Level&#39;] === loadItems.targetItem[&#39;Level&#39;]) {
-                possibleLevelUp = true;
-                loadItems.LoadInfos.set(row.ItemID, row);
-            }
-        }
-        if(possibleLevelUp === false)
-            throw wendyError(&#39;NoLongerReinforce&#39;)
-
-        return Promise.resolve();
-    })
-    //아이템과 통화를 충분한 량 보유했는지 체크.
-    .then(()=&amp;gt;{
-        return DecoretorMaterials(
-            materialCtrl.existEnoughMaterial,
-            loadItems.LoadInfos,
-            req.user.GameUserID,
-            req.body.materialItemUID,
-            req.body.materialCurrencyUID
-        );
-    })
-    //아이템 및 통화, 삭제 혹은 차감처리
-    .then(()=&amp;gt;{
-        return DecoretorMaterials(
-            materialCtrl.decrementMaterial,
-            loadItems.LoadInfos,
-            req.user.GameUserID,
-            req.body.materialItemUID,
-            req.body.materialCurrencyUID
-        );
-    })
-    //강화로 레벨업 반영.
-    .then(()=&amp;gt;{
-        return models.OwnItem.update({
-            Level:loadItems.targetItem[&#39;Level&#39;]+1,
-            UpdateTimeStamp: new Date()
-        },
-        {where:{
-            OwnItemUID:loadItems.targetItem.OwnItemUID
-        }});
-    })
-    .then(()=&amp;gt;{
-        res.send({result:0});
-    })
-    .catch((err)=&amp;gt;{
-        next(err);
-    })
-})
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;24~57번 줄 : 보유 아이템과 아이템 정보를 로딩한다.&lt;/li&gt;
-  &lt;li&gt;58~81번 줄 : 강화를 진행하기에 적합한지 데이터를 검증한다.&lt;/li&gt;
-  &lt;li&gt;83~101번 줄 : &lt;code&gt;DecoretorMaterials&lt;/code&gt; 메서드에 사용할 전달하여 충분한 자원을 보유했는지 확인하고 각각 소모한다.&lt;/li&gt;
-  &lt;li&gt;103~110 줄 : 레벨을 증가시켜 기록한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;승급-요청&quot;&gt;승급 요청&lt;/h3&gt;
-&lt;p&gt;앞서 살펴본 강화 요청과 승급은 거의 비슷하다.&lt;/p&gt;
-
-&lt;p&gt;다른점이라면 불러야하는 테이블이 다르고 에러 코드가 다르다는 것 정도다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @api {POST} /item/upgrade/:OwnItemUID
- * @apiName 승급 요청
- * @apiHeader {String} Authorization JWT토큰을 전송
- * @apiParam {Array} materialItemUID 소모할 ItemUID
- * @apiParam {Array} materialCurrencyUID 소모할 CurrencyUID
- */
-router.post(&#39;/upgrade/:OwnItemUID&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-
-    let checkRequestBody = commonFunc.ObjectExistThatKeys(
-            req.body, 
-            [&#39;materialItemUID&#39;, &#39;materialCurrencyUID&#39;]);
-    if(checkRequestBody === false) {
-        throw wendyError(&#39;DontHaveRequiredParams&#39;);
-    }
-
-    let loadItems = { 
-        targetItem : null,
-        targetItemInfo : null,
-        LoadInfos : new Map()
-    };
-
-    //보유 아이템 로딩
-    LoadOwnItem(
-        req.params.OwnItemUID, 
-        req.user.GameUserID)
-    .then((OwnItem)=&amp;gt;{
-        loadItems.targetItem = OwnItem;
-        return Promise.resolve();
-    })
-    //아이템 정보 로딩
-    .then(()=&amp;gt;{
-        return LoadDefineItem(
-            loadItems.targetItem.ItemID,
-            &#39;UpgradeItemID&#39;,
-            &#39;CantUpgradeItem&#39;
-        );
-    })
-    .then((itemInfo)=&amp;gt;{
-        loadItems.targetItemInfo = itemInfo;
-        return Promise.resolve();
-    })
-    //승급 데이터 로딩.
-    .then(()=&amp;gt;{
-        return  models.DefineUpgradeItem.findOne({
-            where:{
-                UpgradeItemID:
-                    loadItems.targetItemInfo[&#39;UpgradeItemID&#39;]
-            },
-            include: [{
-                model: models[&#39;DefineUpgradeRequireItem&#39;],
-                as: &#39;UpgradeInfo&#39;,
-                include: [{
-                    model: models.DefineItem,
-                    attributes : [&#39;ItemType&#39;, &#39;Multiple&#39;]
-                }]
-            }]
-        })
-    })
-    .then((upgradeInfos)=&amp;gt;{
-
-        //승급에 사용되는 아이템이 정의되었는가?
-        if(upgradeInfos.UpgradeInfo.length === 0) 
-            throw wendyError(&#39;DidntRegisterUpgradeRequireItem&#39;);
-
-        //Tier로 정렬.
-        upgradeInfos.UpgradeInfo.sort((a,b)=&amp;gt;{
-            return a.Tier - b.Tier;
-        })
-
-        //다음 Tier로 승급이 가능한지 확인?
-        let possibleUpgrade = false;
-        for(let row of upgradeInfos.UpgradeInfo) {
-            if(row[&#39;Tier&#39;] === loadItems.targetItem[&#39;Tier&#39;]) {
-                possibleUpgrade = true;
-                loadItems.LoadInfos.set(row.ItemID, row);
-            }
-        }
-        if(possibleUpgrade === false)
-            throw wendyError(&#39;NoLongerUpgrade&#39;)
-
-        return Promise.resolve();
-    })
-    //아이템과 통화를 충분한 량 보유했는지 체크.
-    .then(()=&amp;gt;{
-        return DecoretorMaterials(
-            materialCtrl.existEnoughMaterial,
-            loadItems.LoadInfos,
-            req.user.GameUserID,
-            req.body.materialItemUID,
-            req.body.materialCurrencyUID
-        );
-    })
-    //아이템 및 통화, 삭제 혹은 차감처리
-    .then(()=&amp;gt;{
-        return DecoretorMaterials(
-            materialCtrl.decrementMaterial,
-            loadItems.LoadInfos,
-            req.user.GameUserID,
-            req.body.materialItemUID,
-            req.body.materialCurrencyUID
-        );
-    })
-    //승급으로 Tier 반영.
-    .then(()=&amp;gt;{
-        return models.OwnItem.update({
-            Tier:loadItems.targetItem[&#39;Tier&#39;]+1,
-            UpdateTimeStamp: new Date()
-        },
-        {where:{
-            OwnItemUID:loadItems.targetItem.OwnItemUID
-        }});
-    })
-    .then(()=&amp;gt;{
-        res.send({result:0});
-    })
-    .catch((err)=&amp;gt;{
-        next(err);
-    })
-})
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;에러코드-추가&quot;&gt;에러코드 추가&lt;/h2&gt;
-
-&lt;p&gt;아이템과 관련한 공통 에러가 3개, 강화와 승급에 각각 3개의 에러코드가 추가된다.&lt;/p&gt;
-
-&lt;p&gt;앞서 사용하도록 코드를 작성했으므로 &lt;code&gt;utils/error.js&lt;/code&gt;에 필요한 에러코드를 추가하도록 한다.&lt;/p&gt;
-
-&lt;p&gt;먼저 아래 9개 클래스를 등록한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;다른 클래스가 등록된 것을 참고하여 붙여넣으면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;NotInOwnItemList&lt;/li&gt;
-  &lt;li&gt;MaterialDoesNotExistOwnItemList&lt;/li&gt;
-  &lt;li&gt;NotEnoughItem&lt;/li&gt;
-  &lt;li&gt;CantReinfoceItem&lt;/li&gt;
-  &lt;li&gt;DidntRegisterReinfoceRequireItem&lt;/li&gt;
-  &lt;li&gt;NoLongerReinforce&lt;/li&gt;
-  &lt;li&gt;CantUpgradeItem&lt;/li&gt;
-  &lt;li&gt;DidntRegisterUpgradeRequireItem&lt;/li&gt;
-  &lt;li&gt;NoLongerUpgrade&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/** 80501 */
-class NotInOwnItemList extends CustomError {
-    constructor() {
-        let message = &#39;보유한 아이템 중에 해당 아이템이 없다.&#39;;
-        let code = 80501;
-        super(message, code);
-    }
-}
-
-/** 80502 */
-class MaterialDoesNotExistOwnItemList extends CustomError {
-    constructor() {
-        let message = &#39;보유한 아이템 중에 재료로 사용할 아이템이 없다.&#39;;
-        let code = 80502;
-        super(message, code);
-    }
-}
-
-/** 80503 */
-class NotEnoughItem extends CustomError {
-    constructor() {
-        let message = &#39;해당 아이템이 충분하지 않다.&#39;;
-        let code = 80503;
-        super(message, code);
-    }
-}
-
-/** 80511 */
-class CantReinfoceItem extends CustomError {
-    constructor() {
-        let message = &#39;강화가 불가능한 아이템&#39;;
-        let code = 80511;
-        super(message, code);
-    }
-}
-
-/** 80512 */
-class DidntRegisterReinfoceRequireItem extends CustomError {
-    constructor() {
-        let message = &#39;강화에 필요한 아이템이 등록하지 않았다&#39;;
-        let code = 80512;
-        super(message, code);
-    }
-}
-
-/** 80513 */
-class NoLongerReinforce extends CustomError {
-    constructor() {
-        let message = &#39;더 이상 강화되지 않는다(최대레벨도달)&#39;;
-        let code = 80513;
-        super(message, code);
-    }
-}
-
-/** 80521 */
-class CantUpgradeItem extends CustomError {
-    constructor() {
-        let message = &#39;승급이 불가능한 아이템&#39;;
-        let code = 80521;
-        super(message, code);
-    }
-}
-
-/** 80522 */
-class DidntRegisterUpgradeRequireItem extends CustomError {
-    constructor() {
-        let message = &#39;승급에 필요한 아이템이 등록하지 않았다&#39;;
-        let code = 80522;
-        super(message, code);
-    }
-}
-
-/** 80523 */
-class NoLongerUpgrade extends CustomError {
-    constructor() {
-        let message = &#39;더 이상 승급이 불가능(최대 등급 도달)&#39;;
-        let code = 80523;
-        super(message, code);
-    }
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;9개 클래스를 모두 등록했으면 다음 부분을 찾아서 아래와 같이 수정한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;&quot;NickNameToLongOrShot&quot;:NickNameToLongOrShot
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;변경할 내용&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;NickNameToLongOrShot&quot;:NickNameToLongOrShot,
-
-&quot;NotInOwnItemList&quot;:NotInOwnItemList,
-&quot;MaterialDoesNotExistOwnItemList&quot;:MaterialDoesNotExistOwnItemList,
-&quot;NotEnoughItem&quot;:NotEnoughItem,
-
-&quot;CantReinfoceItem&quot;:CantReinfoceItem,
-&quot;DidntRegisterReinfoceRequireItem&quot;:DidntRegisterReinfoceRequireItem,
-&quot;NoLongerReinforce&quot;:NoLongerReinforce,
-
-&quot;CantUpgradeItem&quot;:CantUpgradeItem,
-&quot;DidntRegisterUpgradeRequireItem&quot;:DidntRegisterUpgradeRequireItem,
-&quot;NoLongerUpgrade&quot;:NoLongerUpgrade
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;테스트&quot;&gt;테스트&lt;/h2&gt;
-&lt;p&gt;아이템을 몇개 등록하고 강화와 승급도 진행해보자.&lt;/p&gt;
-
-&lt;h3 id=&quot;정의된-아이템-추가&quot;&gt;정의된 아이템 추가&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;DefineItem&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;ItemID&lt;/th&gt;
-      &lt;th&gt;ItemType&lt;/th&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Multiple&lt;/th&gt;
-      &lt;th&gt;MaxQNTY&lt;/th&gt;
-      &lt;th&gt;ReinforceItemID&lt;/th&gt;
-      &lt;th&gt;UpgradeItemID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;101&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;key&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;500&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;102&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;gem&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;900000&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;103&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;gold&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;900000&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;sward&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ItemType 10은 통화를 지칭하기로 약속한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;모든 길은 아이템으로 통해야 추후 관리가 쉽다. 그래서 통화도 아이템으로 등록한다.&lt;/p&gt;
-
-&lt;p&gt;다만 통화는 Currency에서 별도 관리는 것이라고 생각하면 된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;materialCtrl.js 파일을 보면 공통 요청을 하지만 ItemType에 따라 적용하는 메서드가 달라지는 것을 볼 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;2001번 아이템은 현재는 강화와 승급이 불가능하다. 강화 승급에 관련한 데이터를 추가로 등록하자.&lt;/p&gt;
-
-&lt;h3 id=&quot;강화-관련-데이터-입력&quot;&gt;강화 관련 데이터 입력&lt;/h3&gt;
-&lt;p&gt;아이템 강화와 관련된 테이블은 2개다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;DefineReinforceItem&lt;/code&gt;과 &lt;code&gt;DefineReinforceRequireItem&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;DefineReinforceItem을 먼저 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;ReinforceItemID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;그리고 DefineReinforceRequireItem에 아래 내용을 입력한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;소모할 아이템이 통화로 사용할 gem, gold 뿐이라서 여기서는 모두 gold로 처리한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;id&lt;/td&gt;
-      &lt;td&gt;Level&lt;/td&gt;
-      &lt;td&gt;RequireQNTY&lt;/td&gt;
-      &lt;td&gt;ReinforceItemID&lt;/td&gt;
-      &lt;td&gt;ItemID&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;승급-관련-데이터-입력&quot;&gt;승급 관련 데이터 입력&lt;/h3&gt;
-&lt;p&gt;승급도 강화와 마찬가지로 2개 테이블에 입력해야한다.&lt;/p&gt;
-
-&lt;p&gt;먼저 DefineUpgradeItem을 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;UpgradeItemID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;그리고 DefineUpgradeRequireItem에 아래 내용을 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;id&lt;/td&gt;
-      &lt;td&gt;Tier&lt;/td&gt;
-      &lt;td&gt;RequireQNTY&lt;/td&gt;
-      &lt;td&gt;UpgradeItemID&lt;/td&gt;
-      &lt;td&gt;ItemID&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;100&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;200&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;정의된-아이템-수정&quot;&gt;정의된 아이템 수정&lt;/h3&gt;
-
-&lt;p&gt;DBeaver에서 DefineItem 테이블을 선택하고 ItemID 2001 상품의 &lt;code&gt;ReinforceItemID&lt;/code&gt;와 &lt;code&gt;UpgradeItemID&lt;/code&gt;를 각각 2001로 변경한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;DefineItem 테이블 선택.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Data 탭에서 2001 아이템을 아래처럼 수정&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy05_01.png&quot; alt=&quot;ReinforceItemID/UpgradeItemID변경&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래쪽에 &lt;code&gt;Save&lt;/code&gt;를 클릭하여 변경사항을 반영한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/images/rvwendy03_09.png&quot; alt=&quot;save&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;보유한-아이템-추가&quot;&gt;보유한 아이템 추가&lt;/h3&gt;
-
-&lt;p&gt;1번 유저에게 2001번 아이템을 지급하자.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;OwnItem&lt;/code&gt;테이블에 아래 내용을 추가한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;OwnItemUID&lt;/th&gt;
-      &lt;th&gt;ItemID&lt;/th&gt;
-      &lt;th&gt;CurrentQNTY&lt;/th&gt;
-      &lt;th&gt;Level&lt;/th&gt;
-      &lt;th&gt;Tier&lt;/th&gt;
-      &lt;th&gt;UpdateTimeStamp&lt;/th&gt;
-      &lt;th&gt;GameUserID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;2017-01-01&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;postman으로-테스트&quot;&gt;postman으로 테스트&lt;/h3&gt;
-
-&lt;p&gt;postman을 실행하고 토큰을 획득한 다음 아래처럼 요청을 해보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;데이터를 로딩하는 4개 API는 테스트하지 않는다. 여기서는 강화와 승급만 다루겠다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;강화-요청-테스트&quot;&gt;강화 요청 테스트&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;패스 : POST&lt;/li&gt;
-  &lt;li&gt;URL : localhost:3000/item/reinforce/1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;위 URL에서 가장 뒷 부분은 &lt;code&gt;OwnItemUID&lt;/code&gt;이다. 자신의 테이블을 확인해보고 OwnItemUID가 필자와 다르다면 자신의 값을 넣어야한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;body : 아래 내용을 넣는다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-    &quot;materialItemUID&quot;:[],
-    &quot;materialCurrencyUID&quot;:[3]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;materialCurrencyUID&lt;/code&gt;에는 OwnCurrency 등록된 소모할 OwnCurrencyUID를 넣는다. CurrencyID 103가 등록된 OwnCurrencyUID를 넣어줘야 정상 동작한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;성공하면 다음 내용을 수신한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &quot;result&quot;: 0
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;DBeaver에서 &lt;code&gt;OwnItem&lt;/code&gt; 테이블의 Data탭에서 &lt;code&gt;새로고침&lt;/code&gt;버튼을 클릭하면 Level이 2로 반영된 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_02.png&quot; alt=&quot;Dbeaver새로고침&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;승급-요청-테스트&quot;&gt;승급 요청 테스트&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;패스 : POST&lt;/li&gt;
-  &lt;li&gt;URL : localhost:3000/item/upgrade/1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;위 URL에서 가장 뒷 부분은 &lt;code&gt;OwnItemUID&lt;/code&gt;이다. 자신의 테이블을 확인해보고 OwnItemUID가 필자와 다르다면 자신의 값을 넣어야한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;body : 아래 내용을 넣는다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-    &quot;materialItemUID&quot;:[],
-    &quot;materialCurrencyUID&quot;:[3]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;materialCurrencyUID&lt;/code&gt;에는 OwnCurrency 등록된 소모할 OwnCurrencyUID를 넣는다. CurrencyID 103가 등록된 OwnCurrencyUID를 넣어줘야 정상 동작한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;성공하면 다음 내용을 수신한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &quot;result&quot;: 0
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;DBeaver에서 &lt;code&gt;OwnItem&lt;/code&gt; 테이블의 Data탭에서 &lt;code&gt;새로고침&lt;/code&gt;버튼을 클릭하면 Tier이 2로 반영된 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;아이템까지 어찌어찌 왔으니 자원에 영향을 주는 기능을 만들 때 필요한 기반이 되었다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;인앱 영수증 검증, 쿠폰, 메시지, 상점, 가챠 등&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음 강좌에서 지급 기능을 만들고 차차 진행해보도록 하자.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.totu.dev/2017/02/21/azureandunity-06/&quot;&gt;6강 바로가기&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
-&lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.4.zip&quot;&gt;Wendy 5강 완료 버전&lt;/a&gt;&lt;/p&gt;
-</description>
-            <pubDate>Thu, 09 Feb 2017 04:00:00 +0900</pubDate>
-            <link>https://blog.totu.dev/2017/02/09/azureandunity-05/</link>
-            <guid isPermaLink="true">https://blog.totu.dev/2017/02/09/azureandunity-05/</guid>
             
             
             <category>nodejs</category>
