@@ -6,6 +6,9 @@ categories: etc validation Billing iab iap nodejs TypeScript
 comments: true
 meta : iab iap validation
 description : 2016년에 작성한 인앱 영수증 결제 검증 웹 서비스를 리뉴얼
+image : 
+  twitter: /images/rcp-custom-renew.png
+  facebook: /images/rcp-custom-renew.png
 publish : true
 ---
 
