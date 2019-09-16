@@ -5,9 +5,95 @@
     <description>Full 🥩🔥 Developer</description>
     <link />https://blog.totu.dev/&lt;/link&gt;
     <atom:link href="https://blog.totu.dev/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 26 Jul 2019 15:38:28 +0900</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2019 15:38:28 +0900</lastBuildDate>
+    <pubDate>Mon, 16 Sep 2019 13:55:29 +0900</pubDate>
+    <lastBuildDate>Mon, 16 Sep 2019 13:55:29 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>구글, 애플 인앱 영수증 결제 검증 웹 서비스 리뉴얼</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#주요-기능&quot; id=&quot;markdown-toc-주요-기능&quot;&gt;주요 기능&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#변경점&quot; id=&quot;markdown-toc-변경점&quot;&gt;변경점&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#레포지토리&quot; id=&quot;markdown-toc-레포지토리&quot;&gt;레포지토리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#맺는말&quot; id=&quot;markdown-toc-맺는말&quot;&gt;맺는말&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;&lt;del&gt;싸질러놓은&lt;/del&gt; 작성한 글 중에서 가장 자연유입이 많은 것은 &lt;a href=&quot;/2016/02/10/google-oauth/&quot;&gt;구글 인앱 결제 검증 웹 서비스 만들기&lt;/a&gt;와 &lt;a href=&quot;/2016/03/23/ios-validation/&quot;&gt;애플 인앱결제 검증 웹 서비스 제작&lt;/a&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;그런데 이 글을 2016년에 작성되었고 그 코드는 3년이 넘게 그대로 방치 중이다. 그대로 사용하면 보안 위험이 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;리뉴얼할 수 있게 요청해준 순순스튜디오 고마워요.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;node.js와 express.js는 그대로 유지하면서 변경해보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;주요-기능&quot;&gt;주요 기능&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Google Play Store 인앱결제(in app billing) 검증
+    &lt;ul&gt;
+      &lt;li&gt;JWT 토큰 생성 방식&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Apple App Store 인앱결제(in app purchase) 검증&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;게임에서 결제가 이뤄진 뒤 영수증을 각 url로 제출하면 정상 결제인지 확인한다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;단, 데이터베이스에 영수증을 기록하는 기능은 없기때문에 정상 결제 1건을 가지고 복수번 결제 검증을 요청하는 중복 결제(duplicate payment)는 방어하지 못함.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;변경점&quot;&gt;변경점&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;node.js v10.16 사용&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;TypeScript&lt;/code&gt; 사용&lt;/li&gt;
+  &lt;li&gt;비동기 요청은 callback 에서 &lt;code&gt;async/await&lt;/code&gt; 로 변경&lt;/li&gt;
+  &lt;li&gt;JSON Schema 를 통해서 request를 검증&lt;/li&gt;
+  &lt;li&gt;요청 url 변경
+    &lt;ul&gt;
+      &lt;li&gt;/validation/iap/google&lt;/li&gt;
+      &lt;li&gt;/validation/iap/apple&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;aws beanstalk 배포를 위한 packing 스크립트 추가&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;dev&lt;/code&gt; 모드로 실행 시 아래 명령으로 실행
+    &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm run dev
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;레포지토리&quot;&gt;레포지토리&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/InAppPurchaseValidationWebService&quot;&gt;인앱 영수증 결제 검증 웹 서비스&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;살펴보시거나 사용하시다가 질문이 있으시면 해당 레포지토리의 이슈로 등록하면 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;맺는말&quot;&gt;맺는말&lt;/h2&gt;
+&lt;p&gt;이런 서비스가 필요없는 신뢰 사회가 되길 바란다.&lt;/p&gt;
+</description>
+            <pubDate>Mon, 16 Sep 2019 09:01:00 +0900</pubDate>
+            <link />https://blog.totu.dev/2019/09/16/renew-receipt-validation/&lt;/link&gt;
+            <guid isPermaLink="true">https://blog.totu.dev/2019/09/16/renew-receipt-validation/</guid>
+            
+            
+            <category>etc</category>
+            
+            <category>validation</category>
+            
+            <category>Billing</category>
+            
+            <category>iab</category>
+            
+            <category>iap</category>
+            
+            <category>nodejs</category>
+            
+            <category>TypeScript</category>
+            
+        </item>
+      
     
       
         <item>
@@ -1926,786 +2012,6 @@ let hostname = &#39;Azure 웹앱 URL&#39;;
             
             
             <category>wendy</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>이세계에 진입한 서버 개발 - 6</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#모델-추가&quot; id=&quot;markdown-toc-모델-추가&quot;&gt;모델 추가&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#라우터-추가&quot; id=&quot;markdown-toc-라우터-추가&quot;&gt;라우터 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs에-등록&quot; id=&quot;markdown-toc-appjs에-등록&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#공통-사용-로직-추가&quot; id=&quot;markdown-toc-공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#자원-추가-메서드-incrementmaterials&quot; id=&quot;markdown-toc-자원-추가-메서드-incrementmaterials&quot;&gt;자원 추가 메서드 incrementMaterials&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#logicsrewardjs-추가&quot; id=&quot;markdown-toc-logicsrewardjs-추가&quot;&gt;logics/reward.js 추가&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#간단-테스트&quot; id=&quot;markdown-toc-간단-테스트&quot;&gt;간단 테스트&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#간단-테스트용-라우터-추가&quot; id=&quot;markdown-toc-간단-테스트용-라우터-추가&quot;&gt;간단 테스트용 라우터 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#데이터-입력&quot; id=&quot;markdown-toc-데이터-입력&quot;&gt;데이터 입력&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#즉시-지급-테스트&quot; id=&quot;markdown-toc-즉시-지급-테스트&quot;&gt;즉시 지급 테스트&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#쿠폰-제작&quot; id=&quot;markdown-toc-쿠폰-제작&quot;&gt;쿠폰 제작&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#쿠폰-모델-추가&quot; id=&quot;markdown-toc-쿠폰-모델-추가&quot;&gt;쿠폰 모델 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#쿠폰-라우터-추가&quot; id=&quot;markdown-toc-쿠폰-라우터-추가&quot;&gt;쿠폰 라우터 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs에-등록-1&quot; id=&quot;markdown-toc-appjs에-등록-1&quot;&gt;app.js에 등록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#테스트용-데이터-추가&quot; id=&quot;markdown-toc-테스트용-데이터-추가&quot;&gt;테스트용 데이터 추가&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#쿠폰-테스트&quot; id=&quot;markdown-toc-쿠폰-테스트&quot;&gt;쿠폰 테스트&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#참고자료&quot; id=&quot;markdown-toc-참고자료&quot;&gt;참고자료&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ZSloWdCq4LY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-
-&lt;p&gt;지난 시간에 아이템 관리까지 다루면서 게임 내 자원을 지급할 수 있는 기반이 마련되었다.&lt;/p&gt;
-
-&lt;p&gt;이번 시간에는 자원을 지급하도록 해보겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;모델-추가&quot;&gt;모델 추가&lt;/h2&gt;
-&lt;p&gt;모델은 총 4개가 필요하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardSetGroup.js&quot;&gt;RewardSetGroup.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardSet.js&quot;&gt;RewardSet.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardGoodsGroup.js&quot;&gt;RewardGoodsGroup.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/models/RewardGoods.js&quot;&gt;RewardGoods.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;위 모델 중 가장 기본이 되는 것은 &lt;code&gt;RewardGoodsGroup&lt;/code&gt;과 &lt;code&gt;RewardGoods&lt;/code&gt;이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;RewardGoodsGroup&lt;/code&gt;에서 관리되는 &lt;code&gt;RewardGoodsGroupID&lt;/code&gt;를 통해 다수의 &lt;code&gt;RewardGoods&lt;/code&gt; 목록을 그룹으로 묶는다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_03.png&quot; alt=&quot;RewardGoodsGroup과RewardGoods의 관계&quot; width=&quot;250px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 묶어두는 이유는 하나의 상품으로 다수의 자원이 지급될 수 있도록 하기 위함이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;행운 상자라고 지칭한 뒤 최소 확율로 요원이 나오고 높은 확율로 골드 정도를 묶은 상품을 생각하면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;RewardSetGroup&lt;/code&gt;은 &lt;code&gt;RewardSetGroupID&lt;/code&gt;를 통해 &lt;code&gt;RewardSet&lt;/code&gt;에 다수의 &lt;code&gt;RewardGoodsGroupID&lt;/code&gt;를 등록할 수 있는 형태이다.&lt;/p&gt;
-
-&lt;p&gt;이렇게되면 묶음(패키지) 상품을 제공할 수 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;골드와 보석, 키 등이 한번에 포함된 상품을 제공하는 스타터 팩을 생각하면 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy05_04.png&quot; alt=&quot;RewardSetGroup과RewardSet의 관계&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;단순한 묶음 상품이상으로 작동하도록 &lt;code&gt;RewardSet&lt;/code&gt;에도 드랍 확율을 넣었다. 묶음 상품 안에서 운이 좋으면 추가 재화를 얻을 수 있도록 말이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;라우터-추가&quot;&gt;라우터 추가&lt;/h2&gt;
-
-&lt;p&gt;자원 세트(묶음 상품)와 지급 가능한 자원 정보를 추가하겠다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GET /reward/set&lt;/li&gt;
-  &lt;li&gt;GET /reward/goods&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;reward.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.1/routes/reward.js&quot;&gt;routes/reward.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;appjs에-등록&quot;&gt;app.js에 등록&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 reward 라우터를 추가해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const reward = require(&#39;./routes/reward&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/reward&#39;, reward);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;공통-사용-로직-추가&quot;&gt;공통 사용 로직 추가&lt;/h2&gt;
-&lt;p&gt;지금까지 모델을 추가했으며 간단한 2개의 API를 등록했다.&lt;/p&gt;
-
-&lt;p&gt;이제 지급과 관련된 작업을 할 때 필요한 메서드를 추가하도록 하겠다.&lt;/p&gt;
-
-&lt;h3 id=&quot;자원-추가-메서드-incrementmaterials&quot;&gt;자원 추가 메서드 incrementMaterials&lt;/h3&gt;
-
-&lt;p&gt;지난 시간에 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt;를 추가한 것이 기억나는가? 자원을 차감하는 메서드가 있었다.&lt;/p&gt;
-
-&lt;p&gt;여기에 자원을 추가하는 메서드를 추가한다.&lt;/p&gt;
-
-&lt;p&gt;다른 메서드와 겹치지 않게 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt; 제일 아래쪽에 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let incrementMaterial = (GameUserID, ItemID, Amount, NowMaxQNTY=null)=&amp;gt;{
-    return models.DefineItem.findOne({
-        where:{
-            ItemID:ItemID
-        }
-    })
-    .then((defineItem)=&amp;gt;{
-        if(defineItem === null || defineItem === undefined)
-            throw wendyError(&#39;UndefinedItem&#39;);
-
-        switch(defineItem.ItemType) {
-            case 10://통화 상품
-                return incrementMaterialForCurrency(
-                    GameUserID, ItemID, Amount, NowMaxQNTY);
-                break;
-            default ://특별한 정의가 없다면 모두 아이템을 처리한다.
-                return incrementMaterialForItem(
-                    GameUserID, defineItem, ItemID, Amount);
-                break;
-        }
-    })
-}
-
-exports.incrementMaterial = incrementMaterial;
-
-let createCurrency = (GameUserID, ItemID, Amount, defineCurrency=null, NowMaxQNTY=null)=&amp;gt;{
-    let createObj = {
-        GameUserID:GameUserID, 
-        CurrencyID:ItemID,
-        CurrentQNTY:Amount,
-        NowMaxQNTY:NowMaxQNTY===null?100:NowMaxQNTY,
-        UpdateTimeStamp:new Date()
-    }
-
-    return Promise.resolve()
-    .then(()=&amp;gt;{
-        if(NowMaxQNTY!==null)
-            return Promise.reject(&#39;pass&#39;);
-        return Promise.resolve();
-    })
-    .then(()=&amp;gt;{
-        if( defineCurrency!==null )
-            createObj.NowMaxQNTY = defineCurrency.MaxQNTY;
-        return Promise.resolve();
-    })
-    .catch((err)=&amp;gt;{
-        if(err &amp;amp;&amp;amp; err instanceof Error) {
-            return Promise.reject(err);
-        }
-        else if(err===&#39;pass&#39;)
-            return Promise.resolve();
-    })
-    .then(()=&amp;gt;{
-        return models.OwnCurrency.create(createObj);
-    })
-}
-
-let incrementMaterialForCurrency = (GameUserID, ItemID, Amount, NowMaxQNTY=null)=&amp;gt;{
-    let defineCurrency = null;
-
-    return models.DefineCurrency.findOne({where:{CurrencyID:ItemID}})
-    .then((loadDefineCurrency)=&amp;gt;{
-        if( !(loadDefineCurrency === null || loadDefineCurrency===undefined) )
-            defineCurrency = loadDefineCurrency;
-        return Promise.resolve();
-    })
-    .then(()=&amp;gt;{
-        return models.OwnCurrency.findOne({
-            where:{
-                GameUserID:GameUserID, 
-                CurrencyID:ItemID
-            }})
-    })
-    .then((ownCurrency)=&amp;gt;{
-        if(ownCurrency === null || ownCurrency === undefined)
-            return createCurrency(
-                GameUserID, 
-                ItemID, 
-                Amount, 
-                defineCurrency,
-                NowMaxQNTY);
-        
-        let incrementValue = (ownCurrency.CurrentQNTY + Amount);
-        if(incrementValue&amp;gt;defineCurrency.MaxQNTY)
-            incrementValue = defineCurrency.MaxQNTY;
-
-        return models.OwnCurrency.update(
-            { CurrentQNTY: incrementValue, UpdateTimeStamp: new Date() },
-            { where: { OwnCurrencyUID: ownCurrency[&#39;OwnCurrencyUID&#39;] } }
-        )
-            .then(() =&amp;gt; {
-                return models.OwnCurrency.findOne({
-                    where: { OwnCurrencyUID: ownCurrency[&#39;OwnCurrencyUID&#39;] }
-                })
-            })
-    })
-    
-}
-
-let incrementMaterialForItem = (GameUserID, defineItem, ItemID, Amount)=&amp;gt;{
-    return Promise.resolve()
-    .then(()=&amp;gt;{
-        if(defineItem.Multiple===false)
-            return Promise.reject(&#39;create&#39;);
-        return Promise.resolve();
-    })
-    .then(()=&amp;gt;{
-        return models.OwnItem.findOne({where:{
-            GameUserID:GameUserID,
-            ItemID:ItemID
-        }})
-    })
-    .then((ownItem)=&amp;gt;{
-        if(ownItem === null || ownItem === undefined)
-            return Promise.reject(&#39;create&#39;);
-        
-        let incrementValue = 
-            (ownItem.CurrentQNTY + Amount)&amp;gt;defineItem.MaxQNTY
-            ? defineItem.MaxQNTY - ownItem.CurrentQNTY
-            : Amount;
-        
-        return ownItem.increment(&#39;CurrentQNTY&#39;, {by:incrementValue})
-        .then(()=&amp;gt;{
-            return models.OwnItem.findOne({where:{
-                OwnItemID:ownItem[&#39;OwnItemUID&#39;]
-            }})
-        })
-    })
-    .catch((err)=&amp;gt;{
-        if(err &amp;amp;&amp;amp; err instanceof Error) {
-            return Promise.reject(err);
-        }
-        else if(err===&#39;create&#39;) {
-            return models.OwnItem.create({
-                GameUserID:GameUserID,
-                ItemID:ItemID,
-                CurrentQNTY:Amount,
-                UpdateTimeStamp:new Date()
-            });
-        }
-    })
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;logicsrewardjs-추가&quot;&gt;logics/reward.js 추가&lt;/h3&gt;
-
-&lt;p&gt;RewardSetGroup과 RewardGoodsGroup을 바탕으로 &lt;code&gt;logics/materialCtrl.js&lt;/code&gt;의 자원 추가 메서드로 자원을 지급하는 로직을 제작하겠다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;logics/reward.js&lt;/code&gt; 파일을 추가한 뒤 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.3/logics/reward.js&quot;&gt;logics/reward.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;위 코드가 문제 없이 작동하려면 2가지를 더 추가해야한다.&lt;/p&gt;
-
-&lt;p&gt;먼저 &lt;code&gt;utils/commonFunc.js&lt;/code&gt;에 아래 2가지 메서드를 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * low와 high 사이의 숫자를 랜덤으로 리턴한다.
- * @returns {number}
- */
-exports.RandomInt = (low, high)=&amp;gt;{
-    return Math.floor(Math.random() * (high - low + 1) + low);
-};
-
-function async(makeGenerator) {
-    return function () {
-        let generator = makeGenerator.apply(this, arguments)
-
-        function handle(result) { // { done: [Boolean], value: [Object] }
-            if (result.done) return result.value
-
-            return result.value.then(function (res) {
-                return handle(generator.next(res))
-            }, function (err) {
-                return handle(generator.throw(err))
-            })
-        }
-
-        return handle(generator.next())
-    }
-}
-
-exports.async = async;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;그리고 에러코드를 추가한다. &lt;code&gt;utils/error.js&lt;/code&gt;에 아래 클래스를 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/** 80611 */
-class NotPresentRewardSetGroupID extends CustomError {
-    constructor() {
-        let message = &#39;RewardSetGroupID가 존재하지 않는다.&#39;;
-        let code = 80611;
-        super(message, code);
-    }
-}
-
-/** 80612 */
-class DidntRegisterRewardSet extends CustomError {
-    constructor() {
-        let message = &#39;RewardSetGroupID와 관련된 정보를 RewardSet에 등록하지 않았다.&#39;;
-        let code = 80612;
-        super(message, code);
-    }
-}
-
-
-/** 80621 */
-class NotPresentRewardGoodsGroupID extends CustomError {
-    constructor() {
-        let message = &#39;RewardGoodsGroupID가 존재하지 않는다.&#39;;
-        let code = 80621;
-        super(message, code);
-    }
-}
-
-/** 80622 */
-class DidntRegisterRewardGoods extends CustomError {
-    constructor() {
-        let message = &#39;RewardGoodsGroupID와 관련된 정보를 RewardGoods에 등록하지 않았다.&#39;;
-        let code = 80622;
-        super(message, code);
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;utils/error.js&lt;/code&gt;의 &lt;code&gt;errorMap&lt;/code&gt; 오브젝트에 추가할 클래스를 등록한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;추가할 때 이전의 마지막 부분 - 여기서는 NoLongerUpgrade - 에 콤마(,)를 추가하여야 한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;NotPresentRewardSetGroupID&quot;:NotPresentRewardSetGroupID,
-&quot;DidntRegisterRewardSet&quot;:DidntRegisterRewardSet,
-
-&quot;NotPresentRewardGoodsGroupID&quot;:NotPresentRewardGoodsGroupID,
-&quot;DidntRegisterRewardGoods&quot;:DidntRegisterRewardGoods
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;간단-테스트&quot;&gt;간단 테스트&lt;/h2&gt;
-&lt;p&gt;지급 가능하도록 테이블에 데이터를 입력하고 실제 지급이 이뤄지는 테스트해보자.&lt;/p&gt;
-
-&lt;h3 id=&quot;간단-테스트용-라우터-추가&quot;&gt;간단 테스트용 라우터 추가&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이 내용은 앞서 routes/reward.js 를 추가할 때 이미 들어가있으므로 추가 하지 않는다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;routes/reward.js&lt;/code&gt; 하단에 아래 코드를 추가한다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const env       = process.env.NODE_ENV || &quot;development&quot;;
-
-if(env === &#39;development&#39;) {
-    router.get(&#39;/test/:RewardGroupID&#39;, auth.isAuthenticated, (req, res, next)=&amp;gt;{
-
-        rewardCtrl.paymentMaterial(req.user.GameUserID, req.params.RewardGroupID)
-        .then((result)=&amp;gt;{
-            res.send({result:0, reward:result});
-        })
-        .catch((err)=&amp;gt;{
-            if(err === &#39;pass&#39;)
-                res.send({result:0, reward:[]})
-            else
-                next(err);
-        })
-    });
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;환경변수 &lt;code&gt;NODE_ENV&lt;/code&gt;가 &lt;code&gt;development&lt;/code&gt;일 때만 사용가능도록 조치했다.&lt;/p&gt;
-
-&lt;h3 id=&quot;데이터-입력&quot;&gt;데이터 입력&lt;/h3&gt;
-
-&lt;p&gt;테스트를 진행하기 위해서는 총 4개 테이블에 데이터를 등록해야한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;DBeaver를 이용한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;RewardGoodsGroup&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1012&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;RewardGoods&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;RewardGoodsUID&lt;/th&gt;
-      &lt;th&gt;AmountMin&lt;/th&gt;
-      &lt;th&gt;AmountMax&lt;/th&gt;
-      &lt;th&gt;DropRatio&lt;/th&gt;
-      &lt;th&gt;ItemID&lt;/th&gt;
-      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;1000&lt;/td&gt;
-      &lt;td&gt;0.9&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;0.15&lt;/td&gt;
-      &lt;td&gt;102&lt;/td&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;0.05&lt;/td&gt;
-      &lt;td&gt;2001&lt;/td&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;100&lt;/td&gt;
-      &lt;td&gt;0.1&lt;/td&gt;
-      &lt;td&gt;102&lt;/td&gt;
-      &lt;td&gt;1012&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;RewardSetGroup&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;6001&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;6002&lt;/td&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;RewardSet&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;RewardSetUID&lt;/th&gt;
-      &lt;th&gt;DropRatio&lt;/th&gt;
-      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
-      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-      &lt;td&gt;6001&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;0.5&lt;/td&gt;
-      &lt;td&gt;1012&lt;/td&gt;
-      &lt;td&gt;6001&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;NULL&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;1012&lt;/td&gt;
-      &lt;td&gt;6002&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;즉시-지급-테스트&quot;&gt;즉시 지급 테스트&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;패스 : GET&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;URL : localhost:3000/reward/test/6001&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;정상적으로 요청되면 아래와 같은 형식의 결과를 확인할 수 있다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;result&quot;: 0,
-  &quot;reward&quot;: {
-    &quot;item&quot;: [],
-    &quot;currency&quot;: [
-      {
-        &quot;TotalQNTY&quot;: 900000,
-        &quot;OwnCurrencyUID&quot;: 7,
-        &quot;CurrencyID&quot;: 103,
-        &quot;CurrentQNTY&quot;: 1217,
-        &quot;NowMaxQNTY&quot;: 900000,
-        &quot;AddMaxQNTY&quot;: 0,
-        &quot;UpdateTimeStamp&quot;: &quot;2017-02-21T00:00:00.000Z&quot;,
-        &quot;GameUserID&quot;: 1
-      }
-    ]
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;쿠폰-제작&quot;&gt;쿠폰 제작&lt;/h2&gt;
-
-&lt;p&gt;자원을 지급할 수 있으면 제작가능한 기능이 많다.&lt;/p&gt;
-
-&lt;p&gt;빨리 만들 수 있는 쿠폰을 제작해보도록 하겠다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy06_01.png&quot; alt=&quot;쿠폰&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;쿠폰-모델-추가&quot;&gt;쿠폰 모델 추가&lt;/h3&gt;
-
-&lt;p&gt;쿠폰은 총 3개의 모델이 필요하다. &lt;code&gt;models&lt;/code&gt; 폴더에 파일을 추가하고 각각 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/DefineCoupon.js&quot;&gt;DefineCoupon.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/CouponQNTY.js&quot;&gt;CouponQNTY.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/models/LogCoupon.js&quot;&gt;LogCoupon.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt;은 쿠폰을 정의하고 &lt;code&gt;CouponQNTY&lt;/code&gt;는 정의된 쿠폰 중 수량만 별도로 적을 수 있도록 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt;은 &lt;code&gt;RewardGoodsGroup&lt;/code&gt;이나 &lt;code&gt;RewardSetGroup&lt;/code&gt;의 ID를 이용해서 지급한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이때 주의할 점은 둘 중 하나는 꼭 등록을해야 올바로 지급이 가능하다는 점이다. 관리자 도구 제작 시 참고한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/rvwendy06_02.png&quot; alt=&quot;DefineCoupon예시&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;LogCoupon&lt;/code&gt;은 사용자의 쿠폰 사용 이력을 기록하여 중복 사용을 방지한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;쿠폰-라우터-추가&quot;&gt;쿠폰 라우터 추가&lt;/h3&gt;
-
-&lt;p&gt;정의된 쿠폰 리스트를 요청할 수 있고 쿠폰을 사용할 수 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GET /coupon/list&lt;/li&gt;
-  &lt;li&gt;POST /coupon/use/:CouponName&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;routes&lt;/code&gt;폴더에 &lt;code&gt;coupon.js&lt;/code&gt;파일을 추가하고 아래 내용을 적용한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/totuworld/Wendy/tuto6.2/routes/coupon.js&quot;&gt;routes/coupon.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;쿠폰 사용부분이 조금 복잡하게 되어있을 것이다. 중복 사용이 불가능하도록 해야하고 유효한 쿠폰인지 검증하는 부분이 많아서 그렇다.&lt;/p&gt;
-
-&lt;p&gt;단순하게 절차를 나타내면 아래처럼 진행된다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;유효한 쿠폰인지 검증&lt;/li&gt;
-  &lt;li&gt;쿠폰 사용 기록&lt;/li&gt;
-  &lt;li&gt;자원 지급&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;appjs에-등록-1&quot;&gt;app.js에 등록&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt; 파일을 수정하여 coupon 라우터를 추가해보자.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const routes = require(&#39;./routes/index&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  const coupon = require(&#39;./routes/coupon&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;에서 아래 내용을 찾아서 그 아래쪽에 코드를 추가한다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;찾아야하는 내용&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/&#39;, routes);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;추가할 코드&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code&gt;  app.use(&#39;/coupon&#39;, coupon);
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;테스트용-데이터-추가&quot;&gt;테스트용 데이터 추가&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;CouponQNTY&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CouponQNTYID&lt;/th&gt;
-      &lt;th&gt;CurrentQNTY&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;DefineCoupon&lt;/code&gt; 테이블에 데이터를 입력한다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CouponID&lt;/th&gt;
-      &lt;th&gt;CouponName&lt;/th&gt;
-      &lt;th&gt;ExpiredDate&lt;/th&gt;
-      &lt;th&gt;CouponQNTYID&lt;/th&gt;
-      &lt;th&gt;RewardSetGroupID&lt;/th&gt;
-      &lt;th&gt;RewardGoodsGroupID&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;test&lt;/td&gt;
-      &lt;td&gt;2017-02-24&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;1011&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;CouponQNTYID&lt;/code&gt;는 반드시 앞서 CouponQNTY 테이블에 등록된 CouponQNTYID를 확인하여 올바로 입력한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;쿠폰-테스트&quot;&gt;쿠폰 테스트&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;패스 : POST&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;URL : localhost:3000/coupon/use/test&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Headers : Authorization을 추가하고 토큰 내용을 value 부분에 넣는다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;요청이 올바르면 앞서 살펴본 &lt;code&gt;즉시 지급 테스트&lt;/code&gt;와 유사한 결과를 얻을 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;아직 관리자 도구가 없어서 운영까지는 불가능하지만 어쨌든 Wendy에 쿠폰까지 제작해봤다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;쿠폰은 1차 제작 범위 안에 없었는데 만들다보니 들어갔다. 서비스~ 서비스~&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음 강좌는 인앱 영수증 검증부분이다. 영수증을 검증하는 부분을 제외하면 자원 지급을 그대로 사용하므로 비교적 간단하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.totu.dev/2017/03/07/azureandunity-07/&quot;&gt;7강 바로가기&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
-&lt;p&gt;완성된 소스코드는 아래 링크에서 다운로드받으면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy/archive/0.0.5.zip&quot;&gt;Wendy 6강 완료 버전&lt;/a&gt;&lt;/p&gt;
-</description>
-            <pubDate>Tue, 21 Feb 2017 04:01:00 +0900</pubDate>
-            <link />https://blog.totu.dev/2017/02/21/azureandunity-06/&lt;/link&gt;
-            <guid isPermaLink="true">https://blog.totu.dev/2017/02/21/azureandunity-06/</guid>
-            
-            
-            <category>nodejs</category>
-            
-            <category>azure</category>
-            
-            <category>webapps</category>
-            
-            <category>unity</category>
             
         </item>
       
