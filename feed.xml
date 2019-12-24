@@ -5,9 +5,166 @@
     <description>Full 🥩🔥 Developer</description>
     <link>https://blog.totu.dev/</link>
     <atom:link href="https://blog.totu.dev/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Sep 2019 14:01:15 +0900</pubDate>
-    <lastBuildDate>Mon, 16 Sep 2019 14:01:15 +0900</lastBuildDate>
+    <pubDate>Tue, 24 Dec 2019 15:40:49 +0900</pubDate>
+    <lastBuildDate>Tue, 24 Dec 2019 15:40:49 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>yalive 제작 후기</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-28-11월-22일---입사-1개월차의-패기&quot; id=&quot;markdown-toc-d-28-11월-22일---입사-1개월차의-패기&quot;&gt;D-28, 11월 22일 - 입사 1개월차의 패기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#첫-삽-11월-26일11월-28일&quot; id=&quot;markdown-toc-첫-삽-11월-26일11월-28일&quot;&gt;첫 삽, 11월 26일~11월 28일&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-18-12월-2일-첫번째-개발-미팅&quot; id=&quot;markdown-toc-d-18-12월-2일-첫번째-개발-미팅&quot;&gt;D-18, 12월 2일 첫번째 개발 미팅&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-11-12월-9일-두번째-개발-미팅&quot; id=&quot;markdown-toc-d-11-12월-9일-두번째-개발-미팅&quot;&gt;D-11, 12월 9일 두번째 개발 미팅&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-8-12월-12일-문제-전달&quot; id=&quot;markdown-toc-d-8-12월-12일-문제-전달&quot;&gt;D-8, 12월 12일 문제 전달&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-4-12월-16일-최종-개발-미팅&quot; id=&quot;markdown-toc-d-4-12월-16일-최종-개발-미팅&quot;&gt;D-4, 12월 16일 최종 개발 미팅&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-3-12월-17일-최종-문제-전달&quot; id=&quot;markdown-toc-d-3-12월-17일-최종-문제-전달&quot;&gt;D-3, 12월 17일 최종 문제 전달&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-2-채팅창&quot; id=&quot;markdown-toc-d-2-채팅창&quot;&gt;D-2, 채팅창&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-1-12월-19일-리허설&quot; id=&quot;markdown-toc-d-1-12월-19일-리허설&quot;&gt;D-1, 12월 19일 리허설&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#d-day-12월-20일-행사-당일-1300-경&quot; id=&quot;markdown-toc-d-day-12월-20일-행사-당일-1300-경&quot;&gt;D-DAY, 12월 20일 행사 당일 13:00 경&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#행사-12월-20일-15001600&quot; id=&quot;markdown-toc-행사-12월-20일-15001600&quot;&gt;행사!!! 12월 20일 15:00~16:00&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#회고와-감사-인사&quot; id=&quot;markdown-toc-회고와-감사-인사&quot;&gt;회고와 감사 인사&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+
+&lt;p&gt;2019년 12월 20일, 야놀자는 &lt;code&gt;Merry Circusmas&lt;/code&gt;라는 연말행사를 진행했다. 케이터링 + 각종 게임 + 경품추첨이 있는 행복한 사내 행사다. 행사의  프로그램 중에 하나로 &lt;code&gt;yalive&lt;/code&gt;가 있었다. 영상없이 진행되는 소규모 라이브 퀴즈쇼다(잼라이브를 생각하면 된다). 이런걸 할 수 있냐고 2019년 11월 22일 물어봤다?! 어떤 일이 있었는지 시간 순서로 설명해보겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-28-11월-22일---입사-1개월차의-패기&quot;&gt;D-28, 11월 22일 - 입사 1개월차의 패기&lt;/h2&gt;
+
+&lt;p&gt;야놀자의 사내 행사를 주관하는 Culture&amp;amp;Glow팀이 있다. 해당 팀에 11월 1일 장민서님이 입사한다. 엄청난 핵인싸인지 퇴사하신 분을 통해서 소개 연락이 왔다. 안면트고 얼마 지나서 2회 Tech야,놀자 스태프로 참여하시더니 문제의 그 날 - 11월 22일 - 메시지로 서바이벌 퀴즈쇼 할 수 있냐고 묻는다.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Mh3XF1YLxo8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;주변 개발자에게 영상에 나오는 앱을 12월 20일까지 만들 수 있느냐고 물어보니 “족히 한 달은 걸리지 않을까?” 하며 모두가 고개를 절레절레 흔들었다고 한다. 신기한 사람이다. 모두가 고개를 흔들었는데 어째서 내게 다시 묻는거지.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-01.png&quot; alt=&quot;채팅01&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아무튼 당시를 떠올려보면 안된다고 타이핑하면서 속으로는 가능해보였다. 잼라이브 형태를 만들어보려고 이전에 생각했었다. Firebase Realtime DB나 Cloud Store를 사용해서 서로 데이터 싱크하고 웹 클라이언트에서 답변을 제출하는 형태면 간단히 만들 수 있어보였다 - 뇌내망상이 이렇게 무섭다 -. 시간차이가 조금 있어도 현장에서 운영으로 풀면되니까 괜찮다고 봤다. 상금 1억짜리 행사가 아닐테니까 참석자들도 그정도는 감수하겠지. 웹 클라이언트 프로그래밍할 멤버 2명 섭외해달라고 부탁하고 대화를 마쳤다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;태평한 내 성격이 한 몫했군.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;첫-삽-11월-26일11월-28일&quot;&gt;첫 삽, 11월 26일~11월 28일&lt;/h2&gt;
+&lt;p&gt;마침 Firebase를 사용하는 토이 프로젝트가 있어서 스케폴딩을 그대로 사용할 수 있었다. 첫번째 개발 미팅 전까지 어느정도 가능성을 확인하고 싶었다. 퇴근하고 짬짬히 만들었는데 따져보니 대략 총 10시간 정도 들었다. 클라이언트 화면과 퀴즈 제어가 생각한대로 돌아가는걸 확인했다. 이때는 관리툴이 없어서 DB를 직접 조작해가면서 확인했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-18-12월-2일-첫번째-개발-미팅&quot;&gt;D-18, 12월 2일 첫번째 개발 미팅&lt;/h2&gt;
+&lt;p&gt;혼자 삽질한 결과를 가지고 12월 2일 첫번째 개발 미팅을 가졌다. 프로젝트에 참여하는 멤버들과 공식적인 첫 만남인데 어딘가 익숙했다. 참여한 멤버들은 같은 CX개발실에서 일하는 웹파트 @alattalatta, @0901sj과 API파트 @parksy8189. 이분들 워크로그의 컨트리뷰터이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;역시 토이도 해본 사람이 한다고.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이미 참여한 사람들이 잘 쓰는 기술 스택을 그대로 사용하기로 했다. 짧은 시간에 뭔가 만들려면 도전을 줄이고 기능에만 집중해야한다고 생각했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프론트엔드 및 API : React.js + Next.js&lt;/li&gt;
+  &lt;li&gt;데이터베이스: Firebase&lt;/li&gt;
+  &lt;li&gt;배포: now&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이미 만들어가지고 왔으나 다행히도 모두 잘 다루는 스택이라서 다행이었다.&lt;/p&gt;
+
+&lt;p&gt;이와 별개로 첫번째 미팅 때 개발 규모를 보고 드랍될 수 있다고 생각했다. 이 시기는 2020년 마지막 앱 배포를 앞두고 개발하던 시점이라서 다들 여유가 없었다. 그런데 왠걸 누가 무엇을 할지 정하면서 헤어졌다. 각자 맡은 기능을 어느정도 구현해서 차주에 맞춰보기로 했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;행사진행 시 프로젝트로 화면에 송출되는 대시보드 개발 - @alattalatta&lt;/li&gt;
+  &lt;li&gt;사용자용 Client 개발 - @0901sj&lt;/li&gt;
+  &lt;li&gt;각종 api 지원 - @parksy8189&lt;/li&gt;
+  &lt;li&gt;퀴즈 상태 전환 및 정산 등의 기능을 가진 관리자 페이지 개발 - @totuworld&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;개발이 잘되면 사용하고 망하면 안쓰면되고, 플랜B가 있어야한다고 말했다. 물론 귓등으로도 안들었다…&lt;/p&gt;
+
+&lt;h2 id=&quot;d-11-12월-9일-두번째-개발-미팅&quot;&gt;D-11, 12월 9일 두번째 개발 미팅&lt;/h2&gt;
+
+&lt;p&gt;1주일 금방간다. 각자 맡은 기능을 어느정도 구현해서 왔다. 가장 많이 진척된 부분은 대시보드와 관리자 페이지였고 클라이언트 페이지는 손이 더 가야하는 상황이었다. 그리고 만나면서 얘기를 나누면서 필요한 기능이 늘었다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이전 라운드 탈락자 부활 기능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;얘기치못한 버그들이 발견되서 각 기능별로 수정에 들어갔다지만 그다지 큰 걸림돌을 없어보였다. 총괄대표님 보고에 해당 행사 내용이 올라가서 배수진을 치고 개발해야했다. 노 플랜B, 노 빠꾸 개발이라니.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-8-12월-12일-문제-전달&quot;&gt;D-8, 12월 12일 문제 전달&lt;/h2&gt;
+&lt;p&gt;문제는 얼마 안되겠지 생각했는데. 왠걸 60문항이 넘었다. 데이터베이스에 일일히 등록할라고 봤더니 너무 손이 많이간다. 문서도 구글 스프레드시트일줄 알았는데 구글 문서로 줬다. 어쩌지 싶었는데어느정도 규칙이 있어서 원본 문서를 txt로 변경한 뒤 json으로 변환했다. 그리고 Firebase에 문제를 등록하는 스크립트를 만들어서 입력해버렸다.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-4-12월-16일-최종-개발-미팅&quot;&gt;D-4, 12월 16일 최종 개발 미팅&lt;/h2&gt;
+
+&lt;p&gt;행사 당일 yalive을 진행할 진행자까지 모인 상태로 최종 점검하는 자리를 가졌다. 개발팀은 12일 따로만서 정답처리, 오답처리, 생존자 숫자 체크, 부활 등의 기능을 미리 점검하고 문제가 된 부분을 수정했다. 문제없이 잘 작동해야했는데 아직 버그가 있었다. 오직 수정 수정 수정! 조금 쫄려서 리허설하는 자리를 마련하기로 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive_fix03.jpg&quot; alt=&quot;최종개발미팅&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;d-3-12월-17일-최종-문제-전달&quot;&gt;D-3, 12월 17일 최종 문제 전달&lt;/h2&gt;
+&lt;p&gt;지난번 문제 전달이후에 문제 순서를 바꿔서 다시 전달받았다. 스크립트 없었으면 정말 눈물을 흘릴뻔 했다. 앞과 같은 순서로 변환을 거쳐서 문제를 입력했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-2-채팅창&quot;&gt;D-2, 채팅창&lt;/h2&gt;
+
+&lt;p&gt;행사 2일 전에 기능을 추가하다니!!아무튼 @alattalatta 님이 대시보드에 상황별 사운드 처리 기능을 파워 추가했다. 민서님은 😈인가.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/D4GS_DpWAAAwUZZ?format=jpg&amp;amp;name=900x900&quot; alt=&quot;f**king devs&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;https://twitter.com/equinusocio/status/1117335800344186881&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;d-1-12월-19일-리허설&quot;&gt;D-1, 12월 19일 리허설&lt;/h2&gt;
+
+&lt;p&gt;마지막이라고 생각하고 기능 테스트를 진행했다. 참가자 처리 부분이 문제가 있어서 수정해야했다. 그리고 민서님이 카운트다운할 때 재생되는 소리가 없다며 기능을 한번 더 추가한다😱. 기능도 하나 더 추가한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전체 탈락자 부활 기능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이날 RND 그룹이 50명이 참가하는 골든벨 행사를 가졌는데 의외로 마지막 문제가 되기전에 많은 사람이 탈락하는 광경을 봤다. api 개발하는 @parksy8189 님이 필요해보인다고 얘기했다. 그럼 만들어야지.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-day-12월-20일-행사-당일-1300-경&quot;&gt;D-DAY, 12월 20일 행사 당일 13:00 경&lt;/h2&gt;
+
+&lt;p&gt;행사를 얼마 앞두고 서로 기능을 체크하고 있는데 클라이언트와 대시보드가 서로 상태를 다르게 해석하는 부분을 확인했다. 어떻게 고칠지 고민했는데 의외로 api 개발하던 @parksy8189 님의 아이디어로 최종 테스트까지 마친다. 마지막까지 수정하느라 @0901sj 님이 고생했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive_fix01.jpg&quot; alt=&quot;최종파이널수정&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;행사-12월-20일-15001600&quot;&gt;행사!!! 12월 20일 15:00~16:00&lt;/h2&gt;
+
+&lt;p&gt;몇명이나 참석하지 몰랐는데 왠걸 329명이 참석하는 행사가 됐다. 행사 현장이 좁아서 모두가 오프라인으로 참여하진 못했지만 온라인만 행사에 참여하는 분들도 꽤 됐다.&lt;/p&gt;
+
+&lt;p&gt;앞에 5문제는 몸풀기 문제였다. 어려운 문제가 하나 있어서 전체 참가자 중 대략 반수가 탈락하게 되었다. 진행자가 몸풀기 문제임을 알리고 전체 부활을 선언한다. 다행히 문제 없이 모두 부활되었다. 5문제가 잘 진행되었고, 부활 기능도 멀쩡하니 앞으로는 진행만 잘하면 된다.&lt;/p&gt;
+
+&lt;p&gt;중간에 진행용 노트북 배터리가 모두 소진되서 화면이 꺼졌다. 부랴부랴 Culture&amp;amp;Glow팀에서 충전기를 가져와 해결했다.  최후의 4인과 최후의 1인까지 남을 때까지 행사는 무난히 진행해서 완료했다. 🎉🎉🎉 👏👏👏&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-03.png&quot; alt=&quot;행사완료&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;회고와-감사-인사&quot;&gt;회고와 감사 인사&lt;/h2&gt;
+&lt;p&gt;yalive 프로젝트를 하면서 2가지가 좋았다. 전에 뇌내망상으로만 존재하던 라이브 퀴즈쇼를 만들게 되었고 행사를 참여한 사우님들이 많이 좋아해줬다. 현장에서도 정말 반응이 좋았는데 설문조사에서도 가장 좋은 행사로 뽑혔다. 내가 작성한 코드만 보면 말도 안되는 수준이지만 누군가 좋아해준다니 정말 뿌듯하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-02.png&quot; alt=&quot;최고세션&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음에 비슷한 프로젝트를 하게된다면 의사결정 과정에서 내 목소리를 더 줄여야겠다. 같이 프로젝트에 참여한 멤버들이 원하는 바를 반영하고, 기술 도전이 가능하도록 했다면 어땠을까.&lt;/p&gt;
+
+&lt;p&gt;그리고 이 프로젝트를 진행할 때 기꺼이 참여해준 @alattalatta, @0901sj, @parksy8189 3분 너무 고맙다. 아내에게 말하니 늙은 아저씨랑 놀아주는 &lt;code&gt;고마운 젊은이&lt;/code&gt; 라고 했다. 앞으로도 잘 부탁해요.&lt;/p&gt;
+
+&lt;p&gt;회고에는 나쁜? 사람 - 😈 - 으로 나오지만 민서님 정말 고생많았어요.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ya-live/ya-live&quot;&gt;ya-live 레포지토리&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Tue, 24 Dec 2019 09:00:00 +0900</pubDate>
+            <link>https://blog.totu.dev/2019/12/24/yalive-postmortem/</link>
+            <guid isPermaLink="true">https://blog.totu.dev/2019/12/24/yalive-postmortem/</guid>
+            
+            
+            <category>etc</category>
+            
+        </item>
+      
     
       
         <item>
@@ -1882,136 +2039,6 @@ let hostname = &#39;Azure 웹앱 URL&#39;;
             
             
             <category>etc</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>Wendy 프로젝트 진행사항 3</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#프로젝트-진행-사항&quot; id=&quot;markdown-toc-프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#기능-목록&quot; id=&quot;markdown-toc-기능-목록&quot;&gt;기능 목록&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-사항&quot; id=&quot;markdown-toc-튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#완성된-튜토리얼-목록&quot; id=&quot;markdown-toc-완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#튜토리얼-제작-진행사항&quot; id=&quot;markdown-toc-튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#소식들&quot; id=&quot;markdown-toc-소식들&quot;&gt;소식들&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#웬디-근황&quot; id=&quot;markdown-toc-웬디-근황&quot;&gt;웬디 근황&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#좋은-소식&quot; id=&quot;markdown-toc-좋은-소식&quot;&gt;좋은 소식&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#우울한-소식&quot; id=&quot;markdown-toc-우울한-소식&quot;&gt;우울한 소식&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
-
-&lt;p&gt;2017년 2월은 레드벨벳 웬디와 Wendy가 있어 행복하고 재미나다.&lt;/p&gt;
-
-&lt;h2 id=&quot;프로젝트-진행-사항&quot;&gt;프로젝트 진행 사항&lt;/h2&gt;
-&lt;p&gt;자원(통화, 아이템)을 관리할 수 있게 되고 지급 관리까지 제작되었다.&lt;/p&gt;
-
-&lt;p&gt;서비스로 쿠폰도 제작!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://github.com/totuworld/Wendy&quot;&gt;Wendy 프로젝트 레파지토리&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;기능-목록&quot;&gt;기능 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;기기 관리&lt;/li&gt;
-  &lt;li&gt;사용자 관리&lt;/li&gt;
-  &lt;li&gt;통화 관리&lt;/li&gt;
-  &lt;li&gt;아이템 관리&lt;/li&gt;
-  &lt;li&gt;자원(통화, 아이템) 지급 관리&lt;/li&gt;
-  &lt;li&gt;쿠폰&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;튜토리얼-제작-사항&quot;&gt;튜토리얼 제작 사항&lt;/h2&gt;
-&lt;p&gt;2월에도 2개 강좌가 더 제작되었다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;5강 - 아이템 관리&lt;/li&gt;
-  &lt;li&gt;6강 - 자원 지급 관리&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;완성된-튜토리얼-목록&quot;&gt;완성된 튜토리얼 목록&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;1강 - &lt;a href=&quot;https://blog.totu.dev/2016/12/21/azureandunity-01/&quot;&gt;Hello, world!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;2강 - &lt;a href=&quot;https://blog.totu.dev/2016/12/29/azureandunity-02/&quot;&gt;SQL데이터베이스스와 환경설정&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;3강 - &lt;a href=&quot;https://blog.totu.dev/2017/01/12/azureandunity-03/&quot;&gt;기기와 사용자 관리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;4강 - &lt;a href=&quot;https://blog.totu.dev/2017/01/26/azureandunity-04/&quot;&gt;통화관리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;5강 - &lt;a href=&quot;https://blog.totu.dev/2017/02/09/azureandunity-05/&quot;&gt;아이템 관리&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;6강 - &lt;a href=&quot;https://blog.totu.dev/2017/02/21/azureandunity-06/&quot;&gt;자원 지급 관리&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;튜토리얼-제작-진행사항&quot;&gt;튜토리얼 제작 진행사항&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;7강 : … 시작도 못했는데 어쩌죠?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;소식들&quot;&gt;소식들&lt;/h2&gt;
-&lt;h3 id=&quot;웬디-근황&quot;&gt;웬디 근황&lt;/h3&gt;
-
-&lt;p&gt;2월 21일. 웬디는 생일이었다.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/87OYm-cKeA8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이렇게 좋고 행복한 일상만 보내라 웬디야!!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;좋은-소식&quot;&gt;좋은 소식&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/korea/msdn/flash/archive/msdn_newsletter_1701.html&quot;&gt;MSDN 뉴스레터 2017년 1월&lt;/a&gt;에 강좌 소식이 소개되었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/msdn_newsletter_201701.png&quot; alt=&quot;뉴스레터인증샷&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;요리왕 류ㅎㅇ과장님 감사합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;그리고 &lt;code&gt;나는 프로그래머다&lt;/code&gt; 페이스북 페이지에도 소개되었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/iamprogrammer_0224.png&quot; alt=&quot;나프다인증샷&quot; width=&quot;460px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6강은 화요일(2월 21일 웬디 생일)에 &lt;a href=&quot;http://www.youtube.com/user/totuworld7/live&quot;&gt;유튜브 스트리밍&lt;/a&gt;으로 방송했다.&lt;/p&gt;
-
-&lt;p&gt;4명이 소중한 분들이 있어서 힘이났다. 편집이 1시간 밖에 걸리지 않아서 너무 좋았다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;그래서 3월 7일 화요일 7강도 라이브로 진행하고 편집할 생각이다!!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;우울한-소식&quot;&gt;우울한 소식&lt;/h3&gt;
-
-&lt;p&gt;유튜브 스트리밍에 앞서 대기중일 때 레드벨벳 신곡을 틀었다. 저작권을 침해한 내 잘못이다.&lt;/p&gt;
-
-&lt;p&gt;그래서 &lt;code&gt;SM Ent&lt;/code&gt;로부터 경고를 득하게 되었다.&lt;/p&gt;
-
-&lt;p&gt;다음 방송에서는 조심하고 또 조심해야겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;새로운 회사로 옮기는 시점이 2월 초였다. 진행이 어렵게되서 약속을 지키지 못하면 어쩌나 걱정했다.&lt;/p&gt;
-
-&lt;p&gt;다행히 5, 6강 강을 약속한 날짜에 발행했다(나와의 약속?).&lt;/p&gt;
-
-&lt;p&gt;1차 목표로 했던 7강까지 잘 마무리하길 바란다.&lt;/p&gt;
-
-&lt;p&gt;그 이후는 어떤 기능을 필요로하는지 의견을 듣고 정리해서 진행해야겠다.&lt;/p&gt;
-</description>
-            <pubDate>Fri, 24 Feb 2017 21:00:00 +0900</pubDate>
-            <link>https://blog.totu.dev/2017/02/24/wendynotification/</link>
-            <guid isPermaLink="true">https://blog.totu.dev/2017/02/24/wendynotification/</guid>
-            
-            
-            <category>wendy</category>
             
         </item>
       

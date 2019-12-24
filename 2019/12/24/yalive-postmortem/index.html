@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>yalive 제작 후기</title>
+	
+	
+	<meta content="2019-12-24T09:00:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>yalive 제작 후기 - totuworld’s tech blog</title>
+<meta property="og:title" content="yalive 제작 후기" />
+<meta name="description" content="1달만에 만든 yalive 제작 후기 후기" />
+<meta property="og:description" content="1달만에 만든 yalive 제작 후기 후기" />
+<link rel="canonical" href="https://blog.totu.dev/2019/12/24/yalive-postmortem/" />
+<meta property="og:url" content="https://blog.totu.dev/2019/12/24/yalive-postmortem/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="https://blog.totu.dev/images/yalive_fix03.jpg" />
+<meta name="twitter:image" content="https://blog.totu.dev/images/yalive_fix03.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-24T09:00:00+09:00" />
+<link rel="prev" href="https://blog.totu.dev/2019/09/16/renew-receipt-validation/" title="구글, 애플 인앱 영수증 결제 검증 웹 서비스 리뉴얼" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "yalive 제작 후기",
+    "image": "https://blog.totu.dev/images/yalive_fix03.jpg",
+    "datePublished": "2019-12-24T09:00:00+09:00",
+    "description": "1달만에 만든 yalive 제작 후기 후기",
+    "url": "https://blog.totu.dev/2019/12/24/yalive-postmortem/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="1달만에 만든 yalive 제작 후기 후기">
+	
+	
+	<meta name="twitter:image" content="https://blog.totu.dev/images/yalive_fix03.jpg">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="https://blog.totu.dev/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+			(adsbygoogle = window.adsbygoogle || []).push({
+						google_ad_client: "ca-pub-4157849351218840",
+						enable_page_level_ads: true
+			});
+	</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '129561850715980',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.3'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Full 🥩🔥 Developer </p>
+      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/iqK0PcS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a latte"><span style="margin-left:5px">Buy me a latte</span></a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>yalive 제작 후기</h1>
+        <p>Dec 24, 2019 • etc</p>
+      </header>
+      <hr>
+        <!-- 블로그_글노출 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-4157849351218840"
+            data-ad-slot="7392519815"></ins>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#d-28-11월-22일---입사-1개월차의-패기" id="markdown-toc-d-28-11월-22일---입사-1개월차의-패기">D-28, 11월 22일 - 입사 1개월차의 패기</a></li>
+  <li><a href="#첫-삽-11월-26일11월-28일" id="markdown-toc-첫-삽-11월-26일11월-28일">첫 삽, 11월 26일~11월 28일</a></li>
+  <li><a href="#d-18-12월-2일-첫번째-개발-미팅" id="markdown-toc-d-18-12월-2일-첫번째-개발-미팅">D-18, 12월 2일 첫번째 개발 미팅</a></li>
+  <li><a href="#d-11-12월-9일-두번째-개발-미팅" id="markdown-toc-d-11-12월-9일-두번째-개발-미팅">D-11, 12월 9일 두번째 개발 미팅</a></li>
+  <li><a href="#d-8-12월-12일-문제-전달" id="markdown-toc-d-8-12월-12일-문제-전달">D-8, 12월 12일 문제 전달</a></li>
+  <li><a href="#d-4-12월-16일-최종-개발-미팅" id="markdown-toc-d-4-12월-16일-최종-개발-미팅">D-4, 12월 16일 최종 개발 미팅</a></li>
+  <li><a href="#d-3-12월-17일-최종-문제-전달" id="markdown-toc-d-3-12월-17일-최종-문제-전달">D-3, 12월 17일 최종 문제 전달</a></li>
+  <li><a href="#d-2-채팅창" id="markdown-toc-d-2-채팅창">D-2, 채팅창</a></li>
+  <li><a href="#d-1-12월-19일-리허설" id="markdown-toc-d-1-12월-19일-리허설">D-1, 12월 19일 리허설</a></li>
+  <li><a href="#d-day-12월-20일-행사-당일-1300-경" id="markdown-toc-d-day-12월-20일-행사-당일-1300-경">D-DAY, 12월 20일 행사 당일 13:00 경</a></li>
+  <li><a href="#행사-12월-20일-15001600" id="markdown-toc-행사-12월-20일-15001600">행사!!! 12월 20일 15:00~16:00</a></li>
+  <li><a href="#회고와-감사-인사" id="markdown-toc-회고와-감사-인사">회고와 감사 인사</a></li>
+</ul>
+
+<h2 id="들어가는-말">들어가는 말</h2>
+
+<p>2019년 12월 20일, 야놀자는 <code>Merry Circusmas</code>라는 연말행사를 진행했다. 케이터링 + 각종 게임 + 경품추첨이 있는 행복한 사내 행사다. 행사의  프로그램 중에 하나로 <code>yalive</code>가 있었다. 영상없이 진행되는 소규모 라이브 퀴즈쇼다(잼라이브를 생각하면 된다). 이런걸 할 수 있냐고 2019년 11월 22일 물어봤다?! 어떤 일이 있었는지 시간 순서로 설명해보겠다.</p>
+
+<h2 id="d-28-11월-22일---입사-1개월차의-패기">D-28, 11월 22일 - 입사 1개월차의 패기</h2>
+
+<p>야놀자의 사내 행사를 주관하는 Culture&amp;Glow팀이 있다. 해당 팀에 11월 1일 장민서님이 입사한다. 엄청난 핵인싸인지 퇴사하신 분을 통해서 소개 연락이 왔다. 안면트고 얼마 지나서 2회 Tech야,놀자 스태프로 참여하시더니 문제의 그 날 - 11월 22일 - 메시지로 서바이벌 퀴즈쇼 할 수 있냐고 묻는다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mh3XF1YLxo8" frameborder="0" allowfullscreen=""></iframe>
+
+<p>주변 개발자에게 영상에 나오는 앱을 12월 20일까지 만들 수 있느냐고 물어보니 “족히 한 달은 걸리지 않을까?” 하며 모두가 고개를 절레절레 흔들었다고 한다. 신기한 사람이다. 모두가 고개를 흔들었는데 어째서 내게 다시 묻는거지.</p>
+
+<p><img src="/images/yalive-01.png" alt="채팅01" width="40%" /></p>
+
+<p>아무튼 당시를 떠올려보면 안된다고 타이핑하면서 속으로는 가능해보였다. 잼라이브 형태를 만들어보려고 이전에 생각했었다. Firebase Realtime DB나 Cloud Store를 사용해서 서로 데이터 싱크하고 웹 클라이언트에서 답변을 제출하는 형태면 간단히 만들 수 있어보였다 - 뇌내망상이 이렇게 무섭다 -. 시간차이가 조금 있어도 현장에서 운영으로 풀면되니까 괜찮다고 봤다. 상금 1억짜리 행사가 아닐테니까 참석자들도 그정도는 감수하겠지. 웹 클라이언트 프로그래밍할 멤버 2명 섭외해달라고 부탁하고 대화를 마쳤다.</p>
+
+<blockquote>
+  <p>태평한 내 성격이 한 몫했군.</p>
+</blockquote>
+
+<h2 id="첫-삽-11월-26일11월-28일">첫 삽, 11월 26일~11월 28일</h2>
+<p>마침 Firebase를 사용하는 토이 프로젝트가 있어서 스케폴딩을 그대로 사용할 수 있었다. 첫번째 개발 미팅 전까지 어느정도 가능성을 확인하고 싶었다. 퇴근하고 짬짬히 만들었는데 따져보니 대략 총 10시간 정도 들었다. 클라이언트 화면과 퀴즈 제어가 생각한대로 돌아가는걸 확인했다. 이때는 관리툴이 없어서 DB를 직접 조작해가면서 확인했다.</p>
+
+<h2 id="d-18-12월-2일-첫번째-개발-미팅">D-18, 12월 2일 첫번째 개발 미팅</h2>
+<p>혼자 삽질한 결과를 가지고 12월 2일 첫번째 개발 미팅을 가졌다. 프로젝트에 참여하는 멤버들과 공식적인 첫 만남인데 어딘가 익숙했다. 참여한 멤버들은 같은 CX개발실에서 일하는 웹파트 @alattalatta, @0901sj과 API파트 @parksy8189. 이분들 워크로그의 컨트리뷰터이다.</p>
+
+<blockquote>
+  <p>역시 토이도 해본 사람이 한다고.</p>
+</blockquote>
+
+<p>이미 참여한 사람들이 잘 쓰는 기술 스택을 그대로 사용하기로 했다. 짧은 시간에 뭔가 만들려면 도전을 줄이고 기능에만 집중해야한다고 생각했다.</p>
+
+<ul>
+  <li>프론트엔드 및 API : React.js + Next.js</li>
+  <li>데이터베이스: Firebase</li>
+  <li>배포: now</li>
+</ul>
+
+<p>이미 만들어가지고 왔으나 다행히도 모두 잘 다루는 스택이라서 다행이었다.</p>
+
+<p>이와 별개로 첫번째 미팅 때 개발 규모를 보고 드랍될 수 있다고 생각했다. 이 시기는 2020년 마지막 앱 배포를 앞두고 개발하던 시점이라서 다들 여유가 없었다. 그런데 왠걸 누가 무엇을 할지 정하면서 헤어졌다. 각자 맡은 기능을 어느정도 구현해서 차주에 맞춰보기로 했다.</p>
+
+<ul>
+  <li>행사진행 시 프로젝트로 화면에 송출되는 대시보드 개발 - @alattalatta</li>
+  <li>사용자용 Client 개발 - @0901sj</li>
+  <li>각종 api 지원 - @parksy8189</li>
+  <li>퀴즈 상태 전환 및 정산 등의 기능을 가진 관리자 페이지 개발 - @totuworld</li>
+</ul>
+
+<p>개발이 잘되면 사용하고 망하면 안쓰면되고, 플랜B가 있어야한다고 말했다. 물론 귓등으로도 안들었다…</p>
+
+<h2 id="d-11-12월-9일-두번째-개발-미팅">D-11, 12월 9일 두번째 개발 미팅</h2>
+
+<p>1주일 금방간다. 각자 맡은 기능을 어느정도 구현해서 왔다. 가장 많이 진척된 부분은 대시보드와 관리자 페이지였고 클라이언트 페이지는 손이 더 가야하는 상황이었다. 그리고 만나면서 얘기를 나누면서 필요한 기능이 늘었다.</p>
+
+<ul>
+  <li>이전 라운드 탈락자 부활 기능</li>
+</ul>
+
+<p>얘기치못한 버그들이 발견되서 각 기능별로 수정에 들어갔다지만 그다지 큰 걸림돌을 없어보였다. 총괄대표님 보고에 해당 행사 내용이 올라가서 배수진을 치고 개발해야했다. 노 플랜B, 노 빠꾸 개발이라니.</p>
+
+<h2 id="d-8-12월-12일-문제-전달">D-8, 12월 12일 문제 전달</h2>
+<p>문제는 얼마 안되겠지 생각했는데. 왠걸 60문항이 넘었다. 데이터베이스에 일일히 등록할라고 봤더니 너무 손이 많이간다. 문서도 구글 스프레드시트일줄 알았는데 구글 문서로 줬다. 어쩌지 싶었는데어느정도 규칙이 있어서 원본 문서를 txt로 변경한 뒤 json으로 변환했다. 그리고 Firebase에 문제를 등록하는 스크립트를 만들어서 입력해버렸다.</p>
+
+<h2 id="d-4-12월-16일-최종-개발-미팅">D-4, 12월 16일 최종 개발 미팅</h2>
+
+<p>행사 당일 yalive을 진행할 진행자까지 모인 상태로 최종 점검하는 자리를 가졌다. 개발팀은 12일 따로만서 정답처리, 오답처리, 생존자 숫자 체크, 부활 등의 기능을 미리 점검하고 문제가 된 부분을 수정했다. 문제없이 잘 작동해야했는데 아직 버그가 있었다. 오직 수정 수정 수정! 조금 쫄려서 리허설하는 자리를 마련하기로 한다.</p>
+
+<p><img src="/images/yalive_fix03.jpg" alt="최종개발미팅" width="40%" /></p>
+
+<h2 id="d-3-12월-17일-최종-문제-전달">D-3, 12월 17일 최종 문제 전달</h2>
+<p>지난번 문제 전달이후에 문제 순서를 바꿔서 다시 전달받았다. 스크립트 없었으면 정말 눈물을 흘릴뻔 했다. 앞과 같은 순서로 변환을 거쳐서 문제를 입력했다.</p>
+
+<h2 id="d-2-채팅창">D-2, 채팅창</h2>
+
+<p>행사 2일 전에 기능을 추가하다니!!아무튼 @alattalatta 님이 대시보드에 상황별 사운드 처리 기능을 파워 추가했다. 민서님은 😈인가.</p>
+
+<p><img src="https://pbs.twimg.com/media/D4GS_DpWAAAwUZZ?format=jpg&amp;name=900x900" alt="f**king devs" /></p>
+
+<blockquote>
+  <p>https://twitter.com/equinusocio/status/1117335800344186881</p>
+</blockquote>
+
+<h2 id="d-1-12월-19일-리허설">D-1, 12월 19일 리허설</h2>
+
+<p>마지막이라고 생각하고 기능 테스트를 진행했다. 참가자 처리 부분이 문제가 있어서 수정해야했다. 그리고 민서님이 카운트다운할 때 재생되는 소리가 없다며 기능을 한번 더 추가한다😱. 기능도 하나 더 추가한다.</p>
+
+<ul>
+  <li>전체 탈락자 부활 기능</li>
+</ul>
+
+<p>이날 RND 그룹이 50명이 참가하는 골든벨 행사를 가졌는데 의외로 마지막 문제가 되기전에 많은 사람이 탈락하는 광경을 봤다. api 개발하는 @parksy8189 님이 필요해보인다고 얘기했다. 그럼 만들어야지.</p>
+
+<h2 id="d-day-12월-20일-행사-당일-1300-경">D-DAY, 12월 20일 행사 당일 13:00 경</h2>
+
+<p>행사를 얼마 앞두고 서로 기능을 체크하고 있는데 클라이언트와 대시보드가 서로 상태를 다르게 해석하는 부분을 확인했다. 어떻게 고칠지 고민했는데 의외로 api 개발하던 @parksy8189 님의 아이디어로 최종 테스트까지 마친다. 마지막까지 수정하느라 @0901sj 님이 고생했다.</p>
+
+<p><img src="/images/yalive_fix01.jpg" alt="최종파이널수정" width="40%" /></p>
+
+<h2 id="행사-12월-20일-15001600">행사!!! 12월 20일 15:00~16:00</h2>
+
+<p>몇명이나 참석하지 몰랐는데 왠걸 329명이 참석하는 행사가 됐다. 행사 현장이 좁아서 모두가 오프라인으로 참여하진 못했지만 온라인만 행사에 참여하는 분들도 꽤 됐다.</p>
+
+<p>앞에 5문제는 몸풀기 문제였다. 어려운 문제가 하나 있어서 전체 참가자 중 대략 반수가 탈락하게 되었다. 진행자가 몸풀기 문제임을 알리고 전체 부활을 선언한다. 다행히 문제 없이 모두 부활되었다. 5문제가 잘 진행되었고, 부활 기능도 멀쩡하니 앞으로는 진행만 잘하면 된다.</p>
+
+<p>중간에 진행용 노트북 배터리가 모두 소진되서 화면이 꺼졌다. 부랴부랴 Culture&amp;Glow팀에서 충전기를 가져와 해결했다.  최후의 4인과 최후의 1인까지 남을 때까지 행사는 무난히 진행해서 완료했다. 🎉🎉🎉 👏👏👏</p>
+
+<p><img src="/images/yalive-03.png" alt="행사완료" width="80%" /></p>
+
+<hr />
+
+<h2 id="회고와-감사-인사">회고와 감사 인사</h2>
+<p>yalive 프로젝트를 하면서 2가지가 좋았다. 전에 뇌내망상으로만 존재하던 라이브 퀴즈쇼를 만들게 되었고 행사를 참여한 사우님들이 많이 좋아해줬다. 현장에서도 정말 반응이 좋았는데 설문조사에서도 가장 좋은 행사로 뽑혔다. 내가 작성한 코드만 보면 말도 안되는 수준이지만 누군가 좋아해준다니 정말 뿌듯하다.</p>
+
+<p><img src="/images/yalive-02.png" alt="최고세션" width="80%" /></p>
+
+<p>다음에 비슷한 프로젝트를 하게된다면 의사결정 과정에서 내 목소리를 더 줄여야겠다. 같이 프로젝트에 참여한 멤버들이 원하는 바를 반영하고, 기술 도전이 가능하도록 했다면 어땠을까.</p>
+
+<p>그리고 이 프로젝트를 진행할 때 기꺼이 참여해준 @alattalatta, @0901sj, @parksy8189 3분 너무 고맙다. 아내에게 말하니 늙은 아저씨랑 놀아주는 <code>고마운 젊은이</code> 라고 했다. 앞으로도 잘 부탁해요.</p>
+
+<p>회고에는 나쁜? 사람 - 😈 - 으로 나오지만 민서님 정말 고생많았어요.</p>
+
+<hr />
+
+<ul>
+  <li><a href="https://github.com/ya-live/ya-live">ya-live 레포지토리</a></li>
+</ul>
+
+      </article>
+      <hr>
+      <!-- 블로그_글노출 -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:728px;height:90px"
+          data-ad-client="ca-pub-4157849351218840"
+          data-ad-slot="7392519815"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+      ">
+      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/iqK0PcS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a latte"><span style="margin-left:5px">Buy me a latte</span></a>
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="https://blog.totu.dev/2019/12/24/yalive-postmortem/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
+    $(document).ready(function() {
+
+      addLineNumber();
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Full 🥩🔥 Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+          ">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
