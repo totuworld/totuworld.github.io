@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>yalive 구현소개</title>
+	
+	
+	<meta content="2019-12-27T09:00:00+09:00" property="article:published_time">
+	
+	
+	<!-- Begin Jekyll SEO tag v1.4.0 -->
+<title>yalive 구현소개 - totuworld’s tech blog</title>
+<meta property="og:title" content="yalive 구현소개" />
+<meta name="description" content="1달만에 만든 yalive의 기획?과 개발을 해부합니다" />
+<meta property="og:description" content="1달만에 만든 yalive의 기획?과 개발을 해부합니다" />
+<link rel="canonical" href="https://blog.totu.dev/2019/12/27/yalive-tech-in-side/" />
+<meta property="og:url" content="https://blog.totu.dev/2019/12/27/yalive-tech-in-side/" />
+<meta property="og:site_name" content="totuworld’s tech blog" />
+<meta property="og:image" content="https://blog.totu.dev/images/yalive-data-00.jpg" />
+<meta name="twitter:image" content="https://blog.totu.dev/images/yalive-data-00.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-27T09:00:00+09:00" />
+<link rel="prev" href="https://blog.totu.dev/2019/12/24/yalive-postmortem/" title="yalive 제작 후기" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@totuworld" />
+<meta name="twitter:creator" content="@totuworld" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "yalive 구현소개",
+    "image": "https://blog.totu.dev/images/yalive-data-00.jpg",
+    "datePublished": "2019-12-27T09:00:00+09:00",
+    "description": "1달만에 만든 yalive의 기획?과 개발을 해부합니다",
+    "url": "https://blog.totu.dev/2019/12/27/yalive-tech-in-side/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+	
+	
+	<meta property="fb:app_id" content="129561850715980">
+	<meta name="twitter:description" content="1달만에 만든 yalive의 기획?과 개발을 해부합니다">
+	
+	
+	<meta name="twitter:image" content="https://blog.totu.dev/images/yalive-data-00.jpg">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="https://blog.totu.dev/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="/static/css/manni.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jwarby/pygments-css/master/manni.css">-->
+	 <!--<link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+			(adsbygoogle = window.adsbygoogle || []).push({
+						google_ad_client: "ca-pub-4157849351218840",
+						enable_page_level_ads: true
+			});
+	</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-65717542-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '129561850715980',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.3'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">totuworld's tech blog</a>
+      <p class="navbar-text">Full 🥩🔥 Developer </p>
+      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/iqK0PcS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a latte"><span style="margin-left:5px">Buy me a latte</span></a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>yalive 구현소개</h1>
+        <p>Dec 27, 2019 • etc</p>
+      </header>
+      <hr>
+        <!-- 블로그_글노출 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-4157849351218840"
+            data-ad-slot="7392519815"></ins>
+      <article>
+        <ul id="markdown-toc">
+  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
+  <li><a href="#라이브-퀴즈쇼의-핵심-기능" id="markdown-toc-라이브-퀴즈쇼의-핵심-기능">라이브 퀴즈쇼의 핵심 기능</a>    <ul>
+      <li><a href="#다른-대안은-없었나" id="markdown-toc-다른-대안은-없었나">다른 대안은 없었나?</a></li>
+    </ul>
+  </li>
+  <li><a href="#데이터-동기화-살펴보기" id="markdown-toc-데이터-동기화-살펴보기">데이터 동기화 살펴보기</a>    <ul>
+      <li><a href="#동기화-데이터-구조" id="markdown-toc-동기화-데이터-구조">동기화 데이터 구조</a></li>
+      <li><a href="#퀴즈-정보-수정" id="markdown-toc-퀴즈-정보-수정">퀴즈 정보 수정</a></li>
+      <li><a href="#퀴즈-정보-읽기" id="markdown-toc-퀴즈-정보-읽기">퀴즈 정보 읽기</a></li>
+    </ul>
+  </li>
+  <li><a href="#클라이언트-제출-데이터-처리" id="markdown-toc-클라이언트-제출-데이터-처리">클라이언트 제출 데이터 처리</a></li>
+  <li><a href="#nextjs-v9x--now--️" id="markdown-toc-nextjs-v9x--now--️">next.js v9.x + now = ❤️</a></li>
+</ul>
+
+<h2 id="들어가는-말">들어가는 말</h2>
+<p><a href="https://blog.totu.dev/2019/12/24/yalive-postmortem/">yalive 제작 후기</a>에서 숨가빴던 1달간의 개발 과정을 소개했다면 이번에는 yalive를 살펴보며 동작방식을 설명하기로 한다.</p>
+
+<h2 id="라이브-퀴즈쇼의-핵심-기능">라이브 퀴즈쇼의 핵심 기능</h2>
+<p>라이브 퀴즈쇼는 참여자와 진행자가 모두 같은 문제를 보고 같은 결과를 봐야한다. 대시보드와 관리자 페이지 그리고 많은 클라이언트가 같은 데이터를 비슷한 시점에 수신해야한다.</p>
+
+<p><img src="/images/yalive-data-01.jpg" alt="화면간데이터공유" width="50%" /></p>
+
+<p>그림에서 보는 것처럼 상황에 따라 관리자페이지에서 데이터를 수정하면 대시보드와 클라이언트는 이 정보를 반영해서 각자 화면을 제어한다. 데이터 동기화만 해결하면 8할은 개발이 끝난 셈이다.</p>
+
+<p>그럼 어떻게 데이터를 동기화 할 수 있을까? 내 선택은 Firebase의 Cloud Firestore 였다. Cloud Firestore 공식 문서에 따르면 확장한도가 동시 연결 수 약 1,000,000개, 초당 쓰기 1,000회이다. 기획 자체가 실시간 1만명 연결이 아니라 최대 1,000명이 접속할 수 있는 환경이므로 충분하다. 보너스로 인증(authentication)을 사용할 수 있으니 프론트엔드와 백엔드 개발에서 초기 비용을 낮출 수 있다.</p>
+
+<h3 id="다른-대안은-없었나">다른 대안은 없었나?</h3>
+<p>socket이나 gRPC도 생각해보긴 했다. 그런데 yalive 제작에는 무리라고 봤다. 일단 제작 착수 시점이 배포까지 1달 남은 시점이었다. socket이나 gRPC를 사용하려면 이미 어느정도 제작된 솔루션을 가지고 있어야했다. 개발에 참여하는 멤버 중에 적어도 1명이라도 이 경험을 가지고 있어야 가능하다. 하지만 난 맨손이었다. socket.io로 채팅을 만들었던게 언제인지 기억도 가물가물하다.</p>
+
+<p>Firebase쪽이 상황이 훨씬 좋았다. 다른 토이 프로젝트용으로 Firebase, React.js, Next.js를 이용해서 인증과 회원가입을 처리해뒀다. 덤으로 yalive 개발에 참여한 멤버가 모두 이 스택에 익숙하므로 초기 비용이 낮아졌다.</p>
+
+<h2 id="데이터-동기화-살펴보기">데이터 동기화 살펴보기</h2>
+<p>이제 데이터 동기화를 구체화시켜보자. 잼 라이브를 떠올려보면 된다.</p>
+
+<p>퀴즈쇼 시작에 앞서 참가자들이 쇼에 들어온다. 진행자가 애드립을 한다.</p>
+
+<p><img src="https://cdn.clien.net/web/api/file/F01/7618286/9253b739d10fa.png" alt="잼누나" width="30%" /></p>
+
+<p>문제를 내고 카운트다운을 한다.</p>
+
+<p><img src="https://ext.fmkorea.com/files/attach/new/20190415/486616/1531092467/1739955072/1e95a2e7d501cdb415876542dd9e7906.png" alt="문제출제" width="30%" /></p>
+
+<p>참가자 중 몇 퍼센트가 뭘 선택했는지 보여주고 정답을 공개한다.</p>
+
+<p><img src="http://db.kookje.co.kr/news2000/photo/2018/0807/L20180807.99099003342i1.jpg" alt="정답공개" width="30%" /></p>
+
+<p>탈락자가 생기고 다시 애드립이 진행된다. 이 과장을 반복하다가 끝난다.</p>
+
+<p>이 흐름을 바탕으로 몇가지 상태를 정의할 수 있었다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>상태이름</td>
+      <td>설명</td>
+    </tr>
+    <tr>
+      <td>PREPARE</td>
+      <td>준비중. 참가자가 입장할 수 있다</td>
+    </tr>
+    <tr>
+      <td>IDLE</td>
+      <td>대기 상태. 진행자의 애드립이 이때 나온다</td>
+    </tr>
+    <tr>
+      <td>QUIZ</td>
+      <td>문제가 공개된다</td>
+    </tr>
+    <tr>
+      <td>COUNTDOWN</td>
+      <td>각 참가자가 답을 제출해야하는 제한시간</td>
+    </tr>
+    <tr>
+      <td>CALCULATE</td>
+      <td>집계. 오답자를 가려서 탈락이 몇 명인지 등을 체크한다</td>
+    </tr>
+    <tr>
+      <td>SHOW_RESULT</td>
+      <td>문제의 정답을 공개한다</td>
+    </tr>
+    <tr>
+      <td>FINISH</td>
+      <td>모든 퀴즈가 종료된 상태</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>각 상태는 정해진 흐름에 따라 다른 상태로 변경될 수 있다.</p>
+
+<p><img src="/images/yalive-data-03.jpg" alt="상태 흐름" width="50%" /></p>
+
+<h3 id="동기화-데이터-구조">동기화 데이터 구조</h3>
+<p>앞서 설명한 상태 정보외에 무엇이 더 필요할까? 먼저 퀴즈에 관한 정보가 필요하다. 전체 참가자와 생존자 숫자도 필요하다.  실제로 사용한 <code>퀴즈 정보</code> 인터페이스는 아래 코드와 같다.</p>
+
+<pre><code class="language-javascript">export interface QuizOperation {
+  /** 상태 */
+  status: EN_QUIZ_STATUS;
+  /** 제목? 노출할 글자? */
+  title?: string;
+
+  /** 참가 가능한 이메일 주소 */
+  possibleEmailAddress?: string;
+
+  /** 퀴즈 id(각 퀴즈를 구분하는 값) */
+  quiz_id?: string;
+  /** 퀴즈 타입 */
+  quiz_type?: EN_QUIZ_TYPE;
+  /** 퀴즈 설명 */
+  quiz_desc?: string;
+  /** 퀴즈 이미지 url */
+  quiz_image_url?: string;
+  /** 사용자가 선택할 수 있는 객관식 문항 */
+  quiz_selector?: SelectorItem[];
+  /** 퀴즈의 정답(반드시 SHOW_RESULT 상태에서 넣어줘야한다.) */
+  quiz_correct_answer?: number;
+
+  /** 전체 참가자 숫자 */
+  total_participants: number;
+  /** 생존한 참가자 숫자 */
+  alive_participants: number;
+}
+</code></pre>
+
+<p>퀴즈 정답(quiz_correct_answer)를 퀴즈 설정 시 넣지 않고, 정답 공개(SHOW_RESULT) 전에 넣도록 했다. 아무래도 개발자 도구를 열어 미리 데이터를 확인하는 사람도 있을 수 있기 때문이었다.</p>
+
+<h3 id="퀴즈-정보-수정">퀴즈 정보 수정</h3>
+<p>데이터 수정은 관리자 페이지에서만 가능하도록 했다. 크게 3가지 기능을 수행한다.</p>
+<ul>
+  <li>상태 변경</li>
+  <li>퀴즈 문제 설정</li>
+  <li>오답자 체크 후 생존 참가자 숫자 변경</li>
+</ul>
+
+<p>상태 변경은 현재 상태에 따라 다음 상태로 올 수 있는 버튼을 노출했다.</p>
+
+<p><img src="/images/yalive-data-04.png" alt="IDLE일때버튼" /></p>
+
+<p>예외처리를 한 부분은 COUNTDOWN 상태이다. 화면에는 10초 타이머가 진행되지만 관리자 페이지에서는 15초 타이머가 실행된다. 타이머가 종료하면 자동으로 CALCULATE 상태로 변경하고, <code>정답 공개</code> 버튼과 <code>오답자 계산</code> 버튼이 차례로 나타난다. 이 두 단계를 마치고 SHOW_RESULT 상태로 변경해야한다. 이 시스템을 잘 이해하지 못하는 사람이 운영했다면 어떤 버튼을 눌러야할지 몰라서 사고 나기 딱 좋은 부분이다. 행사 당일 관리자 페이지 운영을 직접 했기때문에 큰 문제가 없었지만 현재는 아래 처럼 개선했다.</p>
+
+<pre><code>* CALCURATE 상태에서 정답 공개와 오답자 계산이 순차적으로 자동 진행
+* 각 단계중 실패 시 다시 시도가능하도록 버튼이 모두 노출됨
+</code></pre>
+
+<p>그리고 이런 수정은 관라자 페이지에서 api 호출을 통해서 처리한다. Firebase SDK를 활용해서 관리자 페이지에서 직접 수정할 수 있지만 이후에 정합성 처리 등을 넣으려면 이게 유리하다.</p>
+
+<blockquote>
+  <p>그래놓고 실제로 정합성 체크하는 로직은 없다😱<br />
+<a href="https://github.com/ya-live/ya-live/issues/31">서버 사이드에 JSON Schema 도입 · Issue #31 · ya-live/ya-live · GitHub</a></p>
+</blockquote>
+
+<h3 id="퀴즈-정보-읽기">퀴즈 정보 읽기</h3>
+<p>데이터를 클라이언트와 대시보드, 관리자 페이지에서 사용할 때는 Firebase SDK 기능을 지원받으면 된다. Cloud  Firestore의 문서(document) 변경 사항을 수신하는 onSnapShot 메서드를 사용했다. 프론트엔드 라이브러리가 React.js이니 함수형 컴포넌트(Functional Component)에서 편리하게 사용할 수 있게 Custom Hook을 만들었다.</p>
+
+<p><a href="https://github.com/ya-live/ya-live/blob/master/components/auth/hooks/firestore_hooks.ts">ya-live/firestore_hooks.ts at master · ya-live/ya-live · GitHub</a></p>
+
+<p>내가 처리한 부분은 여기까지인데 클라이언트와 대시보드를 만든 @alattalatta, @0901sj님이 react.js의 context api를 활용해서 각 컴포넌트에서 데이터를 활용할 수 있도록 했다. 관리자 페이지는 하위 컴포넌트를 가지지 않지만 클라이언트와 대시보드는 상황에 따라 컴포넌트가 변경되니 매번 데이터를 흘리는게 귀찮았겠다.</p>
+
+<blockquote>
+  <p>yalive만들면서 프론트엔드 코드를 볼 수 있어 좋았다.</p>
+</blockquote>
+
+<h2 id="클라이언트-제출-데이터-처리">클라이언트 제출 데이터 처리</h2>
+<p>참가자 정보는 퀴즈 정보 하위에 위치한다. 생존 여부와 제출한 답안을 가지는 형태다.</p>
+
+<pre><code class="language-javascript">export interface QuizParticipant {
+  /** ISO 8601 */
+  join: string;
+  /** 생존 여부 */
+  alive: boolean;
+  currentQuizID?: string;
+  /** 선택한 번호 */
+  select?: number;
+  /** 사용자 고유 id */
+  id: string;
+  /** 사용자 출력 명 */
+  displayName: string;
+}
+</code></pre>
+
+<p><img src="/images/yalive-data-05.png" alt="참가자데이터구조" /></p>
+
+<p>각 클라이언트에서 api를 통해 답안을 제출하면 개별 참가자 정보(Participant)에 선택한 답안과 퀴즈 고유 id를 기록한다. 제한 시간이 종료되면 관리자 페이지에서 오답자를 체크하여 alive 값을 false로 바꿔서 더이상 쇼에 참여할 수 없도록 한다.</p>
+
+<p><img src="/images/yalive-data-02.jpg" alt="답안 제출 과정" width="50%" /></p>
+
+<p>위 과정에서 api를 통하면 응답을 수신한 시간을 특정할 수 있고 정합성도 체크할 수 있어서 사후에 문제가 발생했을 때 증거를 남길 수 있다. 무엇보다 Firebase SDK를 사용해서 바로 업데이트 하도록하면 정답이 아니더라도 생존 여부를 조작할 수 있다. 어뷰징 요소는 줄이는게 좋다.</p>
+
+<p>뭔가 공통점이 보이지 않는가? Firebase SDK를 사용하지만 데이터 읽기에만 사용하고 수정은 모두 api를 통하고 있다. 이는 일전에 진행한 Firebase 스터디에서 들은 내용을 바탕으로 정한 정책이다. Firebase를 사용해서 게임을 운영하는 분들은 사용자 어뷰징을 걱정한다. 그래서 개별 클라이언트는 데이터 수신만하고 데이터 변경만 서버사이드에 요청하는 방식으로 운영하여 DB접근을 차단한다고 들었다.</p>
+
+<blockquote>
+  <p>그래놓고 실제로 정합성 체크하는 로직은 없다😱 (2)</p>
+</blockquote>
+
+<h2 id="nextjs-v9x--now--️">next.js v9.x + now = ❤️</h2>
+<p>데이터에 대한 설명은 이정도로하고 next.js와 now에 관해 얘기해보겠다.</p>
+
+<p>프론트엔드 라이브러리는 react.js를 사용했지만 프레임워크는 next.js를 사용했다. 많은 기능을 지원하지만 서버사이드 렌더링(Server Side Rendering)과 파일 시스템 라우팅(File-System Routing)이 편리해서 손에 익어버렸다. 덤으로 프로젝트에 참여한 멤버들이 모두 현업에서 next.js를 사용한다.</p>
+
+<p>next.js v9.x 버전에서 반가운 2가지 기능이 있다.
+첫째는 파일 시스템 기반의 동적 라우팅(<a href="https://nextjs.org/blog/next-9#dynamic-route-segments">File system-Based Dynamic Routing</a>) 이다. <a href="https://ko.nuxtjs.org/guide/routing/">nuxt.js</a>에서 가장 부러운 기능이 동적 라우팅이었는데 이제 된다. 파일 이름에 대괄호([ , ])를 추가하면 url path를 해석해서 해당 정보를 query로 전달해준다.</p>
+
+<p>둘째는 API 라우트(<a href="https://nextjs.org/docs#api-routes">API Routes</a>)다. 기존에 next.js를 사용해도 서버 사이드에서 처리하는 api는 직접 express.js 등을 활용해서 제작했다. 이제는 <code>/pages/api</code> 폴더 아래에 파일을 생성해서 백엔드 api를 사용할 수 있다.</p>
+
+<p>now는 next.js를 만든 zeit사가 운영 중인 서버리스(serverless) 플랫폼이다. 여기에 next.js를 사용하면 아주 기간막히게 잘 달라붙는다. 예를들어 next.js의 API 라우팅을 사용하면 각 파일을 별도의 서버리스 서버로 동작하게 한다 - 내부에서는 aws의 lamba로 1:1 매핑하는 듯하다). aws에서 beanstalk 하나 등록하는 수고를 생각하면 배포 설정도 정말 간단하다.</p>
+
+      </article>
+      <hr>
+      <!-- 블로그_글노출 -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:728px;height:90px"
+          data-ad-client="ca-pub-4157849351218840"
+          data-ad-slot="7392519815"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+      ">
+      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/iqK0PcS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a latte"><span style="margin-left:5px">Buy me a latte</span></a>
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+      <div class="fb-foot-area" style="width:104px;height:24px">
+        <div class="fb-like" data-href="https://blog.totu.dev/2019/12/27/yalive-tech-in-side/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    function addLineNumber() {
+      var pre = document.getElementsByTagName('pre'),
+          pl = pre.length;
+      for (var i = 0; i < pl; i++) {
+
+        var isLanguage = pre[i].children[0].className.indexOf('language-');
+        if ( isLanguage === 0 ) {
+                var button           = document.createElement('button');
+                        button.className = 'copy-button';
+                        button.textContent = 'Copy';
+    
+                        pre[i].appendChild(button);
+        }
+
+        // Run Clipboard
+
+        var copyCode = new Clipboard('.copy-button', {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          }
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on('success', function (event) {
+          event.clearSelection();
+          event.trigger.textContent = 'Copied';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 2000);
+
+          $.Velocity(pasteContent, 'scroll', {
+            duration: 1000
+          });
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on('error', function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = 'Copy';
+          }, 5000);
+        });
+
+          pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
+          var num = pre[i].innerHTML.split(/\n/).length;
+          if(num <= 5) {
+            continue;
+          }
+          for (var j = 0; j < num; j++) {
+              var line_num = pre[i].getElementsByTagName('span')[0];
+              line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+          }
+      }
+    }
+    
+    $(document).ready(function() {
+
+      addLineNumber();
+      hljs.initHighlightingOnLoad();
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    
+  </div>
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:totuworld@gmail.com"><span class="glyphicon glyphicon-envelope"></span> totuworld@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/totuworld">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>totuworld</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>Full 🥩🔥 Developer</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Totuworld</span>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+          ">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

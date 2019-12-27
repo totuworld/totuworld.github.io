@@ -5,9 +5,229 @@
     <description>Full 🥩🔥 Developer</description>
     <link>https://blog.totu.dev/</link>
     <atom:link href="https://blog.totu.dev/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Dec 2019 00:39:57 +0900</pubDate>
-    <lastBuildDate>Wed, 25 Dec 2019 00:39:57 +0900</lastBuildDate>
+    <pubDate>Fri, 27 Dec 2019 16:01:31 +0900</pubDate>
+    <lastBuildDate>Fri, 27 Dec 2019 16:01:31 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      
+        <item>
+            <title>yalive 구현소개</title>
+            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#들어가는-말&quot; id=&quot;markdown-toc-들어가는-말&quot;&gt;들어가는 말&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#라이브-퀴즈쇼의-핵심-기능&quot; id=&quot;markdown-toc-라이브-퀴즈쇼의-핵심-기능&quot;&gt;라이브 퀴즈쇼의 핵심 기능&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#다른-대안은-없었나&quot; id=&quot;markdown-toc-다른-대안은-없었나&quot;&gt;다른 대안은 없었나?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#데이터-동기화-살펴보기&quot; id=&quot;markdown-toc-데이터-동기화-살펴보기&quot;&gt;데이터 동기화 살펴보기&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#동기화-데이터-구조&quot; id=&quot;markdown-toc-동기화-데이터-구조&quot;&gt;동기화 데이터 구조&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#퀴즈-정보-수정&quot; id=&quot;markdown-toc-퀴즈-정보-수정&quot;&gt;퀴즈 정보 수정&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#퀴즈-정보-읽기&quot; id=&quot;markdown-toc-퀴즈-정보-읽기&quot;&gt;퀴즈 정보 읽기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#클라이언트-제출-데이터-처리&quot; id=&quot;markdown-toc-클라이언트-제출-데이터-처리&quot;&gt;클라이언트 제출 데이터 처리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#nextjs-v9x--now--️&quot; id=&quot;markdown-toc-nextjs-v9x--now--️&quot;&gt;next.js v9.x + now = ❤️&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;들어가는-말&quot;&gt;들어가는 말&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.totu.dev/2019/12/24/yalive-postmortem/&quot;&gt;yalive 제작 후기&lt;/a&gt;에서 숨가빴던 1달간의 개발 과정을 소개했다면 이번에는 yalive를 살펴보며 동작방식을 설명하기로 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;라이브-퀴즈쇼의-핵심-기능&quot;&gt;라이브 퀴즈쇼의 핵심 기능&lt;/h2&gt;
+&lt;p&gt;라이브 퀴즈쇼는 참여자와 진행자가 모두 같은 문제를 보고 같은 결과를 봐야한다. 대시보드와 관리자 페이지 그리고 많은 클라이언트가 같은 데이터를 비슷한 시점에 수신해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-data-01.jpg&quot; alt=&quot;화면간데이터공유&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림에서 보는 것처럼 상황에 따라 관리자페이지에서 데이터를 수정하면 대시보드와 클라이언트는 이 정보를 반영해서 각자 화면을 제어한다. 데이터 동기화만 해결하면 8할은 개발이 끝난 셈이다.&lt;/p&gt;
+
+&lt;p&gt;그럼 어떻게 데이터를 동기화 할 수 있을까? 내 선택은 Firebase의 Cloud Firestore 였다. Cloud Firestore 공식 문서에 따르면 확장한도가 동시 연결 수 약 1,000,000개, 초당 쓰기 1,000회이다. 기획 자체가 실시간 1만명 연결이 아니라 최대 1,000명이 접속할 수 있는 환경이므로 충분하다. 보너스로 인증(authentication)을 사용할 수 있으니 프론트엔드와 백엔드 개발에서 초기 비용을 낮출 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;다른-대안은-없었나&quot;&gt;다른 대안은 없었나?&lt;/h3&gt;
+&lt;p&gt;socket이나 gRPC도 생각해보긴 했다. 그런데 yalive 제작에는 무리라고 봤다. 일단 제작 착수 시점이 배포까지 1달 남은 시점이었다. socket이나 gRPC를 사용하려면 이미 어느정도 제작된 솔루션을 가지고 있어야했다. 개발에 참여하는 멤버 중에 적어도 1명이라도 이 경험을 가지고 있어야 가능하다. 하지만 난 맨손이었다. socket.io로 채팅을 만들었던게 언제인지 기억도 가물가물하다.&lt;/p&gt;
+
+&lt;p&gt;Firebase쪽이 상황이 훨씬 좋았다. 다른 토이 프로젝트용으로 Firebase, React.js, Next.js를 이용해서 인증과 회원가입을 처리해뒀다. 덤으로 yalive 개발에 참여한 멤버가 모두 이 스택에 익숙하므로 초기 비용이 낮아졌다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-동기화-살펴보기&quot;&gt;데이터 동기화 살펴보기&lt;/h2&gt;
+&lt;p&gt;이제 데이터 동기화를 구체화시켜보자. 잼 라이브를 떠올려보면 된다.&lt;/p&gt;
+
+&lt;p&gt;퀴즈쇼 시작에 앞서 참가자들이 쇼에 들어온다. 진행자가 애드립을 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.clien.net/web/api/file/F01/7618286/9253b739d10fa.png&quot; alt=&quot;잼누나&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;문제를 내고 카운트다운을 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ext.fmkorea.com/files/attach/new/20190415/486616/1531092467/1739955072/1e95a2e7d501cdb415876542dd9e7906.png&quot; alt=&quot;문제출제&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;참가자 중 몇 퍼센트가 뭘 선택했는지 보여주고 정답을 공개한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://db.kookje.co.kr/news2000/photo/2018/0807/L20180807.99099003342i1.jpg&quot; alt=&quot;정답공개&quot; width=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;탈락자가 생기고 다시 애드립이 진행된다. 이 과장을 반복하다가 끝난다.&lt;/p&gt;
+
+&lt;p&gt;이 흐름을 바탕으로 몇가지 상태를 정의할 수 있었다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;상태이름&lt;/td&gt;
+      &lt;td&gt;설명&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PREPARE&lt;/td&gt;
+      &lt;td&gt;준비중. 참가자가 입장할 수 있다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IDLE&lt;/td&gt;
+      &lt;td&gt;대기 상태. 진행자의 애드립이 이때 나온다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QUIZ&lt;/td&gt;
+      &lt;td&gt;문제가 공개된다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;COUNTDOWN&lt;/td&gt;
+      &lt;td&gt;각 참가자가 답을 제출해야하는 제한시간&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CALCULATE&lt;/td&gt;
+      &lt;td&gt;집계. 오답자를 가려서 탈락이 몇 명인지 등을 체크한다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SHOW_RESULT&lt;/td&gt;
+      &lt;td&gt;문제의 정답을 공개한다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;FINISH&lt;/td&gt;
+      &lt;td&gt;모든 퀴즈가 종료된 상태&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;각 상태는 정해진 흐름에 따라 다른 상태로 변경될 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-data-03.jpg&quot; alt=&quot;상태 흐름&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;동기화-데이터-구조&quot;&gt;동기화 데이터 구조&lt;/h3&gt;
+&lt;p&gt;앞서 설명한 상태 정보외에 무엇이 더 필요할까? 먼저 퀴즈에 관한 정보가 필요하다. 전체 참가자와 생존자 숫자도 필요하다.  실제로 사용한 &lt;code&gt;퀴즈 정보&lt;/code&gt; 인터페이스는 아래 코드와 같다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;export interface QuizOperation {
+  /** 상태 */
+  status: EN_QUIZ_STATUS;
+  /** 제목? 노출할 글자? */
+  title?: string;
+
+  /** 참가 가능한 이메일 주소 */
+  possibleEmailAddress?: string;
+
+  /** 퀴즈 id(각 퀴즈를 구분하는 값) */
+  quiz_id?: string;
+  /** 퀴즈 타입 */
+  quiz_type?: EN_QUIZ_TYPE;
+  /** 퀴즈 설명 */
+  quiz_desc?: string;
+  /** 퀴즈 이미지 url */
+  quiz_image_url?: string;
+  /** 사용자가 선택할 수 있는 객관식 문항 */
+  quiz_selector?: SelectorItem[];
+  /** 퀴즈의 정답(반드시 SHOW_RESULT 상태에서 넣어줘야한다.) */
+  quiz_correct_answer?: number;
+
+  /** 전체 참가자 숫자 */
+  total_participants: number;
+  /** 생존한 참가자 숫자 */
+  alive_participants: number;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;퀴즈 정답(quiz_correct_answer)를 퀴즈 설정 시 넣지 않고, 정답 공개(SHOW_RESULT) 전에 넣도록 했다. 아무래도 개발자 도구를 열어 미리 데이터를 확인하는 사람도 있을 수 있기 때문이었다.&lt;/p&gt;
+
+&lt;h3 id=&quot;퀴즈-정보-수정&quot;&gt;퀴즈 정보 수정&lt;/h3&gt;
+&lt;p&gt;데이터 수정은 관리자 페이지에서만 가능하도록 했다. 크게 3가지 기능을 수행한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;상태 변경&lt;/li&gt;
+  &lt;li&gt;퀴즈 문제 설정&lt;/li&gt;
+  &lt;li&gt;오답자 체크 후 생존 참가자 숫자 변경&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;상태 변경은 현재 상태에 따라 다음 상태로 올 수 있는 버튼을 노출했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-data-04.png&quot; alt=&quot;IDLE일때버튼&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;예외처리를 한 부분은 COUNTDOWN 상태이다. 화면에는 10초 타이머가 진행되지만 관리자 페이지에서는 15초 타이머가 실행된다. 타이머가 종료하면 자동으로 CALCULATE 상태로 변경하고, &lt;code&gt;정답 공개&lt;/code&gt; 버튼과 &lt;code&gt;오답자 계산&lt;/code&gt; 버튼이 차례로 나타난다. 이 두 단계를 마치고 SHOW_RESULT 상태로 변경해야한다. 이 시스템을 잘 이해하지 못하는 사람이 운영했다면 어떤 버튼을 눌러야할지 몰라서 사고 나기 딱 좋은 부분이다. 행사 당일 관리자 페이지 운영을 직접 했기때문에 큰 문제가 없었지만 현재는 아래 처럼 개선했다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* CALCURATE 상태에서 정답 공개와 오답자 계산이 순차적으로 자동 진행
+* 각 단계중 실패 시 다시 시도가능하도록 버튼이 모두 노출됨
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;그리고 이런 수정은 관라자 페이지에서 api 호출을 통해서 처리한다. Firebase SDK를 활용해서 관리자 페이지에서 직접 수정할 수 있지만 이후에 정합성 처리 등을 넣으려면 이게 유리하다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;그래놓고 실제로 정합성 체크하는 로직은 없다😱&lt;br /&gt;
+&lt;a href=&quot;https://github.com/ya-live/ya-live/issues/31&quot;&gt;서버 사이드에 JSON Schema 도입 · Issue #31 · ya-live/ya-live · GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;퀴즈-정보-읽기&quot;&gt;퀴즈 정보 읽기&lt;/h3&gt;
+&lt;p&gt;데이터를 클라이언트와 대시보드, 관리자 페이지에서 사용할 때는 Firebase SDK 기능을 지원받으면 된다. Cloud  Firestore의 문서(document) 변경 사항을 수신하는 onSnapShot 메서드를 사용했다. 프론트엔드 라이브러리가 React.js이니 함수형 컴포넌트(Functional Component)에서 편리하게 사용할 수 있게 Custom Hook을 만들었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ya-live/ya-live/blob/master/components/auth/hooks/firestore_hooks.ts&quot;&gt;ya-live/firestore_hooks.ts at master · ya-live/ya-live · GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;내가 처리한 부분은 여기까지인데 클라이언트와 대시보드를 만든 @alattalatta, @0901sj님이 react.js의 context api를 활용해서 각 컴포넌트에서 데이터를 활용할 수 있도록 했다. 관리자 페이지는 하위 컴포넌트를 가지지 않지만 클라이언트와 대시보드는 상황에 따라 컴포넌트가 변경되니 매번 데이터를 흘리는게 귀찮았겠다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;yalive만들면서 프론트엔드 코드를 볼 수 있어 좋았다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;클라이언트-제출-데이터-처리&quot;&gt;클라이언트 제출 데이터 처리&lt;/h2&gt;
+&lt;p&gt;참가자 정보는 퀴즈 정보 하위에 위치한다. 생존 여부와 제출한 답안을 가지는 형태다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;export interface QuizParticipant {
+  /** ISO 8601 */
+  join: string;
+  /** 생존 여부 */
+  alive: boolean;
+  currentQuizID?: string;
+  /** 선택한 번호 */
+  select?: number;
+  /** 사용자 고유 id */
+  id: string;
+  /** 사용자 출력 명 */
+  displayName: string;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-data-05.png&quot; alt=&quot;참가자데이터구조&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;각 클라이언트에서 api를 통해 답안을 제출하면 개별 참가자 정보(Participant)에 선택한 답안과 퀴즈 고유 id를 기록한다. 제한 시간이 종료되면 관리자 페이지에서 오답자를 체크하여 alive 값을 false로 바꿔서 더이상 쇼에 참여할 수 없도록 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/yalive-data-02.jpg&quot; alt=&quot;답안 제출 과정&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 과정에서 api를 통하면 응답을 수신한 시간을 특정할 수 있고 정합성도 체크할 수 있어서 사후에 문제가 발생했을 때 증거를 남길 수 있다. 무엇보다 Firebase SDK를 사용해서 바로 업데이트 하도록하면 정답이 아니더라도 생존 여부를 조작할 수 있다. 어뷰징 요소는 줄이는게 좋다.&lt;/p&gt;
+
+&lt;p&gt;뭔가 공통점이 보이지 않는가? Firebase SDK를 사용하지만 데이터 읽기에만 사용하고 수정은 모두 api를 통하고 있다. 이는 일전에 진행한 Firebase 스터디에서 들은 내용을 바탕으로 정한 정책이다. Firebase를 사용해서 게임을 운영하는 분들은 사용자 어뷰징을 걱정한다. 그래서 개별 클라이언트는 데이터 수신만하고 데이터 변경만 서버사이드에 요청하는 방식으로 운영하여 DB접근을 차단한다고 들었다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;그래놓고 실제로 정합성 체크하는 로직은 없다😱 (2)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;nextjs-v9x--now--️&quot;&gt;next.js v9.x + now = ❤️&lt;/h2&gt;
+&lt;p&gt;데이터에 대한 설명은 이정도로하고 next.js와 now에 관해 얘기해보겠다.&lt;/p&gt;
+
+&lt;p&gt;프론트엔드 라이브러리는 react.js를 사용했지만 프레임워크는 next.js를 사용했다. 많은 기능을 지원하지만 서버사이드 렌더링(Server Side Rendering)과 파일 시스템 라우팅(File-System Routing)이 편리해서 손에 익어버렸다. 덤으로 프로젝트에 참여한 멤버들이 모두 현업에서 next.js를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;next.js v9.x 버전에서 반가운 2가지 기능이 있다.
+첫째는 파일 시스템 기반의 동적 라우팅(&lt;a href=&quot;https://nextjs.org/blog/next-9#dynamic-route-segments&quot;&gt;File system-Based Dynamic Routing&lt;/a&gt;) 이다. &lt;a href=&quot;https://ko.nuxtjs.org/guide/routing/&quot;&gt;nuxt.js&lt;/a&gt;에서 가장 부러운 기능이 동적 라우팅이었는데 이제 된다. 파일 이름에 대괄호([ , ])를 추가하면 url path를 해석해서 해당 정보를 query로 전달해준다.&lt;/p&gt;
+
+&lt;p&gt;둘째는 API 라우트(&lt;a href=&quot;https://nextjs.org/docs#api-routes&quot;&gt;API Routes&lt;/a&gt;)다. 기존에 next.js를 사용해도 서버 사이드에서 처리하는 api는 직접 express.js 등을 활용해서 제작했다. 이제는 &lt;code&gt;/pages/api&lt;/code&gt; 폴더 아래에 파일을 생성해서 백엔드 api를 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;now는 next.js를 만든 zeit사가 운영 중인 서버리스(serverless) 플랫폼이다. 여기에 next.js를 사용하면 아주 기간막히게 잘 달라붙는다. 예를들어 next.js의 API 라우팅을 사용하면 각 파일을 별도의 서버리스 서버로 동작하게 한다 - 내부에서는 aws의 lamba로 1:1 매핑하는 듯하다). aws에서 beanstalk 하나 등록하는 수고를 생각하면 배포 설정도 정말 간단하다.&lt;/p&gt;
+</description>
+            <pubDate>Fri, 27 Dec 2019 09:00:00 +0900</pubDate>
+            <link>https://blog.totu.dev/2019/12/27/yalive-tech-in-side/</link>
+            <guid isPermaLink="true">https://blog.totu.dev/2019/12/27/yalive-tech-in-side/</guid>
+            
+            
+            <category>etc</category>
+            
+        </item>
+      
     
       
         <item>
@@ -1924,127 +2144,6 @@ let hostname = &#39;Azure 웹앱 URL&#39;;
             <category>webapps</category>
             
             <category>unity</category>
-            
-        </item>
-      
-    
-      
-        <item>
-            <title>아빠 출근한다</title>
-            <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#때는-바야흐로-2016년&quot; id=&quot;markdown-toc-때는-바야흐로-2016년&quot;&gt;때는 바야흐로 2016년&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#회사의-인상은-사소한-것으로-결정된다&quot; id=&quot;markdown-toc-회사의-인상은-사소한-것으로-결정된다&quot;&gt;회사의 인상은 사소한 것으로 결정된다.&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#소규모-회사&quot; id=&quot;markdown-toc-소규모-회사&quot;&gt;소규모 회사&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#상대적으로-큰-회사&quot; id=&quot;markdown-toc-상대적으로-큰-회사&quot;&gt;상대적으로 큰 회사&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#게임-회사&quot; id=&quot;markdown-toc-게임-회사&quot;&gt;게임 회사&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#획기적인-경험&quot; id=&quot;markdown-toc-획기적인-경험&quot;&gt;획기적인 경험&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#맺음말&quot; id=&quot;markdown-toc-맺음말&quot;&gt;맺음말&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;때는-바야흐로-2016년&quot;&gt;때는 바야흐로 2016년&lt;/h2&gt;
-
-&lt;p&gt;재미있게 지내던 회사가 어쩔 수 없는 이유로 문을 닫게 되었다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;첫 프로젝트가 결실을 맺어 차기 프로젝트로 한번 더 손발을 맞춰볼 수 있기를 바랐지만…&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;2017년 백수가 되었다. 취직하려고 이력서를 보내기 시작했다.&lt;/p&gt;
-
-&lt;h2 id=&quot;회사의-인상은-사소한-것으로-결정된다&quot;&gt;회사의 인상은 사소한 것으로 결정된다.&lt;/h2&gt;
-
-&lt;p&gt;지난 회사가 잘한 일은 입사 지원 시 &lt;code&gt;빠른 피드백&lt;/code&gt;, &lt;code&gt;면접비&lt;/code&gt;, &lt;code&gt;기다리지 않게하기&lt;/code&gt; 였다.&lt;/p&gt;
-
-&lt;p&gt;입사 지원 메일 수신을 빠르게 피드백했고 면접 날짜 등을 조율하는 것 정확했다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;같이 일한 동료 중에 이런 회사는 아라소판단 뿐이었다고 말할 정도로 잘했다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;면접이 있는지 몰라 안내를 못하는 일은 없었다.&lt;/p&gt;
-
-&lt;p&gt;그리고 작은 금액이라도 면접비가 지급되었다.&lt;/p&gt;
-
-&lt;p&gt;이번에 이력서를 보낸 곳은 총 7곳이었다.&lt;/p&gt;
-
-&lt;p&gt;2개 회사는 게임 회사이고 나머지는 웹 서비스를 제작하는 회사이다.&lt;/p&gt;
-
-&lt;p&gt;3곳은 다른 회사에 비해서 규모가 컸다.&lt;/p&gt;
-
-&lt;p&gt;그런데 규모와 상관없이 이런 연락이 늦거나 성의없는 대응을 보인 곳이 많았다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;메일 회신을 3주 후 한 곳도 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;소규모-회사&quot;&gt;소규모 회사&lt;/h3&gt;
-
-&lt;p&gt;소규모 회사는 만나본 곳 모두 인상이 좋았다.&lt;/p&gt;
-
-&lt;p&gt;일을 장악하고 있는 사람에게 풍기는 아우라랄까? 그런게 있었다.&lt;/p&gt;
-
-&lt;p&gt;만나는 시간 자체가 즐거웠다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;그 중 한 회사 관계자는 개인적으로 친분을 유지하고 싶을만큼 대단했다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;상대적으로-큰-회사&quot;&gt;상대적으로 큰 회사&lt;/h3&gt;
-
-&lt;p&gt;회사마다 인사 관리가 이뤄지는 것은 특별한 룰은 없겠지만 비교될 만큼 처리 속도와 성의가 다른 두 업체가 존재했다.&lt;/p&gt;
-
-&lt;p&gt;한 곳은 기계가 보낸 이메일만 회신할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;함께할 수 없다는 얘기조차 시스템 메일로 대체했다.&lt;/p&gt;
-
-&lt;p&gt;다른 한 곳은 엄청난 속도로 면접까지 진행됐다. 이런 규모에서 이래도 되나 싶을만큼 빨랐다.&lt;/p&gt;
-
-&lt;h3 id=&quot;게임-회사&quot;&gt;게임 회사&lt;/h3&gt;
-
-&lt;p&gt;크기에 상관없이 모두 무성의했고 피드백도 느렸다.&lt;/p&gt;
-
-&lt;p&gt;메일 회신 조차 없어서 놀랐다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;하긴 내가 별거 아닌 인간이긴 하다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;획기적인-경험&quot;&gt;획기적인 경험&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/flitto.png&quot; alt=&quot;인증샷&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이번 구직과정에서 가장 미안한 마음이 든 곳은 &lt;code&gt;플리토&lt;/code&gt;였다.&lt;/p&gt;
-
-&lt;p&gt;node.js를 서비스에 적용한 회사로 전부터 지켜봐왔던 터라 더욱 미안하다.&lt;/p&gt;
-
-&lt;p&gt;구인을 조금 늦게 알았고 면접 제안이 왔을 때 이미 다른 회사에 출근확정을 한 상태였다.&lt;/p&gt;
-
-&lt;p&gt;미안한 마음을 전하고 싶었다. 그러던 중 연락을 받아 급 만남을 가졌다.&lt;/p&gt;
-
-&lt;p&gt;회사를 둘러보고 얘기를 나눌 수 있는 즐거운 경험이었다.&lt;/p&gt;
-
-&lt;p&gt;면접를 거절한 구직자와 구인자가 마주 앉아서 얘기를 나누다니!!&lt;/p&gt;
-
-&lt;p&gt;대인배란 이런 것인가?!&lt;/p&gt;
-
-&lt;h2 id=&quot;맺음말&quot;&gt;맺음말&lt;/h2&gt;
-
-&lt;p&gt;많은 구직자 중 한 명에게 어떤 인상을 주느냐는 회사 차원에서 사소한 일이다.&lt;/p&gt;
-
-&lt;p&gt;사소함이 술자리에 오르고 티 테이블에 오른다.&lt;/p&gt;
-
-&lt;p&gt;지인의 사소한 경험은 선입견을 만들 때 많은 힘이 있다.&lt;/p&gt;
-
-&lt;p&gt;PR자료 돌리고 이미지 광고하는 것보다 사소한 일에 더 신경쓰면 좋겠다.&lt;/p&gt;
-</description>
-            <pubDate>Sun, 26 Feb 2017 09:00:00 +0900</pubDate>
-            <link>https://blog.totu.dev/2017/02/26/job/</link>
-            <guid isPermaLink="true">https://blog.totu.dev/2017/02/26/job/</guid>
-            
-            
-            <category>etc</category>
             
         </item>
       
