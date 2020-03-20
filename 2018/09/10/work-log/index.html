@@ -5,26 +5,26 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>3분 게임 서버(Firebase) 진행사항 1</title>
+	<title>워크로그 개발기</title>
 	
 	
-	<meta content="2018-03-30T09:00:00+09:00" property="article:published_time">
+	<meta content="2018-09-10T09:00:00+09:00" property="article:published_time">
 	
 	
 	<!-- Begin Jekyll SEO tag v1.4.0 -->
-<title>3분 게임 서버(Firebase) 진행사항 1 - totuworld’s tech blog</title>
-<meta property="og:title" content="3분 게임 서버(Firebase) 진행사항 1" />
-<meta name="description" content="클라이언트 프로그래머를 위한 3분 게임 서버 진행사항 공유" />
-<meta property="og:description" content="클라이언트 프로그래머를 위한 3분 게임 서버 진행사항 공유" />
-<link rel="canonical" href="https://blog.totu.dev/2018/03/30/report/" />
-<meta property="og:url" content="https://blog.totu.dev/2018/03/30/report/" />
+<title>워크로그 개발기 - totuworld’s tech blog</title>
+<meta property="og:title" content="워크로그 개발기" />
+<meta name="description" content="출퇴근 관리 솔루션 워크로그 개발기" />
+<meta property="og:description" content="출퇴근 관리 솔루션 워크로그 개발기" />
+<link rel="canonical" href="https://blog.totu.dev/2018/09/10/work-log/" />
+<meta property="og:url" content="https://blog.totu.dev/2018/09/10/work-log/" />
 <meta property="og:site_name" content="totuworld’s tech blog" />
-<meta property="og:image" content="https://blog.totu.dev/images/fb_prog_01.png" />
-<meta name="twitter:image" content="https://blog.totu.dev/images/fb_prog_01.png" />
+<meta property="og:image" content="https://blog.totu.dev/images/cover9.jpg" />
+<meta name="twitter:image" content="https://blog.totu.dev/images/cover9.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-30T09:00:00+09:00" />
-<link rel="next" href="https://blog.totu.dev/2018/09/10/work-log/" title="워크로그 개발기" />
-<link rel="prev" href="https://blog.totu.dev/2018/03/22/firebaseandunity-02/" title="3분 게임 서버(Firebase) - Auth 소셜 로그인" />
+<meta property="article:published_time" content="2018-09-10T09:00:00+09:00" />
+<link rel="next" href="https://blog.totu.dev/2019/01/09/aws-beanstalk/" title="아빠 왜 집에서 일해요? (feat. aws)" />
+<link rel="prev" href="https://blog.totu.dev/2018/03/30/report/" title="3분 게임 서버(Firebase) 진행사항 1" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@totuworld" />
 <meta name="twitter:creator" content="@totuworld" />
@@ -32,21 +32,21 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "3분 게임 서버(Firebase) 진행사항 1",
-    "image": "https://blog.totu.dev/images/fb_prog_01.png",
-    "datePublished": "2018-03-30T09:00:00+09:00",
-    "description": "클라이언트 프로그래머를 위한 3분 게임 서버 진행사항 공유",
-    "url": "https://blog.totu.dev/2018/03/30/report/"
+    "headline": "워크로그 개발기",
+    "image": "https://blog.totu.dev/images/cover9.jpg",
+    "datePublished": "2018-09-10T09:00:00+09:00",
+    "description": "출퇴근 관리 솔루션 워크로그 개발기",
+    "url": "https://blog.totu.dev/2018/09/10/work-log/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
 	
 	
 	<meta property="fb:app_id" content="129561850715980">
-	<meta name="twitter:description" content="클라이언트 프로그래머를 위한 3분 게임 서버 진행사항 공유">
+	<meta name="twitter:description" content="출퇴근 관리 솔루션 워크로그 개발기">
 	
 	
-	<meta name="twitter:image" content="https://blog.totu.dev/images/fb_prog_01.png">
+	<meta name="twitter:image" content="https://blog.totu.dev/images/cover9.jpg">
 	
 	
 	<link rel="alternate" type="application/rss+xml" title="totuworld's tech blog" href="https://blog.totu.dev/feed.xml" />
@@ -188,8 +188,8 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>3분 게임 서버(Firebase) 진행사항 1</h1>
-        <p>Mar 30, 2018 • firebase</p>
+        <h1>워크로그 개발기</h1>
+        <p>Sep 10, 2018 • typescript razzle after.js</p>
       </header>
       <hr>
         <!-- 블로그_글노출 -->
@@ -198,48 +198,203 @@
             data-ad-client="ca-pub-4157849351218840"
             data-ad-slot="7392519815"></ins>
       <article>
-        <ul id="markdown-toc">
-  <li><a href="#들어가는-말" id="markdown-toc-들어가는-말">들어가는 말</a></li>
-  <li><a href="#2018년은-뭘" id="markdown-toc-2018년은-뭘">2018년은 뭘?</a>    <ul>
-      <li><a href="#진행-사항" id="markdown-toc-진행-사항">진행 사항</a></li>
-      <li><a href="#다음-주제" id="markdown-toc-다음-주제">다음 주제</a></li>
-    </ul>
-  </li>
-  <li><a href="#맺음말" id="markdown-toc-맺음말">맺음말</a></li>
-</ul>
-
-<h2 id="들어가는-말">들어가는 말</h2>
-
-<p>2018년 1/4분기는 어떻게 지났는지 모르겠다. 그냥 정신차리고보니 3월 30일이다.</p>
-
-<h2 id="2018년은-뭘">2018년은 뭘?</h2>
-<p>2017년 3월에 <a href="https://github.com/totuworld/Wendy">Wendy 프로젝트</a> 첫번째 파트를 종료했다. <del>그리고 해당 프로젝트는 장렬하게 산화했다.</del></p>
-
-<p>그후 여러가지 핑계로 2017년은 별 활동없이 지나갔다. 2018년은 무엇을할지 고민하다 순순이의 추천과 때마침 시작된 Firebase 스터디 덕분에 Firebase로 방향을 잡았다.</p>
-
-<p>Unity 3D로 게임 클라이언트를 제작하는 클라이언트 프로그래머가 간단히 사용할 수 있는 게임 서버 제작을 연재해볼까 한다.</p>
-<blockquote>
-  <p>일은 내가 안해요. Google이 해요.</p>
+        <blockquote>
+  <p>이 글은 2018년 9월 10일에 [야놀자 기술 블로그][https://yanolja.github.io/2018/09/Work-Log]에 게시된 글을 백업한 것 입니다.</p>
 </blockquote>
 
-<h3 id="진행-사항">진행 사항</h3>
-<p>Firebase 스터디에서 첫 주제로 인증(Auth)을 다뤄서 아래 2개의 글을 작성했다.</p>
+<p>저는 야놀자 CX 서비스실의 API 파트에서 백엔드(90%)와 웹 프론트엔드(10%) 프로그래머로 일하는 송요창입니다.</p>
+
+<p>개정된 근로기준법에 따라 2018년 7월 1일부터 300인 이상 규모 기업인 경우 <a href="http://www.etoday.co.kr/news/section/newsview.php?idxno=1627574">주 40시간(최대 52시간) 근로</a>합니다. 이에 따라 야놀자에서도 업무 집중도 향상과 함께 업무 시간을 명시하는 방안이 논의되었습니다. 이런 배경 속에서 만들어진 <code>워크로그</code> 개발 경험을 이야기하겠습니다.</p>
+
+<h2 id="개인의-업무-시간-작성">개인의 업무 시간 작성</h2>
+
+<p>근로 시간이 기존 대비 단축되면서 각 개인의 업무 시간을 기록하고 기준 근로 시간을 초과하였을 때 이를 소진하도록 하는 방향이 결정되었지만 어떤 도구를 사용할지가 문제였습니다. Timing, TMetric, 출퇴근 기록기 알밤 등 다양한 도구를 사용해서 각자 기록을 시작했습니다.</p>
+
+<h3 id="1차-시도---workflow--alfred-활용">1차 시도 - Workflow + Alfred 활용</h3>
+
+<p>그러던 중에 캘린더를 이용해서 출/퇴근 기록을 남기고 슬랙(Slack)으로 메시지를 발송하는 방법을 CX 서비스실 강미경 님이 공유합니다.</p>
+
+<p><img src="/images/worklog/2018-07-101-6ba58f46-0c56-457e-a06e-ad3a19be9799.16.25.png" alt="미경님은 개발자같은 기획자" width="60%" /></p>
+
+<p>캘린더와 - 유료인 경우 - 슬랙 모두에 기록이 남는 장점이 있습니다. 사용하기 쉽습니다.</p>
+
+<blockquote>
+  <p>iOS 앱인 <a href="https://workflow.is">Workflow</a>를 이용해서 캘린더에 이벤트를 등록하고 슬랙으로 메시지를 전송.</p>
+</blockquote>
+
+<p>데스크톱이나 노트북은 <a href="https://www.alfredapp.com">Alfred</a>의 Workflows 기능으로 해결할 수 있었습니다.</p>
+
+<p><img src="/images/worklog/2018-09-10_23-10-04-045c607b-88b8-47d1-8c6f-fca7c6575757.png" alt="Alfred 워크플로우 공유" width="60%" /></p>
+
+<h4 id="workflow--alfred로-워크로그를-기록하는-단점">Workflow + Alfred로 워크로그를 기록하는 단점</h4>
+
+<p>개인적으로 편리했지만 CX 서비스실 내부로 전파하여 사용하기에는 문제가 있었습니다.</p>
+
 <ul>
-  <li><a href="https://blog.totu.dev/2018/03/22/firebaseandunity-01/">3분 게임 서버(Firebase) - Auth 익명 로그인</a></li>
-  <li><a href="https://blog.totu.dev/2018/03/22/firebaseandunity-02/">3분 게임 서버(Firebase) - Auth 소셜 로그인</a></li>
+  <li>안드로이드 휴대전화를 사용하는 경우 Workflow를 사용할 수 없습니다.</li>
+  <li>아이폰을 쓰더라도 유료로 판매되는 Workflow를 사지 않으면 쓸 수 없습니다.</li>
+  <li>Alfred를 쓰더라도 Power Pack을 구매한 사용자만 Workflows를 적용할 수 있습니다.</li>
 </ul>
 
-<h3 id="다음-주제">다음 주제</h3>
-<p>다음 주제는 데이터베이스(Realtime Database)이다. Unity로 로또를 할 수 있게 클라이언트를 만들고 데이터 관리를 다루려고 한다. 게임 만드는 과정은 통째로 넘어가버릴 것이고 - 클라이언트 안한지 오래되어 수준이 아주 낮아 - 데이터베이스만 다루려고 한다.</p>
+<p><img src="/images/worklog/2018-09-11_06-09-52.png" alt="돈이 필요한 Alred" width="60%" /></p>
 
-<p><img src="/images/lotto_proto_01.gif" alt="프로토타입수준실화냐" /></p>
+<h3 id="2차-시도---슬랙봇-활용">2차 시도 - 슬랙봇 활용</h3>
+
+<p>위에서 언급된 문제를 해결하고 구성원 누구나 추가 앱 설치 없이 손쉽게 접근할 수 있는 슬랙봇에 주목합니다. 캘린더가 아니라 데이터베이스를 활용해서 개발하면 어떨지 논의했습니다.</p>
+
+<p>늦은 저녁(대략 23시부터 03시)에 Firebase 실시간 데이터베이스(Realtime Database)와 Firebase 클라우드 함수(Functions)를 활용해서 단순한 슬랙봇을 만들었습니다.</p>
+
+<p>슬랙을 실행한 뒤 슬래시 커맨드(slash command)로 <code>/wl 출근</code>을 입력하면 출근 로그가 추가되고 완료 메시지를 수신합니다.</p>
+
+<p><img src="/images/worklog/2018-09-10_23-15-05-14e54bb1-a41d-455d-9b26-971e96a7cf2d.png" alt="뿌듯해하며 사용법 공유" width="80%" /></p>
+
+<h4 id="슬랙의-3초-이내-응답-요구">슬랙의 3초 이내 응답 요구</h4>
+
+<p>단순한 기능이었지만 슬랙봇을 활용해서 워크로그를 작성하는 동료가 조금 늘었을 때 치명적인 문제가 발생했습니다.</p>
+
+<p>슬랙의 슬래시 커맨드는 3초 이내로 응답할 때 완료 메시지를 노출합니다. 3초를 초과하면 아래 메시지를 노출합니다.</p>
+
+<p><img src="/images/worklog/2018-09-10_23-17-45-a6b76514-2425-4a40-852a-21c58ff86762.png" alt="버그리포트" width="60%" /></p>
+
+<p>Firebase 클라우드 함수로 작성한 코드에 문제가 있었습니다. 단순한 로그 데이터와 사용자 요청에 대한 기록을 모두 완수한 후에 응답을 보내도록 했습니다. 이 부분에서 응답 지연이 발생합니다.</p>
+
+<p>기록은 된다고 변명해봤지만, 사용자가 기록 여부를 알 수 없으니 재시도하는 횟수가 늘어났습니다. 중복된 데이터를 삭제 요청하는 사용자가 늘었습니다. 이런 불편을 겪고 초기 사용자가 이탈했습니다.</p>
+
+<p><img src="/images/worklog/2018-09-11_06-24-30.png" alt="이탈하는 사용자" width="60%" /></p>
+
+<p>위 문제를 제외하고도 다수 사용자의 특정 기간 내 로그를 모두 살펴보기에 슬랙봇은 그다지 좋은 도구가 아니었습니다.</p>
 
 <blockquote>
-  <p>이거 만든다고 5시간 썼다면 믿으시겠습니까!</p>
+  <p>제가 잘 못 쓴 것이지 슬랙봇에게는 죄가 없습니다.</p>
 </blockquote>
 
-<h2 id="맺음말">맺음말</h2>
-<p>미래의 토투가 해야할 일이 밀린 회사와 6월말 출산을 앞둔 2/4분기. 과연 얼마나 글을 진행할 수 있을까. 미래의 토투 힘내라.</p>
+<h3 id="3차-시도---웹페이지-도입">3차 시도 - 웹페이지 도입</h3>
+
+<p>앞서 말한 문제가 대두하기 전 다수의 로그를 살펴보기 위해 웹페이지를 제작 중에 있었습니다. 프로그래밍에는 <a href="https://yanolja.github.io/2018/01/Nextjs-webview">야놀자 앱 하이브리드</a>에서 다뤄본 React.js 외에 최근 소개받은 razzle, After.js를 사용했습니다(이에 관한 회고는 아래서 짧게 다룹니다).</p>
+
+<blockquote>
+  <p>Firebase 실시간데이터 베이스에 쌓인 로그를 Firebase 클라우드 함수로 제작된 API로 사용자별, 일자별로 불러서 표시하는 정도로 개발 착수.</p>
+</blockquote>
+
+<p>웹페이지로 조회 기능을 만든 시점과 맞물려 슬랙봇이 무용지물이 되었습니다. 로그인 기능을 제작하고 웹페이지에서 워크로그를 추가할 수 있도록 했습니다. 기록과 조회가 웹페이지로 대체 된 것입니다🎉🎉.</p>
+
+<blockquote>
+  <p>Firebase 인증은 정말 편리합니다.</p>
+</blockquote>
+
+<p><img src="/images/worklog/2018-09-11_06-40-45.png" alt="슬랙봇 안녕" width="60%" /></p>
+
+<h2 id="대형-이벤트">대형 이벤트</h2>
+
+<p>이렇게 만들었지만 떠나버린 사용자를 돌아오게 만드는 일은 불가능했습니다. 저를 제외하고 몇몇 분들만 사용하는 소소한 서비스로 사라질 예정이었습니다. 그런데 CX 서비스실 실장이신 하희진 님이 전격적으로 CX 서비스실 전 구성원이 워크로그를 통해 기록을 남겨달라고 요청하셨습니다. DAU가 10배는 급상승했습니다(1~2명에서 20명 이상으로). 많은 트래픽📈이 들어오니 부족한 기능과 어설픈 기록 시스템 등이 문제가 되기 시작합니다.</p>
+
+<p>엎친 데 덮친 격으로 <code>초과 근무 차감</code>이란 주 기능 오픈에 대한 관리자(희진 님)와 사용자의 요구가 커졌습니다.</p>
+
+<blockquote>
+  <p>할 일이 넘쳐난다.</p>
+</blockquote>
+
+<h3 id="dau-20의-공포">DAU 20의 공포</h3>
+
+<p>요구사항을 분석하고 구현하면서 미비한 규칙을 관리자와 자주 논의했습니다. 논의 결과에 따라 메뉴가 생겼다가 사라졌다가를 반복해서 사용자의 혼란이 가중되었습니다. 아직 제작되지 않은 관리자 기능 때문에 데이터베이스를 직접 수정하는 일도 빈번했습니다.</p>
+
+<p>무엇보다 갑자기 새로운 도구를 사용하는 사용자의 질문이 쏟아졌습니다. 주 40시간을 어떻게 측정할지, 초과근무시간의 근거나 법정 휴식시간 발생 요건 등 대부분은 규칙에 관한 질문이었습니다. 30분 안에 같은 질문을 5번 듣고 동일하게 답변하는 헤프닝도 있었습니다.</p>
+
+<blockquote>
+  <p>🤔 어디서 많이 본 모습인데? 바로 IT산업 전체에서 자주 일어나는 일입니다.</p>
+</blockquote>
+
+<h3 id="점진적-개선">점진적 개선</h3>
+
+<p>우선 비슷한 질문을 모아 FAQ 페이지를 개설했습니다(우리 PO가 자주 하는 업무라서 배운 풍월이 도움이 되었습니다). 지나치게 사용자 기능을 제한하여 CS가 늘어난 측면이 있어서 규칙이 확정된 부분만 사용자 기능 제한을 풀었습니다.</p>
+
+<ul>
+  <li>금주 내의 로그는 언제든 추가 및 수정할 수 있도록 변경했습니다.</li>
+  <li>누적된 초과시간은 금주 중 언제라도 사용할 수 있도록 변경했습니다.</li>
+</ul>
+
+<blockquote>
+  <p>한 주가 끝나면 잘못된 로그가 있는지 검사한 뒤 로그 수정 후 초과시간 확정하는 일은 하고 있습니다.</p>
+</blockquote>
+
+<p>배포되는 버전마다 변경사항을 문서에 남기고 전체 사용자에게 공지했습니다.</p>
+
+<p>차감 기능은 자투리 시간과 CX 서비스실 구성원의 배려로 개발하였습니다.</p>
+
+<blockquote>
+  <p>다행히 6월에 태어난 둘째가 새벽 4~5시면 한 번씩 울어서 알람 없이 기상할 수 있었습니다😭.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="개인-회고">개인 회고</h2>
+
+<p><code>워크로그</code>를 제작하면서 크게 2가지를 느꼈습니다.</p>
+
+<h3 id="미비한-요구사항-분석은-개발-비용을-상승시킨다">미비한 요구사항 분석은 개발 비용을 상승시킨다</h3>
+
+<p>하나의 요구사항은 여러 기능을 필요로 합니다. 자세한 분석 없이 뇌내 망상으로만 개발에 착수했더니 구조를 변경하느라 시간을 많이 소모했습니다.</p>
+
+<p>초과 시간을 예로 들면 우선 차감 메뉴를 만들고 있었습니다. 그런데 차감에 근거가 되는 누적 시간이 없습니다. 그럼 누적을 기록할 수 있는 모델을 제작합니다. 1일 8시간 기준으로 기록하도록 개발합니다. 주 40시간이 넘을 때 초과 시간이 발생하는 규칙이라서 1주일 단위로 마감하는 방식으로 변경합니다.</p>
+
+<p>이렇게 우왕좌왕하며 개발하니 밀고 나가는 힘이 약했습니다. 프로덕트 개발 시 PO가 이 부분을 많이 돌봐줘서 기본 없는 프로그래머가 되었습니다(😭).</p>
+
+<h3 id="개발은-50-운영이-나머지-50다">개발은 50%. 운영이 나머지 50%다</h3>
+
+<p>마이너 버전이라도 개발을 완료하고 배포할 때마다 한고비 넘었다고 생각했습니다. 그렇지만 진짜 서비스가 단단해지는 것은 사용자를 만날 때부터였습니다.</p>
+
+<p>사용자는 관리자보다 인내심이 없습니다. 개선 사항을 슬랙을 통해서 말해주고, 잘못된 기록이 있으면 수정을 요구했습니다. 이상한 규칙이 발견될 때마다 피드백이 왔습니다. 정당한 요구와 피드백이지만 1인 개발자가 감당하기는 벅찬 부분이 있었습니다.</p>
+
+<p>피드백을 정리해서 수정할 부분을 JIRA에 정리하고 작업하기를 반복했습니다. 이 과정을 통해 초기보다 더 다듬을 수 있었습니다.</p>
+
+<p>저는 근무시간 중에만 CS 대응을 했음에도 피곤했습니다. 이런 일을 매일 매시간 겪고 있는 야놀자 PO와 IT 업계 동료들은 정말 대단한 사람입니다. 이 자리를 빌려 다시 한번 존경합니다.</p>
+
+<h3 id="개발-관련-회고신약-임상-결과">개발 관련 회고(신약💊 임상 결과)</h3>
+
+<p>토이 프로젝트이기 때문에 회사에서 사용하는 기술 외에 새로운 기술을 다뤄봤습니다. React.js와 함께 엄청나게 사랑받고 있는 vue.js가 아닌 이유는 개발 시간이 촉박해서 공부할 시간이 없었다고 핑계 대봅니다.</p>
+
+<h4 id="razzle--afterjs--">razzle + After.js = 👍</h4>
+
+<p>React.js를 사용할 때 주로 Next.js를 사용해왔지만 이번에는 razzle과 After.js를 사용했습니다.</p>
+
+<p><a href="https://github.com/jaredpalmer/razzle">razzle</a>은 create-react-app처럼 React.js 애플리케이션을 제작할 수 있도록 초기 구성을 도와줍니다. React.js 외에도 Vue, Angular, Preact, Elm 등을 지원합니다.</p>
+
+<p><a href="https://github.com/jaredpalmer/after.js">After.js</a>는 Next.js처럼 서버사이드 렌더링을 지원합니다. Next.js와 다르게 React Route 4를 이용해서 라우팅을 지원합니다.</p>
+
+<p>사용해본 소감은 razzle이 아무런 설정도 하지 않도록 도와주고 있어서 편리했습니다. TypeScript 도입도 예시가 있어서 쉽게 적용할 수 있었습니다. 코드 수정 후 웹페이지를 다시 로딩하는 핫 리로드(hot reload)도 잘 작동합니다. After.js는 서버사이드 렌더링 시 getInitialProps 를 사용할 수 있어서 Next.js에 익숙한 저에게 편리했습니다. 무엇보다 Next.js처럼 route를 변경하기 위해서 next-route에 의존하지 않아서 편리했습니다(대신 React Route를 의존합니다).</p>
+
+<p>저처럼 프로젝트 셋업을 어려워하는 초심자에게 유용합니다(검색할 때 사례를 더 많이 찾으려면 Next.js가 더 유리합니다).</p>
+
+<p>배포는 초기에 Aws의 beanstalk을 활용하다가 <a href="https://zeit.co/">Zeit</a>가 운영하는 now로 변경했습니다. Node.js나 docker에 익숙하고 커맨드 라인 인터페이스(cli)를 사용하는 데 어려움이 없다면 사용할만 합니다. 리전이 모두 해외라서 응답속도가 빠르진 않습니다.</p>
+
+<blockquote>
+  <p>Zeit는 Next.js 프레임워크를 제작한 회사입니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="도움-주신-분">도움 주신 분</h2>
+
+<ul>
+  <li>🤔 아이디어와 기획에 도움을 주고 사용자가 돼주신 R&amp;D CX 서비스실 강미경 님</li>
+  <li>🐛 제보에 적극적인 R&amp;D CX 서비스실 노현석 님</li>
+  <li>DAU를 비약적으로 높여주신 R&amp;D CX 서비스실 하희진 님</li>
+  <li>미약한 사용성과 구린 UI임에도 잘 사용해주고 계신 R&amp;D CX 서비스실 모든 구성원!!</li>
+  <li>공감의 👀🌽! 눈물 흘리는 역할로 열연해주신 R&amp;D UX/UI팀 김하연 님</li>
+  <li>이 글을 리뷰해주신 유관종 님, 노현석 님, 구본한 님</li>
+</ul>
+
+<p>무엇보다 이런 프로젝트가 가능하도록 도와준 R&amp;D CX 서비스실 내 API파트 전원에게 🙇‍ 감사합니다.</p>
+
+<hr />
+
+<h2 id="참고한-자료">참고한 자료</h2>
+
+<ul>
+  <li><a href="https://medium.com/evenbit/building-a-slack-app-with-firebase-as-a-backend-151c1c98641d">https://medium.com/evenbit/building-a-slack-app-with-firebase-as-a-backend-151c1c98641d</a></li>
+  <li><a href="https://api.slack.com/slash-commands">https://api.slack.com/slash-commands</a></li>
+  <li><a href="https://firebase.google.com/docs/database/web/start">https://firebase.google.com/docs/database/web/start</a></li>
+</ul>
 
       </article>
       <hr>
@@ -260,7 +415,7 @@
       </form>
 
       <div class="fb-foot-area" style="width:104px;height:24px">
-        <div class="fb-like" data-href="https://blog.totu.dev/2018/03/30/report/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="https://blog.totu.dev/2018/09/10/work-log/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
     <div id="fb-root"></div>
