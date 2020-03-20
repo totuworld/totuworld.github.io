@@ -5,8 +5,8 @@
     <description>Full 🥩🔥 Developer</description>
     <link>https://blog.totu.dev/</link>
     <atom:link href="https://blog.totu.dev/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Mar 2020 10:56:30 +0900</pubDate>
-    <lastBuildDate>Fri, 20 Mar 2020 10:56:30 +0900</lastBuildDate>
+    <pubDate>Fri, 20 Mar 2020 11:11:15 +0900</pubDate>
+    <lastBuildDate>Fri, 20 Mar 2020 11:11:15 +0900</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -980,7 +980,7 @@ $ tail /var/log/nodejs/nodejs.log
         <item>
             <title>워크로그 개발기</title>
             <description>&lt;blockquote&gt;
-  &lt;p&gt;이 글은 2018년 9월 10일에 [야놀자 기술 블로그][https://yanolja.github.io/2018/09/Work-Log]에 게시된 글을 백업한 것 입니다.&lt;/p&gt;
+  &lt;p&gt;이 글은 2018년 9월 10일에 &lt;a href=&quot;https://yanolja.github.io/2018/09/Work-Log&quot;&gt;야놀자 기술 블로그&lt;/a&gt;에 게시된 글을 백업한 것 입니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;저는 야놀자 CX 서비스실의 API 파트에서 백엔드(90%)와 웹 프론트엔드(10%) 프로그래머로 일하는 송요창입니다.&lt;/p&gt;
